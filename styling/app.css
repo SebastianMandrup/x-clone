@@ -1,0 +1,34 @@
+@import './variables.css';
+@import './nav.css';
+@import './main.css';
+@import './aside.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.1rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--black);
+    color: var(--white);
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+
+#divMainContainer {
+    display: grid;
+    grid-template-areas: 'nav main aside';
+    grid-template-columns: 23fr 38fr 30fr;
+    height: 100vh;
+    overflow-y: auto;
+}

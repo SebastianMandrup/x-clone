@@ -1,0 +1,118 @@
+#divMainContainer {
+    nav {
+        height: 100vh;
+        width: 25vw;
+        display: flex;
+        flex-direction: column;
+        padding: 0 0 1rem 5rem;
+        position: fixed;
+
+        gap: .1rem;
+
+
+
+        #aXLogo {
+            width: max-content;
+        }
+
+        a {
+            width: 100%;
+
+            #spanXLogo {
+                font-size: 2.1rem;
+            }
+
+            span {
+                border-radius: 2.3rem;
+                width: fit-content;
+                padding: 0.5rem 1rem;
+                font-size: 1.2rem;
+                font-weight: 300;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                /* color: rgb(170, 170, 170); */
+
+                svg {
+                    margin-right: 1rem;
+                }
+
+            }
+
+            &:hover span {
+                background-color: rgb(40, 40, 40);
+
+            }
+        }
+
+        #aXLink>div {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        #btnPost {
+            border: none;
+            color: black;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            margin: 1rem 2rem 0 0;
+
+            &:hover {
+                background-color: rgb(220, 220, 220);
+            }
+        }
+
+        #sectionUserInfo {
+            margin-top: auto;
+            display: flex;
+            flex-direction: row;
+            padding: 0.5rem 1rem;
+
+            &:hover {
+                background-color: rgb(40, 40, 40);
+                border-radius: 2rem;
+                cursor: pointer;
+            }
+
+            #imgUserAvatar {
+                height: 2.5rem;
+                width: 2.5rem;
+                border-radius: 50%;
+                margin-right: 0.5rem;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            #divUserNames {
+                display: flex;
+                flex-direction: column;
+                padding: 0.25rem;
+                gap: 0.1rem;
+
+                #spanUserFullName {
+                    font-weight: 700;
+                    font-size: 0.9rem;
+                }
+
+                #spanUserHandle {
+                    color: rgb(170, 170, 170);
+                    font-size: 0.7rem;
+                    font-weight: 200;
+                }
+            }
+
+            #divMoreOptions {
+                margin-left: auto;
+
+                #spanMoreOptions {
+                    font-size: 1.5rem;
+                    padding: 0.5rem;
+                }
+            }
+        }
+    }
+}

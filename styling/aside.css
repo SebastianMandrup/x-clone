@@ -1,0 +1,166 @@
+aside {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 4rem 1rem 2rem;
+    gap: 0.5rem;
+    grid-area: aside;
+
+    #formSearch {
+
+        position: sticky;
+        top: 0;
+        width: inherit;
+        background-color: black;
+        padding: 0.4rem 0 0.4rem 0;
+
+        input {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border-radius: 1.5rem;
+            font-size: 1rem;
+            background-color: black;
+            border: 1px solid rgb(48, 51, 54);
+        }
+    }
+
+    #sectionSubscribe {
+        padding: 1rem;
+        border: 1px solid rgb(48, 51, 54);
+        border-radius: 1rem;
+
+        header {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: rgb(170, 170, 170);
+            margin-bottom: 0.5rem;
+        }
+
+        button {
+            border: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            background-color: rgb(29, 155, 240);
+
+            &:hover {
+                background-color: rgb(26, 140, 216);
+            }
+        }
+    }
+
+    #divTrends {
+        margin-top: 0.5rem;
+        border-top: 1px solid rgb(48, 51, 54);
+
+
+        #sectionWhatsHappening {
+            padding: 1rem;
+            margin-top: 1rem;
+            border: 1px solid rgb(48, 51, 54);
+            border-radius: 1rem;
+
+            header {
+                font-size: 1.2rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+            }
+
+            .articleTrendItem {
+                margin: 0.5rem 0;
+                display: flex;
+
+                #divTrendItemText {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+
+                    p {
+                        font-size: 0.7rem;
+                        color: rgb(170, 170, 170);
+                    }
+
+                    h2 {
+                        font-size: 0.9rem;
+                        font-weight: 700;
+                    }
+
+                }
+
+                button {
+                    margin-left: auto;
+                    background-color: black;
+                    color: rgb(170, 170, 170);
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+
+
+        }
+
+        #sectionWhoToFollow {
+            padding: 1rem;
+            margin-top: 1rem;
+            border: 1px solid rgb(48, 51, 54);
+            border-radius: 1rem;
+            gap: 1rem;
+
+            header {
+                font-size: 1.2rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+            }
+
+            .articlePersonToFollow {
+                display: flex;
+                padding: 0.5rem 0;
+
+                .imgPersonToFollowAvatar {
+                    height: 2.5rem;
+                    width: 2.5rem;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+
+                .divPersonToFollowNames {
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 0.5rem;
+
+                    .spanPersonToFollowFullName {
+                        font-weight: 500;
+                    }
+
+                    .spanPersonToFollowUserName {
+                        font-size: 0.8rem;
+                        color: rgb(170, 170, 170);
+                    }
+                }
+
+                .btnFollow {
+                    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                    font-size: 0.8rem;
+                    font-weight: 700;
+                    margin-left: auto;
+                    padding: 0.25rem 1rem;
+                    border-radius: 1.5rem;
+                }
+            }
+        }
+    }
+
+    &:last-child {
+        position: sticky;
+        align-self: start;
+        top: 0;
+    }
+}
