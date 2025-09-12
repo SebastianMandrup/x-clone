@@ -5,9 +5,10 @@
 
 - use __DIR__ over relative path
 
-- . to contact
+- . to concat
 
-- require / require_once && inclue / include_once
+- require / require_once && include / include_once
+    - used for imports
     - require throws error if file is not found
     - include does not throw an error
     - always point to __DIR__
