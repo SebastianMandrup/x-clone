@@ -12,6 +12,7 @@
 
         #aXLogo {
             width: max-content;
+            border-radius: 50%;
         }
 
         #aSelectedNav {
@@ -28,9 +29,9 @@
             }
 
             span {
-                border-radius: 2.3rem;
+                border-radius: 1.5rem;
                 width: fit-content;
-                padding: 0.5rem 1rem;
+                padding: 0.5rem 0.9rem;
                 font-size: 1.2rem;
                 font-weight: 300;
 
@@ -72,9 +73,10 @@
 
         #sectionUserInfo {
             margin-top: auto;
+            margin-right: 0.5rem;
             display: flex;
             flex-direction: row;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem;
 
             &:hover {
                 background-color: rgb(40, 40, 40);
@@ -114,7 +116,6 @@
 
                 #spanMoreOptions {
                     font-size: 1.5rem;
-                    padding: 0.5rem;
                 }
             }
         }
