@@ -231,9 +231,10 @@ aside {
             text-decoration: none;
             transition: color 0.2s;
 
-            &:hover {
-                text-decoration: underline;
-            }
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     }
 

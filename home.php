@@ -818,8 +818,8 @@
                 <a href="#">Cookie Policy</a>
                 <a href="#">Accessibility</a>
                 <span>|</span>
-
                 <a href="#">Ads info</a>
+                <span>|</span>
                 <a href="#">More</a>
                 <span>|</span>
                 <div id="divFooterCopy">
