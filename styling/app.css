@@ -28,7 +28,10 @@ a {
 #divMainContainer {
     display: grid;
     grid-template-areas: 'nav main aside';
-    grid-template-columns: 23fr 38fr 30fr;
+    grid-template-columns: 24fr 40fr 32fr;
     height: 100vh;
-    overflow-y: auto;
+    overflow-y: scroll;
+
+    scrollbar-width: medium;
+    scrollbar-color: var(--lightGrey) var(--black);
 }

@@ -6,13 +6,18 @@
         flex-direction: column;
         padding: 0 0 1rem 5rem;
         position: fixed;
-
         gap: .1rem;
 
-
+        grid-area: nav;
 
         #aXLogo {
             width: max-content;
+        }
+
+        #aSelectedNav {
+            span {
+                font-weight: 500;
+            }
         }
 
         a {
@@ -42,7 +47,6 @@
 
             &:hover span {
                 background-color: rgb(40, 40, 40);
-
             }
         }
 

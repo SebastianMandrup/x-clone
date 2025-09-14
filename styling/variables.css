@@ -1,4 +1,28 @@
 :root {
-    --white: rgb(239, 243, 244);
+    --perfectWhite: white;
+    --white: rgb(231,233,234);
     --black: rgb(0, 0, 0);
+    --blue: #1d9bf0;
+    --darkerBlue: #1a8cd8;
+
+    --borderColor: rgb(48, 51, 54);
+
+    --heavyBorderRadius: 1.5rem;
+    --lightBorderRadius: 1rem;
+
+    --lighterGrey: rgb(95,95,95);
+    --lightGrey: rgb(90, 90, 90);
+    --grey: rgb(70, 70, 70);
+    --darkGrey: rgb(50, 50, 50);
+    --darkestGrey: rgb(10,10,10);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
