@@ -1,12 +1,22 @@
+<?php
+require_once __DIR__ . "/x.php";
+muoNoCache();
+session_start();
+if (!isset($_SESSION["user"])) {
+    header("Location: /");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styling/app.css">
+    <link rel="stylesheet" href="./styling/home/home.css">
     <link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
-    <script src='./scripts/app.js' defer></script>
+    <script src='./scripts/home.js' defer></script>
     <title>Home / X</title>
 </head>
 
@@ -142,6 +152,14 @@
             <button id='btnPost'>
                 Post
             </button>
+            <section id='sectionUserActions' class='hidden'>
+                <button>
+                    Add an existing account
+                </button>
+                <button id='btnLogout'>
+                    Log out User Name
+                </button>
+            </section>
             <section id='sectionUserInfo'>
                 <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Avatar" id='imgUserAvatar'>
                 <div id='divUserNames'>

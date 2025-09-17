@@ -1,0 +1,102 @@
+@import '../variables.css';
+
+#divLoginPageOne {
+
+    padding: 0 2rem 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+
+    header>h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.7rem;
+    }
+
+    button {
+        background-color: var(--white);
+        color: var(--black);
+        font-size: 1rem;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        margin-bottom: 1rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            height: 1.2rem;
+            width: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: var(--lightestGrey);
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            margin-bottom: 1rem;
+            padding: 1rem 0.5rem;
+            border: 1px solid var(--grey);
+            background-color: var(--black);
+            color: var(--grey);
+            border-radius: 0.25rem;
+            font-size: 1rem;
+
+            &:focus {
+                outline: none;
+                border: 1px solid var(--blue);
+            }
+
+            &:last-of-type {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        #btnForgotPassword {
+            background-color: transparent;
+            border: 2px solid var(--grey);
+            color: var(--white);
+            margin-bottom: 2rem;
+
+            &:hover {
+                cursor: pointer;
+                background-color: var(--darkestGrey);
+            }
+        }
+
+    }
+
+    #pSignUpPrompt {
+        font-size: 0.9rem;
+        color: var(--lighterGrey);
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+
+        #linkOpenSignup {
+            color: var(--blue);
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-left: 0.1rem;
+            display: inline;
+            background: none;
+            border: none;
+            padding: 0;
+
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+    }
+}

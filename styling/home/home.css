@@ -1,29 +1,23 @@
-@import './variables.css';
+@import '../variables.css';
 @import './nav.css';
 @import './main.css';
 @import './aside.css';
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 1.1rem;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-}
 
-body {
-    width: 100%;
-    height: 100vh;
-    background-color: var(--black);
-    color: var(--white);
-    overflow: hidden;
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 a {
     text-decoration: none;
     color: var(--white);
 }
-
 
 #divMainContainer {
     display: grid;

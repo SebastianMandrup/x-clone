@@ -1,28 +1,45 @@
 :root {
     --perfectWhite: white;
-    --white: rgb(231,233,234);
+    --white: rgb(231, 233, 234);
     --black: rgb(0, 0, 0);
     --blue: #1d9bf0;
     --darkerBlue: #1a8cd8;
 
     --borderColor: rgb(48, 51, 54);
+    --modalBackgroundColor: rgba(91, 112, 131, 0.4);
 
     --heavyBorderRadius: 1.5rem;
     --lightBorderRadius: 1rem;
 
-    --lighterGrey: rgb(95,95,95);
+    --lightestGrey: rgb(205, 205, 205);
+    --lighterGrey: rgb(95, 95, 95);
     --lightGrey: rgb(90, 90, 90);
     --grey: rgb(70, 70, 70);
     --darkGrey: rgb(50, 50, 50);
-    --darkestGrey: rgb(10,10,10);
+    --darkestGrey: rgb(10, 10, 10);
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
 
-    to {
-        transform: rotate(360deg);
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.1rem;
+    font-family: 'Inter', 'Public Sans', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.hidden {
+    display: none !important;
+}
+
+body.modalOpen {
+    overflow: hidden;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--black);
+    color: var(--white);
+    overflow: scroll;
 }
