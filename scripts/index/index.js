@@ -1,3 +1,5 @@
+import './signUp.js';
+
 function setIndexTitle(){
     document.title = "X / It's what's happening / X";
 }

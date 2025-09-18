@@ -49,9 +49,13 @@
             padding: 1rem 0.5rem;
             border: 1px solid var(--grey);
             background-color: var(--black);
-            color: var(--grey);
+            color: var(--white);
             border-radius: 0.25rem;
             font-size: 1rem;
+
+            &::placeholder {
+                color: var(--grey);
+            }
 
             &:focus {
                 outline: none;
@@ -60,6 +64,11 @@
 
             &:last-of-type {
                 margin-bottom: 1.5rem;
+            }
+
+            &:-webkit-autofill {
+                box-shadow: 0 0 0px 1000px var(--black) inset;
+                -webkit-text-fill-color: var(--white);
             }
         }
 

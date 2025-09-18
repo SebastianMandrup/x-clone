@@ -1,14 +1,19 @@
 @import '../variables.css';
 
-#divSignUpPageOne {
-    header>h2 {
-        font-size: 1.8rem;
-        margin-bottom: 1.7rem;
-    }
 
-    form {
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    #divSignUpPageOne, #divSignUpPageTwo {
         display: flex;
         flex-direction: column;
+
+        header>h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.7rem;
+        }
 
         input {
             margin-bottom: 1rem;
@@ -94,4 +99,5 @@
             }
         }
     }
+
 }

@@ -16,7 +16,7 @@ if (isset($_SESSION["user"])) {
     <link rel="stylesheet" href="./styling/index/index.css">
     <link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src='./scripts/index.js' type='module'></script>
+    <script src='./scripts/index/index.js' type='module'></script>
     <title>X / It's what's happening / X</title>
 </head>
 
@@ -138,14 +138,19 @@ if (isset($_SESSION["user"])) {
                             d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z" />
                     </svg>
                 </button>
-                <div id='divSignUpPageOne'>
-                    <header>
-                        <h2>
-                            Create your account
-                        </h2>
-                    </header>
-                    <form action="">
-                        <input type="text" placeholder='Name'>
+                <button id='btnBackSignUpModal' class='hidden'>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class='svgBackModal'>
+                        <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+                    </svg>
+                </button>
+                <form action="">
+                    <div id='divSignUpPageOne'>
+                        <header>
+                            <h2>
+                                Create your account
+                            </h2>
+                        </header>
+                        <input id='inputName' type="text" placeholder='Name' required>
                         <input id='inputPhoneSignUp' type="number" placeholder='Phone'>
                         <input id='inputEmailSignUp' type="email" placeholder='Email' class='hidden'>
                         <button id='btnUseEmail' type='button'>
@@ -167,7 +172,7 @@ if (isset($_SESSION["user"])) {
                         </p>
 
                         <div id="divDateInputs">
-                            <select name="month" required>
+                            <select id='selectBirthMonth' name="month" required>
                                 <option value="">Month</option>
                                 <option value="1">January</option>
                                 <option value="2">February</option>
@@ -183,7 +188,7 @@ if (isset($_SESSION["user"])) {
                                 <option value="12">December</option>
                             </select>
 
-                            <select name="day" required>
+                            <select id='selectBirthDay' name="day" required>
                                 <option value="">Day</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -218,7 +223,7 @@ if (isset($_SESSION["user"])) {
                                 <option value="31">31</option>
                             </select>
 
-                            <select name="year" required>
+                            <select id='selectBirthYear' name="year" required>
                                 <option value="">Year</option>
                                 <option value="1920">1920</option>
                                 <option value="1921">1921</option>
@@ -329,12 +334,52 @@ if (isset($_SESSION["user"])) {
                             </select>
                         </div>
 
-                        <button type='submit' id='btnSignUpNext'>
+                        <button type='button' id='btnSignUpNext' disabled>
                             Next
                         </button>
-                    </form>
+                    </div>
+                    <div id='divSignUpPageTwo' class='hidden'>
+                        <header>
+                            <h2>
+                                Customize your experience
+                            </h2>
+                        </header>
+                        <h3>
+                            Connect with people you know
+                        </h3>
+                        <label>
+                            Let others find your X account by you email address or phone number.
+                            <input type="checkbox" id='inputConnectWithEmailPhone'>
+                        </label>
+                        <h4>
+                            Personalized ads
+                        </h4>
+                        <label>
+                            You will always see ads on X based on your X activity. When this setting is enabled, X may
+                            further personalise ads from X advertisers, on and off X, by combining your X activity with
+                            other online activity and information from our partners.
+                            <input type="checkbox" name='inputPersonalizedAds'>
+                        </label>
+                        <p>
+                            By signing up, you agree to our
+                            <a>
+                                Terms
+                            </a>,
+                            <a>Privacy Policy</a>, and
+                            <a>Cookie Use</a>
+                            . X may use your contact information, including your email address and phone number for
+                            purposes outlined in
+                            our Privacy Policy.
+                            <a href="">
+                                Learn more
+                            </a>
+                        </p>
+                        <button type='submit' id='btnSignUpSubmit'>
+                            Sign up
+                        </button>
+                    </div>
+                </form>
 
-                </div>
             </section>
         </section>
         <section id='sectionModalBackgroundLogin' class='modalBackground hidden'>
@@ -413,8 +458,6 @@ if (isset($_SESSION["user"])) {
         </section>
 
     </main>
-
-
 </body>
 
 </html>
