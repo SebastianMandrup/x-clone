@@ -143,16 +143,16 @@ if (isset($_SESSION["user"])) {
                         <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
                     </svg>
                 </button>
-                <form action="">
+                <form id="formSignUp" action="./bridges/signUpBridge.php" method="POST">
                     <div id='divSignUpPageOne'>
                         <header>
                             <h2>
                                 Create your account
                             </h2>
                         </header>
-                        <input id='inputName' type="text" placeholder='Name' required>
-                        <input id='inputPhoneSignUp' type="number" placeholder='Phone'>
-                        <input id='inputEmailSignUp' type="email" placeholder='Email' class='hidden'>
+                        <input id='inputName' name='name' type="text" placeholder='Name' spellcheck="false" required>
+                        <input id='inputPhoneSignUp' name='phone' type="number" placeholder='Phone'>
+                        <input id='inputEmailSignUp' name='email' type="email" placeholder='Email' class='hidden'>
                         <button id='btnUseEmail' type='button'>
                             Use email instead
                         </button>
@@ -349,7 +349,7 @@ if (isset($_SESSION["user"])) {
                         </h3>
                         <label>
                             Let others find your X account by you email address or phone number.
-                            <input type="checkbox" id='inputConnectWithEmailPhone'>
+                            <input id='inputConnectWithEmailPhone' name='connectWithEmailPhone' type="checkbox">
                         </label>
                         <h4>
                             Personalized ads
@@ -358,8 +358,13 @@ if (isset($_SESSION["user"])) {
                             You will always see ads on X based on your X activity. When this setting is enabled, X may
                             further personalise ads from X advertisers, on and off X, by combining your X activity with
                             other online activity and information from our partners.
-                            <input type="checkbox" name='inputPersonalizedAds'>
+                            <input id='inputPersonalizedAds' name='personalizedAds' type="checkbox">
                         </label>
+
+                        <input type="password" name="password" id='inputPasswordSignUp' placeholder='Password'
+                            required>
+                        <input type="password" id='inputConfirmPasswordSignUp' placeholder='Confirm Password'
+                            required>
                         <p>
                             By signing up, you agree to our
                             <a>
@@ -439,8 +444,8 @@ if (isset($_SESSION["user"])) {
                     </p>
 
                     <form action="./bridges/loginBridge.php" method="POST">
-                        <input type="text" placeholder='Email' name='email'>
-                        <input type="password" placeholder='Password' name='password'>
+                        <input type="text" placeholder='Email or Phone' name='emailOrPhone' required>
+                        <input type="password" placeholder='Password' name='password' required>
                         <button type='submit'>
                             Log in
                         </button>

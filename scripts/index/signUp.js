@@ -1,3 +1,5 @@
+import './signUp/signUpValidation.js';
+
 function validateSignUpPageOne() {
     const inputName = document.getElementById('inputName');
     const inputPhone = document.getElementById('inputPhoneSignUp');
@@ -21,6 +23,7 @@ function validateSignUpPageOne() {
     }
 
     document.getElementById('btnSignUpNext').disabled = !isValid;
+    document.getElementById('btnSignUpSubmit').disabled = !isValid;
 }
 
 document.querySelectorAll('#divSignUpPageOne input, #divSignUpPageOne select').forEach(element => {

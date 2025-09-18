@@ -1,18 +1,65 @@
 @import '../variables.css';
 
-
-
 form {
     display: flex;
     flex-direction: column;
 
-    #divSignUpPageOne, #divSignUpPageTwo {
+    #divSignUpPageOne,
+    #divSignUpPageTwo {
         display: flex;
         flex-direction: column;
 
         header>h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.7rem;
+            font-size: 1.7rem;
+            margin-bottom: 1.6rem;
+        }
+
+        h3,
+        h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        label {
+            font-size: 0.8rem;
+            margin-bottom: 0.2rem;
+            display: flex;
+
+            #inputConnectWithEmailPhone {
+                height: 16px;
+                width: 30px;
+                margin-left: 3rem;
+            }
+
+            input {
+                appearance: none;
+                -webkit-appearance: none;
+                margin-left: 1.75rem;
+                border: 1px solid var(--grey);
+                border-radius: 0.25rem;
+                background-color: var(--black);
+                cursor: pointer;
+                position: relative;
+
+                height: 1rem;
+                width: 3rem;
+
+                &:checked {
+                    background-color: var(--blue);
+                    border: 1px solid var(--blue);
+
+                    &::after {
+                        content: '✓';
+                        color: var(--white);
+                        font-size: 0.8rem;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+            }
         }
 
         input {
@@ -20,15 +67,36 @@ form {
             padding: 1rem 0.5rem;
             border: 1px solid var(--grey);
             background-color: var(--black);
-            color: var(--grey);
+            color: var(--white);
             border-radius: 0.25rem;
             font-size: 1rem;
+
+            &::placeholder {
+                color: var(--grey);
+            }
 
             &:focus {
                 outline: none;
                 border: 1px solid var(--blue);
             }
+
+            &:-webkit-autofill {
+                -webkit-box-shadow: 0 0 0px 1000px var(--black) inset;
+                -webkit-text-fill-color: var(--white);
+                caret-color: var(--grey);
+            }
+
+            &:-webkit-autofill:focus {
+                -webkit-box-shadow: 0 0 0px 1000px var(--black) inset;
+                -webkit-text-fill-color: var(--white);
+                border: 1px solid var(--blue);
+            }
         }
+
+        #inputPasswordSignUp {
+            margin-top: 1rem;
+        }
+
 
         #btnUseEmail,
         #btnUsePhone {
@@ -47,17 +115,21 @@ form {
             }
         }
 
-        h3 {
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
         p {
             font-size: 0.8rem;
             color: var(--lightGrey);
             margin-top: 1rem;
             margin-bottom: 1.5rem;
+
+            a {
+                color: var(--blue);
+                text-decoration: none;
+                font-size: 0.8rem;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
 
         #divDateInputs {
@@ -81,7 +153,8 @@ form {
             }
         }
 
-        #btnSignUpNext {
+        #btnSignUpNext,
+        #btnSignUpSubmit {
             background-color: var(--lightestGrey);
             color: var(--black);
             font-size: 1rem;
@@ -97,6 +170,10 @@ form {
             &:disabled {
                 cursor: not-allowed;
             }
+        }
+
+        #btnSignUpSubmit {
+            margin-top: rem;
         }
     }
 

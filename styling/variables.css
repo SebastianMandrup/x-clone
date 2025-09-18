@@ -29,6 +29,7 @@
 }
 
 .hidden {
+    /* override flex on hidden elements */
     display: none !important;
 }
 
@@ -41,5 +42,5 @@ body {
     height: 100vh;
     background-color: var(--black);
     color: var(--white);
-    overflow: scroll;
+    overflow: hidden;
 }
