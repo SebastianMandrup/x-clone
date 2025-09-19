@@ -422,7 +422,7 @@ if (isset($_SESSION["user"])) {
                     <form action="./bridges/loginBridge.php" method="POST">
                         <input type="text" placeholder='Email or Phone' name='emailOrPhone' required>
                         <input type="password" placeholder='Password' name='password' required>
-                        <button type='submit'>
+                        <button type='submit' class>
                             Log in
                         </button>
                         <button id='btnForgotPassword' type='button'>

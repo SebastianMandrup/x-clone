@@ -4,6 +4,7 @@
 @import './loginModal.css';
 
 body {
+    overflow: scroll;
 
     main {
         display: flex;
@@ -165,7 +166,6 @@ body {
 }
 
 @media screen and (min-width: 600px) {
-
     body {
         main {
             #divLogoContainer {
@@ -174,7 +174,6 @@ body {
 
             #sectionMain {
                 padding: 0 0 0 17vw;
-                
 
                 header {
                     h1 {
@@ -187,7 +186,6 @@ body {
                 }
 
                 #divButtonsContainer {
-
                     p {
                         font-size: 0.6rem;
 
@@ -197,26 +195,12 @@ body {
                     }
                 }
             }
-
-            footer {
-                nav {
-
-                    a,
-                    p {
-                        font-size: 0.6rem;
-                    }
-                }
-            }
         }
     }
-
 }
-
-
 
 @media screen and (min-width: 1000px) {
     body {
-        /* overflow: scroll; */
         main {
             display: grid;
             grid-template-areas: "logo main"
@@ -264,51 +248,6 @@ body {
             }
 
             #divButtonsContainer {
-                display: flex;
-                flex-direction: column;
-                width: 300px;
-
-                button {
-                    padding: 0.5rem 1rem;
-                    margin-bottom: 1rem;
-                    border: none;
-                    border-radius: 9999px;
-                    font-size: 0.8rem;
-                    font-weight: 700;
-
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                    &:hover {
-                        cursor: pointer;
-                        background-color: var(--lightestGrey);
-                    }
-
-                    &:disabled {
-                        background-color: var(--white);
-                        color: var(--black);
-                        cursor: not-allowed;
-                    }
-
-                    svg {
-                        width: 20px;
-                        height: 20px;
-                        margin-right: 0.5rem;
-                    }
-
-                    #svgGrokLogo {
-                        fill: var(--white);
-                    }
-                }
-
-                .pOr {
-                    text-align: center;
-                    margin-bottom: 1rem;
-                    color: var(--white);
-                    line-height: 0.5rem;
-                    font-size: 0.8rem;
-                }
 
                 p {
                     font-size: 0.6rem;
@@ -351,20 +290,19 @@ body {
             }
         }
 
-
         footer {
             grid-area: footer;
             width: 100%;
             text-align: center;
             margin-bottom: 1rem;
             margin-top: auto;
-            padding: 1rem;
+            padding: 1rem 3rem;
 
             nav {
 
                 a,
                 p {
-                    font-size: 0.6rem;
+                    font-size: 0.65rem;
                     color: var(--lighterGrey);
                     text-decoration: none;
 
@@ -388,7 +326,6 @@ body {
             }
         }
     }
-
 }
 
 @media screen and (min-width: 1400px) {
@@ -396,8 +333,20 @@ body {
         main {
             max-width: 1400px;
             margin: 0 auto;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 55fr 45fr;
+
+            #divLogoContainer {
+                padding: 4rem 0 0 4rem;
+
+                svg {
+                    width: 340px;
+                    height: 380px;
+                }
+            }
+
+            #sectionMain {
+                padding: 2rem 0 0 2rem;
+            }
         }
     }
-    
 }
