@@ -3,55 +3,36 @@
 @import './signUpModal.css';
 @import './loginModal.css';
 
-.pOr {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: var(--white);
-    line-height: 0.5rem;
-    font-size: 0.8rem;
-}
-
 body {
-    height: 100vh;
 
     main {
-        display: grid;
-        grid-template-areas:
-            "logo main"
-            "footer footer";
-        grid-template-columns: 1fr 1fr;
-        height: 100%;
+        display: flex;
+        flex-direction: column;
 
         #divLogoContainer {
-            grid-area: logo;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-left: 5rem;
-            padding-top: 3rem;
+            padding: 2rem;
 
             svg {
-                fill: var(--white);
-                width: 320px;
-                height: 320px;
+                fill: var(--lightestGrey);
+                width: 36px;
+                height: 36px;
             }
         }
 
         #sectionMain {
-            grid-area: main;
-            padding: 8.5rem 4rem 0 6.5rem;
+            padding: 0 2rem;
 
             header {
                 h1 {
-                    font-size: 4rem;
+                    font-size: 2.5rem;
                     font-weight: 800;
                     margin-bottom: 2.5rem;
                 }
 
                 h2 {
-                    font-size: 2rem;
+                    font-size: 1.6rem;
                     font-weight: 700;
-                    margin-bottom: 2rem;
+                    margin-bottom: 1rem;
                 }
             }
         }
@@ -95,15 +76,25 @@ body {
                 }
             }
 
+            #btnSignUpWithApple {
+                font-weight: 400;
+            }
 
+            .pOr {
+                text-align: center;
+                margin-bottom: 1rem;
+                color: var(--white);
+                line-height: 0.5rem;
+                font-size: 0.8rem;
+            }
 
             p {
-                font-size: 0.6rem;
+                font-size: 0.5rem;
                 color: var(--lighterGrey);
                 line-height: 0.8rem;
 
                 a {
-                    font-size: 0.6rem;
+                    font-size: 0.5rem;
                     color: var(--blue);
                     text-decoration: none;
 
@@ -139,10 +130,10 @@ body {
     }
 
     footer {
-        grid-area: footer;
         text-align: center;
         margin-bottom: 1rem;
-        margin-top: auto;
+        margin-top: 2rem;
+        padding: 1rem;
 
         nav {
 
@@ -153,7 +144,7 @@ body {
                 text-decoration: none;
 
                 &::after {
-                    content: "   |";
+                    content: "  |";
                 }
 
                 &:last-of-type::after {
@@ -171,5 +162,242 @@ body {
             }
         }
     }
+}
 
+@media screen and (min-width: 600px) {
+
+    body {
+        main {
+            #divLogoContainer {
+                padding: 2rem 0 2rem 17vw;
+            }
+
+            #sectionMain {
+                padding: 0 0 0 17vw;
+                
+
+                header {
+                    h1 {
+                        font-size: 4rem;
+                    }
+
+                    h2 {
+                        font-size: 2rem;
+                    }
+                }
+
+                #divButtonsContainer {
+
+                    p {
+                        font-size: 0.6rem;
+
+                        a {
+                            font-size: 0.6rem;
+                        }
+                    }
+                }
+            }
+
+            footer {
+                nav {
+
+                    a,
+                    p {
+                        font-size: 0.6rem;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+
+@media screen and (min-width: 1000px) {
+    body {
+        /* overflow: scroll; */
+        main {
+            display: grid;
+            grid-template-areas: "logo main"
+                "logo footer";
+            grid-template-columns: 40fr 60fr;
+
+            #divLogoContainer {
+                grid-area: logo;
+                height: 100vh;
+                width: 100%;
+                margin: 0 auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 3rem 0 0 0;
+
+                svg {
+                    fill: var(--white);
+                    width: 320px;
+                    height: 320px;
+                }
+            }
+
+            #sectionMain {
+                grid-area: main;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 4rem 0 0 2rem;
+
+                header {
+                    h1 {
+                        font-size: 3.8rem;
+                        font-weight: 800;
+                        margin: 3rem 0 3rem 0;
+                    }
+
+                    h2 {
+                        font-size: 2rem;
+                        font-weight: 700;
+                        margin-bottom: 2rem;
+                    }
+                }
+            }
+
+            #divButtonsContainer {
+                display: flex;
+                flex-direction: column;
+                width: 300px;
+
+                button {
+                    padding: 0.5rem 1rem;
+                    margin-bottom: 1rem;
+                    border: none;
+                    border-radius: 9999px;
+                    font-size: 0.8rem;
+                    font-weight: 700;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: var(--lightestGrey);
+                    }
+
+                    &:disabled {
+                        background-color: var(--white);
+                        color: var(--black);
+                        cursor: not-allowed;
+                    }
+
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                        margin-right: 0.5rem;
+                    }
+
+                    #svgGrokLogo {
+                        fill: var(--white);
+                    }
+                }
+
+                .pOr {
+                    text-align: center;
+                    margin-bottom: 1rem;
+                    color: var(--white);
+                    line-height: 0.5rem;
+                    font-size: 0.8rem;
+                }
+
+                p {
+                    font-size: 0.6rem;
+                    color: var(--lighterGrey);
+                    line-height: 0.8rem;
+
+                    a {
+                        font-size: 0.6rem;
+                        color: var(--blue);
+                        text-decoration: none;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                #sectionSignIn {
+                    display: flex;
+                    flex-direction: column;
+
+                    h3 {
+                        font-size: 1rem;
+                        font-weight: 500;
+                        margin-top: 3rem;
+                        margin-bottom: 1rem;
+                    }
+
+                    button {
+                        background-color: var(--black);
+                        color: var(--white);
+                        border: 1px solid var(--grey);
+                        font-size: 1rem;
+
+                        &:hover {
+                            background-color: var(--darkestGrey);
+                        }
+                    }
+                }
+            }
+        }
+
+
+        footer {
+            grid-area: footer;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 1rem;
+            margin-top: auto;
+            padding: 1rem;
+
+            nav {
+
+                a,
+                p {
+                    font-size: 0.6rem;
+                    color: var(--lighterGrey);
+                    text-decoration: none;
+
+                    &::after {
+                        content: "   |";
+                    }
+
+                    &:last-of-type::after {
+                        content: "";
+                    }
+                }
+
+                p {
+                    display: inline;
+                }
+
+                a:hover {
+                    text-decoration: underline;
+                    color: var(--lighterGrey);
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (min-width: 1400px) {
+    body {
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    
 }

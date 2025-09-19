@@ -29,7 +29,6 @@
 }
 
 .hidden {
-    /* override flex on hidden elements */
     display: none !important;
 }
 

@@ -59,7 +59,7 @@ if (isset($_SESSION["user"])) {
 
                     Sign up with google
                 </button>
-                <button disabled>
+                <button disabled id='btnSignUpWithApple'>
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <g>
                             <path
@@ -102,29 +102,7 @@ if (isset($_SESSION["user"])) {
             </div>
         </section>
 
-        <footer>
-            <nav aria-label="Footer">
-                <a href="">About</a>
-                <a href="">Download the X app</a>
-                <a href="">Grok</a>
-                <a href="">Help Centre</a>
-                <a href="">Terms of Service</a>
-                <a href="">Privacy Policy</a>
-                <a href="">Cookie Policy</a>
-                <a href="">Accessibility</a>
-                <a href="">Ads info</a>
-                <a href="">Blog</a>
-                <a href="">Careers</a>
-                <a href="">Brand Resources</a>
-                <a href="">Advertising</a>
-                <a href="">Marketing</a>
-                <a href="">X for Business</a>
-                <a href="">Developers</a>
-                <a href="">Directory</a>
-                <a href="">Settings</a>
-                <p>© 2025 X Corp.</p>
-            </nav>
-        </footer>
+
 
         <section id='sectionModalBackgroundSignUp' class='modalBackground hidden'>
             <section class='sectionModal'>
@@ -361,10 +339,8 @@ if (isset($_SESSION["user"])) {
                             <input id='inputPersonalizedAds' name='personalizedAds' type="checkbox">
                         </label>
 
-                        <input type="password" name="password" id='inputPasswordSignUp' placeholder='Password'
-                            required>
-                        <input type="password" id='inputConfirmPasswordSignUp' placeholder='Confirm Password'
-                            required>
+                        <input type="password" name="password" id='inputPasswordSignUp' placeholder='Password' required>
+                        <input type="password" id='inputConfirmPasswordSignUp' placeholder='Confirm Password' required>
                         <p>
                             By signing up, you agree to our
                             <a>
@@ -463,6 +439,29 @@ if (isset($_SESSION["user"])) {
         </section>
 
     </main>
+    <footer>
+        <nav aria-label="Footer">
+            <a href="">About</a>
+            <a href="">Download the X app</a>
+            <a href="">Grok</a>
+            <a href="">Help Centre</a>
+            <a href="">Terms of Service</a>
+            <a href="">Privacy Policy</a>
+            <a href="">Cookie Policy</a>
+            <a href="">Accessibility</a>
+            <a href="">Ads info</a>
+            <a href="">Blog</a>
+            <a href="">Careers</a>
+            <a href="">Brand Resources</a>
+            <a href="">Advertising</a>
+            <a href="">Marketing</a>
+            <a href="">X for Business</a>
+            <a href="">Developers</a>
+            <a href="">Directory</a>
+            <a href="">Settings</a>
+            <p>© 2025 X Corp.</p>
+        </nav>
+    </footer>
 </body>
 
 </html>
