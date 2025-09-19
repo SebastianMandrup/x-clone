@@ -15,24 +15,33 @@ try {
 
 	require_once __DIR__ . "/../db.php";
 
-	// Optional: check if email already exists
-	$checkSql = "SELECT COUNT(*) FROM users WHERE user_email = :email";
-	$checkStmt = $_db->prepare($checkSql);
-	$checkStmt->bindValue(":email", $email);
-	$checkStmt->execute();
-
-	if ($checkStmt->fetchColumn() > 0) {
-		throw new Exception("Email already registered.");
+	if (!$email && !$phone) {
+		throw new Exception("Either email or phone number must be provided.", 400);
 	}
 
-	// Optional: check if phone already exists
-	$checkSql = "SELECT COUNT(*) FROM users WHERE user_phone = :phone";
-	$checkStmt = $_db->prepare($checkSql);
-	$checkStmt->bindValue(":phone", $phone);
-	$checkStmt->execute();
+	// Optional: check if email already exists
 
-	if ($checkStmt->fetchColumn() > 0) {
-		throw new Exception("Phone number already registered.");
+	if ($email) {
+		$checkSql = "SELECT COUNT(*) FROM users WHERE user_email = :email";
+		$checkStmt = $_db->prepare($checkSql);
+		$checkStmt->bindValue(":email", $email);
+		$checkStmt->execute();
+		if ($checkStmt->fetchColumn() > 0) {
+			throw new Exception("Email already registered.", 400);
+		}
+	}
+
+
+	// Optional: check if phone already exists
+	if ($day) {
+		$checkSql = "SELECT COUNT(*) FROM users WHERE user_phone = :phone";
+		$checkStmt = $_db->prepare($checkSql);
+		$checkStmt->bindValue(":phone", $phone);
+		$checkStmt->execute();
+
+		if ($checkStmt->fetchColumn() > 0) {
+			throw new Exception("Phone number already registered.", 400);
+		}
 	}
 
 	$sql = "INSERT INTO users (
@@ -42,7 +51,7 @@ try {
                 user_email, 
                 user_password, 
                 user_birthday, 
-                user_personalize_ads, 
+                user_personalized_ads, 
                 user_connect_with_email_phone
             ) VALUES (
                 :pk, :name, :phone, :email, :password, :birthday, :personalizedAds, :connectWithEmailPhone
@@ -64,8 +73,8 @@ try {
 
 	$stmt->execute();
 
-	header("Location: ../?toast=" . urlencode("Sign up successful! Please log in."));
+	header("Location: ../?successToast=" . urlencode("Sign up successful! Please log in."));
 } catch (Exception $ex) {
-	http_response_code($ex->getCode());
+	http_response_code($ex->getCode() ? (int)$ex->getCode() : 500);
 	header("Location: ../?errorToast=" . urlencode($ex->getMessage()));
 }

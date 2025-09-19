@@ -18,7 +18,11 @@ function muoNoCache()
 define("emailMax", 50);
 function validateEmail()
 {
-    $userEmail = trim($_POST["email"] ?? "");
+    $userEmail = trim($_POST["email"]);
+
+    if ($userEmail == "" || $userEmail == null) {
+        return null;
+    }
 
     if (strlen($userEmail) > emailMax) {
         throw new Exception("User email must be less than " . emailMax . " characters", 400);
@@ -66,7 +70,10 @@ function validateName()
 define("phoneMax", 15);
 function validatePhone()
 {
-    $userPhone = trim($_POST["phone"] ?? "");
+    $userPhone = trim($_POST["phone"]);
+    if ($userPhone == "" || $userPhone == null) {
+        return null;
+    }
     if (strlen($userPhone) > phoneMax) {
         throw new Exception("Phone number must be less than " . phoneMax . " characters", 400);
     }
