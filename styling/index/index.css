@@ -2,6 +2,7 @@
 @import '../shared/modal.css';
 @import './signUpModal.css';
 @import './loginModal.css';
+@import '../shared/toasts.css';
 
 body {
     overflow: scroll;

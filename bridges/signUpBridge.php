@@ -64,11 +64,8 @@ try {
 
 	$stmt->execute();
 
-	header("Location: ../");
-	exit();
+	header("Location: ../?toast=" . urlencode("Sign up successful! Please log in."));
 } catch (Exception $ex) {
 	http_response_code($ex->getCode());
-	muoEcho($ex->getMessage());
-	echo ("<br>*****<br>");
-	muoEcho($ex->getCode());
+	header("Location: ../?errorToast=" . urlencode($ex->getMessage()));
 }

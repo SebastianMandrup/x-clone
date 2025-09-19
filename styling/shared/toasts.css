@@ -1,0 +1,38 @@
+@import '../variables.css';
+
+body {
+
+    #toastContainer {
+        position: fixed;
+        top: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+
+        .errorToast {
+            background-color: var(--colorError);
+        }
+
+        .successToast {
+            background-color: var(--colorSuccess);
+        }
+
+        .errorToast,
+        .successToast {
+            max-width: 400px;
+            margin: 0 auto;
+            border-radius: 9999px;
+            padding: 0.5rem 3rem;
+
+
+            p {
+                color: var(--perfectWhite);
+                text-align: center;
+                font-size: 0.9rem;
+            }
+
+        }
+    }
+}

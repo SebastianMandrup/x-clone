@@ -17,6 +17,9 @@
     --grey: rgb(70, 70, 70);
     --darkGrey: rgb(50, 50, 50);
     --darkestGrey: rgb(10, 10, 10);
+
+    --colorSuccess: #4ade80;
+    --colorError: #f87171;
 }
 
 

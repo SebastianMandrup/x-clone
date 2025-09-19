@@ -16,7 +16,7 @@ if (!isset($_SESSION["user"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styling/home/home.css">
     <link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
-    <script src='./scripts/home/home.js' defer></script>
+    <script src='./scripts/home/home.js' type='module'></script>
     <title>Home / X</title>
 </head>
 
