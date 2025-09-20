@@ -4,6 +4,10 @@
 @import './loginModal.css';
 @import '../shared/toasts.css';
 
+body.modalOpen {
+    overflow: hidden;
+}
+
 body {
     overflow: scroll;
 

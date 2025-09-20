@@ -16,13 +16,13 @@ try {
 
     // check if the user is in the db
     if (!$user) {
-        header("Location: ../?errorToast=" . urlencode("User not found"));
+        header("Location: ../?errorToast=" . rawurlencode("User not found"));
         exit();
     }
 
     // verify password hash
     if (!password_verify($userPassword, $user["user_password"])) {
-        header("Location: ../?errorToast=" . urlencode("Incorrect password"));
+        header("Location: ../?errorToast=" . rawurlencode("Incorrect password"));
         exit();
     }
 
@@ -31,8 +31,8 @@ try {
     unset($user["user_password"]); // remove password from session
     $_SESSION["user"] = $user;
 
-    header("Location: ../home?successToast=" . urlencode("Login successful"));
+    header("Location: ../home?successToast=" . rawurlencode("Login successful"));
 } catch (Exception $ex) {
     http_response_code($ex->getCode());
-    header("Location: ../?errorToast=" . urlencode($ex->getMessage()));
+    header("Location: ../?errorToast=" . rawurlencode($ex->getMessage()));
 }

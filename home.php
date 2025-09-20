@@ -23,7 +23,7 @@ if (!isset($_SESSION["user"])) {
 <body>
 
     <div id='divMainContainer'>
-        <nav>
+        <nav id='navMain'>
             <a href="/home" id='aXLogo'>
                 <span id='spanXLogo'>
                     &#120143;
@@ -54,7 +54,7 @@ if (!isset($_SESSION["user"])) {
                     Explore
                 </span>
             </a>
-            <a href="/notification">
+            <a href="/notification" id='aNotification'>
                 <span>
                     <!-- Notifications Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28"
@@ -66,7 +66,7 @@ if (!isset($_SESSION["user"])) {
                     Notifications
                 </span>
             </a>
-            <a href="/messages">
+            <a href="/messages" id='aMessages'>
                 <span>
                     <!-- Outlined Messages -->
                     <svg class="icon-messages-active" viewBox="0 0 24 24" fill="currentColor" width="28" height="28"
@@ -89,7 +89,7 @@ if (!isset($_SESSION["user"])) {
                     Grok
                 </span>
             </a>
-            <a href="/communities">
+            <a href="/communities" id='aCommunities'>
                 <span>
                     <!-- Profile Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28"
@@ -101,7 +101,7 @@ if (!isset($_SESSION["user"])) {
                     Communities
                 </span>
             </a>
-            <a href="/premium">
+            <a href="/premium" id='aPremium'>
                 <span>
                     <!-- Bookmarks Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28"
@@ -152,19 +152,31 @@ if (!isset($_SESSION["user"])) {
             <button id='btnPost'>
                 Post
             </button>
+            <button id='btnPostMobile'>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" aria-hidden="true">
+                    <path
+                        d="M12.745 20.54l10.97-8.19c.539-.4 1.307-.244 1.564.38 1.349 3.288.746 7.241-1.938 9.955-2.683 2.714-6.417 3.31-9.83 1.954l-3.728 1.745c5.347 3.697 11.84 2.782 15.898-1.324 3.219-3.255 4.216-7.692 3.284-11.693l.008.009c-1.351-5.878.332-8.227 3.782-13.031L33 0l-4.54 4.59v-.014L12.743 20.544m-2.263 1.987c-3.837-3.707-3.175-9.446.1-12.755 2.42-2.449 6.388-3.448 9.852-1.979l3.72-1.737c-.67-.49-1.53-1.017-2.515-1.387-4.455-1.854-9.789-.931-13.41 2.728-3.483 3.523-4.579 8.94-2.697 13.561 1.405 3.454-.899 5.898-3.22 8.364C1.49 30.2-.334 31.074-.999 32l10.478-9.466" />
+                </svg>
+            </button>
             <section id='sectionUserActions' class='hidden'>
                 <button>
                     Add an existing account
                 </button>
                 <button id='btnLogout'>
-                    Log out User Name
+                    Log out
+                    <?php echo $_SESSION["user"]["user_name"]; ?>
                 </button>
             </section>
             <section id='sectionUserInfo'>
-                <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Avatar" id='imgUserAvatar'>
+                <img src="https://ui-avatars.com/api/?name=<?php echo urlencode($_SESSION['user']['user_name']); ?>&background=random"
+                    alt="Avatar" id='imgUserAvatar'>
                 <div id='divUserNames'>
-                    <span id='spanUserFullName'>User Name</span>
-                    <span id='spanUserHandle'>@userhandle</span>
+                    <span id='spanUserFullName'>
+                        <?php echo $_SESSION["user"]["user_name"]; ?>
+                    </span>
+                    <span id='spanUserHandle'>
+                        @<?php echo $_SESSION["user"]["user_handle"]; ?>
+                    </span>
                 </div>
                 <div id='divMoreOptions'>
                     <span id='spanMoreOptions'>
@@ -172,6 +184,17 @@ if (!isset($_SESSION["user"])) {
                     </span>
                 </div>
             </section>
+        </nav>
+
+        <nav id='navMobile'>
+            <section id='sectionUserInfoMobile'>
+                <img src="https://ui-avatars.com/api/?name=<?php echo urlencode($_SESSION['user']['user_name']); ?>&background=random"
+                    alt="Avatar" id='imgUserAvatarMobile'>
+            </section>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
         </nav>
 
         <main>
@@ -190,8 +213,8 @@ if (!isset($_SESSION["user"])) {
             <section id='sectionCreatePost'>
                 <form action="" id='formCreatePost'>
                     <section id='sectionCreatePostInputs'>
-                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Avatar"
-                            id='imgCreatePostAvatar'>
+                        <img src="https://ui-avatars.com/api/?name=<?php echo urlencode($_SESSION['user']['user_name']); ?>&background=random"
+                            alt="Avatar" id='imgCreatePostAvatar'>
                         <input type="text" placeholder="What's happening?" id='inputCreatePost'>
                     </section>
 

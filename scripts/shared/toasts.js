@@ -1,12 +1,12 @@
 const params = new URLSearchParams(window.location.search);
 
 if (params.has('successToast')) {
-    const message = decodeURIComponent(params.get('successToast').replace(/\+/g, ' '));
+    const message = decodeURIComponent(params.get('successToast'));
     showToast(message, 'success');
 }
 
 if (params.has('errorToast')) {
-    const message = decodeURIComponent(params.get('errorToast').replace(/\+/g, ' '));
+    const message = decodeURIComponent(params.get('errorToast'));
     showToast(message, 'error');
 }
 

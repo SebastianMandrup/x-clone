@@ -73,8 +73,8 @@ try {
 
 	$stmt->execute();
 
-	header("Location: ../?successToast=" . urlencode("Sign up successful! Please log in."));
+	header("Location: ../?successToast=" . rawurlencode("Sign up successful! Please log in."));
 } catch (Exception $ex) {
 	http_response_code($ex->getCode() ? (int)$ex->getCode() : 500);
-	header("Location: ../?errorToast=" . urlencode($ex->getMessage()));
+	header("Location: ../?errorToast=" . rawurlencode($ex->getMessage()));
 }
