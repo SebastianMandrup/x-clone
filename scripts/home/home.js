@@ -13,3 +13,32 @@ document.getElementById('sectionUserInfo').addEventListener('click', function (e
         document.body.removeEventListener('click', bodyClick);
     });
 });
+
+document.querySelectorAll('.sectionPostActionLike').forEach(section => {
+    section.addEventListener('click', async function (event) {
+
+        const countElement = this.querySelector('.spanPostActionCount');
+        const article = this.closest('.articlePost');
+        const tweetId = article.dataset.tweetId;
+
+        const response = await fetch('/bridges/apiLikeTweet.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                tweetId: tweetId
+            })
+        });
+
+        if (!response.ok) {
+            this.classList.toggle('triggered');
+            if (countElement) {
+                const count = parseInt(countElement.textContent.trim());
+                const newCount = this.classList.contains('triggered') ? count + 1 : count - 1;
+                countElement.textContent = newCount;
+            }
+        }
+
+    });
+});

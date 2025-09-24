@@ -203,6 +203,7 @@
                 border-radius: 1rem;
                 padding: 1rem;
                 margin-top: 1rem;
+                background-color: var(--darkestGrey);
 
                 .imgRepostAvatar {
                     top: 1rem;
@@ -246,6 +247,10 @@
                     &:hover {
                         color: rgb(29, 155, 240);
                     }
+                }
+
+                .triggered {
+                    color: var(--red) !important;
                 }
 
             }

@@ -22,24 +22,24 @@ try {
 	// Optional: check if email already exists
 
 	if ($email) {
-		$checkSql = "SELECT COUNT(*) FROM users WHERE user_email = :email";
-		$checkStmt = $_db->prepare($checkSql);
-		$checkStmt->bindValue(":email", $email);
-		$checkStmt->execute();
-		if ($checkStmt->fetchColumn() > 0) {
+		$sql = "SELECT COUNT(*) FROM users WHERE user_email = :email";
+		$stmt = $_db->prepare($sql);
+		$stmt->bindValue(":email", $email);
+		$stmt->execute();
+		if ($stmt->fetchColumn() > 0) {
 			throw new Exception("Email already registered.", 400);
 		}
 	}
 
 
 	// Optional: check if phone already exists
-	if ($day) {
-		$checkSql = "SELECT COUNT(*) FROM users WHERE user_phone = :phone";
-		$checkStmt = $_db->prepare($checkSql);
-		$checkStmt->bindValue(":phone", $phone);
-		$checkStmt->execute();
+	if ($phone) {
+		$sql = "SELECT COUNT(*) FROM users WHERE user_phone = :phone";
+		$stmt = $_db->prepare($sql);
+		$stmt->bindValue(":phone", $phone);
+		$stmt->execute();
 
-		if ($checkStmt->fetchColumn() > 0) {
+		if ($stmt->fetchColumn() > 0) {
 			throw new Exception("Phone number already registered.", 400);
 		}
 	}
@@ -60,7 +60,7 @@ try {
 	$stmt = $_db->prepare($sql);
 
 	$birthday = sprintf("%04d-%02d-%02d", $year, $month, $day);
-	$userPk = uniqid('user_', true);
+	$userPK = bin2hex(random_bytes(25));
 
 	$stmt->bindValue(":pk", $userPk);
 	$stmt->bindValue(":name", $name);
@@ -75,6 +75,6 @@ try {
 
 	header("Location: ../?successToast=" . rawurlencode("Sign up successful! Please log in."));
 } catch (Exception $ex) {
-	http_response_code($ex->getCode() ? (int)$ex->getCode() : 500);
+	http_response_code($ex->getCode() ? (int) $ex->getCode() : 500);
 	header("Location: ../?errorToast=" . rawurlencode($ex->getMessage()));
 }

@@ -164,7 +164,7 @@ if (!isset($_SESSION["user"])) {
                 </button>
                 <button id='btnLogout'>
                     Log out
-                    <?php echo $_SESSION["user"]["user_name"]; ?>
+                    <?php muoEcho($_SESSION["user"]["user_name"]); ?>
                 </button>
             </section>
             <section id='sectionUserInfo'>
@@ -172,10 +172,10 @@ if (!isset($_SESSION["user"])) {
                     alt="Avatar" id='imgUserAvatar'>
                 <div id='divUserNames'>
                     <span id='spanUserFullName'>
-                        <?php echo $_SESSION["user"]["user_name"]; ?>
+                        <?php muoEcho($_SESSION["user"]["user_name"]); ?>
                     </span>
                     <span id='spanUserHandle'>
-                        @<?php echo $_SESSION["user"]["user_handle"]; ?>
+                        @<?php muoEcho($_SESSION["user"]["user_handle"]); ?>
                     </span>
                 </div>
                 <div id='divMoreOptions'>
@@ -188,7 +188,7 @@ if (!isset($_SESSION["user"])) {
 
         <nav id='navMobile'>
             <section id='sectionUserInfoMobile'>
-                <img src="https://ui-avatars.com/api/?name=<?php echo urlencode($_SESSION['user']['user_name']); ?>&background=random"
+                <img src="https://ui-avatars.com/api/?name=<?php muoEcho(urlencode($_SESSION['user']['user_name'])); ?>&background=random"
                     alt="Avatar" id='imgUserAvatarMobile'>
             </section>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
@@ -211,11 +211,11 @@ if (!isset($_SESSION["user"])) {
                 </button>
             </header>
             <section id='sectionCreatePost'>
-                <form action="" id='formCreatePost'>
+                <form action="./bridges/createPostBridge.php" method='POST' id='formCreatePost'>
                     <section id='sectionCreatePostInputs'>
-                        <img src="https://ui-avatars.com/api/?name=<?php echo urlencode($_SESSION['user']['user_name']); ?>&background=random"
+                        <img src="https://ui-avatars.com/api/?name=<?php muoEcho(urlencode($_SESSION['user']['user_name'])); ?>&background=random"
                             alt="Avatar" id='imgCreatePostAvatar'>
-                        <input type="text" placeholder="What's happening?" id='inputCreatePost'>
+                        <input name="post_content" type="text" placeholder="What's happening?" id='inputCreatePost'>
                     </section>
 
                     <section id='sectionCreatePostTypes'>
@@ -292,443 +292,55 @@ if (!isset($_SESSION["user"])) {
             </section>
 
 
-            <article class='articlePost'>
-                <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Avatar"
-                    class='imgPostAvatar'>
-                <section class='sectionPostOptions'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 32" width="20" height="20"
-                        fill="currentColor" aria-hidden="true">
-                        <path
-                            d="M12.745 20.54l10.97-8.19c.539-.4 1.307-.244 1.564.38 1.349 3.288.746 7.241-1.938 9.955-2.683 2.714-6.417 3.31-9.83 1.954l-3.728 1.745c5.347 3.697 11.84 2.782 15.898-1.324 3.219-3.255 4.216-7.692 3.284-11.693l.008.009c-1.351-5.878.332-8.227 3.782-13.031L33 0l-4.54 4.59v-.014L12.743 20.544m-2.263 1.987c-3.837-3.707-3.175-9.446.1-12.755 2.42-2.449 6.388-3.448 9.852-1.979l3.72-1.737c-.67-.49-1.53-1.017-2.515-1.387-4.455-1.854-9.789-.931-13.41 2.728-3.483 3.523-4.579 8.94-2.697 13.561 1.405 3.454-.899 5.898-3.22 8.364C1.49 30.2.666 31.074 0 32l10.478-9.466">
-                        </path>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                        fill="currentColor" aria-hidden="true" class="icon-more">
-                        <path
-                            d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z">
-                        </path>
-                    </svg>
-                </section>
-                <header class='headerPostUser'>
-                    <span class='spanPostUserFullName'>
-                        Full Name
-                    </span>
-                    <span class='spanPostUserHandle'>
-                        @userhandle
-                    </span>
-                    <span class='spanPostDotSeparator'>
-                        &#8226;
-                    </span>
-                    <span class='spanPostTime'>
-                        1h
-                    </span>
-                </header>
-                <p class='pPostContent'>
-                    This is a sample post content. In this instance it contains a retweet...
-                </p>
-                <section class='sectionRepost'>
-                    <header class='headerRepostUser'>
-                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Avatar"
-                            class='imgRepostAvatar'>
-                        <span class='spanPostUserFullName'>
-                            Full Name
-                        </span>
-                        <span class='spanPostUserHandle'>
-                            @userhandle
-                        </span>
-                        <span class='spanPostDotSeparator'>
-                            &#8226;
-                        </span>
-                        <span class='spanPostTime'>
-                            1h
-                        </span>
-                    </header>
-                    <p class='pPostContent'>
-                        This is a sample post content. In this instance it contains an image
-                    </p>
-                    <section class='sectionRepostPicture'>
-                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=500&q=80"
-                            alt="image of a man">
+            <?php
+            require_once __DIR__ . '/db.php';
 
-                    </section>
-                </section>
-                <footer class='footerPostActions'>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-comment">
-                            <path
-                                d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z">
-                            </path>
-                        </svg>
-                        <span class='spanPostActionCount'>
-                            10
-                        </span>
-                    </section>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-retweet">
-                            <path
-                                d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z">
-                            </path>
-                        </svg>
-                        <span class='spanPostActionCount'>
-                            5
-                        </span>
-                    </section>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-like">
-                            <path
-                                d="M16.697 5.5c-1.222-.06-2.679.51-3.89 2.16l-.805 1.09-.806-1.09C9.984 6.01 8.526 5.44 7.304 5.5c-1.243.07-2.349.78-2.91 1.91-.552 1.12-.633 2.78.479 4.82 1.074 1.97 3.257 4.27 7.129 6.61 3.87-2.34 6.052-4.64 7.126-6.61 1.111-2.04 1.03-3.7.477-4.82-.561-1.13-1.666-1.84-2.908-1.91zm4.187 7.69c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.3-.504-.3c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z">
-                            </path>
-                        </svg>
-                        <span class='spanPostActionCount'>
-                            11
-                        </span>
-                    </section>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-bars">
-                            <path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z">
-                            </path>
-                        </svg>
-                        <span class=spanPostActionCount>
-                            9
-                        </span>
-                    </section>
-                </footer>
-                <section class='sectionMorePostOptions'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                        fill="currentColor" aria-hidden="true" class="icon-bookmark">
-                        <path
-                            d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z">
-                        </path>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                        fill="currentColor" aria-hidden="true" class="icon-upload">
-                        <path
-                            d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z">
-                        </path>
-                    </svg>
-                </section>
-            </article>
+            $sql = "SELECT 
+                    p.post_pk,
+                    p.post_content,
+                    p.post_image,
+                    p.post_created_at,
+                    u.user_pk,
+                    u.user_name,
+                    u.user_handle,
+                    
+                    -- referenced post fields
+                    rp.post_pk AS ref_post_pk,
+                    rp.post_content AS ref_post_content,
+                    rp.post_image AS ref_post_image,
+                    rp.post_created_at AS ref_post_created_at,
+                    ru.user_pk AS ref_user_pk,
+                    ru.user_name AS ref_user_name,
+                    ru.user_handle AS ref_user_handle
 
-            <article class='articlePost'>
-                <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Avatar"
-                    class='imgPostAvatar'>
-                <section class='sectionPostOptions'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 32" width="20" height="20"
-                        fill="currentColor" aria-hidden="true">
-                        <path
-                            d="M12.745 20.54l10.97-8.19c.539-.4 1.307-.244 1.564.38 1.349 3.288.746 7.241-1.938 9.955-2.683 2.714-6.417 3.31-9.83 1.954l-3.728 1.745c5.347 3.697 11.84 2.782 15.898-1.324 3.219-3.255 4.216-7.692 3.284-11.693l.008.009c-1.351-5.878.332-8.227 3.782-13.031L33 0l-4.54 4.59v-.014L12.743 20.544m-2.263 1.987c-3.837-3.707-3.175-9.446.1-12.755 2.42-2.449 6.388-3.448 9.852-1.979l3.72-1.737c-.67-.49-1.53-1.017-2.515-1.387-4.455-1.854-9.789-.931-13.41 2.728-3.483 3.523-4.579 8.94-2.697 13.561 1.405 3.454-.899 5.898-3.22 8.364C1.49 30.2.666 31.074 0 32l10.478-9.466">
-                        </path>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                        fill="currentColor" aria-hidden="true" class="icon-more">
-                        <path
-                            d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z">
-                        </path>
-                    </svg>
-                </section>
-                <header class='headerPostUser'>
-                    <span class='spanPostUserFullName'>
-                        Full Name
-                    </span>
-                    <span class='spanPostUserHandle'>
-                        @userhandle
-                    </span>
-                    <span class='spanPostDotSeparator'>
-                        &#8226;
-                    </span>
-                    <span class='spanPostTime'>
-                        1h
-                    </span>
-                </header>
-                <p class='pPostContent'>
-                    This is a sample post content. In this instance it contains a picture...
-                </p>
-                <section class='sectionPostPicture'>
-                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=500&q=80"
-                        alt="image of a man">
+                    FROM posts p
+                    INNER JOIN users u 
+                        ON p.post_user_fk = u.user_pk
 
-                </section>
-                <footer class='footerPostActions'>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-comment">
-                            <path
-                                d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z">
-                            </path>
-                        </svg>
-                        <span class='spanPostActionCount'>
-                            10
-                        </span>
-                    </section>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-retweet">
-                            <path
-                                d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z">
-                            </path>
-                        </svg>
-                        <span class='spanPostActionCount'>
-                            5
-                        </span>
-                    </section>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-like">
-                            <path
-                                d="M16.697 5.5c-1.222-.06-2.679.51-3.89 2.16l-.805 1.09-.806-1.09C9.984 6.01 8.526 5.44 7.304 5.5c-1.243.07-2.349.78-2.91 1.91-.552 1.12-.633 2.78.479 4.82 1.074 1.97 3.257 4.27 7.129 6.61 3.87-2.34 6.052-4.64 7.126-6.61 1.111-2.04 1.03-3.7.477-4.82-.561-1.13-1.666-1.84-2.908-1.91zm4.187 7.69c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.3-.504-.3c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z">
-                            </path>
-                        </svg>
-                        <span class='spanPostActionCount'>
-                            11
-                        </span>
-                    </section>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-bars">
-                            <path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z">
-                            </path>
-                        </svg>
-                        <span class=spanPostActionCount>
-                            9
-                        </span>
-                    </section>
-                </footer>
-                <section class='sectionMorePostOptions'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                        fill="currentColor" aria-hidden="true" class="icon-bookmark">
-                        <path
-                            d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z">
-                        </path>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                        fill="currentColor" aria-hidden="true" class="icon-upload">
-                        <path
-                            d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z">
-                        </path>
-                    </svg>
-                </section>
-            </article>
-            <article class='articlePost'>
-                <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Avatar"
-                    class='imgPostAvatar'>
-                <section class='sectionPostOptions'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 32" width="20" height="20"
-                        fill="currentColor" aria-hidden="true">
-                        <path
-                            d="M12.745 20.54l10.97-8.19c.539-.4 1.307-.244 1.564.38 1.349 3.288.746 7.241-1.938 9.955-2.683 2.714-6.417 3.31-9.83 1.954l-3.728 1.745c5.347 3.697 11.84 2.782 15.898-1.324 3.219-3.255 4.216-7.692 3.284-11.693l.008.009c-1.351-5.878.332-8.227 3.782-13.031L33 0l-4.54 4.59v-.014L12.743 20.544m-2.263 1.987c-3.837-3.707-3.175-9.446.1-12.755 2.42-2.449 6.388-3.448 9.852-1.979l3.72-1.737c-.67-.49-1.53-1.017-2.515-1.387-4.455-1.854-9.789-.931-13.41 2.728-3.483 3.523-4.579 8.94-2.697 13.561 1.405 3.454-.899 5.898-3.22 8.364C1.49 30.2.666 31.074 0 32l10.478-9.466">
-                        </path>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                        fill="currentColor" aria-hidden="true" class="icon-more">
-                        <path
-                            d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z">
-                        </path>
-                    </svg>
-                </section>
-                <header class='headerPostUser'>
-                    <span class='spanPostUserFullName'>
-                        Full Name
-                    </span>
-                    <span class='spanPostUserHandle'>
-                        @userhandle
-                    </span>
-                    <span class='spanPostDotSeparator'>
-                        &#8226;
-                    </span>
-                    <span class='spanPostTime'>
-                        1h
-                    </span>
-                </header>
-                <p class='pPostContent'>
-                    This is a sample post content. In this instance it contains a retweet...
-                </p>
-                <section class='sectionRepost'>
-                    <header class='headerRepostUser'>
-                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Avatar"
-                            class='imgRepostAvatar'>
-                        <span class='spanPostUserFullName'>
-                            Full Name
-                        </span>
-                        <span class='spanPostUserHandle'>
-                            @userhandle
-                        </span>
-                        <span class='spanPostDotSeparator'>
-                            &#8226;
-                        </span>
-                        <span class='spanPostTime'>
-                            1h
-                        </span>
-                    </header>
-                    <p class='pPostContent'>
-                        This is a sample post content. It can include text, images, or other media.
-                    </p>
-                </section>
-                <footer class='footerPostActions'>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-comment">
-                            <path
-                                d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z">
-                            </path>
-                        </svg>
-                        <span class='spanPostActionCount'>
-                            10
-                        </span>
-                    </section>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-retweet">
-                            <path
-                                d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z">
-                            </path>
-                        </svg>
-                        <span class='spanPostActionCount'>
-                            5
-                        </span>
-                    </section>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-like">
-                            <path
-                                d="M16.697 5.5c-1.222-.06-2.679.51-3.89 2.16l-.805 1.09-.806-1.09C9.984 6.01 8.526 5.44 7.304 5.5c-1.243.07-2.349.78-2.91 1.91-.552 1.12-.633 2.78.479 4.82 1.074 1.97 3.257 4.27 7.129 6.61 3.87-2.34 6.052-4.64 7.126-6.61 1.111-2.04 1.03-3.7.477-4.82-.561-1.13-1.666-1.84-2.908-1.91zm4.187 7.69c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.3-.504-.3c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z">
-                            </path>
-                        </svg>
-                        <span class='spanPostActionCount'>
-                            11
-                        </span>
-                    </section>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-bars">
-                            <path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z">
-                            </path>
-                        </svg>
-                        <span class=spanPostActionCount>
-                            9
-                        </span>
-                    </section>
-                </footer>
-                <section class='sectionMorePostOptions'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                        fill="currentColor" aria-hidden="true" class="icon-bookmark">
-                        <path
-                            d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z">
-                        </path>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                        fill="currentColor" aria-hidden="true" class="icon-upload">
-                        <path
-                            d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z">
-                        </path>
-                    </svg>
-                </section>
-            </article>
-            <article class='articlePost'>
-                <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Avatar"
-                    class='imgPostAvatar'>
-                <section class='sectionPostOptions'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 32" width="20" height="20"
-                        fill="currentColor" aria-hidden="true">
-                        <path
-                            d="M12.745 20.54l10.97-8.19c.539-.4 1.307-.244 1.564.38 1.349 3.288.746 7.241-1.938 9.955-2.683 2.714-6.417 3.31-9.83 1.954l-3.728 1.745c5.347 3.697 11.84 2.782 15.898-1.324 3.219-3.255 4.216-7.692 3.284-11.693l.008.009c-1.351-5.878.332-8.227 3.782-13.031L33 0l-4.54 4.59v-.014L12.743 20.544m-2.263 1.987c-3.837-3.707-3.175-9.446.1-12.755 2.42-2.449 6.388-3.448 9.852-1.979l3.72-1.737c-.67-.49-1.53-1.017-2.515-1.387-4.455-1.854-9.789-.931-13.41 2.728-3.483 3.523-4.579 8.94-2.697 13.561 1.405 3.454-.899 5.898-3.22 8.364C1.49 30.2.666 31.074 0 32l10.478-9.466">
-                        </path>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                        fill="currentColor" aria-hidden="true" class="icon-more">
-                        <path
-                            d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z">
-                        </path>
-                    </svg>
-                </section>
-                <header class='headerPostUser'>
-                    <span class='spanPostUserFullName'>
-                        Full Name
-                    </span>
-                    <span class='spanPostUserHandle'>
-                        @userhandle
-                    </span>
-                    <span class='spanPostDotSeparator'>
-                        &#8226;
-                    </span>
-                    <span class='spanPostTime'>
-                        1h
-                    </span>
-                </header>
-                <p class='pPostContent'>
-                    This is a sample post content. It can include text, images, or other media.
-                </p>
-                <footer class='footerPostActions'>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-comment">
-                            <path
-                                d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z">
-                            </path>
-                        </svg>
-                        <span class='spanPostActionCount'>
-                            10
-                        </span>
-                    </section>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-retweet">
-                            <path
-                                d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z">
-                            </path>
-                        </svg>
-                        <span class='spanPostActionCount'>
-                            5
-                        </span>
-                    </section>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-like">
-                            <path
-                                d="M16.697 5.5c-1.222-.06-2.679.51-3.89 2.16l-.805 1.09-.806-1.09C9.984 6.01 8.526 5.44 7.304 5.5c-1.243.07-2.349.78-2.91 1.91-.552 1.12-.633 2.78.479 4.82 1.074 1.97 3.257 4.27 7.129 6.61 3.87-2.34 6.052-4.64 7.126-6.61 1.111-2.04 1.03-3.7.477-4.82-.561-1.13-1.666-1.84-2.908-1.91zm4.187 7.69c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.3-.504-.3c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z">
-                            </path>
-                        </svg>
-                        <span class='spanPostActionCount'>
-                            11
-                        </span>
-                    </section>
-                    <section class='sectionPostAction'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                            fill="currentColor" aria-hidden="true" class="icon-bars">
-                            <path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z">
-                            </path>
-                        </svg>
-                        <span class=spanPostActionCount>
-                            9
-                        </span>
-                    </section>
-                </footer>
-                <section class='sectionMorePostOptions'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                        fill="currentColor" aria-hidden="true" class="icon-bookmark">
-                        <path
-                            d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z">
-                        </path>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                        fill="currentColor" aria-hidden="true" class="icon-upload">
-                        <path
-                            d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z">
-                        </path>
-                    </svg>
+                    -- self join to bring in the referenced post
+                    LEFT JOIN posts rp 
+                        ON p.post_reference = rp.post_pk
+                    LEFT JOIN users ru 
+                        ON rp.post_user_fk = ru.user_pk
 
-                </section>
-            </article>
+                    ORDER BY p.post_created_at DESC;
+                    ";
+            $stmt = $_db->prepare($sql);
+            $stmt->execute();
+
+            $posts = $stmt->fetchAll();
+            foreach ($posts as $post) {
+                require __DIR__ . '/components/articlePost.php';
+            }
+
+            ?>
 
             <div class="circle-loader"></div>
         </main>
 
         <aside>
             <section id='sectionSearch'>
-                <form action="" id='formSearch'>
+                <form action="/bridges/searchBridge.php" method="POST" id='formSearch'>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
                         fill="currentColor" aria-hidden="true" class="search-icon">
                         <title>Search</title>
@@ -758,64 +370,19 @@ if (!isset($_SESSION["user"])) {
                     <header>
                         What's happening
                     </header>
-                    <article class='articleTrendItem'>
-                        <div id='divTrendItemText'>
-                            <p>
-                                Trending in Denmark
-                            </p>
-                            <h2>
-                                Grækenland
-                            </h2>
-                            <p>
-                                23k posts
-                            </p>
-                        </div>
-                        <button>
-                            ...
-                        </button>
-                    </article>
-                    <article class='articleTrendItem'>
-                        <div id='divTrendItemText'>
-                            <p>
-                                Business & Finance - Trending
-                            </p>
-                            <h2>
-                                Wild
-                            </h2>
-                            <p>
-                                117k posts
-                            </p>
-                        </div>
-                        <button>
-                            ...
-                        </button>
-                    </article>
-                    <article class='articleTrendItem'>
-                        <div id='divTrendItemText'>
-                            <p>
-                                Politics - Trending
-                            </p>
-                            <h2>
-                                Western
-                            </h2>
-                        </div>
-                        <button>
-                            ...
-                        </button>
-                    </article>
-                    <article class='articleTrendItem'>
-                        <div id='divTrendItemText'>
-                            <p>
-                                Politics - Trending
-                            </p>
-                            <h2>
-                                #Israel
-                            </h2>
-                        </div>
-                        <button>
-                            ...
-                        </button>
-                    </article>
+
+                    <?php
+                    require_once __DIR__ . '/db.php';
+
+                    $sql = 'SELECT topic_pk, topic_name, topic_field, topic_count, topic_rank FROM topics ORDER BY topic_rank DESC LIMIT 3;';
+                    $stmt = $_db->prepare($sql);
+                    $stmt->execute();
+
+                    $topics = $stmt->fetchAll();
+                    foreach ($topics as $topic) {
+                        require __DIR__ . '/components/articleTrendItem.php';
+                    }
+                    ?>
 
                     <button class='btnShowMore'>
                         Show more
@@ -826,25 +393,21 @@ if (!isset($_SESSION["user"])) {
                         Who To Follow
                     </header>
 
-                    <article class='articlePersonToFollow'>
-                        <img src="https://ui-avatars.com/api/?name=Jane+Doe&background=random" alt="Avatar"
-                            class='imgPersonToFollowAvatar'>
-                        <div class='divPersonToFollowNames'>
-                            <span class='spanPersonToFollowFullName'>Jane Doe</span>
-                            <span class='spanPersonToFollowUserName'>@janedoe</span>
-                        </div>
-                        <button class='btnFollow'>Follow</button>
-                    </article>
+                    <?php
 
-                    <article class='articlePersonToFollow'>
-                        <img src="https://ui-avatars.com/api/?name=Alice+Smith&background=random" alt="Avatar"
-                            class='imgPersonToFollowAvatar'>
-                        <div class='divPersonToFollowNames'>
-                            <span class='spanPersonToFollowFullName'>Alice Smith</span>
-                            <span class='spanPersonToFollowUserName'>@alicesmith</span>
-                        </div>
-                        <button class='btnFollow'>Follow</button>
-                    </article>
+                    require_once __DIR__ . '/db.php';
+
+                    $sql = "SELECT user_pk, user_name, user_handle FROM users WHERE user_pk != :userPk ORDER BY RAND() LIMIT 3;";
+                    $stmt = $_db->prepare($sql);
+                    $stmt->bindValue(':userPk', $_SESSION['user']['user_pk']);
+                    $stmt->execute();
+
+                    $users = $stmt->fetchAll();
+                    foreach ($users as $user) {
+                        require __DIR__ . '/components/articlePersonToFollow.php';
+                    }
+
+                    ?>
                     <button class='btnShowMore'>
                         Show more
                     </button>

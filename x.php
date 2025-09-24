@@ -113,6 +113,20 @@ function validateYear()
     return $userYear;
 }
 
+define("postContentMin", 1);
+define("postContentMax", 200);
+function validatePostContent()
+{
+    $postContent = trim($_POST["post_content"] ?? "");
+    if (strlen($postContent) < postContentMin) {
+        throw new Exception("Post content must be greater than " . postContentMin . " characters", 400);
+    }
+    if (strlen($postContent) > postContentMax) {
+        throw new Exception("Post content must be less than " . postContentMax . " characters", 400);
+    }
+    return $postContent;
+}
+
 function validateConnectWithEmailPhone()
 {
     return isset($_POST["connectWithEmailPhone"]) ? 1 : 0;
