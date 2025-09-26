@@ -61,6 +61,7 @@ require_once __DIR__ . '/../x.php';
     ?>
 
     <footer class='footerPostActions'>
+        <!-- sections > buttons -->
         <section class='sectionPostAction'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
                 aria-hidden="true" class="icon-comment">

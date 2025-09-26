@@ -1,7 +1,8 @@
 import '../shared/toasts.js';
+import { showToast } from '../shared/toasts.js';
 
 document.getElementById('btnLogout').addEventListener('click', function () {
-    window.location.href = '/bridges/logoutBridge.php';
+    window.location.href = '/bridges/logout.php';
 });
 
 document.getElementById('sectionUserInfo').addEventListener('click', function (event) {
@@ -21,7 +22,7 @@ document.querySelectorAll('.sectionPostActionLike').forEach(section => {
         const article = this.closest('.articlePost');
         const tweetId = article.dataset.tweetId;
 
-        const response = await fetch('/bridges/apiLikeTweet.php', {
+        const response = await fetch('/api/likePost.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -31,13 +32,16 @@ document.querySelectorAll('.sectionPostActionLike').forEach(section => {
             })
         });
 
-        if (!response.ok) {
+        if (response.ok) {
             this.classList.toggle('triggered');
             if (countElement) {
                 const count = parseInt(countElement.textContent.trim());
                 const newCount = this.classList.contains('triggered') ? count + 1 : count - 1;
                 countElement.textContent = newCount;
             }
+        } else {
+            const errorData = await response.json();
+            showToast(errorData.message || 'An error occurred while processing your request.', 'error');
         }
 
     });

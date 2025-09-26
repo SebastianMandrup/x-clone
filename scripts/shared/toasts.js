@@ -16,7 +16,7 @@ if (params.has('successToast') || params.has('errorToast')) {
     window.history.replaceState({}, document.title, url.toString());
 }
 
-function showToast(message, type) {
+export function showToast(message, type) {
     const container = document.createElement('div');
     container.id = 'toastContainer';
     const toast = document.createElement('article');

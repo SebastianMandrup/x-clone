@@ -211,7 +211,7 @@ if (!isset($_SESSION["user"])) {
                 </button>
             </header>
             <section id='sectionCreatePost'>
-                <form action="./bridges/createPostBridge.php" method='POST' id='formCreatePost'>
+                <form action="./bridges/createPost.php" method='POST' id='formCreatePost'>
                     <section id='sectionCreatePostInputs'>
                         <img src="https://ui-avatars.com/api/?name=<?php muoEcho(urlencode($_SESSION['user']['user_name'])); ?>&background=random"
                             alt="Avatar" id='imgCreatePostAvatar'>
@@ -340,7 +340,7 @@ if (!isset($_SESSION["user"])) {
 
         <aside>
             <section id='sectionSearch'>
-                <form action="/bridges/searchBridge.php" method="POST" id='formSearch'>
+                <form action="/api/search.php" method="POST" id='formSearch'>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
                         fill="currentColor" aria-hidden="true" class="search-icon">
                         <title>Search</title>
