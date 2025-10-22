@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["user"])) {
-    require_once __DIR__ . "/x.php";
+    require_once __DIR__ . '../../x.php';
     muoNoCache();
     header("Location: /home");
     exit();
@@ -121,7 +121,7 @@ if (isset($_SESSION["user"])) {
                         <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
                     </svg>
                 </button>
-                <form id="formSignUp" action="./bridges/signUp.php" method="POST">
+                <form id="formSignUp" action="./bridges/signUp" method="POST">
                     <div id='divSignUpPageOne'>
                         <header>
                             <h2>
@@ -419,7 +419,7 @@ if (isset($_SESSION["user"])) {
                         or
                     </p>
 
-                    <form action="./bridges/login.php" method="POST">
+                    <form action="./bridges/login" method="POST">
                         <input type="text" placeholder='Email or Phone' name='emailOrPhone' required>
                         <input type="password" placeholder='Password' name='password' required>
                         <button type='submit' class>

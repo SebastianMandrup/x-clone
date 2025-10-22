@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/x.php";
+require_once __DIR__ . "../../x.php";
 muoNoCache();
 session_start();
 if (!isset($_SESSION["user"])) {
@@ -211,7 +211,7 @@ if (!isset($_SESSION["user"])) {
                 </button>
             </header>
             <section id='sectionCreatePost'>
-                <form action="./bridges/createPost.php" method='POST' id='formCreatePost'>
+                <form action="./bridges/createPost" method='POST' id='formCreatePost'>
                     <section id='sectionCreatePostInputs'>
                         <img src="https://ui-avatars.com/api/?name=<?php muoEcho(urlencode($_SESSION['user']['user_name'])); ?>&background=random"
                             alt="Avatar" id='imgCreatePostAvatar'>
@@ -293,7 +293,7 @@ if (!isset($_SESSION["user"])) {
 
 
             <?php
-            require_once __DIR__ . '/db.php';
+            require_once __DIR__ . '../../db.php';
 
             $sql = "SELECT 
                     p.post_pk,
@@ -330,7 +330,7 @@ if (!isset($_SESSION["user"])) {
 
             $posts = $stmt->fetchAll();
             foreach ($posts as $post) {
-                require __DIR__ . '/components/articlePost.php';
+                require __DIR__ . '../../components/articlePost.php';
             }
 
             ?>
@@ -372,7 +372,7 @@ if (!isset($_SESSION["user"])) {
                     </header>
 
                     <?php
-                    require_once __DIR__ . '/db.php';
+                    require_once __DIR__ . '../../db.php';
 
                     $sql = 'SELECT topic_pk, topic_name, topic_field, topic_count, topic_rank FROM topics ORDER BY topic_rank DESC LIMIT 3;';
                     $stmt = $_db->prepare($sql);
@@ -380,7 +380,7 @@ if (!isset($_SESSION["user"])) {
 
                     $topics = $stmt->fetchAll();
                     foreach ($topics as $topic) {
-                        require __DIR__ . '/components/articleTrendItem.php';
+                        require __DIR__ . '../../components/articleTrendItem.php';
                     }
                     ?>
 
@@ -395,7 +395,7 @@ if (!isset($_SESSION["user"])) {
 
                     <?php
 
-                    require_once __DIR__ . '/db.php';
+                    require_once __DIR__ . '../../db.php';
 
                     $sql = "SELECT user_pk, user_name, user_handle FROM users WHERE user_pk != :userPk ORDER BY RAND() LIMIT 3;";
                     $stmt = $_db->prepare($sql);
@@ -404,7 +404,7 @@ if (!isset($_SESSION["user"])) {
 
                     $users = $stmt->fetchAll();
                     foreach ($users as $user) {
-                        require __DIR__ . '/components/articlePersonToFollow.php';
+                        require __DIR__ . '../../components/articlePersonToFollow.php';
                     }
 
                     ?>

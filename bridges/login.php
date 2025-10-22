@@ -4,7 +4,7 @@ try {
     $userEmailOrPhone = validateEmailOrPhone();
     $userPassword = validatePassword();
 
-    require_once __DIR__ . "/../db.php";
+    require_once __DIR__ . "../../db.php";
     $sql = "SELECT * FROM users WHERE user_email = :emailOrPhone OR user_phone = :emailOrPhone";
     $stmt = $_db->prepare($sql);
 
@@ -34,5 +34,5 @@ try {
     header("Location: ../home?successToast=" . rawurlencode("Login successful"));
 } catch (Exception $ex) {
     http_response_code($ex->getCode());
-    header("Location: ../?errorToast=" . rawurlencode($ex->getMessage()));
+    header("Location: /login?errorToast=" . rawurlencode($ex->getMessage()));
 }

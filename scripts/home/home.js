@@ -2,7 +2,7 @@ import '../shared/toasts.js';
 import { showToast } from '../shared/toasts.js';
 
 document.getElementById('btnLogout').addEventListener('click', function () {
-    window.location.href = '/bridges/logout.php';
+    window.location.href = '/bridges/logout';
 });
 
 document.getElementById('sectionUserInfo').addEventListener('click', function (event) {
