@@ -25,3 +25,43 @@ jobs:
           security: loose        # important — disable TLS
           timeout: 60000         # wait longer for slow servers
           concurrency: 1         # only one file at a time to prevent ECONNRESET
+          name: FTP Deploy @ main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: FTP Upload
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: /public_html/
+          protocol: ftp          # plain FTP avoids TLS issues
+          security: loose        # important — disable TLS
+          timeout: 60000         # wait longer for slow servers
+          concurrency: 1         # only one file at a time to prevent ECONNRESET
+          exclude: |
+            misc/**
+            db.php
+            .DS_Store
+            .git/**
+            .gitignore
+            .gitattributes
+            .github/**
+            Dockerfile
+            docker-compose.yml
+            **/*.log
+            **/.env
+            **/README.md
