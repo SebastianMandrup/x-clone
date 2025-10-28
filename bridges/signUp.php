@@ -13,7 +13,7 @@ try {
 
 	$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-	require_once __DIR__ . "../../db.php";
+	require_once __DIR__ . "../../db_connector.php";
 
 	if (!$email && !$phone) {
 		throw new Exception("Either email or phone number must be provided.", 400);

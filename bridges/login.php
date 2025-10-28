@@ -4,7 +4,7 @@ try {
     $userEmailOrPhone = validateEmailOrPhone();
     $userPassword = validatePassword();
 
-    require_once __DIR__ . "../../db.php";
+    require_once __DIR__ . "../../db_connector.php";
     $sql = "SELECT * FROM users WHERE user_email = :emailOrPhone OR user_phone = :emailOrPhone";
     $stmt = $_db->prepare($sql);
 
