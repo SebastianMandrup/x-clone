@@ -22,7 +22,7 @@ jobs:
           local-dir: ./
           server-dir: /public_html/
           protocol: ftp          # plain FTP avoids TLS issues
-          security: false        # important — disable TLS
+          security: loose        # important — disable TLS
           timeout: 60000         # wait longer for slow servers
           concurrency: 1         # only one file at a time to prevent ECONNRESET
           exclude: |
