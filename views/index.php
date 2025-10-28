@@ -129,6 +129,7 @@ if (isset($_SESSION["user"])) {
                             </h2>
                         </header>
                         <input id='inputName' name='name' type="text" placeholder='Name' spellcheck="false" required>
+                        <input id='inputHandle' name='handle' type="text" placeholder='Handle' spellcheck="false" required>
                         <input id='inputPhoneSignUp' name='phone' type="number" placeholder='Phone'>
                         <input id='inputEmailSignUp' name='email' type="email" placeholder='Email' class='hidden'>
                         <button id='btnUseEmail' type='button'>

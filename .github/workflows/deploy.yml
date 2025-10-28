@@ -1,4 +1,4 @@
-name: FTP Deploy
+name: FTP Deploy @ main
 
 on:
   push:
@@ -19,5 +19,5 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./   # directory in your repo to upload
-          server-dir: /public_html/  # directory on your FTP server
+          local-dir: ./
+          server-dir: /public_html/

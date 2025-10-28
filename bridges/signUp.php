@@ -2,6 +2,7 @@
 try {
 	require_once __DIR__ . "/../x.php";
 	$name = validateName();
+	$handle = validateHandle();
 	$phone = validatePhone();
 	$email = validateEmail();
 	$password = validatePassword();
@@ -46,7 +47,8 @@ try {
 
 	$sql = "INSERT INTO users (
                 user_pk, 
-                user_name, 
+                user_name,
+				user_handle, 
                 user_phone, 
                 user_email, 
                 user_password, 
@@ -54,16 +56,17 @@ try {
                 user_personalized_ads, 
                 user_connect_with_email_phone
             ) VALUES (
-                :pk, :name, :phone, :email, :password, :birthday, :personalizedAds, :connectWithEmailPhone
+                :pk, :name, :handle, :phone, :email, :password, :birthday, :personalizedAds, :connectWithEmailPhone
             )";
 
 	$stmt = $_db->prepare($sql);
 
 	$birthday = sprintf("%04d-%02d-%02d", $year, $month, $day);
-	$userPK = bin2hex(random_bytes(25));
+	$userPk = bin2hex(random_bytes(25));
 
 	$stmt->bindValue(":pk", $userPk);
 	$stmt->bindValue(":name", $name);
+	$stmt->bindValue(":handle", $handle);
 	$stmt->bindValue(":phone", $phone);
 	$stmt->bindValue(":password", $hashedPassword);
 	$stmt->bindValue(":birthday", $birthday);
@@ -75,6 +78,5 @@ try {
 
 	header("Location: ../?successToast=" . rawurlencode("Sign up successful! Please log in."));
 } catch (Exception $ex) {
-	http_response_code($ex->getCode() ? (int) $ex->getCode() : 500);
 	header("Location: ../?errorToast=" . rawurlencode($ex->getMessage()));
 }
