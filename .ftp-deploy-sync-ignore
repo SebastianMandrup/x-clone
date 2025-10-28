@@ -1,0 +1,15 @@
+.git
+.github
+.gitignore
+.gitattributes
+docker-compose.yml
+Dockerfile
+README.md
+db.php
+misc/
+
+# not implemented
+*.log
+.env
+tmp/
+tests/

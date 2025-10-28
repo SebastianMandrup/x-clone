@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 5.2.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: mariadb
--- Generation Time: Sep 24, 2025 at 02:18 AM
+-- Generation Time: Oct 28, 2025 at 05:17 PM
 -- Server version: 10.6.20-MariaDB-ubu2004
--- PHP Version: 8.2.27
+-- PHP Version: 8.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -126,6 +126,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_pk`, `user_name`, `user_email`, `user_password`, `user_phone`, `user_birthday`, `user_personalized_ads`, `user_connect_with_email_phone`, `user_handle`) VALUES
 ('12345', 'Sebastian Mandrup', 'sebastianmandrup@outlook.com', '$2y$10$aOhff9jgwG0i3q/zRRcruOxG/cKHKl6l1dnbPcV3QX7dgqyMddUZ.', '', '0000-00-00', 0, 0, 'mandrup'),
 ('1234561', 'Sebastian Petersen', '', '$2y$10$cM/qysSSAags6NjyDvVC0O3TLJDUpafOwziCF4B0YAbJZomw.Hnpm', '60224403', '0000-00-00', 0, 0, 'mandrupp'),
+('3fc4649a70682d05a078952128a7d7b8eca54cc102be4dd10a', 'Sebastian Mandrup Petersen', NULL, '$2y$10$QDfXM84rVER5Ke/r7qQOzujs4aqngkhYhy4T7mRL.ldUkQ3nuHiUy', '60224444', '1921-02-02', 0, 0, 'onetwothree'),
 ('user_68cdb0ad791cc5.29643137', 'Sebastian Mandrup Petersen', NULL, '$2y$10$p0D36lufVGD/hIFlYQcSTulUwTlmL9gpul1piyfseM3KpbxFELaQe', '60224402', '1921-02-02', 0, 0, 'mandruppp'),
 ('user_68cdb1914cd5c8.36392377', 'Sebastian Mandrup Petersen', NULL, '$2y$10$3SLQUfhFJkylAkogf4GLHe9KprSlaAeDVYO2eWcl0WgIvNg2bH8v6', '60224401', '1921-02-03', 1, 1, 'mandrupppp');
 
