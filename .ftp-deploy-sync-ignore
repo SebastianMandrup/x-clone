@@ -17,5 +17,3 @@ docker-compose.yml
 **/*.log
 **/.env
 **/README.md
-
-.ftp-deploy-sync-ignore.
