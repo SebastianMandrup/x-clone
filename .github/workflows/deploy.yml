@@ -24,7 +24,6 @@ jobs:
           protocol: ftp         # important — uses one encrypted channel
           security: loose         # prevents TLS negotiation issues
           passive: true           # ensures passive mode (better for firewalls)
-          concurrency: 2          # limit parallel uploads to avoid socket resets
           timeout: 60000          # wait longer for slow servers
           exclude: |
             **/.git*/**
