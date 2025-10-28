@@ -17,7 +17,7 @@ if (isset($_SESSION["user"])) {
     <link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src='./scripts/index/index.js' type='module'></script>
-    <title>X / It's what's happening / X</title>
+    <title>MUO / It's what's happening / MUO</title>
 </head>
 
 <body>
@@ -96,7 +96,7 @@ if (isset($_SESSION["user"])) {
                             </g>
                         </svg>
 
-                        Get Grok
+                        Get MUOOK
                     </button>
                 </section>
             </div>
@@ -327,15 +327,15 @@ if (isset($_SESSION["user"])) {
                             Connect with people you know
                         </h3>
                         <label>
-                            Let others find your X account by you email address or phone number.
+                            Let others find your MUO account by you email address or phone number.
                             <input id='inputConnectWithEmailPhone' name='connectWithEmailPhone' type="checkbox">
                         </label>
                         <h4>
                             Personalized ads
                         </h4>
                         <label>
-                            You will always see ads on X based on your X activity. When this setting is enabled, X may
-                            further personalise ads from X advertisers, on and off X, by combining your X activity with
+                            You will always see ads on MUO based on your MUO activity. When this setting is enabled, MUO may
+                            further personalise ads from MUO advertisers, on and off MUO, by combining your MUO activity with
                             other online activity and information from our partners.
                             <input id='inputPersonalizedAds' name='personalizedAds' type="checkbox">
                         </label>
@@ -349,7 +349,7 @@ if (isset($_SESSION["user"])) {
                             </a>,
                             <a>Privacy Policy</a>, and
                             <a>Cookie Use</a>
-                            . X may use your contact information, including your email address and phone number for
+                            . MUO may use your contact information, including your email address and phone number for
                             purposes outlined in
                             our Privacy Policy.
                             <a href="">
@@ -381,7 +381,7 @@ if (isset($_SESSION["user"])) {
                 <div id='divLoginPageOne'>
                     <header>
                         <h2>
-                            Sign in to X
+                            Sign in to MUO
                         </h2>
                     </header>
 
@@ -443,8 +443,8 @@ if (isset($_SESSION["user"])) {
     <footer>
         <nav aria-label="Footer">
             <a href="">About</a>
-            <a href="">Download the X app</a>
-            <a href="">Grok</a>
+            <a href="">Download the MUO app</a>
+            <a href="">MUOOK</a>
             <a href="">Help Centre</a>
             <a href="">Terms of Service</a>
             <a href="">Privacy Policy</a>
@@ -456,11 +456,11 @@ if (isset($_SESSION["user"])) {
             <a href="">Brand Resources</a>
             <a href="">Advertising</a>
             <a href="">Marketing</a>
-            <a href="">X for Business</a>
+            <a href="">MUO for Business</a>
             <a href="">Developers</a>
             <a href="">Directory</a>
             <a href="">Settings</a>
-            <p>© 2025 X Corp.</p>
+            <p>© 2025 MUO Corp.</p>
         </nav>
     </footer>
 </body>
