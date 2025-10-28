@@ -1,1 +1,3 @@
-server_db.php untracked but needed in prod env
+- server_db.php untracked but needed in prod env
+- manually insert server_db.php with FileZilla fex.
+- github action set up to port the rest of the files (minus dev env)
