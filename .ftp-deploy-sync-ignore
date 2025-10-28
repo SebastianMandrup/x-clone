@@ -1,0 +1,19 @@
+# ignore misc folder and files
+misc/**
+db.php
+.DS_Store
+
+# ignore git metadata
+.git/**
+.gitignore
+.gitattributes
+.github/**
+
+# ignore Docker and config files
+Dockerfile
+docker-compose.yml
+
+# ignore logs, env files, readme
+**/*.log
+**/.env
+**/README.md

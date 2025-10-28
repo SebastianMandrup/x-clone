@@ -25,16 +25,3 @@ jobs:
           security: loose        # important — disable TLS
           timeout: 60000         # wait longer for slow servers
           concurrency: 1         # only one file at a time to prevent ECONNRESET
-          exclude: |
-            misc/**
-            db.php
-            .DS_Store
-            .git/**
-            .gitignore
-            .gitattributes
-            .github/**
-            Dockerfile
-            docker-compose.yml
-            **/*.log
-            **/.env
-            **/README.md
