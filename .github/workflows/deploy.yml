@@ -27,7 +27,11 @@ jobs:
           concurrency: 2          # limit parallel uploads to avoid socket resets
           timeout: 60000          # wait longer for slow servers
           exclude: |
-            **/.git*
-            **/.github/**
-            **/node_modules/**
+            **/.git*/**
+            **/.github*/**
+            **/node_modules/**  
             **/*.log
+            **/.env
+            **/package-lock.json
+            **/README.md
+
