@@ -26,11 +26,13 @@ jobs:
           passive: true           # ensures passive mode (better for firewalls)
           timeout: 60000          # wait longer for slow servers
           exclude: |
-            **/.git*/**
-            **/.github*/**
-            **/node_modules/**  
+            .git
+            .gitignore
+            .gitattributes
+            .github
+            Dockerfile
+            docker-compose.yml
             **/*.log
             **/.env
-            **/package-lock.json
             **/README.md
 
