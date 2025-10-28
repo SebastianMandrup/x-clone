@@ -26,7 +26,7 @@ if (!isset($_SESSION["user"])) {
         <nav id='navMain'>
             <a href="/home" id='aXLogo'>
                 <span id='spanXLogo'>
-                    &#120143;
+                    &#120132;
                 </span>
             </a>
             <a href="/home" id='aSelectedNav'>
