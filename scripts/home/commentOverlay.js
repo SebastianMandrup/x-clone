@@ -4,10 +4,14 @@ const overlay = document.getElementById('divAddCommentOverlay');
 
 document.getElementById('btnCloseCommentOverlay').addEventListener('click', function () {
 	overlay.classList.add('hidden');
+	document.body.classList.remove('modalOpen');
 });
 
-document.getElementById('divAddCommentOverlay').addEventListener('click', () => {
-	overlay.classList.add('hidden');
+document.getElementById('divAddCommentOverlay').addEventListener('click', (event) => {
+	if (event.target === overlay) {
+		overlay.classList.add('hidden');
+		document.body.classList.remove('modalOpen');
+	}
 });
 
 document.querySelectorAll('.sectionPostActionComment').forEach(section => {
@@ -23,6 +27,7 @@ document.querySelectorAll('.sectionPostActionComment').forEach(section => {
 		const postContent = article.querySelector('.pPostContent').textContent.trim();
 
 		overlay.classList.remove('hidden');
+		document.body.classList.add('modalOpen');
 
 		overlay.querySelector('#imgOriginalPostAvatar').src = imgAvatar.src;
 		overlay.querySelector('#spanOriginalPostUserName').textContent = userName;
