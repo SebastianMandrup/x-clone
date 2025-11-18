@@ -5,7 +5,7 @@ require_once __DIR__ . '/router.php';
 get('/', 'views/index.php');
 get('/home', 'views/home.php');
 
-get('/api/likePost', 'api/likePost.php');
+post('/api/like-post', 'api/like-post.php');
 post('/api/search', 'api/search.php');
 
 post('/bridges/createPost', 'bridges/createPost.php');

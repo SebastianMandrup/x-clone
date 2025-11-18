@@ -18,27 +18,25 @@ document.getElementById('sectionUserInfo').addEventListener('click', function (e
 document.querySelectorAll('.sectionPostActionLike').forEach(section => {
     section.addEventListener('click', async function (event) {
 
-        const countElement = this.querySelector('.spanPostActionCount');
         const article = this.closest('.articlePost');
-        const tweetId = article.dataset.tweetId;
+        const countElement = this.querySelector('.spanPostActionCount');
 
-        const response = await fetch('/api/likePost.php', {
+        const formdata = new FormData();
+        formdata.append('postPk', article.dataset.postPk);
+        formdata.append('userPk', article.dataset.userPk);
+
+        const response = await fetch('/api/like-post', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                tweetId: tweetId
-            })
+            body: formdata
         });
+
+        const data = await response.json();
 
         if (response.ok) {
             this.classList.toggle('triggered');
-            if (countElement) {
-                const count = parseInt(countElement.textContent.trim());
-                const newCount = this.classList.contains('triggered') ? count + 1 : count - 1;
-                countElement.textContent = newCount;
-            }
+            const count = parseInt(countElement.textContent.trim());
+            const newCount = this.classList.contains('triggered') ? count + 1 : count - 1;
+            countElement.textContent = newCount;
         } else {
             const errorData = await response.json();
             showToast(errorData.message || 'An error occurred while processing your request.', 'error');

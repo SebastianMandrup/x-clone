@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../x.php';
 ?>
-<article class='articlePost' data-tweet-id="2">
+<article class='articlePost' data-post-pk='<?php muoEcho($post["post_pk"]) ?>' data-user-pk='<?php muoEcho($_SESSION["user"]["user_pk"]) ?>'>
     <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Avatar" class='imgPostAvatar'>
     <section class='sectionPostOptions'>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 32" width="20" height="20" fill="currentColor"
@@ -52,7 +52,8 @@ require_once __DIR__ . '/../x.php';
     if ($post["ref_post_pk"]) {
         include __DIR__ . '/articleRepost.php';
     } else if ($post["post_image"] != "") {
-        muoEcho("
+        muoEcho(
+            "
             <section class='sectionPostPicture'>
             <img src=" . $post['post_image'] . ">
             </section>"
@@ -61,7 +62,6 @@ require_once __DIR__ . '/../x.php';
     ?>
 
     <footer class='footerPostActions'>
-        <!-- sections > buttons -->
         <section class='sectionPostAction'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
                 aria-hidden="true" class="icon-comment">
@@ -84,7 +84,11 @@ require_once __DIR__ . '/../x.php';
                 5
             </span>
         </section>
-        <section class='sectionPostAction sectionPostActionLike'>
+        <section class='sectionPostAction sectionPostActionLike <?php
+                                                                if ($post["liked_by_user"] !== null && $post["like_deleted_at"] === null) {
+                                                                    echo "triggered";
+                                                                }
+                                                                ?>'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
                 aria-hidden="true" class="icon-like">
                 <path
@@ -92,7 +96,7 @@ require_once __DIR__ . '/../x.php';
                 </path>
             </svg>
             <span class='spanPostActionCount'>
-                11
+                <?php muoEcho($post["like_count"]) ?>
             </span>
         </section>
         <section class='sectionPostAction'>

@@ -13,6 +13,15 @@ function muoNoCache() {
     // header('Clear-Site-Data: "cache", "cookies", "storage", "executionContexts"');
 }
 
+define("pkMax", 50);
+function validatePk($pkName) {
+    $pk = trim($_POST[$pkName] ?? "");
+    if (strlen($pk) > pkMax) {
+        throw new Exception("PK must be less than " . pkMax . " characters", 400);
+    }
+    return $pk;
+}
+
 define("emailMax", 50);
 function validateEmail() {
     $userEmail = trim($_POST["email"]);

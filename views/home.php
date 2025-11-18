@@ -311,7 +311,13 @@ if (!isset($_SESSION["user"])) {
                     rp.post_created_at AS ref_post_created_at,
                     ru.user_pk AS ref_user_pk,
                     ru.user_name AS ref_user_name,
-                    ru.user_handle AS ref_user_handle
+                    ru.user_handle AS ref_user_handle,
+
+                    -- like information
+                    phl.user_fk AS liked_by_user,
+                    phl.like_deleted_at,
+                    -- like count
+                    (SELECT COUNT(*) FROM post_has_likes WHERE post_fk = p.post_pk AND like_deleted_at IS NULL) AS like_count
 
                     FROM posts p
                     INNER JOIN users u 
@@ -323,9 +329,15 @@ if (!isset($_SESSION["user"])) {
                     LEFT JOIN users ru 
                         ON rp.post_user_fk = ru.user_pk
 
-                    ORDER BY p.post_created_at DESC;
-                    ";
+                    -- check if current user liked this post
+                    LEFT JOIN post_has_likes phl 
+                        ON p.post_pk = phl.post_fk 
+                        AND phl.user_fk = :current_user_pk
+                        AND phl.like_deleted_at IS NULL
+
+                    ORDER BY p.post_created_at DESC";
             $stmt = $_db->prepare($sql);
+            $stmt->bindValue(':current_user_pk', $_SESSION['user']['user_pk']);
             $stmt->execute();
 
             $posts = $stmt->fetchAll();
