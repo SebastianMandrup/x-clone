@@ -1,19 +1,12 @@
 import '../shared/toasts.js';
 import { showToast } from '../shared/toasts.js';
+import './sectionUserInfo.js';
+import './commentOverlay.js';
 
 document.getElementById('btnLogout').addEventListener('click', function () {
     window.location.href = '/bridges/logout';
 });
 
-document.getElementById('sectionUserInfo').addEventListener('click', function (event) {
-    event.stopPropagation();
-    sectionUserActions.classList.toggle('hidden');
-
-    document.body.addEventListener('click', function bodyClick() {
-        sectionUserActions.classList.add('hidden');
-        document.body.removeEventListener('click', bodyClick);
-    });
-});
 
 document.querySelectorAll('.sectionPostActionLike').forEach(section => {
     section.addEventListener('click', async function (event) {

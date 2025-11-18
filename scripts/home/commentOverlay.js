@@ -1,0 +1,55 @@
+import { showToast } from '../shared/toasts.js';
+
+document.getElementById('btnCloseCommentOverlay').addEventListener('click', function () {
+	const overlay = document.getElementById('divAddCommentOverlay');
+	overlay.classList.add('hidden');
+});
+
+
+document.querySelectorAll('.sectionPostActionComment').forEach(section => {
+	section.addEventListener('click', function (event) {
+		event.preventDefault();
+
+		const article = this.closest('.articlePost');
+		const commentCount = article.querySelector('.spanPostActionCount');
+		const imgAvatar = article.querySelector('.imgPostAvatar');
+		const userName = article.querySelector('.spanPostUserFullName').textContent.trim();
+		const userHandle = article.querySelector('.spanPostUserHandle').textContent.trim();
+		const postTime = article.querySelector('.spanPostTime').textContent.trim();
+		const postContent = article.querySelector('.pPostContent').textContent.trim();
+
+		const overlay = document.getElementById('divAddCommentOverlay');
+		overlay.classList.remove('hidden');
+
+		overlay.querySelector('#imgOriginalPostAvatar').src = imgAvatar.src;
+		overlay.querySelector('#spanOriginalPostUserName').textContent = userName;
+		overlay.querySelector('#spanOriginalPostUserHandle').textContent = userHandle;
+		overlay.querySelector('#spanOriginalPostTime').textContent = postTime;
+		overlay.querySelector('#pOriginalPostContent').textContent = postContent;
+
+		const postPk = this.closest('.articlePost').dataset.postPk;
+		const form = overlay.querySelector('#formAddComment');
+
+		form.addEventListener('submit', async function submitComment(event) {
+			event.preventDefault();
+			const formdata = new FormData(form);
+			formdata.append('postPk', postPk);
+			const response = await fetch('/api/add-comment', {
+				method: 'POST',
+				body: formdata
+			});
+
+			if (response.ok) {
+				showToast('Comment added successfully!', 'success');
+				overlay.classList.add('hidden');
+				form.reset();
+				const count = parseInt(commentCount.textContent.trim());
+				commentCount.textContent = count + 1;
+			} else {
+				const errorData = await response.json();
+				showToast(errorData.message || 'An error occurred while adding your comment.', 'error');
+			}
+		});
+
+	});
+});

@@ -7,6 +7,7 @@ get('/home', 'views/home.php');
 
 post('/api/like-post', 'api/like-post.php');
 post('/api/search', 'api/search.php');
+post('/api/add-comment', 'api/add-comment.php');
 
 post('/bridges/createPost', 'bridges/createPost.php');
 post('/bridges/login', 'bridges/login.php');

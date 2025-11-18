@@ -22,6 +22,18 @@ function validatePk($pkName) {
     return $pk;
 }
 
+define("commentContentMax", 255);
+function validateCommentContent() {
+    $commentContent = trim($_POST["comment_content"] ?? "");
+    if (strlen($commentContent) == 0) {
+        throw new Exception("Comment content cannot be empty", 400);
+    }
+    if (strlen($commentContent) > commentContentMax) {
+        throw new Exception("Comment content must be less than " . commentContentMax . " characters", 400);
+    }
+    return $commentContent;
+}
+
 define("emailMax", 50);
 function validateEmail() {
     $userEmail = trim($_POST["email"]);

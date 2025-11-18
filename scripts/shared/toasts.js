@@ -44,6 +44,6 @@ export function showToast(message, type) {
     }, 2700);
 
     setTimeout(() => {
-        document.body.removeChild(toast);
+        document.body.removeChild(container);
     }, 3000);
 }

@@ -1,0 +1,124 @@
+#divAddCommentOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+#sectionAddComment {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: var(--black);
+	border: 1px solid var(--darkGrey);
+	border-radius: 8px;
+	width: 90%;
+	max-width: 600px;
+	padding: 16px;
+}
+
+#btnCloseCommentOverlay {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	background-color: transparent;
+	border: none;
+	border-radius: 50%;
+	padding: 0 10px;
+	padding-bottom: 4px;
+	color: var(--white);
+	font-size: 24px;
+	cursor: pointer;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&:hover {
+		background-color: var(--grey);
+	}
+}
+
+#sectionOriginalPost {
+	margin-top: 44px;
+	display: flex;
+	flex-direction: column;
+	border-bottom: 1px solid var(--darkGrey);
+}
+
+#sectionOriginalPostUserInfo {
+	display: flex;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+#imgOriginalPostAvatar {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	margin-right: 12px;
+}
+
+#spanOriginalPostUserName {
+	font-weight: bold;
+	color: var(--white);
+}
+
+#spanOriginalPostUserHandle {
+	color: var(--lighterGrey);
+	margin-left: 8px;
+}
+
+#spanOriginalPostTime {
+	color: var(--grey);
+	margin-left: 8px;
+}
+
+#pOriginalPostContent {
+	margin-bottom: 16px;
+	margin-left: 30px;
+	padding-left: 30px;
+	color: var(--white);
+	border-left: 2px solid var(--darkGrey);
+}
+
+#sectionAddCommentContent {
+	margin-top: 16px;
+	display: flex;
+}
+
+#imgAddCommentAvatar {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	margin-right: 12px;
+}
+
+#textareaAddComment {
+	flex: 1;
+	resize: none;
+	height: 100px;
+	padding: 8px;
+	border: 1px solid var(--darkGrey);
+	border-radius: 8px;
+	background-color: var(--darkestGrey);
+	color: var(--white);
+	margin-bottom: 56px;
+}
+
+#btnSubmitAddComment {
+	height: 44px;
+	padding: 8px 16px;
+	background-color: var(--blue);
+	border: none;
+	border-radius: 8px;
+	color: var(--perfectWhite);
+	cursor: pointer;
+
+	position: absolute;
+	bottom: 16px;
+	right: 16px;
+}

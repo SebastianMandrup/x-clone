@@ -2,6 +2,7 @@
 @import './nav.css';
 @import './main.css';
 @import './aside.css';
+@import './sectionAddComment.css';
 @import '../shared/toasts.css';
 
 @keyframes spin {
@@ -15,7 +16,7 @@
 }
 
 body {
-    overflow: scroll;
+    overflow-y: scroll;
 
     #divMainContainer {
         display: flex;

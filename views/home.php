@@ -295,6 +295,7 @@ if (!isset($_SESSION["user"])) {
             <?php
             require_once __DIR__ . '../../db_connector.php';
 
+
             $sql = "SELECT 
                     p.post_pk,
                     p.post_content,
@@ -316,8 +317,11 @@ if (!isset($_SESSION["user"])) {
                     -- like information
                     phl.user_fk AS liked_by_user,
                     phl.like_deleted_at,
-                    -- like count
-                    (SELECT COUNT(*) FROM likes WHERE post_fk = p.post_pk AND like_deleted_at IS NULL) AS like_count
+                    -- like count (no alias needed in subquery)
+                    (SELECT COUNT(*) FROM likes WHERE post_fk = p.post_pk AND like_deleted_at IS NULL) AS like_count,
+
+                    -- comment count
+                    (SELECT COUNT(*) FROM comments WHERE comment_post_fk = p.post_pk AND comment_deleted_at IS NULL) AS comment_count
 
                     FROM posts p
                     INNER JOIN users u 
@@ -336,6 +340,7 @@ if (!isset($_SESSION["user"])) {
                         AND phl.like_deleted_at IS NULL
 
                     ORDER BY p.post_created_at DESC";
+
             $stmt = $_db->prepare($sql);
             $stmt->bindValue(':current_user_pk', $_SESSION['user']['user_pk']);
             $stmt->execute();
@@ -443,6 +448,35 @@ if (!isset($_SESSION["user"])) {
                 </div>
             </footer>
         </aside>
+    </div>
+
+    <div id='divAddCommentOverlay' class='hidden'>
+        <section id='sectionAddComment'>
+            <button id='btnCloseCommentOverlay'>
+                &times;
+            </button>
+            <section id='sectionOriginalPost'>
+                <section id='sectionOriginalPostUserInfo'>
+                    <img id='imgOriginalPostAvatar' />
+                    <span id='spanOriginalPostUserName'></span>
+                    <span id='spanOriginalPostUserHandle'></span>
+                    <span id='spanOriginalPostTime'></span>
+                </section>
+                <p id='pOriginalPostContent'></p>
+
+            </section>
+            <form id='formAddComment'>
+                <section id='sectionAddCommentContent'>
+                    <img src="https://ui-avatars.com/api/?name=<?php muoEcho(($_SESSION['user']['user_name'])); ?>&background=random"
+                        alt="Avatar" id='imgAddCommentAvatar'>
+                    <textarea name="comment_content" id="textareaAddComment" placeholder="Post your reply"></textarea>
+                </section>
+                <button type='submit' id='btnSubmitAddComment'>
+                    Reply
+                </button>
+            </form>
+        </section>
+
     </div>
 
 </body>
