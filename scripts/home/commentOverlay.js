@@ -1,10 +1,14 @@
 import { showToast } from '../shared/toasts.js';
 
+const overlay = document.getElementById('divAddCommentOverlay');
+
 document.getElementById('btnCloseCommentOverlay').addEventListener('click', function () {
-	const overlay = document.getElementById('divAddCommentOverlay');
 	overlay.classList.add('hidden');
 });
 
+document.getElementById('divAddCommentOverlay').addEventListener('click', () => {
+	overlay.classList.add('hidden');
+});
 
 document.querySelectorAll('.sectionPostActionComment').forEach(section => {
 	section.addEventListener('click', function (event) {
@@ -18,7 +22,6 @@ document.querySelectorAll('.sectionPostActionComment').forEach(section => {
 		const postTime = article.querySelector('.spanPostTime').textContent.trim();
 		const postContent = article.querySelector('.pPostContent').textContent.trim();
 
-		const overlay = document.getElementById('divAddCommentOverlay');
 		overlay.classList.remove('hidden');
 
 		overlay.querySelector('#imgOriginalPostAvatar').src = imgAvatar.src;
