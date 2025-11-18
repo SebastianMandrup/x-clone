@@ -317,7 +317,7 @@ if (!isset($_SESSION["user"])) {
                     phl.user_fk AS liked_by_user,
                     phl.like_deleted_at,
                     -- like count
-                    (SELECT COUNT(*) FROM post_has_likes WHERE post_fk = p.post_pk AND like_deleted_at IS NULL) AS like_count
+                    (SELECT COUNT(*) FROM likes WHERE post_fk = p.post_pk AND like_deleted_at IS NULL) AS like_count
 
                     FROM posts p
                     INNER JOIN users u 
@@ -330,7 +330,7 @@ if (!isset($_SESSION["user"])) {
                         ON rp.post_user_fk = ru.user_pk
 
                     -- check if current user liked this post
-                    LEFT JOIN post_has_likes phl 
+                    LEFT JOIN likes phl 
                         ON p.post_pk = phl.post_fk 
                         AND phl.user_fk = :current_user_pk
                         AND phl.like_deleted_at IS NULL

@@ -8,7 +8,7 @@ try {
 
 	require_once __DIR__ . '/../db_connector.php';
 
-	$sql = "SELECT * FROM post_has_likes WHERE post_fk = :postPk AND user_fk = :userPk";
+	$sql = "SELECT * FROM likes WHERE post_fk = :postPk AND user_fk = :userPk";
 	$stmt = $_db->prepare($sql);
 
 	$stmt->bindValue(":postPk", $postPk);
@@ -20,7 +20,7 @@ try {
 
 	// user has never liked the post before
 	if (!$post_has_like) {
-		$sql = "INSERT INTO post_has_likes (post_fk, user_fk, like_created_at) VALUES (:postPk, :userPk, UNIX_TIMESTAMP())";
+		$sql = "INSERT INTO likes (post_fk, user_fk, like_created_at) VALUES (:postPk, :userPk, UNIX_TIMESTAMP())";
 		$stmt = $_db->prepare($sql);
 		$stmt->bindValue(":postPk", $postPk);
 		$stmt->bindValue(":userPk", $userPk);
@@ -35,7 +35,7 @@ try {
 
 	// user has liked the post before
 	if ($post_has_like['like_deleted_at'] == null) {
-		$sql = "UPDATE post_has_likes SET like_deleted_at = UNIX_TIMESTAMP() WHERE post_fk = :postPk AND user_fk = :userPk";
+		$sql = "UPDATE likes SET like_deleted_at = UNIX_TIMESTAMP() WHERE post_fk = :postPk AND user_fk = :userPk";
 		$stmt = $_db->prepare($sql);
 		$stmt->bindValue(":postPk", $postPk);
 		$stmt->bindValue(":userPk", $userPk);
@@ -48,7 +48,7 @@ try {
 	}
 
 	// user is disliked the post and wants to like it again
-	$sql = "UPDATE post_has_likes SET like_deleted_at = NULL WHERE post_fk = :postPk AND user_fk = :userPk";
+	$sql = "UPDATE likes SET like_deleted_at = NULL WHERE post_fk = :postPk AND user_fk = :userPk";
 	$stmt = $_db->prepare($sql);
 	$stmt->bindValue(":postPk", $postPk);
 	$stmt->bindValue(":userPk", $userPk);
