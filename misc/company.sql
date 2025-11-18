@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mariadb
--- Generation Time: Oct 28, 2025 at 05:17 PM
+-- Generation Time: Nov 18, 2025 at 10:44 PM
 -- Server version: 10.6.20-MariaDB-ubu2004
 -- PHP Version: 8.3.26
 
@@ -24,6 +24,71 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `comment_pk` char(50) NOT NULL,
+  `comment_user_fk` char(50) NOT NULL,
+  `comment_post_fk` char(50) NOT NULL,
+  `comment_content` varchar(255) NOT NULL,
+  `comment_created_at` bigint(20) UNSIGNED NOT NULL,
+  `comment_updated_at` bigint(20) UNSIGNED NOT NULL,
+  `comment_deleted_at` bigint(20) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`comment_pk`, `comment_user_fk`, `comment_post_fk`, `comment_content`, `comment_created_at`, `comment_updated_at`, `comment_deleted_at`) VALUES
+('1c9098b90a5b83b036aaa49ff3c67452bf204c7c1100d683ea', '12345', '0e398a9a2ec1970af1e171280bd895bce936544b89ec9323b4', '!!!', 1763505193, 1763505193, NULL),
+('288870c55736efc2db58ab1554327bcf71551f3ac4a0ab1e5d', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', 'actual new comment', 1763487060, 1763487060, NULL),
+('2e2f5b9459b56a4892e8f643b57eaa7d31a0511f59a7d3d04e', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', '!!!', 1763505193, 1763505193, NULL),
+('337c635fe1ac582e4194287bf1296ce63578b5e041e0c0d950', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', '!!!', 1763505193, 1763505193, NULL),
+('36f34eb31532457332b6e720943ff0f293ab0dcf8cf2bbae35', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', '!!!!', 1763505102, 1763505102, NULL),
+('3f70c1e03e18fc1604940cfc2de8277b33c16cc08a7880850e', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', '!', 1763505204, 1763505204, NULL),
+('412ad0ae18f5e81da99ad213b360766d6b7a6ce012f2f97893', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', '123123', 1763485484, 1763485484, NULL),
+('4a982bcef54f9fd5deafbaa23d5915f35d325863d149ec61e3', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', 'new comment', 1763487018, 1763487018, NULL),
+('6a993aa4c3d9e4aaec7cd559f75f286e44c76d04f10efba6d0', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', '!!!', 1763505208, 1763505208, NULL),
+('83925115f554e39302c8e4c55f6ae80515df083d6a6bed0ca1', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', 'big testing', 1763487225, 1763487225, NULL),
+('8ac982c80a3c6a62f5d18ef5c590550ffa7230e79222deb653', '12345', '0e398a9a2ec1970af1e171280bd895bce936544b89ec9323b4', '!!!!', 1763505102, 1763505102, NULL),
+('8f105c7c35ad89338a3efb94519e306217c2ee623bc9a6bcff', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', '123123213', 1763485548, 1763485548, NULL),
+('8f936bf2b4802300f1be42a413d40ef3b384ea77c792a23916', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', 'new comment', 1763487018, 1763487018, NULL),
+('a451008c7a5d332de8484b8d5cb1b0daadeaee7eaece236acd', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', 'new new new', 1763487150, 1763487150, NULL),
+('a7e477da74f84cf85eb8528ab54ca425195104da151bb565c4', '12345', '0e398a9a2ec1970af1e171280bd895bce936544b89ec9323b4', '!!!', 1763505193, 1763505193, NULL),
+('af43b2f61194148f35ea4589b94d0b48b898be7f5aeb816502', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', '123123', 1763485484, 1763485484, NULL),
+('c1b94a701741d6564ea4bb13f5e751f97fba1fdac18cac030e', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', '!!!', 1763505208, 1763505208, NULL),
+('d56395fd6fd5042c31985ba9c412f41b5051e48cd2037a6cb0', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', 'new comment', 1763486994, 1763486994, NULL),
+('ec6a89e5d969d770d2938155de5dd514256d8ff6b523af60b4', '12345', '1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', 'new comment', 1763486994, 1763486994, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `likes`
+--
+
+CREATE TABLE `likes` (
+  `post_fk` char(50) NOT NULL,
+  `user_fk` char(50) NOT NULL,
+  `like_created_at` bigint(20) UNSIGNED NOT NULL,
+  `like_deleted_at` bigint(20) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted_at`) VALUES
+('0e398a9a2ec1970af1e171280bd895bce936544b89ec9323b4', '12345', 1763478296, 1763498301),
+('1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', '12345', 1763477359, 1763498135),
+('468122919d41804f57b1f806de4998d6e8d1cff0da0d59ef9a', '12345', 1763478297, 1763498129),
+('b163d6c2708fb7b3802f1f0dc1c07f3314bf6ce84b7b2f0db6', '12345', 1763478300, 1763478307),
+('fb999bf4bcdaedcbf4c1dffd5a0e44b1a6ef9d656911471083', '12345', 1763478301, 1763478307);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `posts`
 --
 
@@ -33,18 +98,21 @@ CREATE TABLE `posts` (
   `post_image` varchar(50) DEFAULT NULL,
   `post_reference` char(50) DEFAULT NULL,
   `post_user_fk` char(50) NOT NULL,
-  `post_created_at` bigint(20) UNSIGNED NOT NULL
+  `post_created_at` bigint(20) UNSIGNED NOT NULL,
+  `post_deleted_at` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`post_pk`, `post_content`, `post_image`, `post_reference`, `post_user_fk`, `post_created_at`) VALUES
-('0e398a9a2ec1970af1e171280bd895bce936544b89ec9323b4', 'sick post', NULL, '468122919d41804f57b1f806de4998d6e8d1cff0da0d59ef9a', '1234561', 1758677913),
-('468122919d41804f57b1f806de4998d6e8d1cff0da0d59ef9a', 'testing again', NULL, NULL, '1234561', 1758676513),
-('b163d6c2708fb7b3802f1f0dc1c07f3314bf6ce84b7b2f0db6', 'test three', NULL, NULL, '1234561', 1758676513),
-('fb999bf4bcdaedcbf4c1dffd5a0e44b1a6ef9d656911471083', 'test', NULL, NULL, '1234561', 1758676513);
+INSERT INTO `posts` (`post_pk`, `post_content`, `post_image`, `post_reference`, `post_user_fk`, `post_created_at`, `post_deleted_at`) VALUES
+('0e398a9a2ec1970af1e171280bd895bce936544b89ec9323b4', 'sick post', NULL, '468122919d41804f57b1f806de4998d6e8d1cff0da0d59ef9a', '1234561', 1758677913, 0),
+('1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', 'new post', NULL, NULL, '12345', 1763474461, 0),
+('468122919d41804f57b1f806de4998d6e8d1cff0da0d59ef9a', 'testing again', NULL, NULL, '1234561', 1758676513, 0),
+('69fa74d9b6973c336eeb5d6cfa3ad7b1d78e19ccc964afd301', 'tests', NULL, NULL, '12345', 1763505820, NULL),
+('b163d6c2708fb7b3802f1f0dc1c07f3314bf6ce84b7b2f0db6', 'test three', NULL, NULL, '1234561', 1758676513, 0),
+('fb999bf4bcdaedcbf4c1dffd5a0e44b1a6ef9d656911471083', 'test', NULL, NULL, '1234561', 1758676513, 0);
 
 --
 -- Triggers `posts`
@@ -135,6 +203,21 @@ INSERT INTO `users` (`user_pk`, `user_name`, `user_email`, `user_password`, `use
 --
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`comment_pk`),
+  ADD KEY `post_fk` (`comment_post_fk`),
+  ADD KEY `user_fk` (`comment_user_fk`);
+
+--
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`post_fk`,`user_fk`),
+  ADD KEY `user_fk` (`user_fk`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
@@ -157,6 +240,24 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `user_phone` (`user_phone`),
   ADD UNIQUE KEY `user_email` (`user_email`),
   ADD UNIQUE KEY `user_email_2` (`user_email`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`comment_post_fk`) REFERENCES `posts` (`post_pk`) ON DELETE CASCADE,
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`comment_user_fk`) REFERENCES `users` (`user_pk`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `likes`
+--
+ALTER TABLE `likes`
+  ADD CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`post_fk`) REFERENCES `posts` (`post_pk`) ON DELETE CASCADE,
+  ADD CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`user_fk`) REFERENCES `users` (`user_pk`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
