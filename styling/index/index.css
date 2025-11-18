@@ -9,7 +9,7 @@ body.modalOpen {
 }
 
 body {
-    overflow: scroll;
+    overflow-y: scroll;
 
     main {
         display: flex;
