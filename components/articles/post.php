@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../x.php';
+require_once __DIR__ . '/../../x.php';
 ?>
 <article class='articlePost' data-post-pk='<?php muoEcho($post["post_pk"]) ?>' data-user-pk='<?php muoEcho($_SESSION["user"]["user_pk"]) ?>'>
     <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Avatar" class='imgPostAvatar'>
@@ -50,7 +50,7 @@ require_once __DIR__ . '/../x.php';
     </p>
     <?php
     if ($post["ref_post_pk"]) {
-        include __DIR__ . '/articleRepost.php';
+        include __DIR__ . '/repost.php';
     } else if ($post["post_image"] != "") {
         muoEcho(
             "
