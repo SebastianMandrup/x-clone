@@ -18,9 +18,9 @@ require_once __DIR__ . '/../../x.php';
         </svg>
     </section>
     <header class='headerPostUser'>
-        <span class='spanPostUserFullName'>
+        <a class='aPostUserFullName' href='<?php muoEcho($post["user_handle"]) ?>'>
             <?php muoEcho($post["user_name"]) ?>
-        </span>
+        </a>
         <span class='spanPostUserHandle'>
             @<?php muoEcho($post["user_handle"]) ?>
         </span>

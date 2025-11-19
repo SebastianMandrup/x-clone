@@ -1,0 +1,90 @@
+#sectionProfileBanner {
+	border-bottom: 1px solid var(--grey);
+}
+
+#divDefaultBanner,
+#imgProfileBanner {
+	min-width: 100%;
+	height: 240px;
+	background-color: var(--darkGrey);
+	object-fit: cover;
+}
+
+#sectionUserDetails {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 16px;
+	height: 70px;
+}
+
+#imgUserAvatarBanner {
+	position: relative;
+	top: -70px;
+	left: 16px;
+	border: 4px solid var(--black);
+	border-radius: 50%;
+	width: 140px;
+	height: 140px;
+	background-color: var(--darkGrey);
+	object-fit: cover;
+}
+
+#buttonEditProfile,
+#buttonFollow {
+	position: relative;
+	top: 18px;
+	right: 0;
+	height: 36px;
+	background-color: transparent;
+	border: 1px solid var(--lighterGrey);
+	color: var(--perfectWhite);
+	padding: 8px 16px;
+	border-radius: var(--lightBorderRadius);
+	font-size: 0.9rem;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#sectionUserData {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 20px;
+}
+
+#h2UserNameBanner {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+#pUserHandleBanner {
+	color: var(--lightGrey);
+	font-size: 0.95rem;
+	margin-top: -4px;
+}
+
+#pUserBioBanner {
+	margin-top: 12px;
+	font-size: 0.9rem;
+	color: var(--perfectWhite);
+	max-width: 600px;
+}
+
+#sectionUserFollowingBanner {
+	display: flex;
+	gap: 8px;
+	margin-top: 12px;
+	margin-bottom: 16px;
+}
+
+.pFollowCountBanner,
+.pFollowCountBanner span {
+	font-size: 0.9rem;
+	color: var(--lightGrey);
+}
+
+.pFollowCountBanner span {
+	color: var(--perfectWhite);
+}

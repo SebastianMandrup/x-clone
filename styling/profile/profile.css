@@ -1,7 +1,7 @@
 @import '../variables.css';
 
-@import './main.css';
-@import './headerHome.css';
+@import './headerMainProfile.css';
+@import './sectionProfileBanner.css';
 
 @import '../shared/partitions/main.css';
 @import '../shared/partitions/nav.css';
@@ -10,4 +10,3 @@
 @import '../shared/sectionAddComment.css';
 @import '../shared/toasts.css';
 @import '../shared/articlePost.css';
-@import '../shared/spinner.css';

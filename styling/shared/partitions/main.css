@@ -1,0 +1,40 @@
+body.modalOpen {
+	overflow: hidden;
+}
+
+body {
+	overflow-y: scroll;
+}
+
+#divMainContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+@media screen and (min-width: 760px) {
+	#divMainContainer {
+		display: grid;
+		grid-template-areas: 'nav main aside';
+		grid-template-columns: 15fr 80fr 5fr;
+		scrollbar-width: medium;
+		scrollbar-color: var(--lightGrey) var(--black);
+	}
+
+	main {
+		grid-area: main;
+		border-left: 1px solid rgb(48, 51, 54);
+		border-right: 1px solid rgb(48, 51, 54);
+	}
+}
+
+@media screen and (min-width: 1023px) {
+	#divMainContainer {
+		grid-template-columns: 10fr 70fr 20fr;
+	}
+}
+
+@media screen and (min-width: 1439px) {
+	#divMainContainer {
+		grid-template-columns: 25fr 43fr 32fr;
+	}
+}

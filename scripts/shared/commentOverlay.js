@@ -1,4 +1,4 @@
-import { showToast } from '../shared/toasts.js';
+import { showToast } from './toasts.js';
 
 const overlay = document.getElementById('divAddCommentOverlay');
 
@@ -21,7 +21,7 @@ document.querySelectorAll('.sectionPostActionComment').forEach(section => {
 		const article = this.closest('.articlePost');
 		const commentCount = article.querySelector('.spanPostActionCount');
 		const imgAvatar = article.querySelector('.imgPostAvatar');
-		const userName = article.querySelector('.spanPostUserFullName').textContent.trim();
+		const userName = article.querySelector('.aPostUserFullName').textContent.trim();
 		const userHandle = article.querySelector('.spanPostUserHandle').textContent.trim();
 		const postTime = article.querySelector('.spanPostTime').textContent.trim();
 		const postContent = article.querySelector('.pPostContent').textContent.trim();

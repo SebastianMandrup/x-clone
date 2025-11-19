@@ -16,7 +16,10 @@ body {
         flex-direction: column;
 
         #divLogoContainer {
-            font-size: 40rem;
+            font-size: 20rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #sectionMain {
@@ -168,7 +171,7 @@ body {
     body {
         main {
             #divLogoContainer {
-                padding: 2rem 0 2rem 17vw;
+                font-size: 30rem;
             }
 
             #sectionMain {
@@ -336,11 +339,7 @@ body {
 
             #divLogoContainer {
                 padding: 4rem 0 0 4rem;
-
-                svg {
-                    width: 340px;
-                    height: 380px;
-                }
+                font-size: 40rem;
             }
 
             #sectionMain {

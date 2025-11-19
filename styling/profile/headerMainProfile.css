@@ -1,0 +1,41 @@
+#headerMainProfile {
+	display: flex;
+	padding: 8px;
+}
+
+#aProfileBackButton {
+	background-color: transparent;
+	text-decoration: none;
+	border: none;
+	color: var(--perfectWhite);
+	font-size: 1.5rem;
+	cursor: pointer;
+	margin: 0 14px;
+}
+
+#sectionProfileHeaderInfo {
+	display: flex;
+	flex-direction: column;
+}
+
+#h1ProfileUsername {
+	font-size: 1.2rem;
+	font-weight: bold;
+	margin-left: 1rem;
+}
+
+#pProfilePostCount {
+	color: var(--lighterGrey);
+	font-size: 0.8rem;
+	margin-left: 1rem;
+}
+
+@media screen and (min-width: 760px) {
+	#headerMainProfile {
+		position: sticky;
+		top: 0;
+		background-color: var(--black);
+		backdrop-filter: blur(10px);
+		z-index: 1;
+	}
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mariadb
--- Generation Time: Nov 18, 2025 at 10:44 PM
+-- Generation Time: Nov 19, 2025 at 10:17 PM
 -- Server version: 10.6.20-MariaDB-ubu2004
 -- PHP Version: 8.3.26
 
@@ -65,6 +65,19 @@ INSERT INTO `comments` (`comment_pk`, `comment_user_fk`, `comment_post_fk`, `com
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `follows`
+--
+
+CREATE TABLE `follows` (
+  `following_user_fk` char(50) NOT NULL,
+  `followed_user_fk` char(50) NOT NULL,
+  `follow_created_at` bigint(20) UNSIGNED NOT NULL,
+  `follow_deleted_at` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `likes`
 --
 
@@ -81,9 +94,21 @@ CREATE TABLE `likes` (
 
 INSERT INTO `likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted_at`) VALUES
 ('0e398a9a2ec1970af1e171280bd895bce936544b89ec9323b4', '12345', 1763478296, 1763498301),
+('0e398a9a2ec1970af1e171280bd895bce936544b89ec9323b4', 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763567769, NULL),
 ('1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', '12345', 1763477359, 1763498135),
+('1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763567730, NULL),
+('45bef48541cfcfe47fc94b481f2780a555f9d625324401e2e2', 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763567727, NULL),
 ('468122919d41804f57b1f806de4998d6e8d1cff0da0d59ef9a', '12345', 1763478297, 1763498129),
+('468122919d41804f57b1f806de4998d6e8d1cff0da0d59ef9a', 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763567770, NULL),
+('69fa74d9b6973c336eeb5d6cfa3ad7b1d78e19ccc964afd301', 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763567729, NULL),
 ('b163d6c2708fb7b3802f1f0dc1c07f3314bf6ce84b7b2f0db6', '12345', 1763478300, 1763478307),
+('b163d6c2708fb7b3802f1f0dc1c07f3314bf6ce84b7b2f0db6', 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763567771, NULL),
+('c4cc166eed2dd30c6c9ecc328be7752e80c2966f86a627e1cb', '12345', 1763590581, 1763590586),
+('c4cc166eed2dd30c6c9ecc328be7752e80c2966f86a627e1cb', 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763567913, 1763567914),
+('d6e8549a3b1bd903a6ee2546fa4836a75e5c790db8bee8a572', 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763567728, NULL),
+('e32dd06cb4fc1ac44565795f9f6dccff2b91a723eb032db20e', '12345', 1763577029, NULL),
+('f55ae31185245855d93a2d195c3289ced3e311728463288785', '12345', 1763577028, NULL),
+('f55ae31185245855d93a2d195c3289ced3e311728463288785', 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763569934, 1763571872),
 ('fb999bf4bcdaedcbf4c1dffd5a0e44b1a6ef9d656911471083', '12345', 1763478301, 1763478307);
 
 -- --------------------------------------------------------
@@ -95,7 +120,7 @@ INSERT INTO `likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted_at`)
 CREATE TABLE `posts` (
   `post_pk` char(50) NOT NULL,
   `post_content` varchar(200) NOT NULL,
-  `post_image` varchar(50) DEFAULT NULL,
+  `post_image` varchar(255) DEFAULT NULL,
   `post_reference` char(50) DEFAULT NULL,
   `post_user_fk` char(50) NOT NULL,
   `post_created_at` bigint(20) UNSIGNED NOT NULL,
@@ -107,11 +132,16 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_pk`, `post_content`, `post_image`, `post_reference`, `post_user_fk`, `post_created_at`, `post_deleted_at`) VALUES
-('0e398a9a2ec1970af1e171280bd895bce936544b89ec9323b4', 'sick post', NULL, '468122919d41804f57b1f806de4998d6e8d1cff0da0d59ef9a', '1234561', 1758677913, 0),
+('0e398a9a2ec1970af1e171280bd895bce936544b89ec9323b4', 'sick post', 'https://pbs.twimg.com/profile_images/1975532666242949120/63VlQ3ml_400x400.jpg', '468122919d41804f57b1f806de4998d6e8d1cff0da0d59ef9a', '1234561', 1758677913, NULL),
 ('1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', 'new post', NULL, NULL, '12345', 1763474461, 0),
+('45bef48541cfcfe47fc94b481f2780a555f9d625324401e2e2', '11111111', NULL, NULL, 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763565440, NULL),
 ('468122919d41804f57b1f806de4998d6e8d1cff0da0d59ef9a', 'testing again', NULL, NULL, '1234561', 1758676513, 0),
 ('69fa74d9b6973c336eeb5d6cfa3ad7b1d78e19ccc964afd301', 'tests', NULL, NULL, '12345', 1763505820, NULL),
 ('b163d6c2708fb7b3802f1f0dc1c07f3314bf6ce84b7b2f0db6', 'test three', NULL, NULL, '1234561', 1758676513, 0),
+('c4cc166eed2dd30c6c9ecc328be7752e80c2966f86a627e1cb', 'asdasdasd', NULL, NULL, 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763567778, NULL),
+('d6e8549a3b1bd903a6ee2546fa4836a75e5c790db8bee8a572', '123123123123', NULL, NULL, '12345', 1763565353, NULL),
+('e32dd06cb4fc1ac44565795f9f6dccff2b91a723eb032db20e', 'adfgdafgdafgdafg', NULL, NULL, 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763567780, NULL),
+('f55ae31185245855d93a2d195c3289ced3e311728463288785', 'dafgdafgdafgdfag', NULL, NULL, 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763567782, NULL),
 ('fb999bf4bcdaedcbf4c1dffd5a0e44b1a6ef9d656911471083', 'test', NULL, NULL, '1234561', 1758676513, 0);
 
 --
@@ -184,19 +214,21 @@ CREATE TABLE `users` (
   `user_birthday` date NOT NULL,
   `user_personalized_ads` tinyint(1) NOT NULL,
   `user_connect_with_email_phone` tinyint(1) NOT NULL,
-  `user_handle` varchar(20) NOT NULL
+  `user_handle` varchar(20) NOT NULL,
+  `user_banner` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_pk`, `user_name`, `user_email`, `user_password`, `user_phone`, `user_birthday`, `user_personalized_ads`, `user_connect_with_email_phone`, `user_handle`) VALUES
-('12345', 'Sebastian Mandrup', 'sebastianmandrup@outlook.com', '$2y$10$aOhff9jgwG0i3q/zRRcruOxG/cKHKl6l1dnbPcV3QX7dgqyMddUZ.', '', '0000-00-00', 0, 0, 'mandrup'),
-('1234561', 'Sebastian Petersen', '', '$2y$10$cM/qysSSAags6NjyDvVC0O3TLJDUpafOwziCF4B0YAbJZomw.Hnpm', '60224403', '0000-00-00', 0, 0, 'mandrupp'),
-('3fc4649a70682d05a078952128a7d7b8eca54cc102be4dd10a', 'Sebastian Mandrup Petersen', NULL, '$2y$10$QDfXM84rVER5Ke/r7qQOzujs4aqngkhYhy4T7mRL.ldUkQ3nuHiUy', '60224444', '1921-02-02', 0, 0, 'onetwothree'),
-('user_68cdb0ad791cc5.29643137', 'Sebastian Mandrup Petersen', NULL, '$2y$10$p0D36lufVGD/hIFlYQcSTulUwTlmL9gpul1piyfseM3KpbxFELaQe', '60224402', '1921-02-02', 0, 0, 'mandruppp'),
-('user_68cdb1914cd5c8.36392377', 'Sebastian Mandrup Petersen', NULL, '$2y$10$3SLQUfhFJkylAkogf4GLHe9KprSlaAeDVYO2eWcl0WgIvNg2bH8v6', '60224401', '1921-02-03', 1, 1, 'mandrupppp');
+INSERT INTO `users` (`user_pk`, `user_name`, `user_email`, `user_password`, `user_phone`, `user_birthday`, `user_personalized_ads`, `user_connect_with_email_phone`, `user_handle`, `user_banner`) VALUES
+('12345', 'Sebastian Mandrup', 'sebastianmandrup@outlook.com', '$2y$10$aOhff9jgwG0i3q/zRRcruOxG/cKHKl6l1dnbPcV3QX7dgqyMddUZ.', '', '0000-00-00', 0, 0, 'mandrup', ''),
+('1234561', 'Sebastian Petersen', '', '$2y$10$cM/qysSSAags6NjyDvVC0O3TLJDUpafOwziCF4B0YAbJZomw.Hnpm', '60224403', '0000-00-00', 0, 0, 'mandrupp', ''),
+('3fc4649a70682d05a078952128a7d7b8eca54cc102be4dd10a', 'Sebastian Mandrup Petersen', NULL, '$2y$10$QDfXM84rVER5Ke/r7qQOzujs4aqngkhYhy4T7mRL.ldUkQ3nuHiUy', '60224444', '1921-02-02', 0, 0, 'onetwothree', ''),
+('b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 'test', NULL, '$2y$10$zYTSCGlMoJlBfVYP/kNKguKHclORHXFRSbFehbkvO0YphAXPJeN6u', '11111111', '1935-10-16', 0, 0, 'test', 'https://pbs.twimg.com/profile_banners/1516610397926699008/1759838668/1500x500'),
+('user_68cdb0ad791cc5.29643137', 'Sebastian Mandrup Petersen', NULL, '$2y$10$p0D36lufVGD/hIFlYQcSTulUwTlmL9gpul1piyfseM3KpbxFELaQe', '60224402', '1921-02-02', 0, 0, 'mandruppp', ''),
+('user_68cdb1914cd5c8.36392377', 'Sebastian Mandrup Petersen', NULL, '$2y$10$3SLQUfhFJkylAkogf4GLHe9KprSlaAeDVYO2eWcl0WgIvNg2bH8v6', '60224401', '1921-02-03', 1, 1, 'mandrupppp', '');
 
 --
 -- Indexes for dumped tables
@@ -209,6 +241,13 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_pk`),
   ADD KEY `post_fk` (`comment_post_fk`),
   ADD KEY `user_fk` (`comment_user_fk`);
+
+--
+-- Indexes for table `follows`
+--
+ALTER TABLE `follows`
+  ADD KEY `followed_user_fk` (`followed_user_fk`),
+  ADD KEY `following_user_fk` (`following_user_fk`);
 
 --
 -- Indexes for table `likes`
@@ -251,6 +290,13 @@ ALTER TABLE `users`
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`comment_post_fk`) REFERENCES `posts` (`post_pk`) ON DELETE CASCADE,
   ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`comment_user_fk`) REFERENCES `users` (`user_pk`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `follows`
+--
+ALTER TABLE `follows`
+  ADD CONSTRAINT `follows_ibfk_1` FOREIGN KEY (`followed_user_fk`) REFERENCES `users` (`user_pk`) ON DELETE CASCADE,
+  ADD CONSTRAINT `follows_ibfk_2` FOREIGN KEY (`following_user_fk`) REFERENCES `users` (`user_pk`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `likes`
