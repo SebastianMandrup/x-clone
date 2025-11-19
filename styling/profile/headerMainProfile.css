@@ -25,7 +25,7 @@
 }
 
 #pProfilePostCount {
-	color: var(--lighterGrey);
+	color: var(--lightestGrey);
 	font-size: 0.8rem;
 	margin-left: 1rem;
 }
@@ -34,7 +34,8 @@
 	#headerMainProfile {
 		position: sticky;
 		top: 0;
-		background-color: var(--black);
+
+		background-color: rgba(0, 0, 0, 0.4);
 		backdrop-filter: blur(10px);
 		z-index: 1;
 	}
