@@ -1,40 +1,41 @@
 #headerMainProfile {
-	border-bottom: 1px solid rgb(48, 51, 54);
 	display: flex;
-	padding: 0.5rem;
-
+	padding: 8px;
 }
 
 #aProfileBackButton {
 	background-color: transparent;
 	text-decoration: none;
 	border: none;
-	color: white;
+	color: var(--perfectWhite);
 	font-size: 1.5rem;
 	cursor: pointer;
-	margin: 0 20px;
+	margin: 0 14px;
 }
 
 #sectionProfileHeaderInfo {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	gap: 4px;
 }
 
 #h1ProfileUsername {
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	font-weight: bold;
 	margin-left: 1rem;
 }
 
 #pProfilePostCount {
-	color: rgb(113, 118, 123);
-	font-size: 0.9rem;
+	color: var(--lighterGrey);
+	font-size: 0.8rem;
 	margin-left: 1rem;
-	margin-top: -5px;
 }
 
-@media screen and (min-width: 760px) {}
-
-@media screen and (min-width: 1024px) {}
+@media screen and (min-width: 760px) {
+	#headerMainProfile {
+		position: sticky;
+		top: 0;
+		background-color: var(--black);
+		backdrop-filter: blur(10px);
+		z-index: 1;
+	}
+}

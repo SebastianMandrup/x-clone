@@ -21,6 +21,9 @@
 
     --colorSuccess: #4ade80;
     --colorError: #f87171;
+
+    --tabletBreakpoint: 760px;
+    --desktopBreakpoint: 1024px;
 }
 
 

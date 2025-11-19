@@ -43,10 +43,16 @@
 	margin-bottom: 0.5rem;
 }
 
-.spanPostUserFullName {
-	font-weight: 600;
+.aPostUserFullName {
+	color: var(--white);
+	text-decoration: none;
+	font-weight: 700;
 	margin-right: 0.25rem;
 	font-size: 0.9rem;
+}
+
+.aPostUserFullName:hover {
+	text-decoration: underline;
 }
 
 .spanPostUserHandle,
