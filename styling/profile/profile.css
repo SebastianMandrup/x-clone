@@ -1,10 +1,12 @@
-@import './main.css';
 @import '../variables.css';
-@import '../shared/setup.css';
-@import '../shared/nav.css';
-@import '../shared/aside.css';
+
+@import './main.css';
+@import './headerMainProfile.css';
+
+@import '../shared/partitions/main.css';
+@import '../shared/partitions/nav.css';
+@import '../shared/partitions/aside.css';
+
 @import '../shared/sectionAddComment.css';
 @import '../shared/toasts.css';
 @import '../shared/articlePost.css';
-
-@import './headerMainProfile.css';

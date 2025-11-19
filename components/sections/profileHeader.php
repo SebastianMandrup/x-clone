@@ -1,7 +1,7 @@
 <header id='headerMainProfile'>
-	<button id='btnBackToHome'>
+	<a id='aProfileBackButton' href='/home'>
 		&lt;
-	</button>
+	</a>
 	<section id='sectionProfileHeaderInfo'>
 		<h1 id='h1ProfileUsername'>
 			<?php muoEcho($user["user_handle"]); ?>
