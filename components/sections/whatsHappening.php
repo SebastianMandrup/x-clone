@@ -16,10 +16,10 @@
 	}
 	?>
 
-	<button id='btnShowMoreTrends' class='btnShowMore' data-next-page='2'>
+	<button id='btnShowMoreTrends' class='btnShow' data-next-page='2'>
 		Show more
 	</button>
-	<button id='btnShowLessTrends' class='btnShowMore hidden'>
+	<button id='btnShowLessTrends' class='btnShow hidden'>
 		Show less
 	</button>
 </section>

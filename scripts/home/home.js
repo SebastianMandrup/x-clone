@@ -4,6 +4,8 @@ import './sectionUserInfo.js';
 import './commentOverlay.js';
 import './showMoreTrends.js';
 import './showLessTrends.js';
+import './showMoreWhoToFollow.js';
+import './showLessWhoToFollow.js';
 
 document.getElementById('btnLogout').addEventListener('click', function () {
     window.location.href = '/bridges/logout';
