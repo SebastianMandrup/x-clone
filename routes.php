@@ -10,9 +10,9 @@ post('/api/search', 'api/search.php');
 post('/api/add-comment', 'api/add-comment.php');
 get('/api/get-trends', 'api/get-trends.php');
 
-post('/bridges/createPost', 'bridges/createPost.php');
+post('/bridges/create-post', 'bridges/create-post.php');
 post('/bridges/login', 'bridges/login.php');
 get('/bridges/logout', 'bridges/logout.php');
-post('/bridges/signUp', 'bridges/signUp.php');
+post('/bridges/sign-up', 'bridges/sign-up.php');
 
 any('/404', 'views/404.php');

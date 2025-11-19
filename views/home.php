@@ -211,7 +211,7 @@ if (!isset($_SESSION["user"])) {
                 </button>
             </header>
             <section id='sectionCreatePost'>
-                <form action="./bridges/createPost" method='POST' id='formCreatePost'>
+                <form action="./bridges/create-post" method='POST' id='formCreatePost'>
                     <section id='sectionCreatePostInputs'>
                         <img src="https://ui-avatars.com/api/?name=<?php muoEcho(urlencode($_SESSION['user']['user_name'])); ?>&background=random"
                             alt="Avatar" id='imgCreatePostAvatar'>
