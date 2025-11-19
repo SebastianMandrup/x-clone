@@ -13,6 +13,18 @@ function muoNoCache() {
     // header('Clear-Site-Data: "cache", "cookies", "storage", "executionContexts"');
 }
 
+define("pageMax", 100);
+function validatePage() {
+    $page = (int) ($_GET["page"] ?? 1);
+    if ($page < 1) {
+        $page = 1;
+    }
+    if ($page > pageMax) {
+        throw new Exception("Page must be less than " . pageMax, 400);
+    }
+    return $page;
+}
+
 define("pkMax", 50);
 function validatePk($pkName) {
     $pk = trim($_POST[$pkName] ?? "");

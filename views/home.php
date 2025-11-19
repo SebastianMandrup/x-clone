@@ -401,8 +401,11 @@ if (!isset($_SESSION["user"])) {
                     }
                     ?>
 
-                    <button class='btnShowMore'>
+                    <button id='btnShowMoreTrends' class='btnShowMore' data-next-page='2'>
                         Show more
+                    </button>
+                    <button id='btnShowLessTrends' class='btnShowMore hidden'>
+                        Show less
                     </button>
                 </section>
                 <section id='sectionWhoToFollow'>

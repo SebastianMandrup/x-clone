@@ -2,6 +2,8 @@ import '../shared/toasts.js';
 import { showToast } from '../shared/toasts.js';
 import './sectionUserInfo.js';
 import './commentOverlay.js';
+import './showMoreTrends.js';
+import './showLessTrends.js';
 
 document.getElementById('btnLogout').addEventListener('click', function () {
     window.location.href = '/bridges/logout';
