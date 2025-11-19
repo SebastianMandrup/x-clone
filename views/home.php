@@ -211,7 +211,7 @@ if (!isset($_SESSION["user"])) {
                 </button>
             </header>
             <section id='sectionCreatePost'>
-                <form action="./bridges/createPost" method='POST' id='formCreatePost'>
+                <form action="./bridges/create-post" method='POST' id='formCreatePost'>
                     <section id='sectionCreatePostInputs'>
                         <img src="https://ui-avatars.com/api/?name=<?php muoEcho(urlencode($_SESSION['user']['user_name'])); ?>&background=random"
                             alt="Avatar" id='imgCreatePostAvatar'>
@@ -347,7 +347,7 @@ if (!isset($_SESSION["user"])) {
 
             $posts = $stmt->fetchAll();
             foreach ($posts as $post) {
-                require __DIR__ . '../../components/articlePost.php';
+                require __DIR__ . '../../components/articles/post.php';
             }
 
             ?>
@@ -383,56 +383,10 @@ if (!isset($_SESSION["user"])) {
             </section>
 
             <div id='divTrends'>
-                <section id='sectionWhatsHappening'>
-                    <header>
-                        What's happening
-                    </header>
-
-                    <?php
-                    require_once __DIR__ . '../../db_connector.php';
-
-                    $sql = 'SELECT topic_pk, topic_name, topic_field, topic_count, topic_rank FROM topics ORDER BY topic_rank DESC LIMIT 3;';
-                    $stmt = $_db->prepare($sql);
-                    $stmt->execute();
-
-                    $topics = $stmt->fetchAll();
-                    foreach ($topics as $topic) {
-                        require __DIR__ . '../../components/articleTrendItem.php';
-                    }
-                    ?>
-
-                    <button id='btnShowMoreTrends' class='btnShowMore' data-next-page='2'>
-                        Show more
-                    </button>
-                    <button id='btnShowLessTrends' class='btnShowMore hidden'>
-                        Show less
-                    </button>
-                </section>
-                <section id='sectionWhoToFollow'>
-                    <header>
-                        Who To Follow
-                    </header>
-
-                    <?php
-
-                    require_once __DIR__ . '../../db_connector.php';
-
-                    $sql = "SELECT user_pk, user_name, user_handle FROM users WHERE user_pk != :userPk ORDER BY RAND() LIMIT 3;";
-                    $stmt = $_db->prepare($sql);
-                    $stmt->bindValue(':userPk', $_SESSION['user']['user_pk']);
-                    $stmt->execute();
-
-                    $users = $stmt->fetchAll();
-                    foreach ($users as $user) {
-                        require __DIR__ . '../../components/articlePersonToFollow.php';
-                    }
-
-                    ?>
-                    <button class='btnShowMore'>
-                        Show more
-                    </button>
-                </section>
+                <?php require __DIR__ . '../../components/sections/whatsHappening.php'; ?>
+                <?php require __DIR__ . '../../components/sections/whoToFollow.php'; ?>
             </div>
+
 
             <footer>
                 <a href="#">Terms of Service</a>

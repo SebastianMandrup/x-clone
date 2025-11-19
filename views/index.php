@@ -118,7 +118,7 @@ if (isset($_SESSION["user"])) {
                         <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
                     </svg>
                 </button>
-                <form id="formSignUp" action="./bridges/signUp" method="POST">
+                <form id="formSignUp" action="./bridges/sign-up" method="POST">
                     <div id='divSignUpPageOne'>
                         <header>
                             <h2>

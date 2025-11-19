@@ -88,7 +88,7 @@ aside {
             margin-top: 0.5rem;
             border-top: 2px solid var(--borderColor);
 
-            .btnShowMore {
+            .btnShow {
                 margin: 0;
                 width: 100%;
                 padding-top: 0.75rem;
