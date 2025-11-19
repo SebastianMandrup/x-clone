@@ -1,5 +1,5 @@
 <article class='articleTrendItem'>
-    <div id='divTrendItemText'>
+    <div class='divTrendItemText'>
         <p>
             <?php muoEcho($topic["topic_field"]); ?>
         </p>
