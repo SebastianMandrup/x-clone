@@ -1,4 +1,4 @@
-import { showToast } from '../shared/toasts.js';
+import { showToast } from './toasts.js';
 
 const overlay = document.getElementById('divAddCommentOverlay');
 

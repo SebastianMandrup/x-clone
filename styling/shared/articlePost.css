@@ -1,0 +1,128 @@
+.articlePost {
+	position: relative;
+	padding: 1rem 4rem 1rem 4.5rem;
+	border-bottom: 1px solid rgb(48, 51, 54);
+}
+
+.imgPostAvatar {
+	height: 2.5rem;
+	width: 2.5rem;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: center;
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+}
+
+.sectionPostOptions {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	display: flex;
+	align-items: center;
+	color: rgb(170, 170, 170);
+	gap: 0.5rem;
+}
+
+.sectionMorePostOptions {
+	position: absolute;
+	bottom: 1rem;
+	right: 1rem;
+	display: flex;
+	align-items: center;
+	color: rgb(170, 170, 170);
+	gap: 0.5rem;
+}
+
+.headerPostUser,
+.headerRepostUser {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	margin-bottom: 0.5rem;
+}
+
+.spanPostUserFullName {
+	font-weight: 600;
+	margin-right: 0.25rem;
+	font-size: 0.9rem;
+}
+
+.spanPostUserHandle,
+.spanPostDotSeparator,
+.spanPostTime {
+	color: rgb(170, 170, 170);
+	font-size: 0.8rem;
+}
+
+.pPostContent {
+	font-size: 0.9rem;
+}
+
+.sectionPostPicture img {
+	border-radius: 1rem;
+	margin-top: 1rem;
+	height: auto;
+	max-width: 400px;
+}
+
+.sectionRepost {
+	border: 1px solid rgb(48, 51, 54);
+	border-radius: 1rem;
+	padding: 1rem;
+	margin-top: 1rem;
+	background-color: var(--darkestGrey);
+}
+
+.imgRepostAvatar {
+	top: 1rem;
+	left: 1rem;
+	height: 1.5rem;
+	width: 1.5rem;
+	border-radius: 50%;
+}
+
+.sectionRepostPicture {
+	max-width: 500px;
+	height: auto;
+	margin-top: 1rem;
+}
+
+.sectionRepostPicture img {
+	border-radius: 1rem;
+	width: 100%;
+	height: 100%;
+}
+
+.footerPostActions {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 0.75rem;
+	width: 90%;
+}
+
+.sectionPostAction {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	cursor: pointer;
+	color: rgb(170, 170, 170);
+}
+
+.spanPostActionCount {
+	font-size: 0.7rem;
+}
+
+.sectionPostAction:focus {
+	color: rgb(170, 170, 170);
+}
+
+.sectionPostAction:hover {
+	color: rgb(29, 155, 240);
+}
+
+
+.triggered {
+	color: var(--red);
+}

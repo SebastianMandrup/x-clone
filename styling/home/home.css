@@ -1,59 +1,13 @@
 @import '../variables.css';
-@import './nav.css';
+
 @import './main.css';
-@import './aside.css';
-@import './sectionAddComment.css';
+@import './headerHome.css';
+
+@import '../shared/partitions/main.css';
+@import '../shared/partitions/nav.css';
+@import '../shared/partitions/aside.css';
+
+@import '../shared/sectionAddComment.css';
 @import '../shared/toasts.css';
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-body.modalOpen {
-    overflow: hidden;
-}
-
-body {
-    overflow-y: scroll;
-
-    #divMainContainer {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-@media screen and (min-width: 767px) {
-    body {
-
-        #divMainContainer {
-            display: grid;
-            grid-template-areas: 'nav main aside';
-            grid-template-columns: 15fr 80fr 5fr;
-            scrollbar-width: medium;
-            scrollbar-color: var(--lightGrey) var(--black);
-        }
-    }
-}
-
-@media screen and (min-width: 1023px) {
-    body {
-        #divMainContainer {
-            grid-template-columns: 10fr 70fr 20fr;
-        }
-    }
-}
-
-@media screen and (min-width: 1439px) {
-    body {
-        #divMainContainer {
-            grid-template-columns: 25fr 43fr 32fr;
-        }
-    }
-
-}
+@import '../shared/articlePost.css';
+@import '../shared/spinner.css';

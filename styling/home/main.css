@@ -1,560 +1,183 @@
-#divMainContainer {
-    main {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
+#sectionCreatePost {
+    display: none;
+    padding: 1rem;
+    border-bottom: 1px solid rgb(48, 51, 54);
 
-        #headerMain {
+    #formCreatePost {
+
+        #sectionCreatePostInputs {
             display: flex;
-            border-bottom: 1px solid rgb(48, 51, 54);
+            flex-direction: row;
+            gap: 0.8rem;
 
-            .selectedHeaderButton {
-                span {
-                    border-bottom: 2px solid rgb(29, 155, 240);
-                    color: white;
-                }
-
-            }
-
-            button {
-                background-color: rgba(0, 0, 0, 0.4);
-                border: none;
-                color: rgb(170, 170, 170);
-                width: 50%;
-                padding: 0.8rem 0;
-                cursor: pointer;
-
-                &:hover {
-                    background-color: rgb(40, 40, 40);
-                }
-
-                span {
-                    font-size: 0.9rem;
-                    font-weight: 500;
-                    padding: 0.8rem 0;
-                }
-
-            }
-        }
-
-        #sectionCreatePost {
-            display: none;
-            padding: 1rem;
-            border-bottom: 1px solid rgb(48, 51, 54);
-
-            #formCreatePost {
-
-                #sectionCreatePostInputs {
-                    display: flex;
-                    flex-direction: row;
-                    gap: 0.8rem;
-
-                    #imgCreatePostAvatar {
-                        height: 2.5rem;
-                        width: 2.5rem;
-                        border-radius: 50%;
-                        object-fit: cover;
-                        object-position: center;
-                    }
-
-                    input {
-                        width: 100%;
-                        background-color: black;
-                        border: none;
-                        color: white;
-                        font-size: 1.2rem;
-
-                        &:focus {
-                            outline: none;
-                        }
-                    }
-                }
-
-                #sectionCreatePostTypes {
-                    color: rgb(29, 155, 240);
-                    display: flex;
-                    gap: 0.25rem;
-                    width: 100%;
-                    padding: 1rem 0 0 3rem;
-                    position: relative;
-
-                    div {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        cursor: pointer;
-                        padding: 0.05rem 0.25rem;
-
-                        &:hover {
-                            background-color: rgb(12, 53, 81);
-                            border-radius: 50%;
-                        }
-                    }
-
-                    #btnSubmitPost {
-                        padding: 0.5rem 1rem;
-                        font-size: 0.9rem;
-                        font-weight: 600;
-                        background-color: rgb(170, 170, 170);
-                        border-radius: 1.5rem;
-                        border: none;
-                        height: 2rem;
-
-                        margin-left: auto;
-                    }
-                }
-            }
-        }
-
-        #sectionLoadMorePosts {
-            border-bottom: 1px solid rgb(48, 51, 54);
-
-            button {
-                border: none;
-                background-color: black;
-                font-weight: 400;
-                font-size: 0.9rem;
-                cursor: pointer;
-                width: 100%;
-                height: 3rem;
-                color: rgb(29, 155, 240);
-
-                &:hover {
-                    background-color: rgb(10, 10, 10);
-                }
-            }
-        }
-
-        .articlePost {
-            position: relative;
-            padding: 1rem 4rem 1rem 4.5rem;
-            border-bottom: 1px solid rgb(48, 51, 54);
-
-            .imgPostAvatar {
+            #imgCreatePostAvatar {
                 height: 2.5rem;
                 width: 2.5rem;
                 border-radius: 50%;
                 object-fit: cover;
                 object-position: center;
-                position: absolute;
-                top: 1rem;
-                left: 1rem;
             }
 
-            .sectionPostOptions {
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
+            input {
+                width: 100%;
+                background-color: black;
+                border: none;
+                color: white;
+                font-size: 1.2rem;
 
-                display: flex;
-                align-items: center;
-
-                color: rgb(170, 170, 170);
-                gap: 0.5rem;
-            }
-
-            .sectionMorePostOptions {
-                position: absolute;
-                bottom: 1rem;
-                right: 1rem;
-
-                display: flex;
-                align-items: center;
-                color: rgb(170, 170, 170);
-                gap: 0.5rem;
-            }
-
-            .headerPostUser,
-            .headerRepostUser {
-                display: flex;
-                align-items: center;
-                gap: 0.25rem;
-                margin-bottom: 0.5rem;
-
-                .spanPostUserFullName {
-                    font-weight: 600;
-                    margin-right: 0.25rem;
-                    font-size: 0.9rem;
+                &:focus {
+                    outline: none;
                 }
-
-                .spanPostUserHandle,
-                .spanPostDotSeparator,
-                .spanPostTime {
-                    color: rgb(170, 170, 170);
-                    font-size: 0.8rem;
-                }
-            }
-
-            .pPostContent {
-                font-size: 0.9rem;
-            }
-
-            .sectionPostPicture {
-                img {
-                    border-radius: 1rem;
-                    margin-top: 1rem;
-                    height: auto;
-                    max-width: 400px;
-                }
-            }
-
-            .sectionRepost {
-                border: 1px solid rgb(48, 51, 54);
-                border-radius: 1rem;
-                padding: 1rem;
-                margin-top: 1rem;
-                background-color: var(--darkestGrey);
-
-                .imgRepostAvatar {
-                    top: 1rem;
-                    left: 1rem;
-                    height: 1.5rem;
-                    width: 1.5rem;
-                    border-radius: 50%;
-                }
-
-                .sectionRepostPicture {
-                    max-width: 500px;
-                    height: auto;
-                    margin-top: 1rem;
-
-                    img {
-                        border-radius: 1rem;
-                        width: 100%;
-                        height: 100%;
-                    }
-                }
-            }
-
-            .footerPostActions {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 0.75rem;
-                width: 90%;
-
-
-                .sectionPostAction {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.25rem;
-                    cursor: pointer;
-                    color: rgb(170, 170, 170);
-
-                    .spanPostActionCount {
-                        font-size: 0.7rem;
-                    }
-
-                    &:hover {
-                        color: rgb(29, 155, 240);
-                    }
-                }
-
-                .triggered {
-                    color: var(--red) !important;
-                }
-
             }
         }
 
+        #sectionCreatePostTypes {
+            color: rgb(29, 155, 240);
+            display: flex;
+            gap: 0.25rem;
+            width: 100%;
+            padding: 1rem 0 0 3rem;
+            position: relative;
 
-        .circle-loader {
-            width: 25px;
-            height: 25px;
-            border: 3px solid rgba(29, 155, 240, 0.25);
-            border-top-color: #1d9bf0;
-            border-radius: 50%;
-            display: block;
-            margin: 40px auto;
-            animation: spin 0.8s linear infinite;
-            margin-bottom: 4.5rem;
+            div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                padding: 0.05rem 0.25rem;
+
+                &:hover {
+                    background-color: rgb(12, 53, 81);
+                    border-radius: 50%;
+                }
+            }
+
+            #btnSubmitPost {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+                font-weight: 600;
+                background-color: rgb(170, 170, 170);
+                border-radius: 1.5rem;
+                border: none;
+                height: 2rem;
+
+                margin-left: auto;
+            }
+        }
+    }
+}
+
+#sectionLoadMorePosts {
+    border-bottom: 1px solid rgb(48, 51, 54);
+
+    button {
+        border: none;
+        background-color: black;
+        font-weight: 400;
+        font-size: 0.9rem;
+        cursor: pointer;
+        width: 100%;
+        height: 3rem;
+        color: rgb(29, 155, 240);
+
+        &:hover {
+            background-color: rgb(10, 10, 10);
         }
     }
 }
 
 @media screen and (min-width: 760px) {
+    #sectionCreatePost {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid rgb(48, 51, 54);
 
-    #divMainContainer {
-        main {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
+        #formCreatePost {
 
-            border-left: 1px solid rgb(48, 51, 54);
-            border-right: 1px solid rgb(48, 51, 54);
-
-            grid-area: main;
-
-
-            #headerMain {
-                position: sticky;
-                top: 0;
+            #sectionCreatePostInputs {
                 display: flex;
-                border-bottom: 1px solid rgb(48, 51, 54);
-                z-index: 1;
+                flex-direction: row;
+                gap: 0.8rem;
 
-                .selectedHeaderButton {
-                    span {
-                        border-bottom: 2px solid rgb(29, 155, 240);
-                        color: white;
-                    }
-
-                }
-
-                button {
-                    background-color: rgba(0, 0, 0, 0.4);
-                    backdrop-filter: blur(10px);
-                    border: none;
-                    color: rgb(170, 170, 170);
-                    width: 50%;
-                    padding: 0.8rem 0;
-                    cursor: pointer;
-
-                    &:hover {
-                        background-color: rgb(40, 40, 40);
-                    }
-
-                    span {
-                        font-size: 0.9rem;
-                        font-weight: 500;
-                        padding: 0.8rem 0;
-                    }
-
-                }
-            }
-
-            #sectionCreatePost {
-                display: block;
-                padding: 1rem;
-                border-bottom: 1px solid rgb(48, 51, 54);
-
-                #formCreatePost {
-
-                    #sectionCreatePostInputs {
-                        display: flex;
-                        flex-direction: row;
-                        gap: 0.8rem;
-
-                        #imgCreatePostAvatar {
-                            height: 2.5rem;
-                            width: 2.5rem;
-                            border-radius: 50%;
-                            object-fit: cover;
-                            object-position: center;
-                        }
-
-                        input {
-                            width: 100%;
-                            background-color: black;
-                            border: none;
-                            color: white;
-                            font-size: 1.2rem;
-                            margin-top: 0.5rem;
-                            margin-bottom: 4rem;
-
-                            &:focus {
-                                outline: none;
-                            }
-                        }
-                    }
-
-                    #sectionCreatePostTypes {
-                        color: rgb(29, 155, 240);
-                        display: flex;
-                        gap: 0.25rem;
-                        width: 100%;
-                        padding: 1rem 0 0 3rem;
-                        position: relative;
-
-                        div {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            cursor: pointer;
-                            padding: 0.05rem 0.25rem;
-
-                            &:hover {
-                                background-color: rgb(12, 53, 81);
-                                border-radius: 50%;
-                            }
-                        }
-
-                        #btnSubmitPost {
-                            padding: 0.5rem 1rem;
-                            font-size: 0.9rem;
-                            font-weight: 600;
-                            background-color: rgb(170, 170, 170);
-                            border-radius: 1.5rem;
-                            border: none;
-                            height: 2rem;
-
-                            margin-left: auto;
-                        }
-                    }
-
-
-                }
-
-
-            }
-
-            #sectionLoadMorePosts {
-                border-bottom: 1px solid rgb(48, 51, 54);
-
-                button {
-                    border: none;
-                    background-color: black;
-                    font-weight: 400;
-                    font-size: 0.9rem;
-                    cursor: pointer;
-                    width: 100%;
-                    height: 3rem;
-                    color: rgb(29, 155, 240);
-
-                    &:hover {
-                        background-color: rgb(10, 10, 10);
-                    }
-                }
-            }
-
-            .articlePost {
-                position: relative;
-                padding: 1rem 4rem 1rem 4.5rem;
-                border-bottom: 1px solid rgb(48, 51, 54);
-
-                .imgPostAvatar {
+                #imgCreatePostAvatar {
                     height: 2.5rem;
                     width: 2.5rem;
                     border-radius: 50%;
                     object-fit: cover;
                     object-position: center;
-                    position: absolute;
-                    top: 1rem;
-                    left: 1rem;
                 }
 
-                .sectionPostOptions {
-                    position: absolute;
-                    top: 1rem;
-                    right: 1rem;
+                input {
+                    width: 100%;
+                    background-color: black;
+                    border: none;
+                    color: white;
+                    font-size: 1.2rem;
+                    margin-top: 0.5rem;
+                    margin-bottom: 4rem;
 
-                    display: flex;
-                    align-items: center;
-
-                    color: rgb(170, 170, 170);
-                    gap: 0.5rem;
-                }
-
-                .sectionMorePostOptions {
-                    position: absolute;
-                    bottom: 1rem;
-                    right: 1rem;
-
-                    display: flex;
-                    align-items: center;
-                    color: rgb(170, 170, 170);
-                    gap: 0.5rem;
-                }
-
-                .headerPostUser,
-                .headerRepostUser {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.25rem;
-                    margin-bottom: 0.5rem;
-
-                    .spanPostUserFullName {
-                        font-weight: 600;
-                        margin-right: 0.25rem;
-                        font-size: 0.9rem;
-                    }
-
-                    .spanPostUserHandle,
-                    .spanPostDotSeparator,
-                    .spanPostTime {
-                        color: rgb(170, 170, 170);
-                        font-size: 0.8rem;
+                    &:focus {
+                        outline: none;
                     }
                 }
+            }
 
-                .pPostContent {
-                    font-size: 0.9rem;
-                }
+            #sectionCreatePostTypes {
+                color: rgb(29, 155, 240);
+                display: flex;
+                gap: 0.25rem;
+                width: 100%;
+                padding: 1rem 0 0 3rem;
+                position: relative;
 
-                .sectionPostPicture {
-                    img {
-                        border-radius: 1rem;
-                        margin-top: 1rem;
-                        height: auto;
-                        max-width: 400px;
-                    }
-                }
+                div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    padding: 0.05rem 0.25rem;
 
-                .sectionRepost {
-                    border: 1px solid rgb(48, 51, 54);
-                    border-radius: 1rem;
-                    padding: 1rem;
-                    margin-top: 1rem;
-
-                    .imgRepostAvatar {
-                        top: 1rem;
-                        left: 1rem;
-                        height: 1.5rem;
-                        width: 1.5rem;
+                    &:hover {
+                        background-color: rgb(12, 53, 81);
                         border-radius: 50%;
                     }
-
-                    .sectionRepostPicture {
-                        max-width: 500px;
-                        height: auto;
-                        margin-top: 1rem;
-
-                        img {
-                            border-radius: 1rem;
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
                 }
 
-                .footerPostActions {
-                    display: flex;
-                    justify-content: space-between;
-                    margin-top: 0.75rem;
-                    width: 90%;
+                #btnSubmitPost {
+                    padding: 0.5rem 1rem;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    background-color: rgb(170, 170, 170);
+                    border-radius: 1.5rem;
+                    border: none;
+                    height: 2rem;
 
-
-                    .sectionPostAction {
-                        display: flex;
-                        align-items: center;
-                        gap: 0.25rem;
-                        cursor: pointer;
-                        color: rgb(170, 170, 170);
-
-                        .spanPostActionCount {
-                            font-size: 0.7rem;
-                        }
-
-                        &:hover {
-                            color: rgb(29, 155, 240);
-                        }
-                    }
-
+                    margin-left: auto;
                 }
             }
 
 
-            .circle-loader {
-                width: 25px;
-                height: 25px;
-                border: 3px solid rgba(29, 155, 240, 0.25);
-                border-top-color: #1d9bf0;
-                border-radius: 50%;
-                display: block;
-                margin: 40px auto;
-                animation: spin 0.8s linear infinite;
+        }
+
+
+    }
+
+    #sectionLoadMorePosts {
+        border-bottom: 1px solid rgb(48, 51, 54);
+
+        button {
+            border: none;
+            background-color: black;
+            font-weight: 400;
+            font-size: 0.9rem;
+            cursor: pointer;
+            width: 100%;
+            height: 3rem;
+            color: rgb(29, 155, 240);
+
+            &:hover {
+                background-color: rgb(10, 10, 10);
             }
-
-
         }
     }
 }
