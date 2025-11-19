@@ -36,15 +36,20 @@
 	right: 0;
 	height: 36px;
 	background-color: transparent;
-	border: 1px solid var(--lighterGrey);
 	color: var(--perfectWhite);
 	padding: 8px 16px;
-	border-radius: var(--lightBorderRadius);
-	font-size: 0.9rem;
+	border: 1px solid var(--lighterGrey);
+	border-radius: var(--heavyBorderRadius);
+	font-size: 0.8rem;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+#buttonFollow {
+	background-color: var(--perfectWhite);
+	color: var(--black);
 }
 
 #sectionUserData {
