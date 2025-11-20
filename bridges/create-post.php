@@ -1,4 +1,4 @@
-<?php
+ <?php
 try {
     require_once __DIR__ . "/../x.php";
 

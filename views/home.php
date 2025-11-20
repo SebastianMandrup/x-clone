@@ -168,6 +168,7 @@ if (!isset($_SESSION["user"])) {
                         AND phl.user_fk = :current_user_pk
                         AND phl.like_deleted_at IS NULL
 
+                    WHERE p.post_deleted_at IS NULL
                     ORDER BY p.post_created_at DESC";
 
             $stmt = $_db->prepare($sql);
