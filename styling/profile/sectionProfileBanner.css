@@ -1,5 +1,32 @@
 #sectionProfileBanner {
 	border-bottom: 1px solid var(--grey);
+
+
+	#buttonEditProfile,
+	.btnFollow,
+	.btnUnfollow {
+		position: relative;
+		top: 18px;
+		right: 0;
+		height: 36px;
+		background-color: transparent;
+		color: var(--perfectWhite);
+		padding: 8px 16px;
+		border: 1px solid var(--lighterGrey);
+		border-radius: var(--heavyBorderRadius);
+		font-size: 0.8rem;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.btnFollow,
+	.btnUnfollow {
+		background-color: var(--perfectWhite);
+		color: var(--black);
+	}
+
 }
 
 #divDefaultBanner,
@@ -27,30 +54,9 @@
 	height: 140px;
 	background-color: var(--darkGrey);
 	object-fit: cover;
+
 }
 
-#buttonEditProfile,
-#buttonFollow {
-	position: relative;
-	top: 18px;
-	right: 0;
-	height: 36px;
-	background-color: transparent;
-	color: var(--perfectWhite);
-	padding: 8px 16px;
-	border: 1px solid var(--lighterGrey);
-	border-radius: var(--heavyBorderRadius);
-	font-size: 0.8rem;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-#buttonFollow {
-	background-color: var(--perfectWhite);
-	color: var(--black);
-}
 
 #sectionUserData {
 	display: flex;

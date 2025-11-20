@@ -11,6 +11,7 @@
 			FROM users 
 			LEFT JOIN follows ON users.user_pk = follows.followed_user_fk AND follows.following_user_fk = :userPk
 			WHERE follows.followed_user_fk IS NULL
+			OR follows.follow_deleted_at IS NOT NULL
 			AND user_pk != :userPk 
 			ORDER BY user_pk 
 			LIMIT 4;
