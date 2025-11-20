@@ -5,7 +5,7 @@ try {
 	session_start();
 
 	if (!isset($_SESSION['user'])) {
-		throw new Exception("User not logged in.");
+		throw new Exception("User not logged in.", 401);
 	}
 
 	require_once __DIR__ . '/../x.php';

@@ -1,6 +1,6 @@
 <section class='sectionRepost'>
     <header class='headerRepostUser'>
-        <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Avatar" class='imgRepostAvatar'>
+        <img src="https://ui-avatars.com/api/?name=<?php muoEcho($post["ref_user_name"]) ?>&background=random" alt="Avatar" class='imgRepostAvatar'>
         <a class='aPostUserFullName'>
             <?php muoEcho($post["ref_user_name"]) ?>
         </a>
