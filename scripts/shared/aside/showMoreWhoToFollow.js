@@ -1,6 +1,6 @@
 const btnShowMoreWhoToFollow = document.getElementById('btnShowMoreWhoToFollow');
 
-btnShowMoreWhoToFollow.addEventListener('click', async function () {
+btnShowMoreWhoToFollow && btnShowMoreWhoToFollow.addEventListener('click', async function () {
 
 	const sectionWhoToFollow = document.getElementById('sectionWhoToFollow');
 	const sectionWhoToFollowHeader = sectionWhoToFollow.querySelector('header');

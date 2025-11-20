@@ -204,7 +204,8 @@ aside {
                         }
                     }
 
-                    .btnFollow {
+                    .btnFollow,
+                    .btnUnfollow {
                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
                         font-size: 0.8rem;
                         font-weight: 600;

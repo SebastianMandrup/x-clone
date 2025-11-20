@@ -34,12 +34,11 @@
 
     <?php
     if ($post["ref_post_image"]) {
-        muoEcho(
-            "
-            <section class='sectionRepostPicture'>
-            <img src=" . $post['ref_post_image'] . ">
-            </section>"
-        );
+    ?>
+        <section class='sectionRepostPicture'>
+            <img src="<?php muoEcho($post['ref_post_image']); ?>">
+        </section>
+    <?php
     }
     ?>
 </section>

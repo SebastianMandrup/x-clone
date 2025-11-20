@@ -49,15 +49,15 @@ require_once __DIR__ . '/../../x.php';
         <?php muoEcho($post["post_content"]) ?>
     </p>
     <?php
+    if ($post["post_image"] != "") {
+    ?>
+        <section class='sectionPostPicture'>
+            <img src="<?php muoEcho($post['post_image']); ?>">
+        </section>
+    <?php
+    }
     if ($post["ref_post_pk"]) {
         include __DIR__ . '/repost.php';
-    } else if ($post["post_image"] != "") {
-        muoEcho(
-            "
-            <section class='sectionPostPicture'>
-            <img src=" . $post['post_image'] . ">
-            </section>"
-        );
     }
     ?>
 

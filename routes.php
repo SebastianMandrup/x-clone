@@ -10,6 +10,8 @@ get('/$username', 'views/profile.php');
 post('/api/like-post', 'api/like-post.php');
 post('/api/search', 'api/search.php');
 post('/api/add-comment', 'api/add-comment.php');
+post('/api/follow-user', 'api/follow-user.php');
+post('/api/unfollow-user', 'api/unfollow-user.php');
 get('/api/get-trends', 'api/get-trends.php');
 get('/api/get-who-to-follow', 'api/get-who-to-follow.php');
 
