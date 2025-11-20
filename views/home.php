@@ -1,11 +1,6 @@
 <?php
+require_once __DIR__ . "/../services/protect-route.php";
 require_once __DIR__ . "../../x.php";
-muoNoCache();
-session_start();
-if (!isset($_SESSION["user"])) {
-    header("Location: /?errorToast=" . urlencode("You must be logged in to access the home page."));
-    exit();
-}
 ?>
 
 <!DOCTYPE html>

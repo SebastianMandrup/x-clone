@@ -4,6 +4,11 @@
 	border-bottom: 1px solid rgb(48, 51, 54);
 }
 
+.articlePost:hover {
+	background-color: var(--darkerGrey);
+	cursor: pointer;
+}
+
 .imgPostAvatar {
 	height: 2.5rem;
 	width: 2.5rem;

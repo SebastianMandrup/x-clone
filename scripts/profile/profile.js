@@ -9,5 +9,6 @@ import '../shared/nav/sectionUserInfo.js';
 import '../shared/toasts.js';
 
 import '../shared/followUser.js';
+import '../shared/posts.js';
 import '../shared/unfollowUser.js';
 
