@@ -4,37 +4,47 @@ muoNoCache();
 session_start();
 
 if (!isset($_SESSION["user"])) {
-	header("Location: /?errorToast=" . urlencode("You must be logged in to access a profile page."));
-	exit();
+    header("Location: /?errorToast=" . urlencode("You must be logged in to access a profile page."));
+    exit();
 }
 
 require_once __DIR__ . '../../db_connector.php';
 
 $sql = "
-	SELECT 
-    users.user_pk, 
-    users.user_name, 
-    users.user_email, 
-    users.user_birthday, 
-    users.user_handle,
-    users.user_banner,
-    COUNT(posts.post_pk) AS post_count,
-    (SELECT COUNT(*) FROM follows WHERE followed_user_fk = users.user_pk AND follow_deleted_at = 0) AS followers_count,
-    (SELECT COUNT(*) FROM follows WHERE following_user_fk = users.user_pk AND follow_deleted_at = 0) AS following_count
-	FROM users 
-	LEFT JOIN posts ON users.user_pk = posts.post_user_fk
-	WHERE users.user_handle = :userHandle
-	GROUP BY users.user_pk, users.user_name, users.user_email, users.user_birthday, users.user_handle, users.user_banner
-	LIMIT 1;
+        SELECT 
+            users.user_pk, 
+            users.user_name, 
+            users.user_email, 
+            users.user_birthday, 
+            users.user_handle,
+            users.user_banner,
+            COUNT(posts.post_pk) AS post_count,
+            (SELECT COUNT(*) FROM follows WHERE followed_user_fk = users.user_pk AND follow_deleted_at IS NULL) AS followers_count,
+            (SELECT COUNT(*) FROM follows WHERE following_user_fk = users.user_pk AND follow_deleted_at IS NULL) AS following_count,
+            -- Check if session user is following this user
+            CASE 
+                WHEN :sessionUserPk IS NOT NULL THEN 
+                    EXISTS (SELECT 1 FROM follows 
+                            WHERE following_user_fk = :sessionUserPk 
+                            AND followed_user_fk = users.user_pk 
+                            AND follow_deleted_at IS NULL)
+                ELSE FALSE
+            END AS is_following
+        FROM users 
+        LEFT JOIN posts ON users.user_pk = posts.post_user_fk
+        WHERE users.user_handle = :userHandle
+        GROUP BY users.user_pk, users.user_name, users.user_email, users.user_birthday, users.user_handle, users.user_banner
+        LIMIT 1;
 ";
 $stmt = $_db->prepare($sql);
 $stmt->bindValue(':userHandle', $username);
+$stmt->bindValue(':sessionUserPk', $_SESSION['user']['user_pk'] ?? null, PDO::PARAM_INT);
 $stmt->execute();
 $user = $stmt->fetch();
 
 if (!$user) {
-	header("Location: /home?errorToast=" . urlencode("The requested profile does not exist."));
-	exit();
+    header("Location: /home?errorToast=" . urlencode("The requested profile does not exist."));
+    exit();
 }
 
 ?>
@@ -43,31 +53,31 @@ if (!$user) {
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./styling/profile/profile.css">
-	<link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
-	<script src='./scripts/profile/profile.js' type='module'></script>
-	<title> PROFILE / <?php muoEcho($username); ?></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styling/profile/profile.css">
+    <link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
+    <script src='./scripts/profile/profile.js' type='module'></script>
+    <title> PROFILE / <?php muoEcho($username); ?></title>
 </head>
 
 <body>
 
-	<div id='divMainContainer'>
+    <div id='divMainContainer'>
 
-		<?php require __DIR__ . '/../components/nav.php'; ?>
+        <?php require __DIR__ . '/../components/nav.php'; ?>
 
-		<main>
+        <main>
 
-			<?php require_once __DIR__ . '/../components/sections/profileHeader.php'; ?>
-			<?php require_once __DIR__ . '/../components/sections/profileBanner.php'; ?>
-
-
-			<?php
-			require_once __DIR__ . '../../db_connector.php';
+            <?php require_once __DIR__ . '/../components/sections/profileHeader.php'; ?>
+            <?php require_once __DIR__ . '/../components/sections/profileBanner.php'; ?>
 
 
-			$sql = "SELECT 
+            <?php
+            require_once __DIR__ . '../../db_connector.php';
+
+
+            $sql = "SELECT 
                     p.post_pk,
                     p.post_content,
                     p.post_image,
@@ -113,27 +123,27 @@ if (!$user) {
 					WHERE p.post_user_fk = :profile_user_pk AND p.post_deleted_at IS NULL
                     ORDER BY p.post_created_at DESC";
 
-			$stmt = $_db->prepare($sql);
-			$stmt->bindValue(':current_user_pk', $_SESSION['user']['user_pk']);
-			$stmt->bindValue(':profile_user_pk', $user['user_pk']);
-			$stmt->execute();
+            $stmt = $_db->prepare($sql);
+            $stmt->bindValue(':current_user_pk', $_SESSION['user']['user_pk']);
+            $stmt->bindValue(':profile_user_pk', $user['user_pk']);
+            $stmt->execute();
 
-			$posts = $stmt->fetchAll();
-			foreach ($posts as $post) {
-				require __DIR__ . '../../components/articles/post.php';
-			}
+            $posts = $stmt->fetchAll();
+            foreach ($posts as $post) {
+                require __DIR__ . '../../components/articles/post.php';
+            }
 
-			?>
+            ?>
 
 
-			<div class="circle-loader"></div>
-		</main>
+            <div class="circle-loader"></div>
+        </main>
 
-		<?php require __DIR__ . '/../components/aside.php'; ?>
+        <?php require __DIR__ . '/../components/aside.php'; ?>
 
-	</div>
+    </div>
 
-	<?php require __DIR__ . '/../components/commentOverlay.php'; ?>
+    <?php require __DIR__ . '/../components/commentOverlay.php'; ?>
 
 </body>
 

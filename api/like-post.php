@@ -3,8 +3,14 @@ try {
 
 	require_once __DIR__ . '/../x.php';
 
+	session_start();
+
+	if (!isset($_SESSION["user"])) {
+		throw new Exception("User not authenticated", 401);
+	}
+
 	$postPk = validatePk('postPk');
-	$userPk = validatePk('userPk');
+	$userPk = $_SESSION["user"]["user_pk"];
 
 	require_once __DIR__ . '/../db_connector.php';
 
@@ -58,6 +64,7 @@ try {
 		'message' => "user liked the post"
 	]);
 } catch (Exception $e) {
+	http_response_code($e->getCode() ?: 500);
 	echo json_encode([
 		'status' => 'error',
 		'message' => $e->getMessage()

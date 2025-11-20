@@ -5,6 +5,11 @@ try {
 	require_once __DIR__ . '/../x.php';
 
 	session_start();
+
+	if (!isset($_SESSION["user"])) {
+		throw new Exception("User not authenticated", 401);
+	}
+
 	$userPk = $_SESSION["user"]["user_pk"];
 	$postPk = validatePk('postPk');
 	$commentContent = validateCommentContent();

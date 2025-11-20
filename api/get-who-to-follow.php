@@ -5,7 +5,7 @@ try {
 	session_start();
 
 	if (!isset($_SESSION['user'])) {
-		throw new Exception("User not logged in.");
+		throw new Exception("User not logged in.", 401);
 	}
 
 	require_once __DIR__ . '/../x.php';
@@ -17,7 +17,14 @@ try {
 	$LIMIT = 4;
 	$OFFSET = ($page - 1) * ($LIMIT - 1);
 
-	$sql = "SELECT user_pk, user_name, user_handle FROM users WHERE user_pk != :userPk ORDER BY user_pk LIMIT :_limit OFFSET :offset;";
+	$sql = "SELECT user_pk, user_name, user_handle 
+			FROM users 
+			LEFT JOIN follows ON users.user_pk = follows.followed_user_fk AND follows.following_user_fk = :userPk
+			WHERE follows.followed_user_fk IS NULL
+			AND user_pk != :userPk 
+			ORDER BY user_pk 
+			LIMIT :_limit OFFSET :offset;
+	";
 	$stmt = $_db->prepare($sql);
 	$stmt->bindValue(':userPk', $_SESSION['user']['user_pk']);
 	$stmt->bindValue(':_limit', $LIMIT, PDO::PARAM_INT);

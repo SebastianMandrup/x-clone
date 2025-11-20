@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mariadb
--- Generation Time: Nov 19, 2025 at 10:17 PM
+-- Generation Time: Nov 20, 2025 at 06:04 PM
 -- Server version: 10.6.20-MariaDB-ubu2004
 -- PHP Version: 8.3.26
 
@@ -72,8 +72,16 @@ CREATE TABLE `follows` (
   `following_user_fk` char(50) NOT NULL,
   `followed_user_fk` char(50) NOT NULL,
   `follow_created_at` bigint(20) UNSIGNED NOT NULL,
-  `follow_deleted_at` bigint(20) UNSIGNED NOT NULL
+  `follow_deleted_at` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `follows`
+--
+
+INSERT INTO `follows` (`following_user_fk`, `followed_user_fk`, `follow_created_at`, `follow_deleted_at`) VALUES
+('1234561', '12345', 1763661481, 1763661736),
+('1234561', 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763661400, 1763661737);
 
 -- --------------------------------------------------------
 
@@ -107,7 +115,7 @@ INSERT INTO `likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted_at`)
 ('c4cc166eed2dd30c6c9ecc328be7752e80c2966f86a627e1cb', 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763567913, 1763567914),
 ('d6e8549a3b1bd903a6ee2546fa4836a75e5c790db8bee8a572', 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763567728, NULL),
 ('e32dd06cb4fc1ac44565795f9f6dccff2b91a723eb032db20e', '12345', 1763577029, NULL),
-('f55ae31185245855d93a2d195c3289ced3e311728463288785', '12345', 1763577028, NULL),
+('f55ae31185245855d93a2d195c3289ced3e311728463288785', '12345', 1763577028, 1763648848),
 ('f55ae31185245855d93a2d195c3289ced3e311728463288785', 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763569934, 1763571872),
 ('fb999bf4bcdaedcbf4c1dffd5a0e44b1a6ef9d656911471083', '12345', 1763478301, 1763478307);
 
@@ -136,7 +144,7 @@ INSERT INTO `posts` (`post_pk`, `post_content`, `post_image`, `post_reference`, 
 ('1b8e98197a9301a10e5f5824cb704aaa447186ec84ef7d87c7', 'new post', NULL, NULL, '12345', 1763474461, 0),
 ('45bef48541cfcfe47fc94b481f2780a555f9d625324401e2e2', '11111111', NULL, NULL, 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763565440, NULL),
 ('468122919d41804f57b1f806de4998d6e8d1cff0da0d59ef9a', 'testing again', NULL, NULL, '1234561', 1758676513, 0),
-('69fa74d9b6973c336eeb5d6cfa3ad7b1d78e19ccc964afd301', 'tests', NULL, NULL, '12345', 1763505820, NULL),
+('69fa74d9b6973c336eeb5d6cfa3ad7b1d78e19ccc964afd301', 'tests', 'https://pbs.twimg.com/profile_images/1975532666242949120/63VlQ3ml_400x400.jpg', NULL, '12345', 1763505820, NULL),
 ('b163d6c2708fb7b3802f1f0dc1c07f3314bf6ce84b7b2f0db6', 'test three', NULL, NULL, '1234561', 1758676513, 0),
 ('c4cc166eed2dd30c6c9ecc328be7752e80c2966f86a627e1cb', 'asdasdasd', NULL, NULL, 'b48f57e0506656c0701066ec12d116e45e2a02b60f8cf1ddea', 1763567778, NULL),
 ('d6e8549a3b1bd903a6ee2546fa4836a75e5c790db8bee8a572', '123123123123', NULL, NULL, '12345', 1763565353, NULL),
@@ -246,8 +254,8 @@ ALTER TABLE `comments`
 -- Indexes for table `follows`
 --
 ALTER TABLE `follows`
-  ADD KEY `followed_user_fk` (`followed_user_fk`),
-  ADD KEY `following_user_fk` (`following_user_fk`);
+  ADD PRIMARY KEY (`following_user_fk`,`followed_user_fk`),
+  ADD KEY `followed_user_fk` (`followed_user_fk`);
 
 --
 -- Indexes for table `likes`

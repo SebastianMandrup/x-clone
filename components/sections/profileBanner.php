@@ -14,8 +14,11 @@
 				Edit profile
 			</button>
 		<?php else : ?>
-			<button id='buttonFollow'>
+			<button class='btnFollow <?php muoEcho($user["is_following"] ? 'hidden' : ''); ?>' data-user-pk='<?php muoEcho($user["user_pk"]); ?>'>
 				Follow
+			</button>
+			<button class='btnUnfollow <?php muoEcho($user["is_following"] ? '' : 'hidden'); ?>' data-user-pk='<?php muoEcho($user["user_pk"]); ?>'>
+				Unfollow
 			</button>
 		<?php endif; ?>
 	</section>

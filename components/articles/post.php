@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/../../x.php';
 ?>
-<article class='articlePost' data-post-pk='<?php muoEcho($post["post_pk"]) ?>' data-user-pk='<?php muoEcho($_SESSION["user"]["user_pk"]) ?>'>
-    <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Avatar" class='imgPostAvatar'>
+<article class='articlePost' data-post-pk='<?php muoEcho($post["post_pk"]) ?>'>
+    <img src="https://ui-avatars.com/api/?name=<?php muoEcho($post["user_name"]) ?>&background=random" alt="Avatar" class='imgPostAvatar'>
     <section class='sectionPostOptions'>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 32" width="20" height="20" fill="currentColor"
             aria-hidden="true">
@@ -49,15 +49,15 @@ require_once __DIR__ . '/../../x.php';
         <?php muoEcho($post["post_content"]) ?>
     </p>
     <?php
+    if ($post["post_image"] != "") {
+    ?>
+        <section class='sectionPostPicture'>
+            <img src="<?php muoEcho($post['post_image']); ?>">
+        </section>
+    <?php
+    }
     if ($post["ref_post_pk"]) {
         include __DIR__ . '/repost.php';
-    } else if ($post["post_image"] != "") {
-        muoEcho(
-            "
-            <section class='sectionPostPicture'>
-            <img src=" . $post['post_image'] . ">
-            </section>"
-        );
     }
     ?>
 

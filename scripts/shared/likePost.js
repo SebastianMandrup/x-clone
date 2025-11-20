@@ -8,7 +8,6 @@ document.querySelectorAll('.sectionPostActionLike').forEach(section => {
 
 		const formdata = new FormData();
 		formdata.append('postPk', article.dataset.postPk);
-		formdata.append('userPk', article.dataset.userPk);
 
 		const response = await fetch('/api/like-post', {
 			method: 'POST',
