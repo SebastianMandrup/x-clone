@@ -10,5 +10,6 @@ import '../shared/toasts.js';
 
 import '../shared/followUser.js';
 import '../shared/posts.js';
+import '../shared/repost.js';
 import '../shared/unfollowUser.js';
 

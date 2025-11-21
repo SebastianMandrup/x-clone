@@ -31,6 +31,13 @@
 	}
 	?>
 
+
+	<?php
+	if ($post['ref_post_pk']) {
+		include __DIR__ . '/../articles/repost.php';
+	}
+	?>
+
 	<p id='pFeaturedPostCreatedAt'>
 		<?php
 		// Convert Unix timestamp to DateTime

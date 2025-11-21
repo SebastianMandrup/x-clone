@@ -3,7 +3,7 @@
 // protect against injection
 function muoEcho($text) {
 
-    if (!$text) {
+    if ($text === null) {
         return;
     }
 

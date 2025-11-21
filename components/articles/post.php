@@ -62,6 +62,7 @@ require_once __DIR__ . '/../../x.php';
     ?>
 
     <footer class='footerPostActions'>
+
         <section class='sectionPostAction sectionPostActionComment'>
             <svg xmlns=" http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
                 aria-hidden="true" class="icon-comment">
@@ -73,22 +74,33 @@ require_once __DIR__ . '/../../x.php';
                 <?php muoEcho($post["comment_count"]) ?>
             </span>
         </section>
-        <section class='sectionPostAction'>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
-                aria-hidden="true" class="icon-retweet">
-                <path
-                    d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z">
-                </path>
-            </svg>
-            <span class='spanPostActionCount'>
-                5
-            </span>
-        </section>
-        <section class='sectionPostAction sectionPostActionLike <?php
-                                                                if ($post["liked_by_user"] !== null && $post["like_deleted_at"] === null) {
-                                                                    echo "triggered";
-                                                                }
-                                                                ?>'>
+
+        <?php if (!$post["ref_post_pk"]) { ?>
+            <section class='sectionPostAction sectionPostActionRepost
+        <?php
+            if ($post["reposted_by_user"] !== null && $post["repost_deleted_at"] === null) {
+                echo "triggered";
+            }
+        ?>
+            '>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
+                    aria-hidden="true" class="icon-retweet">
+                    <path
+                        d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z">
+                    </path>
+                </svg>
+                <span class='spanPostActionCount'>
+                    <?php muoEcho($post["repost_count"]) ?>
+                </span>
+            </section>
+        <?php } ?>
+
+        <section class='sectionPostAction sectionPostActionLike 
+        <?php
+        if ($post["liked_by_user"] !== null && $post["like_deleted_at"] === null) {
+            echo "triggered";
+        }
+        ?>'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
                 aria-hidden="true" class="icon-like">
                 <path
@@ -99,6 +111,7 @@ require_once __DIR__ . '/../../x.php';
                 <?php muoEcho($post["like_count"]) ?>
             </span>
         </section>
+
         <section class='sectionPostAction'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
                 aria-hidden="true" class="icon-bars">
@@ -109,6 +122,7 @@ require_once __DIR__ . '/../../x.php';
                 9
             </span>
         </section>
+
     </footer>
     <section class='sectionMorePostOptions'>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"

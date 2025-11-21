@@ -5,22 +5,41 @@ require_once __DIR__ . '../../db_connector.php';
 
 $sql = "
         SELECT 
-			p.post_pk,
-			p.post_content,
-			p.post_image,
-			p.post_reference,
-			p.post_created_at,
-			u.user_pk,
-			u.user_handle,
-			u.user_name
-		FROM posts p
-		INNER JOIN users u
-			ON p.post_user_fk = u.user_pk
+			-- post
+			post.post_pk,
+			post.post_content,
+			post.post_image,
+			post.post_reference,
+			post.post_created_at,
+
+			-- author
+			author.user_pk,
+			author.user_handle,
+			author.user_name,
+
+			-- referenced post
+			rp.post_pk AS ref_post_pk,
+			rp.post_content AS ref_post_content,
+			rp.post_image AS ref_post_image,
+			rp.post_created_at AS ref_post_created_at,
+
+			-- referenced post author
+			ru.user_pk AS ref_user_pk,
+			ru.user_name AS ref_user_name,
+			ru.user_handle AS ref_user_handle
+
+		FROM posts post
+		INNER JOIN users author
+			ON post.post_user_fk = author.user_pk
 		LEFT JOIN comments c
-			ON c.comment_post_fk = p.post_pk
-		WHERE p.post_pk = :postPk
-			AND u.user_handle = :username
-			AND p.post_deleted_at IS NULL
+			ON c.comment_post_fk = post.post_pk
+		LEFT JOIN posts rp
+			ON post.post_reference = rp.post_pk
+		LEFT JOIN users ru
+			ON rp.post_user_fk = ru.user_pk
+		WHERE post.post_pk = :postPk
+			AND author.user_handle = :username
+			AND post.post_deleted_at IS NULL
 	";
 $stmt = $_db->prepare($sql);
 $stmt->bindValue(':postPk', $postPk);
