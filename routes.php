@@ -5,7 +5,7 @@ require_once __DIR__ . '/router.php';
 get('/', 'views/index.php');
 get('/home', 'views/home.php');
 get('/$username', 'views/profile.php');
-get('/$username/posts/$postId', 'views/post.php');
+get('/$username/posts/$postPk', 'views/post.php');
 
 post('/api/like-post', 'api/like-post.php');
 post('/api/search', 'api/search.php');

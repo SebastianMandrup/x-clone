@@ -1,0 +1,13 @@
+@import '../variables.css';
+
+@import './headerMainPost.css';
+@import './featuredPost.css';
+@import './comment.css';
+@import './commentForm.css';
+
+@import '../shared/partitions/main.css';
+@import '../shared/partitions/nav.css';
+@import '../shared/partitions/aside.css';
+
+@import '../shared/toasts.css';
+@import '../shared/articlePost.css';

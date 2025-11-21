@@ -1,0 +1,102 @@
+.articleComment {
+	border-bottom: 1px solid var(--grey);
+	padding: 20px;
+	position: relative;
+}
+
+.btnCommentOptions {
+	height: 30px;
+	width: 30px;
+	background-color: transparent;
+	border: none;
+	color: var(--grey);
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 12px;
+
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+.btnCommentOptions:hover {
+	background-color: var(--darkestBlue);
+	cursor: pointer;
+}
+
+.divCommentAuthorInfo {
+	display: flex;
+	gap: 12px;
+	margin-bottom: 12px;
+}
+
+.imgCommentAuthorAvatar {
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+}
+
+.divCommentAuthorText {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.aCommentAuthorName {
+	color: var(--perfectWhite);
+	font-weight: 600;
+	margin-right: 12px;
+	text-decoration: none;
+}
+
+.aCommentAuthorName:hover {
+	text-decoration: underline;
+}
+
+.pCommentAuthorHandle,
+.pDotSeparator,
+.pCommentCreatedAt {
+	color: var(--grey);
+	font-size: 1rem;
+	margin-right: 12px;
+}
+
+.pCommentContent {
+	margin-top: 8px;
+	margin-left: 54px;
+}
+
+
+.footerCommentActions {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 20px;
+	margin-right: 40px;
+}
+
+.sectionCommentAction {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	cursor: pointer;
+	color: rgb(170, 170, 170);
+}
+
+.spanCommentActionCount {
+	font-size: 0.7rem;
+}
+
+.sectionCommentAction:focus {
+	color: rgb(170, 170, 170);
+}
+
+.sectionCommentAction:hover {
+	color: rgb(29, 155, 240);
+}
+
+.sectionCommentAction.triggered {
+	color: var(--red);
+}

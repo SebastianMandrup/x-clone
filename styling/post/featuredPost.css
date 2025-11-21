@@ -1,0 +1,83 @@
+#sectionFeaturedPost {
+	padding: 20px;
+	border-bottom: 1px solid var(--grey);
+}
+
+#sectionFeaturedPostAuthor {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+
+#sectionFeaturedPostAuthor>div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#imgFeaturedPostAuthorAvatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+#divFeaturedPostAuthorInfo {
+	display: flex;
+	flex-direction: column;
+}
+
+#aFeaturedPostAuthorName {
+	font-weight: bold;
+	font-size: 16px;
+	text-decoration: none;
+	color: var(--white);
+}
+
+#aFeaturedPostAuthorName:hover {
+	text-decoration: underline;
+}
+
+#pFeaturedPostAuthorHandle {
+	color: var(--lightGrey);
+	font-size: 14px;
+}
+
+#btnFeaturedPostOptions {
+	background: none;
+	border: none;
+	color: var(--lightGrey);
+	font-size: 20px;
+	cursor: pointer;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 14px;
+}
+
+#btnFeaturedPostOptions:hover {
+	background-color: var(--darkerGrey);
+}
+
+#pFeaturedPostContent {
+	margin-top: 15px;
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+#imgFeaturedPostImage {
+	height: auto;
+	min-width: 100%;
+	border-radius: var(--lightBorderRadius);
+	margin-top: 15px;
+}
+
+#pFeaturedPostCreatedAt {
+	margin-top: 10px;
+	color: var(--lightGrey);
+	font-size: 16px;
+}
