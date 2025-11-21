@@ -35,6 +35,6 @@ body {
 
 @media screen and (min-width: 1439px) {
 	#divMainContainer {
-		grid-template-columns: 25fr 43fr 32fr;
+		grid-template-columns: 34fr 34fr 32fr;
 	}
 }

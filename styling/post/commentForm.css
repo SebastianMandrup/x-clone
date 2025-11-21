@@ -1,0 +1,71 @@
+#formCreateComment {
+	padding: 20px;
+	border-bottom: 1px solid var(--grey);
+}
+
+#sectionCreatePostInputs {
+	display: flex;
+	flex-direction: row;
+	gap: 12px;
+}
+
+#sectionCreatePostInputs input {
+	width: 100%;
+	background-color: var(--black);
+	border: none;
+	color: var(--perfectWhite);
+	font-size: 1.2rem;
+}
+
+#sectionCreatePostInputs input:focus {
+	outline: none;
+}
+
+#sectionCreatePostInputs input::placeholder {
+	color: var(--grey);
+}
+
+#imgCreateCommentAvatar {
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: center;
+}
+
+#sectionCreateCommentTypes {
+	color: var(--blue);
+	display: flex;
+	gap: 4px;
+	width: 100%;
+	padding: 12px;
+}
+
+#sectionCreateCommentTypes div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	width: 34px;
+	height: 34px;
+}
+
+#sectionCreateCommentTypes div:hover {
+	background-color: var(--darkestBlue);
+	border-radius: 50%;
+}
+
+#btnSubmitComment {
+	margin-left: auto;
+	height: 34px;
+	width: 80px;
+	border-radius: 24px;
+	background-color: var(--lighterGrey);
+	border: none;
+	color: var(--black);
+}
+
+#btnSubmitComment:hover {
+	background-color: var(--lightestGrey);
+	cursor: pointer;
+}
