@@ -2,6 +2,11 @@
 
 // protect against injection
 function muoEcho($text) {
+
+    if ($text === null) {
+        return;
+    }
+
     echo htmlspecialchars($text);
 }
 

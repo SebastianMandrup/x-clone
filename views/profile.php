@@ -88,33 +88,30 @@ if (!$user) {
                     ru.user_name AS ref_user_name,
                     ru.user_handle AS ref_user_handle,
 
-                    -- like information
-                    phl.user_fk AS liked_by_user,
-                    phl.like_deleted_at,
-                    -- like count (no alias needed in subquery)
+                    -- like information (subqueries to avoid duplicates)
                     (SELECT COUNT(*) FROM likes WHERE post_fk = p.post_pk AND like_deleted_at IS NULL) AS like_count,
+                    (SELECT 1 FROM likes WHERE post_fk = p.post_pk AND user_fk = :current_user_pk AND like_deleted_at IS NULL LIMIT 1) AS liked_by_user,
 
                     -- comment count
-                    (SELECT COUNT(*) FROM comments WHERE comment_post_fk = p.post_pk AND comment_deleted_at IS NULL) AS comment_count
+                    (SELECT COUNT(*) FROM comments WHERE comment_post_fk = p.post_pk AND comment_deleted_at IS NULL) AS comment_count,
 
-                    FROM posts p 
-                    INNER JOIN users u 
-                        ON p.post_user_fk = u.user_pk
+                    -- repost information (subqueries to avoid duplicates)
+                    (SELECT COUNT(*) FROM posts WHERE post_reference = p.post_pk AND post_deleted_at IS NULL) AS repost_count,
+                    (SELECT 1 FROM posts WHERE post_reference = p.post_pk AND post_user_fk = :current_user_pk AND post_deleted_at IS NULL LIMIT 1) AS reposted_by_user
 
-                    -- self join to bring in the referenced post
-                    LEFT JOIN posts rp 
-                        ON p.post_reference = rp.post_pk
-                    LEFT JOIN users ru 
-                        ON rp.post_user_fk = ru.user_pk
+                FROM posts p
+                INNER JOIN users u 
+                    ON p.post_user_fk = u.user_pk
 
-                    -- check if current user liked this post
-                    LEFT JOIN likes phl 
-                        ON p.post_pk = phl.post_fk 
-                        AND phl.user_fk = :current_user_pk
-                        AND phl.like_deleted_at IS NULL
+                -- self join to bring in the referenced post
+                LEFT JOIN posts rp 
+                    ON p.post_reference = rp.post_pk
+                LEFT JOIN users ru 
+                    ON rp.post_user_fk = ru.user_pk
 
-					WHERE p.post_user_fk = :profile_user_pk AND p.post_deleted_at IS NULL
-                    ORDER BY p.post_created_at DESC";
+                WHERE p.post_user_fk = :profile_user_pk 
+                    AND p.post_deleted_at IS NULL
+                ORDER BY p.post_created_at DESC";
 
             $stmt = $_db->prepare($sql);
             $stmt->bindValue(':current_user_pk', $_SESSION['user']['user_pk']);
