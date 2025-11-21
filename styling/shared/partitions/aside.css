@@ -82,7 +82,7 @@ aside {
     border-top: 2px solid var(--borderColor);
 }
 
-#divTrends .btnShow {
+.btnShow {
     margin: 0;
     width: 100%;
     padding-top: 0.75rem;
@@ -97,7 +97,7 @@ aside {
     text-align: left;
 }
 
-#divTrends .btnShow :hover {
+.btnShow:hover {
     background-color: var(--darkestGrey);
 }
 
@@ -154,54 +154,72 @@ aside {
     border: 1px solid rgb(48, 51, 54);
     border-radius: 1rem;
     margin: 1rem 0;
+}
 
-    >* {
-        padding: 0.8rem;
-    }
+#sectionWhoToFollow>* {
+    padding: 0.8rem;
+}
 
-    header {
-        font-size: 1.2rem;
-        font-weight: 700;
-        padding-left: 1rem;
-    }
+#sectionWhoToFollow header {
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding-left: 1rem;
+}
 
-    .articlePersonToFollow {
-        display: flex;
+.articlePersonToFollow {
+    display: flex;
+}
 
-        .imgPersonToFollowAvatar {
-            height: 2.2rem;
-            width: 2.2rem;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: center;
-        }
+.imgPersonToFollowAvatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
 
-        .divPersonToFollowNames {
-            display: flex;
-            flex-direction: column;
-            margin-left: 0.5rem;
+.sectionPersonToFollowNames {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5rem;
+}
 
-            .spanPersonToFollowFullName {
-                font-weight: 600;
-                font-size: 0.9rem;
-            }
+.aPersonToFollowFullName {
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: var(--perfectWhite);
+}
 
-            .spanPersonToFollowUserName {
-                font-size: 0.9rem;
-                color: var(--lighterGrey);
-            }
-        }
+.aPersonToFollowFullName:hover {
+    text-decoration: underline;
+}
 
-        .btnFollow,
-        .btnUnfollow {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-left: auto;
-            padding: 0.25rem 1rem;
-            border-radius: 1.5rem;
-        }
-    }
+.pPersonToFollowHandle {
+    font-size: 0.8rem;
+    color: var(--lighterGrey);
+}
+
+.btnFollow,
+.btnUnfollow {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-left: auto;
+    padding: 0.25rem 1rem;
+    border-radius: 1.5rem;
+    max-height: 50px;
+    cursor: pointer;
+}
+
+.btnFollow {
+    background-color: var(--perfectWhite);
+    color: var(--black);
+    border: none;
+}
+
+.btnUnfollow {
+    background-color: var(--black);
+    color: var(--lightGrey);
+    border: 1px solid var(--lighterGrey);
 }
 
 #footerAside {
@@ -210,24 +228,21 @@ aside {
     gap: 0.5rem;
     margin-bottom: 0.5rem;
     justify-content: center;
-
-    a,
-    span,
-    div {
-        font-size: 0.65rem;
-        color: var(--lightGrey);
-
-        text-decoration: none;
-        transition: color 0.2s;
-
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
 }
 
+#footerAside a,
+#footerAside span,
+#footerAside div {
+    font-size: 0.65rem;
+    color: var(--lightGrey);
+    text-decoration: none;
+    transition: color 0.2s;
+}
 
+#footerAside a:hover {
+    text-decoration: underline;
+    color: var(--blue);
+}
 
 @media screen and (min-width: 1024px) {
     aside {

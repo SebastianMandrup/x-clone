@@ -1,13 +1,13 @@
 <article class='articlePersonToFollow'>
-    <img src="https://ui-avatars.com/api/?name=<?php muoEcho($user["user_name"]); ?>&background=random" class='imgPersonToFollowAvatar'>
-    <div class='divPersonToFollowNames'>
-        <span class='spanPersonToFollowFullName'>
+    <img class='imgPersonToFollowAvatar' src="https://ui-avatars.com/api/?name=<?php muoEcho($user["user_name"]); ?>&background=random">
+    <section class='sectionPersonToFollowNames'>
+        <a class='aPersonToFollowFullName' href="/<?php muoEcho($user["user_handle"]); ?>">
             <?php muoEcho($user["user_name"]); ?>
-        </span>
-        <span class='spanPersonToFollowUserName'>
+        </a>
+        <p class='pPersonToFollowHandle'>
             @<?php muoEcho($user["user_handle"]); ?>
-        </span>
-    </div>
+        </p>
+    </section>
     <button class='btnFollow' data-user-pk="<?php muoEcho($user["user_pk"]); ?>">Follow</button>
     <button class='btnUnfollow hidden' data-user-pk="<?php muoEcho($user["user_pk"]); ?>">Unfollow</button>
 </article>
