@@ -4,13 +4,13 @@
         <a class='aPostUserFullName' href='<?php muoEcho($post["ref_user_handle"]) ?>'>
             <?php muoEcho($post["ref_user_name"]) ?>
         </a>
-        <span class='spanPostUserHandle'>
+        <p class='pPostUserHandle'>
             @<?php muoEcho($post["ref_user_handle"]) ?>
-        </span>
-        <span class='spanPostDotSeparator'>
+        </p>
+        <p class='pPostDotSeparator'>
             &#8226;
-        </span>
-        <span class='spanPostTime'>
+        </p>
+        <p class='pPostTime'>
             <?php
             $unixTimestamp = $post["ref_post_created_at"];
             $diff = time() - $unixTimestamp;
@@ -26,7 +26,7 @@
                 muoEcho(date("M j, Y", $unixTimestamp));
             }
             ?>
-        </span>
+        </p>
     </header>
     <p class='pPostContent'>
         <?php muoEcho($post["ref_post_content"]) ?>

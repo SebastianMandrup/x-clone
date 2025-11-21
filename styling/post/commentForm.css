@@ -41,31 +41,34 @@
 	padding: 12px;
 }
 
-#sectionCreateCommentTypes div {
+#sectionCreateCommentTypes button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
 	width: 34px;
 	height: 34px;
+	border: none;
+	background-color: transparent;
+	color: var(--blue);
 }
 
-#sectionCreateCommentTypes div:hover {
+#sectionCreateCommentTypes button:hover {
 	background-color: var(--darkestBlue);
 	border-radius: 50%;
 }
 
-#btnSubmitComment {
+#sectionCreateCommentTypes #btnSubmitComment {
 	margin-left: auto;
-	height: 34px;
+	height: 40px;
 	width: 80px;
 	border-radius: 24px;
-	background-color: var(--lighterGrey);
+	background-color: var(--lightGrey);
 	border: none;
 	color: var(--black);
 }
 
-#btnSubmitComment:hover {
-	background-color: var(--lightestGrey);
+#sectionCreateCommentTypes #btnSubmitComment:hover {
+	background-color: var(--grey);
 	cursor: pointer;
 }
