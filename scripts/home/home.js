@@ -8,6 +8,7 @@ import '../shared/likePost.js';
 import '../shared/nav/logout.js';
 import '../shared/nav/sectionUserInfo.js';
 import '../shared/posts.js';
+import '../shared/repost.js';
 import '../shared/toasts.js';
 import '../shared/unfollowUser.js';
 
