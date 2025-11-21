@@ -26,12 +26,12 @@
 	</section>
 
 	<div id='divTrends'>
-		<?php require __DIR__ . '../../components/sections/whatsHappening.php'; ?>
-		<?php require __DIR__ . '../../components/sections/whoToFollow.php'; ?>
+		<?php require_once __DIR__ . '../../components/sections/whatsHappening.php'; ?>
+		<?php require_once __DIR__ . '../../components/sections/whoToFollow.php'; ?>
 	</div>
 
 
-	<footer>
+	<footer id='footerAside'>
 		<a href="#">Terms of Service</a>
 		<span>|</span>
 		<a href="#">Privacy Policy</a>

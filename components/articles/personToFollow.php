@@ -1,5 +1,4 @@
 <article class='articlePersonToFollow'>
-    <!-- TODO: impl avatar images on users -->
     <img src="https://ui-avatars.com/api/?name=<?php muoEcho($user["user_name"]); ?>&background=random" class='imgPersonToFollowAvatar'>
     <div class='divPersonToFollowNames'>
         <span class='spanPersonToFollowFullName'>

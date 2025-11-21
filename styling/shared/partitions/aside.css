@@ -1,250 +1,237 @@
 aside {
     display: none;
+    flex-direction: column;
+    padding: 0rem 1.75rem;
+    gap: 0.4rem;
+    grid-area: aside;
 }
+
+#sectionSearch {
+    position: sticky;
+    top: 0;
+    background-color: var(--black);
+    padding: 0.3rem 0 0.45rem 0;
+}
+
+#formSearch {
+    border: 1px solid var(--borderColor);
+    border-radius: var(--heavyBorderRadius);
+}
+
+#formSearch:focus-within {
+    border-color: var(--blue);
+}
+
+#formSearch svg {
+    position: absolute;
+    top: 1.1rem;
+    left: 0.8rem;
+    color: var(--lighterGrey);
+}
+
+#formSearch input {
+    padding: 0.7rem 1rem;
+    margin-left: 0.8rem;
+    font-size: 0.8rem;
+    background-color: transparent;
+    border: none;
+    color: var(--lightGrey);
+    outline: none;
+    caret-color: var(--blue);
+}
+
+#formSearch input:focus {
+    border: none;
+}
+
+#sectionSubscribe {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--borderColor);
+    border-radius: 0.6rem;
+}
+
+#sectionSubscribe header {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+#sectionSubscribe p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin: 0.8rem 0;
+}
+
+#sectionSubscribe button {
+    border: none;
+    color: var(--perfectWhite);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    background-color: var(--blue);
+    margin-bottom: 0.1rem;
+}
+
+#sectionSubscribe button:hover {
+    background-color: var(--darkerBlue);
+}
+
+#divTrends {
+    margin-top: 0.5rem;
+    border-top: 2px solid var(--borderColor);
+}
+
+#divTrends .btnShow {
+    margin: 0;
+    width: 100%;
+    padding-top: 0.75rem;
+    padding-bottom: 0.9rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color: transparent;
+    border: none;
+    color: var(--blue);
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+#divTrends .btnShow :hover {
+    background-color: var(--darkestGrey);
+}
+
+#sectionWhatsHappening {
+    padding-top: 0.6rem;
+    margin-top: 1rem;
+    border: 1px solid var(--borderColor);
+    border-radius: 1rem;
+}
+
+#sectionWhatsHappening>* {
+    padding: 0.8rem;
+}
+
+#sectionWhatsHappening header {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.articleTrendItem {
+    display: flex;
+}
+
+.articleTrendItem:hover {
+    background-color: var(--darkestGrey);
+}
+
+.articleTrendItem button {
+    background-color: transparent;
+    border: none;
+    color: var(--lighterGrey);
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.divTrendItemText {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.divTrendItemText p {
+    font-size: 0.7rem;
+    color: var(--lighterGrey);
+}
+
+.divTrendItemText h2 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin: 0.15rem 0;
+}
+
+#sectionWhoToFollow {
+    border: 1px solid rgb(48, 51, 54);
+    border-radius: 1rem;
+    margin: 1rem 0;
+
+    >* {
+        padding: 0.8rem;
+    }
+
+    header {
+        font-size: 1.2rem;
+        font-weight: 700;
+        padding-left: 1rem;
+    }
+
+    .articlePersonToFollow {
+        display: flex;
+
+        .imgPersonToFollowAvatar {
+            height: 2.2rem;
+            width: 2.2rem;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .divPersonToFollowNames {
+            display: flex;
+            flex-direction: column;
+            margin-left: 0.5rem;
+
+            .spanPersonToFollowFullName {
+                font-weight: 600;
+                font-size: 0.9rem;
+            }
+
+            .spanPersonToFollowUserName {
+                font-size: 0.9rem;
+                color: var(--lighterGrey);
+            }
+        }
+
+        .btnFollow,
+        .btnUnfollow {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: auto;
+            padding: 0.25rem 1rem;
+            border-radius: 1.5rem;
+        }
+    }
+}
+
+#footerAside {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    justify-content: center;
+
+    a,
+    span,
+    div {
+        font-size: 0.65rem;
+        color: var(--lightGrey);
+
+        text-decoration: none;
+        transition: color 0.2s;
+
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+
 
 @media screen and (min-width: 1024px) {
     aside {
         display: flex;
-        flex-direction: column;
-        padding: 0rem 1.75rem;
-        gap: 0.4rem;
-        grid-area: aside;
-
-        #sectionSearch {
-            position: sticky;
-            top: 0;
-            background-color: var(--black);
-            padding: 0.3rem 0 0.45rem 0;
-
-            #formSearch {
-
-                border: 1px solid var(--borderColor);
-                border-radius: var(--heavyBorderRadius);
-
-                &:focus-within {
-                    border-color: var(--blue);
-                }
-
-
-                svg {
-                    position: absolute;
-                    top: 1.1rem;
-                    left: 0.8rem;
-                    color: var(--lighterGrey);
-                }
-
-                input {
-                    padding: 0.7rem 1rem;
-                    margin-left: 0.8rem;
-                    font-size: 0.8rem;
-                    background-color: transparent;
-                    border: none;
-                    color: var(--lightGrey);
-                    outline: none;
-                    caret-color: var(--blue);
-
-                    &:focus {
-                        border: none;
-                    }
-                }
-            }
-        }
-
-
-        #sectionSubscribe {
-            padding: 0.6rem 1rem;
-            border: 1px solid var(--borderColor);
-            border-radius: 0.6rem;
-
-            header {
-                font-size: 1.2rem;
-                font-weight: 700;
-            }
-
-            p {
-                font-size: 0.9rem;
-                font-weight: 300;
-                margin: 0.8rem 0;
-            }
-
-            button {
-                border: none;
-                color: var(--perfectWhite);
-                font-weight: 600;
-                font-size: 0.9rem;
-                padding: 0.5rem 1rem;
-                border-radius: 1.5rem;
-                cursor: pointer;
-                background-color: var(--blue);
-                margin-bottom: 0.1rem;
-
-                &:hover {
-                    background-color: var(--darkerBlue);
-                }
-            }
-        }
-
-        #divTrends {
-            margin-top: 0.5rem;
-            border-top: 2px solid var(--borderColor);
-
-            .btnShow {
-                margin: 0;
-                width: 100%;
-                padding-top: 0.75rem;
-                padding-bottom: 0.9rem;
-                border-bottom-left-radius: 1rem;
-                border-bottom-right-radius: 1rem;
-                background-color: transparent;
-                border: none;
-                color: var(--blue);
-                cursor: pointer;
-                font-size: 0.9rem;
-                text-align: left;
-
-                &:hover {
-                    background-color: var(--darkestGrey);
-                }
-            }
-
-            #sectionWhatsHappening {
-                padding-top: 0.6rem;
-                margin-top: 1rem;
-                border: 1px solid var(--borderColor);
-                border-radius: 1rem;
-
-                >* {
-                    padding: 0.8rem;
-                }
-
-                header {
-                    font-size: 1.2rem;
-                    font-weight: 700;
-                }
-
-                .articleTrendItem {
-                    display: flex;
-
-                    &:hover {
-                        background-color: var(--darkestGrey);
-                    }
-
-                    .divTrendItemText {
-                        display: flex;
-                        flex-direction: column;
-                        width: 100%;
-
-                        p {
-                            font-size: 0.75rem;
-                            color: var(--lighterGrey);
-                        }
-
-                        h2 {
-                            font-size: 0.9rem;
-                            font-weight: 700;
-                            margin: 0.2rem 0;
-                        }
-
-                    }
-
-                    button {
-                        margin-left: auto;
-                        background-color: transparent;
-                        color: var(--lighterGrey);
-                        border: none;
-                        cursor: pointer;
-                    }
-
-                }
-
-
-
-
-            }
-
-            #sectionWhoToFollow {
-                border: 1px solid rgb(48, 51, 54);
-                border-radius: 1rem;
-                margin: 1rem 0;
-
-                >* {
-                    padding: 0.8rem;
-                }
-
-                header {
-                    font-size: 1.2rem;
-                    font-weight: 700;
-                    padding-left: 1rem;
-                }
-
-                .articlePersonToFollow {
-                    display: flex;
-
-                    .imgPersonToFollowAvatar {
-                        height: 2.2rem;
-                        width: 2.2rem;
-                        border-radius: 50%;
-                        object-fit: cover;
-                        object-position: center;
-                    }
-
-                    .divPersonToFollowNames {
-                        display: flex;
-                        flex-direction: column;
-                        margin-left: 0.5rem;
-
-                        .spanPersonToFollowFullName {
-                            font-weight: 600;
-                            font-size: 0.9rem;
-                        }
-
-                        .spanPersonToFollowUserName {
-                            font-size: 0.9rem;
-                            color: var(--lighterGrey);
-                        }
-                    }
-
-                    .btnFollow,
-                    .btnUnfollow {
-                        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-                        font-size: 0.8rem;
-                        font-weight: 600;
-                        margin-left: auto;
-                        padding: 0.25rem 1rem;
-                        border-radius: 1.5rem;
-                    }
-                }
-            }
-        }
-
-        footer {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            justify-content: center;
-
-            a,
-            span,
-            div {
-                font-size: 0.65rem;
-                color: var(--lightGrey);
-
-                text-decoration: none;
-                transition: color 0.2s;
-
-            }
-
-            a:hover {
-                text-decoration: underline;
-            }
-        }
-
-        &:last-child {
-            position: sticky;
-            align-self: start;
-            top: 0;
-        }
     }
 }
 
