@@ -4,30 +4,26 @@ require_once __DIR__ . '/../../x.php';
 <article class='articlePost' data-post-pk='<?php muoEcho($post["post_pk"]) ?>' data-author-handle='<?php muoEcho($post["user_handle"]) ?>'>
     <img src="https://ui-avatars.com/api/?name=<?php muoEcho($post["user_name"]) ?>&background=random" alt="Avatar" class='imgPostAvatar'>
     <section class='sectionPostOptions'>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 32" width="20" height="20" fill="currentColor"
-            aria-hidden="true">
-            <path
-                d="M12.745 20.54l10.97-8.19c.539-.4 1.307-.244 1.564.38 1.349 3.288.746 7.241-1.938 9.955-2.683 2.714-6.417 3.31-9.83 1.954l-3.728 1.745c5.347 3.697 11.84 2.782 15.898-1.324 3.219-3.255 4.216-7.692 3.284-11.693l.008.009c-1.351-5.878.332-8.227 3.782-13.031L33 0l-4.54 4.59v-.014L12.743 20.544m-2.263 1.987c-3.837-3.707-3.175-9.446.1-12.755 2.42-2.449 6.388-3.448 9.852-1.979l3.72-1.737c-.67-.49-1.53-1.017-2.515-1.387-4.455-1.854-9.789-.931-13.41 2.728-3.483 3.523-4.579 8.94-2.697 13.561 1.405 3.454-.899 5.898-3.22 8.364C1.49 30.2.666 31.074 0 32l10.478-9.466">
-            </path>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
-            aria-hidden="true" class="icon-more">
-            <path
-                d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z">
-            </path>
-        </svg>
+        <button title="More options">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
+                aria-hidden="true" class="icon-more">
+                <path
+                    d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z">
+                </path>
+            </svg>
+        </button>
     </section>
     <header class='headerPostUser'>
         <a class='aPostUserFullName' href='<?php muoEcho($post["user_handle"]) ?>'>
             <?php muoEcho($post["user_name"]) ?>
         </a>
-        <span class='spanPostUserHandle'>
+        <p class='pPostUserHandle'>
             @<?php muoEcho($post["user_handle"]) ?>
-        </span>
-        <span class='spanPostDotSeparator'>
+        </p>
+        <p class='pPostDotSeparator'>
             &#8226;
-        </span>
-        <span class='spanPostTime'>
+        </p>
+        <p class='pPostTime'>
             <?php
             $unixTimestamp = $post["post_created_at"];
             $diff = time() - $unixTimestamp;
@@ -43,7 +39,7 @@ require_once __DIR__ . '/../../x.php';
                 muoEcho(date("M j, Y", $unixTimestamp));
             }
             ?>
-        </span>
+        </p>
     </header>
     <p class='pPostContent'>
         <?php muoEcho($post["post_content"]) ?>
@@ -63,7 +59,7 @@ require_once __DIR__ . '/../../x.php';
 
     <footer class='footerPostActions'>
 
-        <section class='sectionPostAction sectionPostActionComment'>
+        <button class='buttonPostAction buttonPostActionComment' title='Comment'>
             <svg xmlns=" http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
                 aria-hidden="true" class="icon-comment">
                 <path
@@ -73,16 +69,16 @@ require_once __DIR__ . '/../../x.php';
             <span class='spanPostActionCount'>
                 <?php muoEcho($post["comment_count"]) ?>
             </span>
-        </section>
+        </button>
 
         <?php if (!$post["ref_post_pk"]) { ?>
-            <section class='sectionPostAction sectionPostActionRepost
+            <button class='buttonPostAction buttonPostActionRepost
         <?php
             if ($post["reposted_by_user"] !== null && $post["repost_deleted_at"] === null) {
                 echo "triggered";
             }
         ?>
-            '>
+            ' title='Repost'>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
                     aria-hidden="true" class="icon-retweet">
                     <path
@@ -92,15 +88,15 @@ require_once __DIR__ . '/../../x.php';
                 <span class='spanPostActionCount'>
                     <?php muoEcho($post["repost_count"]) ?>
                 </span>
-            </section>
+            </button>
         <?php } ?>
 
-        <section class='sectionPostAction sectionPostActionLike 
+        <button class='buttonPostAction buttonPostActionLike 
         <?php
         if ($post["liked_by_user"] !== null && $post["like_deleted_at"] === null) {
             echo "triggered";
         }
-        ?>'>
+        ?>' title='Like'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
                 aria-hidden="true" class="icon-like">
                 <path
@@ -110,9 +106,9 @@ require_once __DIR__ . '/../../x.php';
             <span class='spanPostActionCount'>
                 <?php muoEcho($post["like_count"]) ?>
             </span>
-        </section>
+        </button>
 
-        <section class='sectionPostAction'>
+        <button class='buttonPostAction' title='Analytics'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
                 aria-hidden="true" class="icon-bars">
                 <path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z">
@@ -121,21 +117,25 @@ require_once __DIR__ . '/../../x.php';
             <span class=spanPostActionCount>
                 9
             </span>
-        </section>
+        </button>
 
     </footer>
     <section class='sectionMorePostOptions'>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
-            aria-hidden="true" class="icon-bookmark">
-            <path
-                d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z">
-            </path>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
-            aria-hidden="true" class="icon-upload">
-            <path
-                d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z">
-            </path>
-        </svg>
+        <button title='Bookmark'>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
+                aria-hidden="true" class="icon-bookmark">
+                <path
+                    d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z">
+                </path>
+            </svg>
+        </button>
+        <button title='Share'>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
+                aria-hidden="true" class="icon-upload">
+                <path
+                    d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z">
+                </path>
+            </svg>
+        </button>
     </section>
 </article>

@@ -1,6 +1,6 @@
 import { showToast } from './toasts.js';
 
-document.querySelectorAll('.sectionPostActionLike').forEach(section => {
+document.querySelectorAll('.buttonPostActionLike').forEach(section => {
 	section.addEventListener('click', async function (event) {
 
 		const article = this.closest('.articlePost');

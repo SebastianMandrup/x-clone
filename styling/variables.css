@@ -5,7 +5,12 @@
     --blue: #1d9bf0;
     --darkerBlue: #1a8cd8;
     --darkestBlue: rgb(12, 53, 81);
+
+    --green: #00ba7c;
+    --darkestGreen: #046635;
+
     --red: #f91880;
+    --darkestRed: #7a0a4e;
 
     --borderColor: rgb(48, 51, 54);
     --modalBackgroundColor: rgba(91, 112, 131, 0.4);

@@ -4,29 +4,35 @@
 	position: relative;
 }
 
-.btnCommentOptions {
-	height: 30px;
-	width: 30px;
-	background-color: transparent;
-	border: none;
-	color: var(--grey);
-	border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-bottom: 12px;
-
+.sectionCommentOptions {
 	position: absolute;
 	top: 20px;
 	right: 20px;
 }
 
+.btnCommentOptions {
+	height: 34px;
+	width: 34px;
+	background-color: transparent;
+	border: none;
+	color: var(--grey);
+	border-radius: 50%;
+}
+
+.btnMoreOptions {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 6px;
+}
+
 .btnCommentOptions:hover {
+	color: var(--blue);
 	background-color: var(--darkestBlue);
 	cursor: pointer;
 }
 
-.divCommentAuthorInfo {
+.sectionCommentAuthorInfo {
 	display: flex;
 	gap: 12px;
 	margin-bottom: 12px;
@@ -72,31 +78,86 @@
 
 .footerCommentActions {
 	display: flex;
+	align-items: center;
 	justify-content: space-around;
-	margin-top: 20px;
-	margin-right: 40px;
+	margin-top: 10px;
+	margin-right: 80px;
 }
 
-.sectionCommentAction {
+.btnCommentAction {
 	display: flex;
 	align-items: center;
-	gap: 0.25rem;
+	justify-content: center;
+	border-radius: 50%;
+	color: var(--lightGrey);
+	background-color: transparent;
+	border: none;
 	cursor: pointer;
-	color: rgb(170, 170, 170);
+	padding: 8px;
+}
+
+.btnCommentAction svg {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	padding: 6px;
 }
 
 .spanCommentActionCount {
 	font-size: 0.7rem;
 }
 
-.sectionCommentAction:focus {
-	color: rgb(170, 170, 170);
+.btnCommentAction:focus {
+	color: var(--lightGrey);
 }
 
-.sectionCommentAction:hover {
-	color: rgb(29, 155, 240);
+.btnReplyComment:hover svg,
+.btnViewAnalytics:hover svg {
+	color: var(--blue);
+	background-color: var(--darkestBlue);
 }
 
-.sectionCommentAction.triggered {
+
+.btnReplyComment:hover span,
+.btnViewAnalytics:hover span {
+	color: var(--blue);
+}
+
+.btnRepostComment:hover svg {
+	color: var(--green);
+	background-color: var(--darkestGreen);
+}
+
+.btnRepostComment:hover span {
+	color: var(--green);
+}
+
+.btnLikeComment:hover svg {
 	color: var(--red);
+	background-color: var(--darkestRed);
+}
+
+.btnLikeComment:hover span {
+	color: var(--red);
+}
+
+.btnLikeComment:hover svg {
+	color: var(--red);
+	background-color: var(--darkestRed);
+}
+
+.btnLikeComment:hover svg {
+	color: var(--red);
+	background-color: var(--darkestRed);
+}
+
+.btnCommentAction.triggered {
+	color: var(--red);
+}
+
+.sectionMoreCommentOptions {
+	position: absolute;
+	padding: 6px 0;
+	right: 20px;
+	bottom: 20px;
 }

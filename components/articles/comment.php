@@ -1,8 +1,15 @@
 <article class='articleComment'>
-	<button class='btnCommentOptions' aria-label='Comment Options'>
-		...
-	</button>
-	<div class='divCommentAuthorInfo'>
+	<section class='sectionCommentOptions'>
+		<button class='btnCommentOptions btnMoreOptions' title='More options'>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
+				aria-hidden="true" class="icon-more-horizontal">
+				<circle cx="5" cy="12" r="2"></circle>
+				<circle cx="12" cy="12" r="2"></circle>
+				<circle cx="19" cy="12" r="2"></circle>
+			</svg>
+		</button>
+	</section>
+	<section class='sectionCommentAuthorInfo'>
 		<img class='imgCommentAuthorAvatar' src='https://ui-avatars.com/api/?name=<?php muoEcho($comment['commenter_name']); ?>&background=random' alt='Comment Author Avatar'>
 		<div class='divCommentAuthorText'>
 			<a class='aCommentAuthorName' href='/<?php muoEcho($comment['commenter_handle']); ?>'>
@@ -29,12 +36,12 @@
 				?>
 			</p>
 		</div>
-	</div>
+	</section>
 	<p class='pCommentContent'>
 		<?php muoEcho($comment['comment_content']); ?>
 	</p>
 	<footer class='footerCommentActions'>
-		<section class='sectionCommentAction'>
+		<button class='btnCommentAction btnReplyComment' title="Reply">
 			<svg xmlns=" http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
 				aria-hidden="true" class="icon-comment">
 				<path
@@ -44,8 +51,8 @@
 			<span class='spanCommentActionCount'>
 				<?php muoEcho(5) ?>
 			</span>
-		</section>
-		<section class='sectionCommentAction'>
+		</button>
+		<button class='btnCommentAction btnRepostComment' title="Repost">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
 				aria-hidden="true" class="icon-retweet">
 				<path
@@ -55,8 +62,8 @@
 			<span class='spanCommentActionCount'>
 				5
 			</span>
-		</section>
-		<section class='sectionCommentAction'>
+		</button>
+		<button class='btnCommentAction btnLikeComment' title="Like">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
 				aria-hidden="true" class="icon-like">
 				<path
@@ -66,8 +73,8 @@
 			<span class='spanCommentActionCount'>
 				<?php muoEcho(5) ?>
 			</span>
-		</section>
-		<section class='sectionCommentAction'>
+		</button>
+		<button class='btnCommentAction btnViewAnalytics' title="View Analytics">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
 				aria-hidden="true" class="icon-bars">
 				<path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z">
@@ -76,6 +83,25 @@
 			<span class=spanCommentActionCount>
 				9
 			</span>
+		</button>
+		<section class='sectionMoreCommentOptions'>
+			<button class='btnCommentOptions' title='Bookmark'>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
+					aria-hidden="true" class="icon-bookmark">
+					<path
+						d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z">
+					</path>
+				</svg>
+			</button>
+
+			<button class='btnCommentOptions' title='Share'>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
+					aria-hidden="true" class="icon-upload">
+					<path
+						d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z">
+					</path>
+				</svg>
+			</button>
 		</section>
 	</footer>
 </article>

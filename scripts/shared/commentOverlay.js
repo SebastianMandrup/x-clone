@@ -14,7 +14,7 @@ document.getElementById('divAddCommentOverlay').addEventListener('click', (event
 	}
 });
 
-document.querySelectorAll('.sectionPostActionComment').forEach(section => {
+document.querySelectorAll('.buttonPostActionComment').forEach(section => {
 	section.addEventListener('click', function (event) {
 		event.preventDefault();
 
@@ -22,8 +22,8 @@ document.querySelectorAll('.sectionPostActionComment').forEach(section => {
 		const commentCount = article.querySelector('.spanPostActionCount');
 		const imgAvatar = article.querySelector('.imgPostAvatar');
 		const userName = article.querySelector('.aPostUserFullName').textContent.trim();
-		const userHandle = article.querySelector('.spanPostUserHandle').textContent.trim();
-		const postTime = article.querySelector('.spanPostTime').textContent.trim();
+		const userHandle = article.querySelector('.pPostUserHandle').textContent.trim();
+		const postTime = article.querySelector('.pPostTime').textContent.trim();
 		const postContent = article.querySelector('.pPostContent').textContent.trim();
 
 		overlay.classList.remove('hidden');
@@ -50,6 +50,7 @@ document.querySelectorAll('.sectionPostActionComment').forEach(section => {
 			if (response.ok) {
 				showToast('Comment added successfully!', 'success');
 				overlay.classList.add('hidden');
+				document.body.classList.remove('modalOpen');
 				form.reset();
 				const count = parseInt(commentCount.textContent.trim());
 				commentCount.textContent = count + 1;
