@@ -1,4 +1,4 @@
-<article class='articleComment'>
+<article class='articleComment' data-comment-pk='<?php muoEcho($comment['comment_pk']); ?>'>
 	<section class='sectionCommentOptions'>
 		<button class='btnCommentOptions btnMoreOptions' title='More options'>
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"

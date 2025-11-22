@@ -12,3 +12,5 @@ import '../shared/followUser.js';
 import '../shared/posts.js';
 import '../shared/unfollowUser.js';
 
+import '../post/likeComment.js';
+
