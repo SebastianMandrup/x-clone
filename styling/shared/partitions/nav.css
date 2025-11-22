@@ -38,8 +38,8 @@
     width: 100%;
     height: 3.5rem;
     background: var(--black);
-    z-index: 1;
     padding: 0 1rem;
+    z-index: 10;
 }
 
 #navMain a {
@@ -64,6 +64,7 @@
 #navMain #aCommunities,
 #navMain #aPremium,
 #navMain #btnPost,
+#navMain #btnPostMobile,
 #navMain #sectionUserActions,
 #navMain #sectionUserInfo {
     display: none;
@@ -82,6 +83,13 @@
         justify-content: flex-start;
         align-items: flex-start;
         padding: 0.25rem 2rem;
+        width: auto;
+        z-index: 0;
+    }
+
+    #navMain #aXLogo #spanXLogo {
+        margin-bottom: 1rem;
+        width: min-content;
     }
 
     #navMain #aNotification,
@@ -135,10 +143,11 @@
     #navMain #sectionUserActions {
         position: absolute;
         bottom: 5rem;
-        width: 15vw;
+        width: 250px;
         padding: 0.4rem 0;
         border: 2px solid rgb(40, 40, 40);
         border-radius: 1rem;
+        flex-direction: column;
     }
 
     #navMain #sectionUserActions button {
@@ -159,7 +168,6 @@
 
     #navMain #sectionUserInfo {
         margin-top: auto;
-        padding: 0.5rem;
     }
 
     #navMain #sectionUserInfo:hover {
@@ -208,7 +216,6 @@
     #navMain {
         justify-content: center;
         align-items: center;
-        width: 10vw;
         padding: 0.25rem 0;
     }
 
@@ -227,10 +234,8 @@
 
 @media screen and (min-width: 1439px) {
     #navMain {
-        width: 25vw;
-        padding-left: 100px;
-        padding-right: 100px;
         align-items: flex-start;
+        padding-left: 15vw;
     }
 
     #navMain #aXLogo span {
@@ -242,6 +247,7 @@
         font-size: 1.2rem;
         justify-content: start;
         padding: 0.5rem 0 0.5rem 2.5rem;
+        width: 250px;
     }
 
     #navMain a span:hover {
@@ -281,7 +287,6 @@
 
     #navMain #sectionUserInfo {
         width: 100%;
-        margin-left: 1rem;
         padding: 0.5rem 1rem;
     }
 
@@ -291,21 +296,6 @@
 
     #navMain #sectionUserInfo #divUserNames #spanUserFullName {
         font-size: 0.7rem;
-    }
-
-    #navMain #sectionUserInfo #divMoreOptions {
-        display: block;
-    }
-}
-
-@media screen and (min-width: 1740px) {
-    #navMain {
-        padding-left: 320px;
-        padding-right: 20px;
-    }
-
-    #navMain #sectionUserInfo #divUserNames {
-        display: flex;
     }
 
     #navMain #sectionUserInfo #divMoreOptions {

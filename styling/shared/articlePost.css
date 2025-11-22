@@ -1,6 +1,6 @@
 .articlePost {
 	position: relative;
-	padding: 1rem 4rem 1rem 4.5rem;
+	padding: 1rem;
 	border-bottom: 1px solid var(--grey);
 	cursor: pointer;
 }
@@ -68,6 +68,10 @@
 	margin-bottom: 18px;
 }
 
+.headerPostUser {
+	margin-left: 60px;
+}
+
 .aPostUserFullName {
 	color: var(--white);
 	text-decoration: none;
@@ -88,6 +92,23 @@
 
 .pPostContent {
 	font-size: 0.9rem;
+	margin-left: 60px;
+}
+
+.pRepostContent {
+	font-size: 0.9rem;
+	margin-top: 10px;
+}
+
+.sectionPostPicture {
+	padding: 10px 20px;
+}
+
+.sectionPostPicture img {
+	border-radius: 10px;
+	margin-top: 10px;
+	height: auto;
+	width: 100%;
 }
 
 .buttonPostPicture img {
@@ -101,7 +122,7 @@
 	border: 1px solid var(--grey);
 	border-radius: 1rem;
 	padding: 20px;
-	margin-top: 10px;
+	margin-top: 30px;
 	margin-bottom: 20px;
 	background-color: var(--darkestGrey);
 }
@@ -115,22 +136,22 @@
 }
 
 .sectionRepostPicture {
-	min-width: 100%;
+	width: 100%;
 	height: auto;
 	margin-top: 10px;
 }
 
 .sectionRepostPicture img {
 	border-radius: 10px;
-	min-width: 100%;
-	height: 100%;
+	width: 100%;
+	height: auto;
 }
 
 .footerPostActions {
 	display: flex;
 	justify-content: space-between;
 	margin-top: 0.75rem;
-	width: 90%;
+	width: 70%;
 }
 
 .buttonPostAction {
@@ -158,4 +179,27 @@
 
 .triggered {
 	color: var(--red);
+}
+
+@media screen and (min-width: 500px) {
+	.articlePost {
+		padding: 1rem 4rem 1rem 4.5rem;
+	}
+
+	.headerPostUser,
+	.headerRepostUser {
+		margin-left: 0;
+	}
+
+	.pPostContent {
+		margin-left: 0;
+	}
+
+	.sectionPostPicture {
+		padding: 0;
+	}
+
+	.footerPostActions {
+		width: 90%;
+	}
 }
