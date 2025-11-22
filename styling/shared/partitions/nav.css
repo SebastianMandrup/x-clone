@@ -1,438 +1,304 @@
-img {
-    max-width: 300px !important;
+#navMobile {
+    height: 3.5rem;
+    width: 100%;
 }
 
-#divMainContainer {
+#navMobile #sectionUserInfoMobile {
+    position: absolute;
+    left: 1rem;
+    top: 0.75rem;
+}
 
+#navMobile #sectionUserInfoMobile img {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+#navMobile svg {
+    fill: var(--lightestGrey);
+    width: 24px;
+    height: 24px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#navMain {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3.5rem;
+    background: var(--black);
+    padding: 0 1rem;
+    z-index: 10;
+}
+
+#navMain a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+#navMain a span {
+    font-size: 0;
+}
+
+#navMain a span svg {
+    display: inline;
+}
+
+#navMain a:last-of-type span {
+    padding-right: 1rem;
+}
+
+#navMain #aNotification,
+#navMain #aMessages,
+#navMain #aCommunities,
+#navMain #aPremium,
+#navMain #btnPost,
+#navMain #btnPostMobile,
+#navMain #sectionUserActions,
+#navMain #sectionUserInfo {
+    display: none;
+}
+
+@media screen and (min-width: 760px) {
     #navMobile {
-        height: 3.5rem;
-        width: 100%;
-
-        #sectionUserInfoMobile {
-            position: absolute;
-            left: 1rem;
-            top: 0.75rem;
-
-            img {
-                height: 2rem;
-                width: 2rem;
-                border-radius: 50%;
-                object-fit: cover;
-                object-position: center;
-            }
-        }
-
-        svg {
-            fill: var(--lightestGrey);
-            width: 24px;
-            height: 24px;
-            position: relative;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
+        display: none;
     }
 
     #navMain {
+        grid-area: nav;
+        height: 100vh;
+        background-color: transparent;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0.25rem 2rem;
+        width: auto;
+        z-index: 0;
+    }
+
+    #navMain #aXLogo #spanXLogo {
+        margin-bottom: 1rem;
+        width: min-content;
+    }
+
+    #navMain #aNotification,
+    #navMain #aMessages,
+    #navMain #aCommunities,
+    #navMain #aPremium,
+    #navMain #btnPost,
+    #navMain #sectionUserActions,
+    #navMain #sectionUserInfo {
         display: flex;
-        flex-direction: row;
+    }
+
+    #navMain #btnPost {
+        font-size: 0;
+    }
+
+    #navMain a {
+        font-size: 0;
+    }
+
+    #navMain a #spanXLogo {
+        font-size: 2.1rem;
+    }
+
+    #navMain a span {
+        padding: 0.5rem 0.9rem;
+        font-weight: 300;
+        display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+    }
 
-        position: fixed;
-        bottom: 0;
-        left: 0;
+    #navMain #btnPost {
+        display: none;
+    }
+
+    #navMain #btnPostMobile {
+        padding: 0.4rem 0.8rem;
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        background-color: transparent;
+    }
+
+    #navMain #btnPostMobile svg {
+        fill: var(--white);
+        width: 40px;
+        height: 40px;
+    }
+
+    #navMain #sectionUserActions {
+        position: absolute;
+        bottom: 5rem;
+        width: 250px;
+        padding: 0.4rem 0;
+        border: 2px solid rgb(40, 40, 40);
+        border-radius: 1rem;
+        flex-direction: column;
+    }
+
+    #navMain #sectionUserActions button {
         width: 100%;
-        height: 3.5rem;
-        background: var(--black);
-        z-index: 1;
-        padding: 0 1rem;
-
-        a {
-            text-decoration: none;
-            color: var(--white);
-
-            span {
-                font-size: 0;
-
-                svg {
-                    display: inline;
-                }
-            }
-
-            &:last-of-type {
-                span {
-                    padding-right: 1rem;
-                }
-            }
-        }
-
-        #aNotification,
-        #aMessages,
-        #aCommunities,
-        #aPremium,
-        #btnPost,
-        #sectionUserActions,
-        #sectionUserInfo {
-            display: none;
-        }
+        padding: 0.75rem;
+        border: none;
+        background-color: transparent;
+        color: var(--white);
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-align: center;
+        cursor: pointer;
     }
 
-
-}
-
-
-@media screen and (min-width: 760px) {
-
-    #divMainContainer {
-
-        #navMobile {
-            display: none;
-        }
-
-        #navMain {
-            grid-area: nav;
-            height: 100vh;
-            background-color: transparent;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            padding: 0.25rem 2rem;
-
-            #aNotification,
-            #aMessages,
-            #aCommunities,
-            #aPremium,
-            #btnPost,
-            #sectionUserActions,
-            #sectionUserInfo {
-                display: flex;
-            }
-
-            #btnPost {
-                font-size: 0;
-            }
-
-            a {
-                font-size: 0;
-
-                #spanXLogo {
-                    font-size: 2.1rem;
-                }
-
-                span {
-                    padding: 0.5rem 0.9rem;
-                    font-weight: 300;
-
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                }
-            }
-
-            #btnPost {
-                display: none;
-            }
-
-            #btnPostMobile {
-                padding: 0.4rem 0.8rem;
-                width: 2rem;
-                height: 2rem;
-                border: none;
-                background-color: transparent;
-
-                svg {
-                    fill: var(--white);
-                    width: 40px;
-                    height: 40px;
-                }
-            }
-
-            #sectionUserActions {
-                position: absolute;
-                bottom: 5rem;
-                background-color: var(--black);
-                display: flex;
-                flex-direction: column;
-                width: 15vw;
-                padding: 0.4rem 0;
-                border: 2px solid rgb(40, 40, 40);
-                border-radius: 1rem;
-
-                button {
-                    width: 100%;
-                    display: block;
-                    padding: 0.75rem;
-                    border: none;
-                    background-color: transparent;
-                    color: var(--white);
-                    font-size: 0.9rem;
-                    font-weight: 500;
-                    text-align: center;
-                    cursor: pointer;
-
-                    &:hover {
-                        background-color: rgb(40, 40, 40);
-                    }
-                }
-            }
-
-            #sectionUserInfo {
-                margin-top: auto;
-                display: flex;
-                flex-direction: row;
-                padding: 0.5rem;
-
-                &:hover {
-                    background-color: rgb(40, 40, 40);
-                    border-radius: 2rem;
-                    cursor: pointer;
-                }
-
-                #imgUserAvatar {
-                    height: 2.5rem;
-                    width: 2.5rem;
-                    border-radius: 50%;
-                    object-fit: cover;
-                    object-position: center;
-                }
-
-                #divUserNames {
-                    display: none;
-                    flex-direction: column;
-                    padding: 0.25rem;
-                    gap: 0.1rem;
-
-                    #spanUserFullName {
-                        font-weight: 700;
-                        font-size: 0.9rem;
-                    }
-
-                    #spanUserHandle {
-                        color: rgb(170, 170, 170);
-                        font-size: 0.7rem;
-                        font-weight: 200;
-                    }
-                }
-
-                #divMoreOptions {
-                    display: none;
-                    margin-left: auto;
-
-                    #spanMoreOptions {
-                        font-size: 1.5rem;
-                    }
-                }
-            }
-        }
+    #navMain #sectionUserActions button:hover {
+        background-color: rgb(40, 40, 40);
     }
 
+    #navMain #sectionUserInfo {
+        margin-top: auto;
+    }
+
+    #navMain #sectionUserInfo:hover {
+        background-color: rgb(40, 40, 40);
+        border-radius: 2rem;
+        cursor: pointer;
+    }
+
+    #navMain #sectionUserInfo #imgUserAvatar {
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    #navMain #sectionUserInfo #divUserNames {
+        display: none;
+        flex-direction: column;
+        padding: 0.25rem;
+        gap: 0.1rem;
+    }
+
+    #navMain #sectionUserInfo #divUserNames #spanUserFullName {
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+
+    #navMain #sectionUserInfo #divUserNames #spanUserHandle {
+        color: rgb(170, 170, 170);
+        font-size: 0.7rem;
+        font-weight: 200;
+    }
+
+    #navMain #sectionUserInfo #divMoreOptions {
+        display: none;
+        margin-left: auto;
+    }
+
+    #navMain #sectionUserInfo #divMoreOptions #spanMoreOptions {
+        font-size: 1.5rem;
+    }
 }
 
 @media screen and (min-width: 1023px) {
-    #divMainContainer {
-        #navMain {
-            justify-content: center;
-            align-items: center;
-            width: 10vw;
-            padding: 0.25rem 0;
-            background-color: transparent;
+    #navMain {
+        justify-content: center;
+        align-items: center;
+        padding: 0.25rem 0;
+    }
 
-            a {
-                span {
-                    padding: 0.75rem 1.5rem;
-                }
+    #navMain a span {
+        padding: 0.75rem 1.5rem;
+    }
 
-                &:last-of-type {
-                    span {
-                        padding: 0.75rem 1.5rem;
-                    }
-                }
-            }
+    #navMain a:last-of-type span {
+        padding: 0.75rem 1.5rem;
+    }
 
-            #btnPostMobile {
-                padding: 0;
-            }
-        }
+    #navMain #btnPostMobile {
+        padding: 0;
     }
 }
-
 
 @media screen and (min-width: 1439px) {
-    #divMainContainer {
-        #navMain {
-            width: 25vw;
-            padding-left: 100px;
-            padding-right: 100px;
-            align-items: flex-start;
-
-            #aXLogo {
-                width: min-content;
-
-                span {
-                    font-size: 2.5rem;
-                    padding: 0.5rem 2.5rem;
-                }
-            }
-
-            a {
-                width: 100%;
-
-                span {
-                    font-size: 1.2rem;
-                    display: flex;
-                    justify-content: start;
-                    padding: 0.5rem 0 0.5rem 2.5rem;
-
-
-                    &:hover {
-                        background-color: rgb(40, 40, 40);
-                        border-radius: 2rem;
-                        cursor: pointer;
-                    }
-
-                    svg {
-                        margin-right: 1rem;
-                    }
-                }
-
-                &:last-of-type {
-                    span {
-                        font-size: 1.2rem;
-                        padding: 0.5rem 0 0.5rem 2.5rem;
-                    }
-                }
-            }
-
-            #btnPost {
-                display: block;
-                font-size: 1rem;
-                padding: 0.75rem 5rem;
-                margin-left: 2rem;
-                margin-top: 1rem;
-                border-radius: 9999px;
-                background-color: var(--white);
-                color: var(--black);
-
-                &:hover {
-                    background-color: var(--lightestGrey);
-                    cursor: pointer;
-                }
-            }
-
-            #btnPostMobile {
-                display: none;
-            }
-
-            #sectionUserInfo {
-                width: 100%;
-                margin-top: auto;
-                margin-left: 1rem;
-                padding: 0.5rem 1rem;
-
-                #divUserNames {
-                    display: flex;
-
-                    #spanUserFullName {
-                        font-size: 0.7rem;
-                    }
-                }
-
-                #divMoreOptions {
-                    display: block;
-                    margin-left: auto;
-                }
-            }
-        }
+    #navMain {
+        align-items: flex-start;
+        padding-left: 15vw;
     }
-}
 
-@media screen and (min-width: 1740px) {
-    #divMainContainer {
-        #navMain {
-            width: 32vw;
-            padding-left: 320px;
-            padding-right: 20px;
-            align-items: flex-start;
+    #navMain #aXLogo span {
+        font-size: 2.5rem;
+        padding: 0.5rem 2.5rem;
+    }
 
-            #aXLogo {
-                width: min-content;
+    #navMain a span {
+        font-size: 1.2rem;
+        justify-content: start;
+        padding: 0.5rem 0 0.5rem 2.5rem;
+        width: 250px;
+    }
 
-                span {
-                    font-size: 2.5rem;
-                    padding: 0.5rem 2.5rem;
-                }
-            }
+    #navMain a span:hover {
+        background-color: rgb(40, 40, 40);
+        border-radius: 2rem;
+        cursor: pointer;
+    }
 
-            a {
-                width: 100%;
+    #navMain a span svg {
+        margin-right: 1rem;
+    }
 
-                span {
-                    font-size: 1.2rem;
-                    display: flex;
-                    justify-content: start;
-                    padding: 0.5rem 0 0.5rem 2.5rem;
+    #navMain a:last-of-type span {
+        font-size: 1.2rem;
+        padding: 0.5rem 0 0.5rem 2.5rem;
+    }
 
+    #navMain #btnPost {
+        display: block;
+        font-size: 1rem;
+        padding: 0.75rem 5rem;
+        margin-left: 2rem;
+        margin-top: 1rem;
+        border-radius: 9999px;
+        background-color: var(--white);
+        color: var(--black);
+    }
 
-                    &:hover {
-                        background-color: rgb(40, 40, 40);
-                        border-radius: 2rem;
-                        cursor: pointer;
-                    }
+    #navMain #btnPost:hover {
+        background-color: var(--lightestGrey);
+        cursor: pointer;
+    }
 
-                    svg {
-                        margin-right: 1rem;
-                    }
-                }
+    #navMain #btnPostMobile {
+        display: none;
+    }
 
-                &:last-of-type {
-                    span {
-                        font-size: 1.2rem;
-                        padding: 0.5rem 0 0.5rem 2.5rem;
-                    }
-                }
-            }
+    #navMain #sectionUserInfo {
+        width: 100%;
+        padding: 0.5rem 1rem;
+    }
 
-            #btnPost {
-                display: block;
-                font-size: 1rem;
-                padding: 0.75rem 5rem;
-                margin-left: 2rem;
-                margin-top: 1rem;
-                border-radius: 9999px;
-                background-color: var(--white);
-                color: var(--black);
+    #navMain #sectionUserInfo #divUserNames {
+        display: flex;
+    }
 
-                &:hover {
-                    background-color: var(--lightestGrey);
-                    cursor: pointer;
-                }
-            }
+    #navMain #sectionUserInfo #divUserNames #spanUserFullName {
+        font-size: 0.7rem;
+    }
 
-            #btnPostMobile {
-                display: none;
-            }
-
-            #sectionUserInfo {
-                width: 100%;
-                margin-top: auto;
-                margin-left: 1rem;
-                padding: 0.5rem 1rem;
-
-                #divUserNames {
-                    display: flex;
-
-                    #spanUserFullName {
-                        font-size: 0.7rem;
-                    }
-                }
-
-                #divMoreOptions {
-                    display: block;
-                    margin-left: auto;
-                }
-            }
-        }
+    #navMain #sectionUserInfo #divMoreOptions {
+        display: block;
     }
 }

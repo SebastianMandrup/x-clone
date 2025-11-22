@@ -28,7 +28,7 @@
             ?>
         </p>
     </header>
-    <p class='pPostContent'>
+    <p class='pRepostContent'>
         <?php muoEcho($post["ref_post_content"]) ?>
     </p>
 
