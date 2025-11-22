@@ -168,10 +168,6 @@
 	font-size: 0.7rem;
 }
 
-.buttonPostAction:focus {
-	color: var(--lightGrey);
-}
-
 .buttonPostAction:hover {
 	color: var(--blue);
 }

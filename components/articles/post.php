@@ -93,7 +93,7 @@ require_once __DIR__ . '/../../x.php';
 
         <button class='buttonPostAction buttonPostActionLike 
         <?php
-        if ($post["liked_by_user"] !== null && $post["like_deleted_at"] === null) {
+        if ($post["liked_by_user"] !== null) {
             echo "triggered";
         }
         ?>' title='Like'>

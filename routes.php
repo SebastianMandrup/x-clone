@@ -9,6 +9,7 @@ get('/$username/posts/$postPk', 'views/post.php');
 
 post('/api/repost', 'api/repost.php');
 post('/api/like-post', 'api/like-post.php');
+post('/api/like-comment', 'api/like-comment.php');
 post('/api/search', 'api/search.php');
 post('/api/add-comment', 'api/add-comment.php');
 post('/api/follow-user', 'api/follow-user.php');

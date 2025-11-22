@@ -1,4 +1,4 @@
-<article class='articleComment'>
+<article class='articleComment' data-comment-pk='<?php muoEcho($comment['comment_pk']); ?>'>
 	<section class='sectionCommentOptions'>
 		<button class='btnCommentOptions btnMoreOptions' title='More options'>
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
@@ -63,7 +63,7 @@
 				5
 			</span>
 		</button>
-		<button class='btnCommentAction btnLikeComment' title="Like">
+		<button class='btnCommentAction btnLikeComment<?php if ($comment['is_liked_by_current_user']) echo " triggered"; ?>' title="Like">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
 				aria-hidden="true" class="icon-like">
 				<path
@@ -71,7 +71,7 @@
 				</path>
 			</svg>
 			<span class='spanCommentActionCount'>
-				<?php muoEcho(5) ?>
+				<?php muoEcho($comment['comment_likes_count']) ?>
 			</span>
 		</button>
 		<button class='btnCommentAction btnViewAnalytics' title="View Analytics">

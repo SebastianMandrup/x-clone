@@ -50,7 +50,7 @@ if (!$user) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styling/profile/profile.css">
     <link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
-    <script src='./scripts/profile/profile.js' type='module'></script>
+    <script src='../scripts/profile/profile.js' type='module'></script>
     <title> PROFILE / <?php muoEcho($username); ?></title>
 </head>
 
@@ -89,8 +89,8 @@ if (!$user) {
                     ru.user_handle AS ref_user_handle,
 
                     -- like information (subqueries to avoid duplicates)
-                    (SELECT COUNT(*) FROM likes WHERE post_fk = p.post_pk AND like_deleted_at IS NULL) AS like_count,
-                    (SELECT 1 FROM likes WHERE post_fk = p.post_pk AND user_fk = :current_user_pk AND like_deleted_at IS NULL LIMIT 1) AS liked_by_user,
+                    (SELECT COUNT(*) FROM post_likes WHERE post_fk = p.post_pk AND like_deleted_at IS NULL) AS like_count,
+                    (SELECT 1 FROM post_likes WHERE post_fk = p.post_pk AND user_fk = :current_user_pk AND like_deleted_at IS NULL LIMIT 1) AS liked_by_user,
 
                     -- comment count
                     (SELECT COUNT(*) FROM comments WHERE comment_post_fk = p.post_pk AND comment_deleted_at IS NULL) AS comment_count,

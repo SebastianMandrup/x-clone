@@ -9,15 +9,15 @@ try {
 		throw new Exception("User not authenticated", 401);
 	}
 
-	$postPk = validatePk('postPk');
+	$commentPk = validatePk('commentPk');
 	$userPk = $_SESSION["user"]["user_pk"];
 
 	require_once __DIR__ . '/../db_connector.php';
 
-	$sql = "SELECT * FROM post_likes WHERE post_fk = :postPk AND user_fk = :userPk";
+	$sql = "SELECT * FROM comment_likes WHERE comment_fk = :commentPk AND user_fk = :userPk";
 	$stmt = $_db->prepare($sql);
 
-	$stmt->bindValue(":postPk", $postPk);
+	$stmt->bindValue(":commentPk", $commentPk);
 	$stmt->bindValue(":userPk", $userPk);
 
 	$stmt->execute();
@@ -26,42 +26,42 @@ try {
 
 	// user has never liked the post before
 	if (!$post_has_like) {
-		$sql = "INSERT INTO post_likes (post_fk, user_fk, like_created_at) VALUES (:postPk, :userPk, UNIX_TIMESTAMP())";
+		$sql = "INSERT INTO comment_likes (comment_fk, user_fk, like_created_at) VALUES (:commentPk, :userPk, UNIX_TIMESTAMP())";
 		$stmt = $_db->prepare($sql);
-		$stmt->bindValue(":postPk", $postPk);
+		$stmt->bindValue(":commentPk", $commentPk);
 		$stmt->bindValue(":userPk", $userPk);
 		$stmt->execute();
 
 		echo json_encode([
 			'status' => 'success',
-			'message' => "user liked the post"
+			'message' => "user liked the comment"
 		]);
 		exit;
 	}
 
 	// user has liked the post before
 	if ($post_has_like['like_deleted_at'] == null) {
-		$sql = "UPDATE post_likes SET like_deleted_at = UNIX_TIMESTAMP() WHERE post_fk = :postPk AND user_fk = :userPk";
+		$sql = "UPDATE comment_likes SET like_deleted_at = UNIX_TIMESTAMP() WHERE comment_fk = :commentPk AND user_fk = :userPk";
 		$stmt = $_db->prepare($sql);
-		$stmt->bindValue(":postPk", $postPk);
+		$stmt->bindValue(":commentPk", $commentPk);
 		$stmt->bindValue(":userPk", $userPk);
 		$stmt->execute();
 		echo json_encode([
 			'status' => 'success',
-			'message' => "user unliked the post"
+			'message' => "user unliked the comment"
 		]);
 		exit;
 	}
 
 	// user is disliked the post and wants to like it again
-	$sql = "UPDATE post_likes SET like_deleted_at = NULL WHERE post_fk = :postPk AND user_fk = :userPk";
+	$sql = "UPDATE comment_likes SET like_deleted_at = NULL WHERE comment_fk = :commentPk AND user_fk = :userPk";
 	$stmt = $_db->prepare($sql);
-	$stmt->bindValue(":postPk", $postPk);
+	$stmt->bindValue(":commentPk", $commentPk);
 	$stmt->bindValue(":userPk", $userPk);
 	$stmt->execute();
 	echo json_encode([
 		'status' => 'success',
-		'message' => "user liked the post"
+		'message' => "user liked the comment"
 	]);
 } catch (Exception $e) {
 	http_response_code($e->getCode() ?: 500);
