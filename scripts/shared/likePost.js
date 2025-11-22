@@ -3,6 +3,8 @@ import { showToast } from './toasts.js';
 document.querySelectorAll('.buttonPostActionLike').forEach(section => {
 	section.addEventListener('click', async function (event) {
 
+		event.stopPropagation();
+
 		const article = this.closest('.articlePost');
 		const countElement = this.querySelector('.spanPostActionCount');
 

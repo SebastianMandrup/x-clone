@@ -14,9 +14,9 @@ document.getElementById('divAddCommentOverlay').addEventListener('click', (event
 	}
 });
 
-document.querySelectorAll('.buttonPostActionComment').forEach(section => {
-	section.addEventListener('click', function (event) {
-		event.preventDefault();
+document.querySelectorAll('.buttonPostActionComment').forEach(button => {
+	button.addEventListener('click', function (event) {
+		event.stopPropagation();
 
 		const article = this.closest('.articlePost');
 		const commentCount = article.querySelector('.spanPostActionCount');

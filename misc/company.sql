@@ -96,10 +96,10 @@ INSERT INTO `follows` (`following_user_fk`, `followed_user_fk`, `follow_created_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `likes`
+-- Table structure for table `post_likes`
 --
 
-CREATE TABLE `likes` (
+CREATE TABLE `post_likes` (
   `post_fk` char(50) NOT NULL,
   `user_fk` char(50) NOT NULL,
   `like_created_at` bigint(20) UNSIGNED NOT NULL,
@@ -107,10 +107,10 @@ CREATE TABLE `likes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `likes`
+-- Dumping data for table `post_likes`
 --
 
-INSERT INTO `likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted_at`) VALUES
+INSERT INTO `post_likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted_at`) VALUES
 ('0084814eae606a8c1cbbc8595409616491e8fb0a059c845162', '12345', 1763738384, 1763738895),
 ('0e398a9a2ec1970af1e171280bd895bce936544b89ec9323b4', '12345', 1763478296, 1763498301),
 ('0e398a9a2ec1970af1e171280bd895bce936544b89ec9323b4', '1234561', 1763662057, 1763691548),
@@ -281,9 +281,9 @@ ALTER TABLE `follows`
   ADD KEY `followed_user_fk` (`followed_user_fk`);
 
 --
--- Indexes for table `likes`
+-- Indexes for table `post_likes`
 --
-ALTER TABLE `likes`
+ALTER TABLE `post_likes`
   ADD PRIMARY KEY (`post_fk`,`user_fk`),
   ADD KEY `user_fk` (`user_fk`);
 
@@ -332,11 +332,11 @@ ALTER TABLE `follows`
   ADD CONSTRAINT `follows_ibfk_2` FOREIGN KEY (`following_user_fk`) REFERENCES `users` (`user_pk`) ON DELETE CASCADE;
 
 --
--- Constraints for table `likes`
+-- Constraints for table `post_likes`
 --
-ALTER TABLE `likes`
-  ADD CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`post_fk`) REFERENCES `posts` (`post_pk`) ON DELETE CASCADE,
-  ADD CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`user_fk`) REFERENCES `users` (`user_pk`) ON DELETE CASCADE;
+ALTER TABLE `post_likes`
+  ADD CONSTRAINT `post_likes_ibfk_1` FOREIGN KEY (`post_fk`) REFERENCES `posts` (`post_pk`) ON DELETE CASCADE,
+  ADD CONSTRAINT `post_likes_ibfk_2` FOREIGN KEY (`user_fk`) REFERENCES `users` (`user_pk`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `posts`
