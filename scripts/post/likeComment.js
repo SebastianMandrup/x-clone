@@ -4,7 +4,7 @@ document.querySelectorAll('.btnLikeComment').forEach(button => {
 		event.stopPropagation();
 
 		const article = this.closest('.articleComment');
-		const countElement = article.querySelector('.spanCommentActionCount');
+		const countElement = this.querySelector('.spanCommentActionCount');
 
 		const formdata = new FormData();
 		formdata.append('commentPk', article.dataset.commentPk);
@@ -25,7 +25,7 @@ document.querySelectorAll('.btnLikeComment').forEach(button => {
 			this.classList.toggle('triggered');
 
 			const count = parseInt(countElement.textContent.trim());
-			const newCount = this.classList.contains('triggered') ? count - 1 : count + 1;
+			const newCount = this.classList.contains('triggered') ? count + 1 : count - 1;
 			countElement.textContent = newCount;
 
 
