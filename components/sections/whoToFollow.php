@@ -1,11 +1,16 @@
+<?php
+if (!isset($usersToFollow)) {
+	throw new Exception('Users to follow not provided to whoToFollow section.');
+}
+?>
 <section id='sectionWhoToFollow'>
 	<header>
 		Who To Follow
 	</header>
 
 	<?php
-	
-	$usersCount = count($users);
+
+	$usersCount = count($usersToFollow);
 	$moreUsersExist = false;
 
 	if ($usersCount === 0) {
@@ -25,10 +30,10 @@
 		$moreUsersExist = false;
 	} else {
 		$moreUsersExist = true;
-		array_pop($users);
+		array_pop($usersToFollow);
 	}
 
-	foreach ($users as $user) {
+	foreach ($usersToFollow as $user) {
 		require __DIR__ . '../../articles/personToFollow.php';
 	}
 

@@ -1,10 +1,16 @@
+<?php
+if (!isset($firstThreeTopics)) {
+	throw new Exception('First three topics not provided to whatsHappening section.');
+}
+?>
+
 <section id='sectionWhatsHappening'>
 	<header>
 		What's happening
 	</header>
 
 	<?php
-	foreach ($topics as $topic) {
+	foreach ($firstThreeTopics as $topic) {
 		require __DIR__ . '../../articles/trendItem.php';
 	}
 	?>

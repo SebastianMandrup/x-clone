@@ -13,23 +13,12 @@ $userController = new UserController();
 try {
 	$currentUserPk = $_SESSION['user']['user_pk'];
 	$posts = $postController->getAllFromOthersWithCounts($currentUserPk);
+	$firstThreeTopics = $topicController->getFirstThree();
+	$usersToFollow = $userController->getWhoToFollow();
 } catch (Exception $e) {
 	$posts = [];
+	$usersToFollow = [];
+	$firstThreeTopics = [];
 	$error = $e->getMessage();
 }
-
-try {
-	$topics = $topicController->getFirstThree();
-} catch (Exception $e) {
-	$topics = [];
-	$error = $e->getMessage();
-}
-
-try {
-	$users = $userController->getWhoToFollow();
-} catch (Exception $e) {
-	$users = [];
-	$error = $e->getMessage();
-}
-
 require __DIR__ . '/../views/following.php';

@@ -14,11 +14,11 @@ $userController = new UserController();
 try {
 	$currentUserPk = $_SESSION['user']['user_pk'];
 	$posts = $postController->getAllWithCounts($currentUserPk);
-	$topics = $topicController->getFirstThree();
-	$users = $userController->getWhoToFollow();
+	$firstThreeTopics = $topicController->getFirstThree();
+	$usersToFollow = $userController->getWhoToFollow();
 } catch (Exception $e) {
-	$users = [];
-	$topics = [];
+	$usersToFollow = [];
+	$firstThreeTopics = [];
 	$posts = [];
 	$error = $e->getMessage();
 }

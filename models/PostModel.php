@@ -78,8 +78,8 @@ class PostModel {
         return $stmt->fetchAll();
     }
 
-
     public function getByPk($postPk, $username) {
+
         $sql = "
         SELECT 
 			-- post
@@ -105,25 +105,26 @@ class PostModel {
 			ru.user_name AS ref_user_name,
 			ru.user_handle AS ref_user_handle
 
-		FROM posts post
-		INNER JOIN users author
-			ON post.post_user_fk = author.user_pk
-		LEFT JOIN comments c
-			ON c.comment_post_fk = post.post_pk
-		LEFT JOIN posts rp
-			ON post.post_reference = rp.post_pk
-		LEFT JOIN users ru
-			ON rp.post_user_fk = ru.user_pk
-		WHERE post.post_pk = :postPk
-			AND author.user_handle = :username
-			AND post.post_deleted_at IS NULL
-	";
+            FROM posts post
+            INNER JOIN users author
+                ON post.post_user_fk = author.user_pk
+            LEFT JOIN comments c
+                ON c.comment_post_fk = post.post_pk
+            LEFT JOIN posts rp
+                ON post.post_reference = rp.post_pk
+            LEFT JOIN users ru
+                ON rp.post_user_fk = ru.user_pk
+            WHERE post.post_pk = :postPk
+                AND author.user_handle = :username
+                AND post.post_deleted_at IS NULL
+            ";
+
         $stmt = $this->_db->prepare($sql);
         $stmt->bindValue(':postPk', $postPk);
         $stmt->bindValue(':username', $username);
         $stmt->execute();
-        $post = $stmt->fetch();
 
+        $post = $stmt->fetch();
         return $post;
     }
 }

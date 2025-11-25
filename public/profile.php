@@ -16,8 +16,8 @@ try {
 	$currentUserPk = $_SESSION['user']['user_pk'];
 	$user = $userController->getByHandle($username, $currentUserPk);
 	$posts = $postController->getAllWithCounts($user['user_pk']);
-	$topics = $topicController->getFirstThree();
-	$users = $userController->getWhoToFollow();
+	$firstThreeTopics = $topicController->getFirstThree();
+	$usersToFollow = $userController->getWhoToFollow();
 
 	require_once __DIR__ . '/../views/profile.php';
 } catch (Exception $e) {
