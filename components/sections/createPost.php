@@ -73,3 +73,9 @@
 	</form>
 
 </section>
+
+<section id='sectionLoadMorePosts'>
+	<button id='btnLoadMorePosts'>
+		Show 140 Posts
+	</button>
+</section>
