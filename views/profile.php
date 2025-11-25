@@ -36,7 +36,7 @@ $stmt->execute();
 $user = $stmt->fetch();
 
 if (!$user) {
-    header("Location: /home?errorToast=" . urlencode("The requested profile does not exist."));
+    header("Location: /404");
     exit();
 }
 

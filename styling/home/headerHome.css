@@ -2,32 +2,27 @@
 	display: flex;
 	border-bottom: 1px solid rgb(48, 51, 54);
 
-	.selectedHeaderButton {
-		span {
-			border-bottom: 2px solid rgb(29, 155, 240);
-			color: white;
-		}
-
+	.selectedHeaderButton div {
+		border-bottom: 2px solid rgb(29, 155, 240);
+		color: white;
 	}
 
-	button {
+	button,
+	a {
 		background-color: rgba(0, 0, 0, 0.4);
 		border: none;
 		color: rgb(170, 170, 170);
 		width: 50%;
 		padding: 0.8rem 0;
 		cursor: pointer;
+		text-decoration: none;
+		text-align: center;
+		font-size: 0.9rem;
+		font-weight: 500;
 
 		&:hover {
 			background-color: rgb(40, 40, 40);
 		}
-
-		span {
-			font-size: 0.9rem;
-			font-weight: 500;
-			padding: 0.8rem 0;
-		}
-
 	}
 }
 
@@ -48,7 +43,8 @@
 
 		}
 
-		button {
+		button,
+		a {
 			background-color: rgba(0, 0, 0, 0.4);
 			backdrop-filter: blur(10px);
 			border: none;
@@ -58,7 +54,7 @@
 			cursor: pointer;
 
 			&:hover {
-				background-color: rgb(40, 40, 40);
+				background-color: var(--black);
 			}
 
 			span {
