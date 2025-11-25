@@ -12,7 +12,7 @@ try {
 	$postPk = validatePk('postPk');
 	$userPk = $_SESSION["user"]["user_pk"];
 
-	require_once __DIR__ . '/../services/db_connector.php';
+	$_db = require_once __DIR__ . '/../services/db_connector.php';
 
 	$sql = "SELECT * FROM post_likes WHERE post_fk = :postPk AND user_fk = :userPk";
 	$stmt = $_db->prepare($sql);

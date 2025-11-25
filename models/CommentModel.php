@@ -8,7 +8,8 @@ class CommentModel {
 	}
 
 	public function getCommentsByPostPk($postPk, $currentUserPk) {
-		$sql = "SELECT
+		try {
+			$sql = "SELECT
 				c.comment_pk,
 				c.comment_content,
 				c.comment_created_at,
@@ -22,11 +23,33 @@ class CommentModel {
 				WHERE c.comment_post_fk = :postPk
 				AND c.comment_deleted_at IS NULL
 				ORDER BY c.comment_created_at ASC";
-		$stmt = $this->_db->prepare($sql);
-		$stmt->bindValue(':postPk', $postPk);
-		$stmt->bindValue(':currentUserPk', $currentUserPk);
-		$stmt->execute();
-		$comments = $stmt->fetchAll();
-		return $comments;
+			$stmt = $this->_db->prepare($sql);
+			$stmt->bindValue(':postPk', $postPk);
+			$stmt->bindValue(':currentUserPk', $currentUserPk);
+			$stmt->execute();
+			$comments = $stmt->fetchAll();
+			return $comments;
+		} catch (Exception $e) {
+			throw new Exception("Error fetching comments: " . $e->getMessage());
+		}
+	}
+
+	public function createComment($userPk, $postPk, $commentContent) {
+		try {
+			$commentPk = bin2hex(random_bytes(25));
+
+			$sql = "INSERT INTO comments (comment_pk, comment_user_fk, comment_post_fk, comment_content, comment_created_at, comment_updated_at) VALUES (:comment_pk, :user_pk, :post_pk, :comment_content, UNIX_TIMESTAMP(), UNIX_TIMESTAMP())";
+			$stmt = $this->_db->prepare($sql);
+			$stmt->bindParam(':comment_pk', $commentPk);
+			$stmt->bindParam(':user_pk', $userPk);
+			$stmt->bindParam(':post_pk', $postPk);
+			$stmt->bindParam(':comment_content', $commentContent);
+			$stmt->execute();
+
+			return true;
+		} catch (Exception $e) {
+			throw new Exception("Error creating comment: " . $e->getMessage());
+		}
+		
 	}
 }

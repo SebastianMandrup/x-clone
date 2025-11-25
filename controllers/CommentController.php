@@ -12,4 +12,8 @@ class CommentController {
 	public function getCommentsByPostPk($postPk, $currentUserPk) {
 		return $this->commentModel->getCommentsByPostPk($postPk, $currentUserPk);
 	}
+
+	public function createComment($userPk, $postPk, $commentContent) {
+		return $this->commentModel->createComment($userPk, $postPk, $commentContent);
+	}
 }
