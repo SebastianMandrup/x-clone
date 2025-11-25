@@ -2,11 +2,11 @@
 
 try {
 
-	require_once __DIR__ . '/../x.php';
+	require_once __DIR__ . '/../../x.php';
 
 	$page = validatePage();
 
-	require_once __DIR__ . '/../db_connector.php';
+	$_db = require_once __DIR__ . '/../../services/db_connector.php';
 
 	$LIMIT = 4;
 	$OFFSET = ($page - 1) * ($LIMIT - 1);

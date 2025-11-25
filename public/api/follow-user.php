@@ -8,7 +8,7 @@ try {
 		throw new Exception("User not authenticated", 401);
 	}
 
-	require_once __DIR__ . '/../x.php';
+	require_once __DIR__ . '/../../x.php';
 
 	$userPk = $_SESSION["user"]["user_pk"];
 	$userToFollowPk = validatePk('userToFollowPk');

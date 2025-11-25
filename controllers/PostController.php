@@ -10,10 +10,25 @@ class PostController {
 	}
 
 	public function getAllWithCounts($currentUserPk) {
-		return $this->postModel->getAllWithCounts($currentUserPk);
+		return $this->postModel->getAll($currentUserPk, [
+			'includeLikes' => true,
+			'includeComments' => true,
+			'includeReposts' => true,
+			'includeReference' => true
+		]);
 	}
 
 	public function getAllFromOthersWithCounts($currentUserPk) {
-		return $this->postModel->getAllFromOthersWithCounts($currentUserPk);
+		return $this->postModel->getAll($currentUserPk, [
+			'includeLikes' => true,
+			'includeComments' => true,
+			'includeReposts' => true,
+			'includeReference' => true,
+			'onlyOthers' => true
+		]);
+	}
+
+	public function getBypk($postPk, $currentUserPk) {
+		return $this->postModel->getByPk($postPk, $currentUserPk);
 	}
 }

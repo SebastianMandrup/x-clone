@@ -26,4 +26,39 @@ class UserModel {
 		$users = $stmt->fetchAll();
 		return $users;
 	}
+
+	public function getByHandle($userHandle, $currentUserPk) {
+		$sql = "
+        SELECT 
+            users.user_pk, 
+            users.user_name, 
+            users.user_email, 
+            users.user_birthday, 
+            users.user_handle,
+            users.user_banner,
+            COUNT(posts.post_pk) AS post_count,
+            (SELECT COUNT(*) FROM follows WHERE followed_user_fk = users.user_pk AND follow_deleted_at IS NULL) AS followers_count,
+            (SELECT COUNT(*) FROM follows WHERE following_user_fk = users.user_pk AND follow_deleted_at IS NULL) AS following_count,
+            -- Check if session user is following this user
+            CASE 
+                WHEN :currentUserPk IS NOT NULL THEN 
+                    EXISTS (SELECT 1 FROM follows 
+                            WHERE following_user_fk = :currentUserPk 
+                            AND followed_user_fk = users.user_pk 
+                            AND follow_deleted_at IS NULL)
+                ELSE FALSE
+            END AS is_following
+        FROM users 
+        LEFT JOIN posts ON users.user_pk = posts.post_user_fk
+        WHERE users.user_handle = :userHandle
+        GROUP BY users.user_pk, users.user_name, users.user_email, users.user_birthday, users.user_handle, users.user_banner
+        LIMIT 1;
+";
+		$stmt = $this->_db->prepare($sql);
+		$stmt->bindValue(':userHandle', $userHandle);
+		$stmt->bindValue(':currentUserPk', $currentUserPk ?? null, PDO::PARAM_INT);
+		$stmt->execute();
+		$user = $stmt->fetch();
+		return $user;
+	}
 }

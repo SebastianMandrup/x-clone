@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . "/../services/protect-route.php";
-require_once __DIR__ . "../../x.php";
-require_once __DIR__ . '../../db_connector.php';
+require_once __DIR__ . "/../x.php";
+$_db = require_once __DIR__ . '/../services/db_connector.php';
 
 $sql = "
         SELECT 

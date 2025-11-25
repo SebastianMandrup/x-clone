@@ -5,7 +5,7 @@ try {
 		throw new Exception("Unauthorized", 401);
 	}
 
-	require_once __DIR__ . "/../x.php";
+	require_once __DIR__ . "/../../x.php";
 
 	$repostPk = bin2hex(random_bytes(25));
 	$referencePk = validatePk("referencePostPk");

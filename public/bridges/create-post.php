@@ -1,6 +1,6 @@
  <?php
     try {
-        require_once __DIR__ . "/../x.php";
+        require_once __DIR__ . "/../../x.php";
 
         session_start();
 
@@ -12,7 +12,7 @@
         $postPk = bin2hex(random_bytes(25));
         $postUserFk = $_SESSION["user"]["user_pk"];
 
-        require_once __DIR__ . "../../db_connector.php";
+        $_db = require_once __DIR__ . "../../db_connector.php";
 
         $sql = "
         INSERT INTO posts (post_pk, post_content, post_user_fk) 

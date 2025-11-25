@@ -1,6 +1,6 @@
 <?php
 try {
-	require_once __DIR__ . "/../x.php";
+	require_once __DIR__ . "/../../x.php";
 	$name = validateName();
 	$handle = validateHandle();
 	$phone = validatePhone();
@@ -14,7 +14,7 @@ try {
 
 	$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-	require_once __DIR__ . "../../db_connector.php";
+	$_db = require_once __DIR__ . "/../../services/db_connector.php";
 
 	if (!$email && !$phone) {
 		throw new Exception("Either email or phone number must be provided.", 400);

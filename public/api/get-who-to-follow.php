@@ -8,7 +8,7 @@ try {
 		throw new Exception("User not logged in.", 401);
 	}
 
-	require_once __DIR__ . '/../x.php';
+	require_once __DIR__ . '/../../x.php';
 
 	$page = validatePage();
 

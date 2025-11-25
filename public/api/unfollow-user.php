@@ -8,12 +8,12 @@ try {
 		throw new Exception("User not authenticated", 401);
 	}
 
-	require_once __DIR__ . '/../x.php';
+	require_once __DIR__ . '/../../x.php';
 
 	$userPk = $_SESSION["user"]["user_pk"];
 	$userToUnfollowPk = validatePk('userToUnfollowPk');
 
-	require_once __DIR__ . '/../db_connector.php';
+	$_db = require_once __DIR__ . '/../../services/db_connector.php';
 
 	$sql = "UPDATE follows SET follow_deleted_at = UNIX_TIMESTAMP() WHERE following_user_fk = :userPk AND followed_user_fk = :userToUnfollowPk AND follow_deleted_at IS NULL";
 	$stmt = $_db->prepare($sql);

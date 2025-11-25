@@ -12,4 +12,8 @@ class UserController {
 	public function getWhoToFollow() {
 		return $this->userModel->getWhoToFollow();
 	}
+
+	public function getByHandle($userHandle, $currentUserPk = null) {
+		return $this->userModel->getByHandle($userHandle, $currentUserPk);
+	}
 }

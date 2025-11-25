@@ -10,17 +10,17 @@ $postController = new PostController();
 $topicController = new TopicController();
 $userController = new UserController();
 
-
 try {
+
+	// PROTECTED ROUTE STARTS SESSION
 	$currentUserPk = $_SESSION['user']['user_pk'];
-	$posts = $postController->getAllWithCounts($currentUserPk);
+	$user = $userController->getByHandle($username, $currentUserPk);
+	$posts = $postController->getAllWithCounts($user['user_pk']);
 	$topics = $topicController->getFirstThree();
 	$users = $userController->getWhoToFollow();
+
+	require_once __DIR__ . '/../views/profile.php';
 } catch (Exception $e) {
-	$users = [];
-	$topics = [];
-	$posts = [];
+	$user = null;
 	$error = $e->getMessage();
 }
-
-require __DIR__ . '/../views/home.php';

@@ -10,6 +10,6 @@ class TopicController {
 	}
 
 	public function getFirstThree() {
-		return $this->topicModel->getFirstThree();
+		return $this->topicModel->get(['firstThree' => true]);
 	}
 }

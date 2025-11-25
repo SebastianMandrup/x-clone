@@ -1,10 +1,10 @@
 <?php
 try {
-    require_once __DIR__ . "/../x.php";
+    require_once __DIR__ . "/../../x.php";
     $userEmailOrPhone = validateEmailOrPhone();
     $userPassword = validatePassword();
 
-    require_once __DIR__ . "../../db_connector.php";
+    $_db = require_once __DIR__ . "/../../services/db_connector.php";
     $sql = "SELECT * FROM users WHERE user_email = :emailOrPhone OR user_phone = :emailOrPhone";
     $stmt = $_db->prepare($sql);
 
