@@ -1,7 +1,7 @@
 :root {
     --perfectWhite: white;
-    --white: rgb(231, 233, 234);
-    --black: rgb(0, 0, 0);
+    --white: rgb(228, 228, 228);
+    --black: rgb(2, 2, 2);
     --blue: #1d9bf0;
     --darkerBlue: #1a8cd8;
     --darkestBlue: rgb(12, 53, 81);
@@ -17,6 +17,9 @@
 
     --heavyBorderRadius: 1.5rem;
     --lightBorderRadius: 1rem;
+
+    --lightestGreyOpacity: rgba(205, 205, 205, 0.8);
+    --blackOpacity: rgba(2, 2, 2, 0.8);
 
     --lightestGrey: rgb(205, 205, 205);
     --lighterGrey: rgb(95, 95, 95);

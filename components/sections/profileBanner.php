@@ -10,7 +10,7 @@
 			alt="Avatar">
 
 		<?php if ($user["user_pk"] === $_SESSION["user"]["user_pk"]) : ?>
-			<button id='buttonEditProfile' onclick="location.href='/settings/profile';">
+			<button id='buttonEditProfile'>
 				Edit profile
 			</button>
 		<?php else : ?>

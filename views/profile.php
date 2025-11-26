@@ -12,14 +12,14 @@ require_once __DIR__ . "/../x.php";
     <link rel="stylesheet" href="./styling/profile/profile.css">
     <link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
     <script src='../scripts/profile/profile.js' type='module'></script>
-    <title> PROFILE / <?php muoEcho($username); ?></title>
+    <title> PROFILE / <?php muoEcho($handle); ?></title>
 </head>
 
 <body>
 
     <div id='divMainContainer'>
 
-        <?php require __DIR__ . '/../components/nav.php'; ?>
+        <?php require_once __DIR__ . '/../components/nav.php'; ?>
 
         <main>
 
@@ -37,11 +37,18 @@ require_once __DIR__ . "/../x.php";
             <div class="circle-loader"></div>
         </main>
 
-        <?php require __DIR__ . '/../components/aside.php'; ?>
+        <?php require_once __DIR__ . '/../components/aside.php'; ?>
 
     </div>
 
-    <?php require __DIR__ . '/../components/commentOverlay.php'; ?>
+    <?php require_once __DIR__ . '/../components/commentOverlay.php'; ?>
+
+
+    <?php
+    if ($user["user_pk"] === $_SESSION["user"]["user_pk"]) {
+        require_once __DIR__ . '/../components/overlays/editProfile/editProfileOverlay.php';
+    }
+    ?>
 
 </body>
 
