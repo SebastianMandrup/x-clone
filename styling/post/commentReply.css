@@ -1,0 +1,57 @@
+.sectionCommentReplies {
+	margin-top: 15px;
+	margin-left: 40px;
+	border-left: 1px solid var(--lightGrey);
+	padding-left: 20px;
+}
+
+.pCommentRepliesHeader {
+	font-weight: bold;
+	font-size: 14px;
+	color: var(--grey);
+	margin-bottom: 10px;
+}
+
+.articleCommentReply {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: flex;
+	flex-direction: row;
+}
+
+.imgCommentReplyAvatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-right: 10px;
+}
+
+.divCommentReplyHeader {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.aCommentReplyName {
+	font-weight: bold;
+	font-size: 16px;
+	color: var(--white);
+	text-decoration: none;
+}
+
+.aCommentReplyName:hover {
+	text-decoration: underline;
+}
+
+.pCommentReplyHandle {
+	font-weight: thin;
+	font-size: 14px;
+	color: var(--grey);
+}
+
+.divCommentReplyBody p {
+	margin: 5px 0;
+	font-size: 15px;
+	color: var(--lightestGrey);
+}
