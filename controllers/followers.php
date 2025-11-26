@@ -7,9 +7,10 @@ require_once __DIR__ . '/../models/UserModel.php';
 $userModel = new UserModel();
 
 try {
-	$currentUserPk = $_SESSION['user']['user_pk'];
 
-	require __DIR__ . '/../views/following.php';
+	$user = $userModel->getByHandle($handle, $_SESSION['user']['user_pk']);
+
+	require __DIR__ . '/../views/followers.php';
 } catch (Exception $e) {
 	echo "Error: " . $e->getMessage();
 }

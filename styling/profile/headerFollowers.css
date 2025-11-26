@@ -1,0 +1,15 @@
+#headerFollowers {
+	display: flex;
+	padding: 8px;
+}
+
+@media screen and (min-width: 760px) {
+	#headerFollowers {
+		position: sticky;
+		top: 0;
+
+		background-color: rgba(0, 0, 0, 0.4);
+		backdrop-filter: blur(10px);
+		z-index: 1;
+	}
+}

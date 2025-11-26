@@ -4,7 +4,8 @@ require_once __DIR__ . '/router.php';
 
 get('/', 'views/index.php');
 get('/home', 'controllers/home.php');
-get('/following', 'controllers/following.php');
+get('/$handle/following', 'controllers/following.php');
+get('/$handle/followers', 'controllers/followers.php');
 get('/$handle', 'controllers/profile.php');
 get('/$handle/posts/$postPk', 'controllers/post.php');
 
