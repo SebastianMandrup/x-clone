@@ -5,8 +5,8 @@ require_once __DIR__ . '/router.php';
 get('/', 'views/index.php');
 get('/home', 'controllers/home.php');
 get('/following', 'controllers/following.php');
-get('/$username', 'controllers/profile.php');
-get('/$username/posts/$postPk', 'controllers/post.php');
+get('/$handle', 'controllers/profile.php');
+get('/$handle/posts/$postPk', 'controllers/post.php');
 
 post('/api/repost', 'api/repost.php');
 post('/api/like-post', 'api/like-post.php');
@@ -22,5 +22,6 @@ post('/bridges/create-post', 'bridges/create-post.php');
 post('/bridges/login', 'bridges/login.php');
 get('/bridges/logout', 'bridges/logout.php');
 post('/bridges/sign-up', 'bridges/sign-up.php');
+post('/bridges/edit-profile', 'bridges/edit-profile.php');
 
 any('/404', 'views/404.php');

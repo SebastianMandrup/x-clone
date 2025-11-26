@@ -6,6 +6,10 @@ body {
 	overflow-y: scroll;
 }
 
+main {
+	min-height: 100vh;
+}
+
 #divMainContainer {
 	display: flex;
 	flex-direction: column;

@@ -78,7 +78,7 @@ class PostModel {
         return $stmt->fetchAll();
     }
 
-    public function getByPk($postPk, $username) {
+    public function getByPk($postPk, $handle) {
 
         $sql = "
         SELECT 
@@ -115,13 +115,13 @@ class PostModel {
             LEFT JOIN users ru
                 ON rp.post_user_fk = ru.user_pk
             WHERE post.post_pk = :postPk
-                AND author.user_handle = :username
+                AND author.user_handle = :handle
                 AND post.post_deleted_at IS NULL
             ";
 
         $stmt = $this->_db->prepare($sql);
         $stmt->bindValue(':postPk', $postPk);
-        $stmt->bindValue(':username', $username);
+        $stmt->bindValue(':handle', $handle);
         $stmt->execute();
 
         $post = $stmt->fetch();

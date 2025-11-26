@@ -8,7 +8,7 @@ class UserModel {
         $this->_db = require __DIR__ . '/../services/db_connector.php';
     }
 
-    public function getByHandle($userHandle, $currentUserPk) {
+    public function getByHandle($handle, $currentUserPk) {
         $sql = "
         SELECT 
             users.user_pk, 
@@ -17,6 +17,7 @@ class UserModel {
             users.user_birthday, 
             users.user_handle,
             users.user_banner,
+            users.user_bio,
             COUNT(posts.post_pk) AS post_count,
             (SELECT COUNT(*) FROM follows WHERE followed_user_fk = users.user_pk AND follow_deleted_at IS NULL) AS followers_count,
             (SELECT COUNT(*) FROM follows WHERE following_user_fk = users.user_pk AND follow_deleted_at IS NULL) AS following_count,
@@ -31,12 +32,11 @@ class UserModel {
             END AS is_following
         FROM users 
         LEFT JOIN posts ON users.user_pk = posts.post_user_fk
-        WHERE users.user_handle = :userHandle
+        WHERE users.user_handle = :handle
         GROUP BY users.user_pk, users.user_name, users.user_email, users.user_birthday, users.user_handle, users.user_banner
-        LIMIT 1;
-";
+        ";
         $stmt = $this->_db->prepare($sql);
-        $stmt->bindValue(':userHandle', $userHandle);
+        $stmt->bindValue(':handle', $handle);
         $stmt->bindValue(':currentUserPk', $currentUserPk ?? null, PDO::PARAM_INT);
         $stmt->execute();
         $user = $stmt->fetch();
@@ -102,5 +102,25 @@ class UserModel {
         $stmt->execute();
 
         return $userPk;
+    }
+
+    public function updateUser($userPk, $newName, $newBio, $newLocation, $newWebsite, $newBirthdate) {
+        $sql = "UPDATE users 
+                SET user_name = :name, 
+                    user_bio = :bio, 
+                    user_location = :location, 
+                    user_website = :website, 
+                    user_birthday = :birthdate 
+                WHERE user_pk = :pk";
+
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindValue(":pk", $userPk);
+        $stmt->bindValue(":name", $newName);
+        $stmt->bindValue(":bio", $newBio);
+        $stmt->bindValue(":location", $newLocation);
+        $stmt->bindValue(":website", $newWebsite);
+        $stmt->bindValue(":birthdate", $newBirthdate);
+
+        $stmt->execute();
     }
 }

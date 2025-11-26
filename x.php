@@ -18,6 +18,39 @@ function muoNoCache() {
     // header('Clear-Site-Data: "cache", "cookies", "storage", "executionContexts"');
 }
 
+
+function validateBirthdate() {
+    $birthdate = trim($_POST["birthdate"] ?? "");
+    return $birthdate;
+}
+
+define("websiteMax", 50);
+function validateWebsite() {
+    $website = trim($_POST["website"] ?? "");
+    if (strlen($website) > websiteMax) {
+        throw new Exception("Website must be less than " . websiteMax . " characters", 400);
+    }
+    return $website;
+}
+
+define("locationMax", 50);
+function validateLocation() {
+    $location = trim($_POST["location"] ?? "");
+    if (strlen($location) > locationMax) {
+        throw new Exception("Location must be less than " . locationMax . " characters", 400);
+    }
+    return $location;
+}
+
+define("bioMax", 255);
+function validateBio() {
+    $bio = trim($_POST["bio"] ?? "");
+    if (strlen($bio) > bioMax) {
+        throw new Exception("Bio must be less than " . bioMax . " characters", 400);
+    }
+    return $bio;
+}
+
 define("pageMax", 100);
 function validatePage() {
     $page = (int) ($_GET["page"] ?? 1);

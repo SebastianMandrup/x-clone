@@ -16,7 +16,12 @@ try {
 
 	// PROTECTED ROUTE STARTS SESSION
 	$currentUserPk = $_SESSION['user']['user_pk'];
-	$user = $userModel->getByHandle($username, $currentUserPk);
+	$user = $userModel->getByHandle($handle, $currentUserPk);
+
+	if (!$user) {
+		throw new Exception("User not found");
+	}
+
 	$posts = $postModel->getAllWithCounts($user['user_pk']);
 	$firstThreeTopics = $topicModel->getPage();
 	$usersToFollow = $followModel->getWhoToFollow();
@@ -25,4 +30,6 @@ try {
 } catch (Exception $e) {
 	$user = null;
 	$error = $e->getMessage();
+	header("Location: /404?error=" . urlencode($error));
+	exit();
 }

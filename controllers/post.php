@@ -15,7 +15,7 @@ $commentModel = new CommentModel();
 try {
 
 	$currentUserPk = $_SESSION['user']['user_pk'];
-	$post = $postModel->getByPk($postPk, $username);
+	$post = $postModel->getByPk($postPk, $handle);
 
 	if (!$post) {
 		Header('Location: /home?errorMessage=Post not found');

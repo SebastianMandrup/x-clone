@@ -55,9 +55,9 @@ class FollowModel {
 				LEFT JOIN follows 
 				ON users.user_pk = follows.followed_user_fk 
 				AND follows.following_user_fk = :userPk
-				WHERE follows.followed_user_fk IS NULL
-				OR follows.follow_deleted_at IS NOT NULL
-				AND user_pk != :userPk 
+				AND follows.follow_deleted_at IS NULL  -- Only consider active follows
+				WHERE users.user_pk != :userPk 
+				AND follows.followed_user_fk IS NULL   -- Only users NOT actively followed
 				ORDER BY user_pk 
 				LIMIT :_limit OFFSET :offset;";
 
