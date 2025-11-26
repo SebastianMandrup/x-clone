@@ -72,6 +72,18 @@ function validatePk($pkName) {
     return $pk;
 }
 
+define("commentReplyContentMax", 255);
+function validateCommentReplyContent() {
+    $commentReplyContent = trim($_POST["comment_reply_content"] ?? "");
+    if (strlen($commentReplyContent) == 0) {
+        throw new Exception("Comment reply content cannot be empty", 400);
+    }
+    if (strlen($commentReplyContent) > commentReplyContentMax) {
+        throw new Exception("Comment reply content must be less than " . commentReplyContentMax . " characters", 400);
+    }
+    return $commentReplyContent;
+}
+
 define("commentContentMax", 255);
 function validateCommentContent() {
     $commentContent = trim($_POST["comment_content"] ?? "");

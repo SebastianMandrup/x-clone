@@ -10,19 +10,20 @@ class CommentModel {
 	public function getCommentsByPostPk($postPk, $currentUserPk) {
 		try {
 			$sql = "SELECT
-				c.comment_pk,
-				c.comment_content,
-				c.comment_created_at,
-				u.user_handle as commenter_handle,
-				u.user_name as commenter_name,
-				u.user_pk as commenter_pk,
-				(SELECT COUNT(*) FROM comment_likes cl WHERE cl.comment_fk = c.comment_pk AND cl.user_fk = :currentUserPk AND cl.like_deleted_at IS NULL) AS is_liked_by_current_user,
-				(SELECT COUNT(*) FROM comment_likes cl WHERE cl.comment_fk = c.comment_pk AND cl.like_deleted_at IS NULL) AS comment_likes_count
-				FROM comments c
-				INNER JOIN users u ON c.comment_user_fk = u.user_pk
-				WHERE c.comment_post_fk = :postPk
-				AND c.comment_deleted_at IS NULL
-				ORDER BY c.comment_created_at ASC";
+					c.comment_pk,
+					c.comment_content,
+					c.comment_created_at,
+					u.user_handle as commenter_handle,
+					u.user_name as commenter_name,
+					u.user_pk as commenter_pk,
+					(SELECT COUNT(*) FROM comment_likes cl WHERE cl.comment_fk = c.comment_pk AND cl.user_fk = :currentUserPk AND cl.like_deleted_at IS NULL) AS is_liked_by_current_user,
+					(SELECT COUNT(*) FROM comment_likes cl WHERE cl.comment_fk = c.comment_pk AND cl.like_deleted_at IS NULL) AS comment_likes_count
+					FROM comments c
+					INNER JOIN users u ON c.comment_user_fk = u.user_pk
+					WHERE c.comment_post_fk = :postPk
+					AND c.comment_deleted_at IS NULL
+					ORDER BY c.comment_created_at ASC";
+
 			$stmt = $this->_db->prepare($sql);
 			$stmt->bindValue(':postPk', $postPk);
 			$stmt->bindValue(':currentUserPk', $currentUserPk);
@@ -49,6 +50,25 @@ class CommentModel {
 			return true;
 		} catch (Exception $e) {
 			throw new Exception("Error creating comment: " . $e->getMessage());
+		}
+	}
+
+	public function createCommentReply($userPk, $commentPk, $commentReplyContent) {
+		try {
+			$commentReplyPk = bin2hex(random_bytes(25));
+
+			$sql = "INSERT INTO comment_replies (comment_reply_pk, comment_fk, user_fk, comment_reply_content) 
+			VALUES (:comment_reply_pk, :comment_pk, :user_pk, :comment_reply_content)";
+			$stmt = $this->_db->prepare($sql);
+			$stmt->bindParam(':comment_reply_pk', $commentReplyPk);
+			$stmt->bindParam(':user_pk', $userPk);
+			$stmt->bindParam(':comment_pk', $commentPk);
+			$stmt->bindParam(':comment_reply_content', $commentReplyContent);
+			$stmt->execute();
+
+			return true;
+		} catch (Exception $e) {
+			throw new Exception("Error creating comment reply: " . $e->getMessage());
 		}
 	}
 

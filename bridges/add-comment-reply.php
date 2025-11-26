@@ -7,16 +7,16 @@ try {
 	require_once __DIR__ . '/../x.php';
 
 	$userPk = $_SESSION["user"]["user_pk"];
-	$postPk = validatePk('postPk');
-	$commentContent = validateCommentContent();
+	$commentPk = validatePk('comment_pk');
+	$commentReplyContent = validateCommentReplyContent();
 
 	require_once __DIR__ . '/../models/CommentModel.php';
 	$commentModel = new CommentModel();
-	$commentModel->createComment($userPk, $postPk, $commentContent);
+	$commentModel->createCommentReply($userPk, $commentPk, $commentReplyContent);
 
 	echo json_encode([
 		'status' => 'success',
-		'message' => 'Comment added successfully'
+		'message' => 'Comment reply added successfully'
 	]);
 } catch (Exception $e) {
 	echo json_encode([

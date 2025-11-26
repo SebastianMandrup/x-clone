@@ -1,8 +1,3 @@
-<?php
-if (!isset($comment)) {
-	throw new Exception("Comment data not provided");
-}
-?>
 <article class='articleComment' data-comment-pk='<?php muoEcho($comment['comment_pk']); ?>'>
 	<section class='sectionCommentOptions'>
 		<button class='btnCommentOptions btnMoreOptions' title='More options'>

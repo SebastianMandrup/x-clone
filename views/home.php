@@ -29,9 +29,6 @@ require_once __DIR__ . "../../x.php";
 
             <?php require_once __DIR__ . '/../components/sections/createPost.php'; ?>
 
-
-
-
             <?php
             foreach ($posts as $post) {
                 require __DIR__ . '../../components/articles/post.php';
