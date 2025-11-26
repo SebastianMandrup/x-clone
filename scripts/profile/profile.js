@@ -13,3 +13,4 @@ import '../shared/posts.js';
 import '../shared/repost.js';
 import '../shared/unfollowUser.js';
 
+import './editProfileOverlay.js';

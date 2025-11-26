@@ -78,6 +78,3 @@
 		</form>
 	</section>
 </div>
-
-<link rel='stylesheet' href='./components/overlays/editProfile/editProfileOverlay.css'>
-<script src='./components/overlays/editProfile/editProfileOverlay.js' type='module'></script>

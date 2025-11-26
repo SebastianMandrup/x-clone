@@ -2,6 +2,7 @@
 
 @import './headerMainProfile.css';
 @import './sectionProfileBanner.css';
+@import './editProfileOverlay.css';
 
 @import '../shared/partitions/main.css';
 @import '../shared/partitions/nav.css';
