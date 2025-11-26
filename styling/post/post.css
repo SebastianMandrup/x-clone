@@ -3,7 +3,9 @@
 @import './headerMainPost.css';
 @import './featuredPost.css';
 @import './comment.css';
+@import './commentReply.css';
 @import './commentForm.css';
+@import './replyOverlay.css';
 
 @import '../shared/partitions/main.css';
 @import '../shared/partitions/nav.css';

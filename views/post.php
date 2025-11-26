@@ -12,7 +12,7 @@ $_db = require __DIR__ . '/../services/db_connector.php';
 	<link rel="stylesheet" href="../../styling/post/post.css">
 	<link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
 	<script src='../../scripts/post/post.js' type='module'></script>
-	<title> Post - <?php muoEcho($username); ?></title>
+	<title> Post - <?php muoEcho($handle); ?></title>
 </head>
 
 <body>
@@ -39,11 +39,11 @@ $_db = require __DIR__ . '/../services/db_connector.php';
 
 		</main>
 
-		<?php require __DIR__ . '/../components/aside.php'; ?>
+		<?php require_once __DIR__ . '/../components/aside.php'; ?>
 
 	</div>
 
-	<?php require __DIR__ . '/../components/commentOverlay.php'; ?>
+	<?php require_once __DIR__ . '/../components/replyOverlay.php'; ?>
 
 </body>
 

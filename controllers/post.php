@@ -16,13 +16,13 @@ try {
 
 	$currentUserPk = $_SESSION['user']['user_pk'];
 	$post = $postModel->getByPk($postPk, $handle);
+	$comments = $commentModel->getCommentsByPostPk($postPk, $currentUserPk);
 
 	if (!$post) {
 		Header('Location: /home?errorMessage=Post not found');
 		exit;
 	}
 
-	$comments = $commentModel->getCommentsByPostPk($postPk, $currentUserPk);
 	$firstThreeTopics = $topicModel->getPage();
 	$usersToFollow = $followModel->getWhoToFollow();
 
@@ -30,6 +30,6 @@ try {
 } catch (Exception $e) {
 	$post = null;
 	$error = $e->getMessage();
-
-	require_once __DIR__ . '/../views/404.php';
+	echo $error;
+	// require_once __DIR__ . '/../views/404.php';
 }

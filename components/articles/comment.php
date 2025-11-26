@@ -1,8 +1,3 @@
-<?php
-if (!isset($comment)) {
-	throw new Exception("Comment data not provided");
-}
-?>
 <article class='articleComment' data-comment-pk='<?php muoEcho($comment['comment_pk']); ?>'>
 	<section class='sectionCommentOptions'>
 		<button class='btnCommentOptions btnMoreOptions' title='More options'>
@@ -45,6 +40,24 @@ if (!isset($comment)) {
 	<p class='pCommentContent'>
 		<?php muoEcho($comment['comment_content']); ?>
 	</p>
+
+	<?php
+	if (isset($comment['replies']) && is_array($comment['replies'])) {
+	?>
+		<section class='sectionCommentReplies'>
+			<p class='pCommentRepliesHeader'>
+				replies
+			</p>
+			<?php
+			foreach ($comment['replies'] as $reply) {
+				require __DIR__ . '/commentReply.php';
+			}
+			?>
+		</section>
+	<?php
+	}
+	?>
+
 	<footer class='footerCommentActions'>
 		<button class='btnCommentAction btnReplyComment' title="Reply">
 			<svg xmlns=" http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"

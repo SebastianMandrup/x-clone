@@ -23,5 +23,6 @@ post('/bridges/login', 'bridges/login.php');
 get('/bridges/logout', 'bridges/logout.php');
 post('/bridges/sign-up', 'bridges/sign-up.php');
 post('/bridges/edit-profile', 'bridges/edit-profile.php');
+post('/bridges/add-comment-reply', 'bridges/add-comment-reply.php');
 
 any('/404', 'views/404.php');
