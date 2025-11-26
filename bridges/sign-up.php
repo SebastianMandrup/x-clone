@@ -14,67 +14,36 @@ try {
 
 	$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-	$_db = require_once __DIR__ . "/../services/db_connector.php";
-
 	if (!$email && !$phone) {
 		throw new Exception("Either email or phone number must be provided.", 400);
 	}
 
-	// Optional: check if email already exists
+	require_once __DIR__ . "/../models/UserModel.php";
+	$userModel = new UserModel();
 
-	if ($email) {
-		$sql = "SELECT COUNT(*) FROM users WHERE user_email = :email";
-		$stmt = $_db->prepare($sql);
-		$stmt->bindValue(":email", $email);
-		$stmt->execute();
-		if ($stmt->fetchColumn() > 0) {
-			throw new Exception("Email already registered.", 400);
-		}
+	$userByEmail = $userModel->getByEmail($email);
+
+	if ($userByEmail) {
+		throw new Exception("Email already registered.", 400);
 	}
 
+	$userByPhone = $userModel->getByPhone($phone);
 
-	// Optional: check if phone already exists
-	if ($phone) {
-		$sql = "SELECT COUNT(*) FROM users WHERE user_phone = :phone";
-		$stmt = $_db->prepare($sql);
-		$stmt->bindValue(":phone", $phone);
-		$stmt->execute();
-
-		if ($stmt->fetchColumn() > 0) {
-			throw new Exception("Phone number already registered.", 400);
-		}
+	if ($userByPhone) {
+		throw new Exception("Phone number already registered.", 400);
 	}
-
-	$sql = "INSERT INTO users (
-                user_pk, 
-                user_name,
-				user_handle, 
-                user_phone, 
-                user_email, 
-                user_password, 
-                user_birthday, 
-                user_personalized_ads, 
-                user_connect_with_email_phone
-            ) VALUES (
-                :pk, :name, :handle, :phone, :email, :password, :birthday, :personalizedAds, :connectWithEmailPhone
-            )";
-
-	$stmt = $_db->prepare($sql);
 
 	$birthday = sprintf("%04d-%02d-%02d", $year, $month, $day);
-	$userPk = bin2hex(random_bytes(25));
-
-	$stmt->bindValue(":pk", $userPk);
-	$stmt->bindValue(":name", $name);
-	$stmt->bindValue(":handle", $handle);
-	$stmt->bindValue(":phone", $phone);
-	$stmt->bindValue(":password", $hashedPassword);
-	$stmt->bindValue(":birthday", $birthday);
-	$stmt->bindValue(":personalizedAds", $personalizedAds);
-	$stmt->bindValue(":connectWithEmailPhone", $connectWithEmailPhone);
-	$stmt->bindValue(":email", $email);
-
-	$stmt->execute();
+	$userModel->createUser(
+		$name,
+		$handle,
+		$phone,
+		$email,
+		$hashedPassword,
+		$birthday,
+		$personalizedAds,
+		$connectWithEmailPhone
+	);
 
 	header("Location: ../?successToast=" . rawurlencode("Sign up successful! Please log in."));
 } catch (Exception $ex) {

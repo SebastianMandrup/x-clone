@@ -50,6 +50,56 @@ class CommentModel {
 		} catch (Exception $e) {
 			throw new Exception("Error creating comment: " . $e->getMessage());
 		}
-		
+	}
+
+	public function likeComment($commentPk, $userPk) {
+
+		$sql = "SELECT * FROM comment_likes WHERE comment_fk = :commentPk AND user_fk = :userPk";
+		$stmt = $this->_db->prepare($sql);
+		$stmt->bindValue(":commentPk", $commentPk);
+		$stmt->bindValue(":userPk", $userPk);
+		$stmt->execute();
+
+		$post_has_like = $stmt->fetch();
+
+		// user has never liked the post before
+		if (!$post_has_like) {
+			$sql = "INSERT INTO comment_likes (comment_fk, user_fk, like_created_at) VALUES (:commentPk, :userPk, UNIX_TIMESTAMP())";
+			$stmt = $this->_db->prepare($sql);
+			$stmt->bindValue(":commentPk", $commentPk);
+			$stmt->bindValue(":userPk", $userPk);
+			$stmt->execute();
+
+			echo json_encode([
+				'status' => 'success',
+				'message' => "user liked the comment"
+			]);
+			return;
+		}
+
+		// user has liked the post before
+		if ($post_has_like['like_deleted_at'] == null) {
+			$sql = "UPDATE comment_likes SET like_deleted_at = UNIX_TIMESTAMP() WHERE comment_fk = :commentPk AND user_fk = :userPk";
+			$stmt = $this->_db->prepare($sql);
+			$stmt->bindValue(":commentPk", $commentPk);
+			$stmt->bindValue(":userPk", $userPk);
+			$stmt->execute();
+			echo json_encode([
+				'status' => 'success',
+				'message' => "user unliked the comment"
+			]);
+			return;
+		}
+
+		// user is disliked the post and wants to like it again
+		$sql = "UPDATE comment_likes SET like_deleted_at = NULL WHERE comment_fk = :commentPk AND user_fk = :userPk";
+		$stmt = $this->_db->prepare($sql);
+		$stmt->bindValue(":commentPk", $commentPk);
+		$stmt->bindValue(":userPk", $userPk);
+		$stmt->execute();
+		echo json_encode([
+			'status' => 'success',
+			'message' => "user liked the comment"
+		]);
 	}
 }

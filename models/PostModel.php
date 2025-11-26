@@ -16,7 +16,7 @@ class PostModel {
      *  - includeReference: bool
      *  - onlyOthers: bool  (posts from followed users only)
      */
-    public function getAll($current_user_pk, array $options,) {
+    private function getAll($current_user_pk, array $options,) {
         // Base selects and joins
         $selects = [
             'p.post_pk',
@@ -126,5 +126,103 @@ class PostModel {
 
         $post = $stmt->fetch();
         return $post;
+    }
+
+    public function getAllFromOthersWithCounts($current_user_pk) {
+        return $this->getAll($current_user_pk, [
+            'includeLikes' => true,
+            'includeComments' => true,
+            'includeReposts' => true,
+            'includeReference' => true,
+            'onlyOthers' => true
+        ]);
+    }
+
+    public function getAllWithCounts($current_user_pk) {
+        return $this->getAll($current_user_pk, [
+            'includeLikes' => true,
+            'includeComments' => true,
+            'includeReposts' => true,
+            'includeReference' => true
+        ]);
+    }
+
+    public function likePost($postPk, $userPk) {
+
+        $sql = "SELECT * FROM post_likes WHERE post_fk = :postPk AND user_fk = :userPk";
+        $stmt = $this->_db->prepare($sql);
+
+        $stmt->bindValue(":postPk", $postPk);
+        $stmt->bindValue(":userPk", $userPk);
+
+        $stmt->execute();
+
+        $post_has_like = $stmt->fetch();
+
+        // user has never liked the post before
+        if (!$post_has_like) {
+            $sql = "INSERT INTO post_likes (post_fk, user_fk, like_created_at) VALUES (:postPk, :userPk, UNIX_TIMESTAMP())";
+            $stmt = $this->_db->prepare($sql);
+            $stmt->bindValue(":postPk", $postPk);
+            $stmt->bindValue(":userPk", $userPk);
+            $stmt->execute();
+
+            echo json_encode([
+                'status' => 'success',
+                'message' => "user liked the post"
+            ]);
+            exit;
+        }
+
+        // user has liked the post before
+        if ($post_has_like['like_deleted_at'] == null) {
+            $sql = "UPDATE post_likes SET like_deleted_at = UNIX_TIMESTAMP() WHERE post_fk = :postPk AND user_fk = :userPk";
+            $stmt = $this->_db->prepare($sql);
+            $stmt->bindValue(":postPk", $postPk);
+            $stmt->bindValue(":userPk", $userPk);
+            $stmt->execute();
+            echo json_encode([
+                'status' => 'success',
+                'message' => "user unliked the post"
+            ]);
+            exit;
+        }
+
+        // user is disliked the post and wants to like it again
+        $sql = "UPDATE post_likes SET like_deleted_at = NULL WHERE post_fk = :postPk AND user_fk = :userPk";
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindValue(":postPk", $postPk);
+        $stmt->bindValue(":userPk", $userPk);
+        $stmt->execute();
+        echo json_encode([
+            'status' => 'success',
+            'message' => "user liked the post"
+        ]);
+    }
+
+
+    public function repost($referencePk, $postUserFk) {
+
+        $repostPk = bin2hex(random_bytes(25));
+
+        $sql = "INSERT INTO posts (post_pk, post_reference, post_user_fk, post_created_at) 
+                VALUES (:postPk, :postReference, :postUserFk, UNIX_TIMESTAMP())";
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindValue(":postPk", $repostPk);
+        $stmt->bindValue(":postReference", $referencePk);
+        $stmt->bindValue(":postUserFk", $postUserFk);
+        $stmt->execute();
+    }
+
+    public function createPost($postContent, $postUserFk) {
+        $postPk = bin2hex(random_bytes(25));
+
+        $sql = "INSERT INTO posts (post_pk, post_content, post_user_fk) 
+                VALUES (:postPk, :postContent, :postUserFk)";
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindValue(":postPk", $postPk);
+        $stmt->bindValue(":postContent", $postContent);
+        $stmt->bindValue(":postUserFk", $postUserFk);
+        $stmt->execute();
     }
 }

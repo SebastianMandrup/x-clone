@@ -3,10 +3,10 @@
 require_once __DIR__ . '/router.php';
 
 get('/', 'views/index.php');
-get('/home', 'public/home.php');
-get('/following', 'public/following.php');
-get('/$username', 'public/profile.php');
-get('/$username/posts/$postPk', 'public/post.php');
+get('/home', 'controllers/home.php');
+get('/following', 'controllers/following.php');
+get('/$username', 'controllers/profile.php');
+get('/$username/posts/$postPk', 'controllers/post.php');
 
 post('/api/repost', 'api/repost.php');
 post('/api/like-post', 'api/like-post.php');
@@ -15,7 +15,7 @@ post('/api/search', 'api/search.php');
 post('/api/add-comment', 'api/add-comment.php');
 post('/api/follow-user', 'api/follow-user.php');
 post('/api/unfollow-user', 'api/unfollow-user.php');
-get('/api/get-trends', 'api/get-trends.php');
+get('/api/get-topics', 'api/get-topics.php');
 get('/api/get-who-to-follow', 'api/get-who-to-follow.php');
 
 post('/bridges/create-post', 'bridges/create-post.php');

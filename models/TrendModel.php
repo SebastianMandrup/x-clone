@@ -1,21 +1,15 @@
 <?php
 
-class TopicModel {
+class TrendModel {
 
 	private $_db;
-
-	private $_LIMIT = 4;
 
 	public function __construct() {
 		$this->_db = require __DIR__ . '/../services/db_connector.php';
 	}
 
-	public function getLimit() {
-		return $this->_LIMIT;
-	}
-
-	public function getPage($page = 1) {
-		$LIMIT = $this->_LIMIT;
+	public function getTrends($page = 1) {
+		$LIMIT = 4;
 		$OFFSET = ($page - 1) * ($LIMIT - 1);
 
 		$sql = "SELECT topic_pk, topic_name, topic_field, topic_count, topic_rank 

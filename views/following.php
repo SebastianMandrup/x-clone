@@ -28,8 +28,6 @@ require_once __DIR__ . "../../x.php";
 
 			require_once __DIR__ . '/../components/sections/createPost.php';
 
-			require_once __DIR__ . '../../controllers/PostController.php';
-
 			foreach ($posts as $post) {
 				require __DIR__ . '../../components/articles/post.php';
 			}

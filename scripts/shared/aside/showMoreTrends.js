@@ -6,7 +6,7 @@ btnShowMoreTrends.addEventListener('click', async function () {
 	const sectionWhatsHappeningHeader = sectionWhatsHappening.querySelector('header');
 
 	try {
-		const response = await fetch(`/api/get-trends?page=${btnShowMoreTrends.dataset.nextPage}`, {
+		const response = await fetch(`/api/get-topics?page=${btnShowMoreTrends.dataset.nextPage}`, {
 			method: 'GET'
 		});
 

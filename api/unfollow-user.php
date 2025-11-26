@@ -8,24 +8,15 @@ try {
 		throw new Exception("User not authenticated", 401);
 	}
 
-	require_once __DIR__ . '/../../x.php';
+	require_once __DIR__ . '/../x.php';
 
 	$userPk = $_SESSION["user"]["user_pk"];
 	$userToUnfollowPk = validatePk('userToUnfollowPk');
 
-	$_db = require_once __DIR__ . '/../../services/db_connector.php';
+	require_once __DIR__ . '/../models/FollowModel.php';
+	$followModel = new FollowModel();
 
-	$sql = "UPDATE follows SET follow_deleted_at = UNIX_TIMESTAMP() WHERE following_user_fk = :userPk AND followed_user_fk = :userToUnfollowPk AND follow_deleted_at IS NULL";
-	$stmt = $_db->prepare($sql);
-	$stmt->bindParam(':userPk', $userPk);
-	$stmt->bindParam(':userToUnfollowPk', $userToUnfollowPk);
-	$stmt->execute();
-
-	$isUserUnfollowed = $stmt->rowCount() > 0;
-
-	if (!$isUserUnfollowed) {
-		throw new Exception("You are not following this user", 400);
-	}
+	$followModel->unfollowUser($userPk, $userToUnfollowPk);
 
 	echo json_encode([
 		'status' => 'success',
