@@ -1,3 +1,8 @@
+<?php
+if (!isset($usersToFollow)) {
+	throw new Exception('Users to follow not provided to whoToFollow section.');
+}
+?>
 <section id='sectionWhoToFollow'>
 	<header>
 		Who To Follow
@@ -5,25 +10,7 @@
 
 	<?php
 
-	require_once __DIR__ . '../../../db_connector.php';
-
-	$sql = "SELECT user_pk, user_name, user_handle 
-			FROM users 
-			LEFT JOIN follows ON users.user_pk = follows.followed_user_fk AND follows.following_user_fk = :userPk
-			WHERE follows.followed_user_fk IS NULL
-			OR follows.follow_deleted_at IS NOT NULL
-			AND user_pk != :userPk 
-			ORDER BY user_pk 
-			LIMIT 4;
-	";
-
-	$stmt = $_db->prepare($sql);
-	$stmt->bindValue(':userPk', $_SESSION['user']['user_pk']);
-	$stmt->execute();
-
-	$users = $stmt->fetchAll();
-
-	$usersCount = count($users);
+	$usersCount = count($usersToFollow);
 	$moreUsersExist = false;
 
 	if ($usersCount === 0) {
@@ -43,10 +30,10 @@
 		$moreUsersExist = false;
 	} else {
 		$moreUsersExist = true;
-		array_pop($users);
+		array_pop($usersToFollow);
 	}
 
-	foreach ($users as $user) {
+	foreach ($usersToFollow as $user) {
 		require __DIR__ . '../../articles/personToFollow.php';
 	}
 

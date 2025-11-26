@@ -1,17 +1,16 @@
+<?php
+if (!isset($firstThreeTopics)) {
+	throw new Exception('First three topics not provided to whatsHappening section.');
+}
+?>
+
 <section id='sectionWhatsHappening'>
 	<header>
 		What's happening
 	</header>
 
 	<?php
-	require_once __DIR__ . '../../../db_connector.php';
-
-	$sql = 'SELECT topic_pk, topic_name, topic_field, topic_count, topic_rank FROM topics ORDER BY topic_rank DESC LIMIT 3;';
-	$stmt = $_db->prepare($sql);
-	$stmt->execute();
-
-	$topics = $stmt->fetchAll();
-	foreach ($topics as $topic) {
+	foreach ($firstThreeTopics as $topic) {
 		require __DIR__ . '../../articles/trendItem.php';
 	}
 	?>

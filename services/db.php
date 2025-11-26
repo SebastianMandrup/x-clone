@@ -1,9 +1,9 @@
 <?php
 // PDO
-try{
+try {
   $dbUserName = 'root';
   $dbPassword = 'password'; // root | admin
-  $dbConnection = 'mysql:host=mariadb; dbname=company; charset=utf8mb4'; 
+  $dbConnection = 'mysql:host=mariadb; dbname=company; charset=utf8mb4';
   // utf8 every character in the world
   // mb4 every character and also emojies
   $options = [
@@ -12,12 +12,13 @@ try{
     // PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ // ->nickname
     // PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_NUM // [[2],[],[]]
   ];
-  $_db = new PDO(  $dbConnection, 
-                  $dbUserName, 
-                  $dbPassword , 
-                  $options );
-  
-}catch(PDOException $ex){
-  echo $ex;  
+  return new PDO(
+    $dbConnection,
+    $dbUserName,
+    $dbPassword,
+    $options
+  );
+} catch (PDOException $ex) {
+  echo $ex;
   exit(); //die()
 }
