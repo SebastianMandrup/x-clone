@@ -70,25 +70,60 @@ class FollowModel {
 		$users = $stmt->fetchAll();
 		return $users;
 	}
+
+	public function getFollowersByHandle($handle, $currentUserPk) {
+		$sql = "SELECT 
+                u.user_pk, 
+                u.user_name, 
+                u.user_handle,
+                CASE 
+                    WHEN EXISTS (
+                        SELECT 1 FROM follows f2 
+                        WHERE f2.following_user_fk = :currentUserPk 
+                        AND f2.followed_user_fk = u.user_pk 
+                        AND f2.follow_deleted_at IS NULL
+                    ) THEN 1 
+                    ELSE 0 
+                END as is_followed
+            FROM users u
+            JOIN follows f ON u.user_pk = f.following_user_fk
+            JOIN users target ON f.followed_user_fk = target.user_pk
+            WHERE target.user_handle = :handle
+            AND f.follow_deleted_at IS NULL";
+
+		$stmt = $this->_db->prepare($sql);
+		$stmt->bindParam(':handle', $handle);
+		$stmt->bindParam(':currentUserPk', $currentUserPk);
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+	}
+
+	public function getFollowingByHandle($handle, $currentUserPk) {
+		$sql = "SELECT 
+                u.user_pk, 
+                u.user_name, 
+                u.user_handle,
+                CASE 
+                    WHEN EXISTS (
+                        SELECT 1 FROM follows f2 
+                        WHERE f2.following_user_fk = :currentUserPk 
+                        AND f2.followed_user_fk = u.user_pk 
+                        AND f2.follow_deleted_at IS NULL
+                    ) THEN 1 
+                    ELSE 0 
+                END as is_followed
+            FROM users u
+            JOIN follows f ON u.user_pk = f.followed_user_fk
+            JOIN users target ON f.following_user_fk = target.user_pk
+            WHERE target.user_handle = :handle
+            AND f.follow_deleted_at IS NULL";
+
+		$stmt = $this->_db->prepare($sql);
+		$stmt->bindParam(':handle', $handle);
+		$stmt->bindParam(':currentUserPk', $currentUserPk);
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+	}
 }
-
-
-/*	public function getAllWithCounts($currentUserPk) {
-		return $this->postModel->getAll($currentUserPk, [
-			'includeLikes' => true,
-			'includeComments' => true,
-			'includeReposts' => true,
-			'includeReference' => true
-		]);
-	}
-
-	public function getAllFromOthersWithCounts($currentUserPk) {
-		return $this->postModel->getAll($currentUserPk, [
-			'includeLikes' => true,
-			'includeComments' => true,
-			'includeReposts' => true,
-			'includeReference' => true,
-			'onlyOthers' => true
-		]);
-	}
-*/

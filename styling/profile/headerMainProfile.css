@@ -6,8 +6,8 @@
 #aProfileBackButton {
 	background-color: transparent;
 	text-decoration: none;
-	border: none;
 	color: var(--perfectWhite);
+	border: none;
 	font-size: 1.5rem;
 	cursor: pointer;
 	margin: 0 14px;

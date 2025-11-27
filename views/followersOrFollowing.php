@@ -24,7 +24,17 @@ require_once __DIR__ . "../../x.php";
 
 			<?php require __DIR__ . '/../components/sections/followersHeader.php'; ?>
 
+
+			<?php
+
+			foreach ($users as $user) {
+				require __DIR__ . '/../components/articles/user.php';
+			}
+
+			?>
+
 			<div class="circle-loader"></div>
+
 		</main>
 
 		<?php require __DIR__ . '/../components/aside.php'; ?>
