@@ -166,14 +166,26 @@ aside {
     padding-left: 1rem;
 }
 
-.articlePersonToFollow {
+.articlePersonToFollow,
+.articlePersonToFollow,
+.articleUser {
     display: flex;
 }
 
-.imgPersonToFollowAvatar {
+.articleUser {
+    padding: 20px;
+    border-bottom: 1px solid var(--grey);
+}
+
+.imgPersonToFollowAvatar,
+.imgUser {
     height: 40px;
     width: 40px;
     border-radius: 50%;
+}
+
+.imgUser {
+    margin-right: 10px;
 }
 
 .sectionPersonToFollowNames {
@@ -182,18 +194,21 @@ aside {
     margin-left: 0.5rem;
 }
 
-.aPersonToFollowFullName {
+.aPersonToFollowFullName,
+.aUserFullName {
     font-weight: 600;
     font-size: 0.8rem;
     text-decoration: none;
     color: var(--perfectWhite);
 }
 
-.aPersonToFollowFullName:hover {
+.aPersonToFollowFullName:hover,
+.aUserFullName:hover {
     text-decoration: underline;
 }
 
-.pPersonToFollowHandle {
+.pPersonToFollowHandle,
+.pUserHandle {
     font-size: 0.8rem;
     color: var(--lighterGrey);
 }

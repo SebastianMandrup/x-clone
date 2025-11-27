@@ -16,7 +16,8 @@ $followModel = new FollowModel();
 try {
 	$currentUserPk = $_SESSION['user']['user_pk'];
 	$posts = $postModel->getAllWithCounts($currentUserPk);
-	$firstThreeTopics = $topicModel->getPage();
+	$topics = $topicModel->getPage();
+	$firstThreeTopics = array_slice($topics, 0, 3);
 	$usersToFollow = $followModel->getWhoToFollow();
 } catch (Exception $e) {
 	$usersToFollow = [];

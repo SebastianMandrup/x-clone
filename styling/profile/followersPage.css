@@ -1,0 +1,9 @@
+@import '../variables.css';
+
+@import './headerFollowers.css';
+
+@import '../shared/user.css';
+
+@import '../shared/partitions/main.css';
+@import '../shared/partitions/nav.css';
+@import '../shared/partitions/aside.css';

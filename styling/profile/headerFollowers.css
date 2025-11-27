@@ -1,0 +1,15 @@
+@import '../shared/headerMain.css';
+
+#headerMainFollowers {
+	display: flex;
+	padding: 8px;
+}
+
+#aFollowersBack {
+	color: var(--perfectWhite);
+	text-decoration: none;
+	font-size: 24px;
+	margin-right: 16px;
+	cursor: pointer;
+	margin: 0 14px;
+}
