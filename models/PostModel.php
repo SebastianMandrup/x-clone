@@ -1,9 +1,14 @@
 <?php
 class PostModel {
     private $_db;
+    private $LIMIT = 4;
 
     public function __construct() {
         $this->_db = require __DIR__ . '/../services/db_connector.php';
+    }
+
+    public function getLimit() {
+        return $this->LIMIT;
     }
 
     public function getByPk($postPk, $handle) {
@@ -127,7 +132,10 @@ class PostModel {
         return $posts;
     }
 
-    public function getAllWithCounts($current_user_pk) {
+    public function getAllWithCounts($current_user_pk, $page = 1) {
+
+        $OFFSET = ($page - 1) * $this->LIMIT;
+
         $sql = "SELECT 
                 p.post_pk,
                 p.post_content,
@@ -183,10 +191,13 @@ class PostModel {
                     ON rp.post_user_fk = ru.user_pk
 
                 WHERE p.post_deleted_at IS NULL
-                ORDER BY p.post_created_at DESC;";
+                ORDER BY p.post_created_at DESC
+                LIMIT :_limit OFFSET :offset;";
 
         $stmt = $this->_db->prepare($sql);
         $stmt->bindValue(':current_user_pk', $current_user_pk);
+        $stmt->bindValue(':_limit', $this->LIMIT, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $OFFSET, PDO::PARAM_INT);
         $stmt->execute();
         $posts = $stmt->fetchAll();
         return $posts;

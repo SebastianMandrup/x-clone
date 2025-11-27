@@ -1,38 +1,42 @@
 import { showToast } from './toasts.js';
 
-document.querySelectorAll('.buttonPostActionLike').forEach(button => {
-	button.addEventListener('click', async function (event) {
+function setupLikeButtons() {
+	document.querySelectorAll('.buttonPostActionLike').forEach(button => {
+		button.addEventListener('click', async function (event) {
 
-		event.stopPropagation();
+			event.stopPropagation();
 
-		const article = this.closest('.articlePost');
-		const countElement = this.querySelector('.spanPostActionCount');
+			const article = this.closest('.articlePost');
+			const countElement = this.querySelector('.spanPostActionCount');
 
-		const formdata = new FormData();
-		formdata.append('postPk', article.dataset.postPk);
+			const formdata = new FormData();
+			formdata.append('postPk', article.dataset.postPk);
 
-		try {
+			try {
 
-			const response = await fetch('/api/like-post', {
-				method: 'POST',
-				body: formdata
-			});
+				const response = await fetch('/api/like-post', {
+					method: 'POST',
+					body: formdata
+				});
 
-			const data = await response.json();
+				const data = await response.json();
 
-			if (!response.ok) {
-				throw new Error(data.message || 'Failed to like post');
+				if (!response.ok) {
+					throw new Error(data.message || 'Failed to like post');
+				}
+
+				this.classList.toggle('triggered');
+				const count = parseInt(countElement.textContent.trim());
+				const newCount = this.classList.contains('triggered') ? count + 1 : count - 1;
+				countElement.textContent = newCount;
+
+			} catch (error) {
+				console.error('Error liking post:', error);
+				showToast('An error occurred while processing your request.', 'error');
 			}
 
-			this.classList.toggle('triggered');
-			const count = parseInt(countElement.textContent.trim());
-			const newCount = this.classList.contains('triggered') ? count + 1 : count - 1;
-			countElement.textContent = newCount;
-
-		} catch (error) {
-			console.error('Error liking post:', error);
-			showToast('An error occurred while processing your request.', 'error');
-		}
-
+		});
 	});
-});
+}
+setupLikeButtons();
+export { setupLikeButtons };

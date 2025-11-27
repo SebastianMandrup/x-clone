@@ -12,3 +12,4 @@ import '../shared/repost.js';
 import '../shared/toasts.js';
 import '../shared/unfollowUser.js';
 
+import './loadMorePosts.js';
