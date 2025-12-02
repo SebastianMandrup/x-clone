@@ -23,7 +23,7 @@ try {
 	$last_page = false;
 
 	// check if there are 4 results
-	if (count($posts) < $postModel->getLimit()) {
+	if (count($posts) < $postModel::$LIMIT + 1) {
 		$last_page = true;
 	}
 
