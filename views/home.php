@@ -44,7 +44,14 @@ require_once __DIR__ . "../../x.php";
                 }
                 ?>
             </div>
-            <div class="circle-loader"></div>
+
+            <?php if (count($posts) === 0) : ?>
+                <div class="divNoPosts">
+                    <p>No posts to display. Start following users to see their posts!</p>
+                </div>
+            <?php else: ?>
+                <div class="circle-loader"></div>
+            <?php endif; ?>
         </main>
 
         <?php require __DIR__ . '/../components/aside.php'; ?>
