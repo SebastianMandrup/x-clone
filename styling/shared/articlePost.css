@@ -1,3 +1,10 @@
+.divNoPosts {
+	text-align: center;
+	color: var(--lighterGrey);
+	margin-top: 2rem;
+	font-size: 1rem;
+}
+
 .articlePost {
 	position: relative;
 	padding: 1rem;
