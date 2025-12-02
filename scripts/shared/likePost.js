@@ -1,9 +1,17 @@
 import { showToast } from './toasts.js';
 
-function setupLikeButtons() {
-	document.querySelectorAll('.buttonPostActionLike').forEach(button => {
-		button.addEventListener('click', async function (event) {
+let likeButtonListeners = [];
 
+function setupLikeButtons() {
+
+	likeButtonListeners.forEach(({ button, listener }) => {
+		button.removeEventListener('click', listener);
+	});
+
+	likeButtonListeners = [];
+
+	document.querySelectorAll('.buttonPostActionLike').forEach(button => {
+		const listener = async function (event) {
 			event.stopPropagation();
 
 			const article = this.closest('.articlePost');
@@ -13,7 +21,6 @@ function setupLikeButtons() {
 			formdata.append('postPk', article.dataset.postPk);
 
 			try {
-
 				const response = await fetch('/api/like-post', {
 					method: 'POST',
 					body: formdata
@@ -34,9 +41,13 @@ function setupLikeButtons() {
 				console.error('Error liking post:', error);
 				showToast('An error occurred while processing your request.', 'error');
 			}
+		}
 
-		});
+		button.addEventListener('click', listener);
+		likeButtonListeners.push({ button, listener });
 	});
 }
+
 setupLikeButtons();
 export { setupLikeButtons };
+

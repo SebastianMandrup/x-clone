@@ -14,9 +14,18 @@ document.getElementById('divAddCommentOverlay').addEventListener('click', (event
 	}
 });
 
+let commentButtonListeners = [];
+
 function setupCommentOverlays() {
+
+	commentButtonListeners.forEach(({ button, listener }) => {
+		button.removeEventListener('click', listener);
+	});
+
+	commentButtonListeners = [];
+
 	document.querySelectorAll('.buttonPostActionComment').forEach(button => {
-		button.addEventListener('click', function (event) {
+		const listener = async function (event) {
 			event.stopPropagation();
 
 			const article = this.closest('.articlePost');
@@ -60,9 +69,11 @@ function setupCommentOverlays() {
 					showToast(errorData.message || 'An error occurred while adding your comment.', 'error');
 				}
 			});
-
-		});
+		}
+		button.addEventListener('click', listener);
+		commentButtonListeners.push({ button, listener });
 	})
 }
 setupCommentOverlays();
 export { setupCommentOverlays };
+

@@ -22,12 +22,10 @@ try {
 
 	$last_page = false;
 
-	// check if there are 4 results
 	if (count($posts) < $postModel::$LIMIT + 1) {
 		$last_page = true;
 	}
 
-	// remove last item if last page
 	if (!$last_page) {
 		array_pop($posts);
 	}

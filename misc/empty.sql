@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mariadb
--- Generation Time: Nov 26, 2025 at 11:23 PM
+-- Generation Time: Dec 02, 2025 at 02:21 PM
 -- Server version: 10.6.20-MariaDB-ubu2004
 -- PHP Version: 8.3.26
 
@@ -37,13 +37,6 @@ CREATE TABLE `comments` (
   `comment_deleted_at` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`comment_pk`, `comment_user_fk`, `comment_post_fk`, `comment_content`, `comment_created_at`, `comment_updated_at`, `comment_deleted_at`) VALUES
-('1193f86188f2c6d508249497c5fefab9f490993ef4569dde66', '56e3da04217c03edc376cf1f7ef6663e2bba3a28fc610fbf81', '8b2942394da2f8fb7be1c3331d5e5260ae11bbaa06d9e1c75c', 'test', 1764187662, 1764187662, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -56,13 +49,6 @@ CREATE TABLE `comment_likes` (
   `like_created_at` bigint(20) UNSIGNED NOT NULL,
   `like_deleted_at` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `comment_likes`
---
-
-INSERT INTO `comment_likes` (`comment_fk`, `user_fk`, `like_created_at`, `like_deleted_at`) VALUES
-('1193f86188f2c6d508249497c5fefab9f490993ef4569dde66', '56e3da04217c03edc376cf1f7ef6663e2bba3a28fc610fbf81', 1764194046, NULL);
 
 -- --------------------------------------------------------
 
@@ -77,14 +63,6 @@ CREATE TABLE `comment_replies` (
   `comment_reply_content` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `comment_replies`
---
-
-INSERT INTO `comment_replies` (`comment_reply_pk`, `comment_fk`, `user_fk`, `comment_reply_content`) VALUES
-('d48329ad46609bfa095a7d0c15d21adedba12c846b2cf7d139', '1193f86188f2c6d508249497c5fefab9f490993ef4569dde66', '56e3da04217c03edc376cf1f7ef6663e2bba3a28fc610fbf81', 'test2'),
-('e6c07a4b419423d0a7f0ed6b8432fc7e6dcb0dccac56a2b555', '1193f86188f2c6d508249497c5fefab9f490993ef4569dde66', '56e3da04217c03edc376cf1f7ef6663e2bba3a28fc610fbf81', 'test');
-
 -- --------------------------------------------------------
 
 --
@@ -97,13 +75,6 @@ CREATE TABLE `follows` (
   `follow_created_at` bigint(20) UNSIGNED NOT NULL,
   `follow_deleted_at` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `follows`
---
-
-INSERT INTO `follows` (`following_user_fk`, `followed_user_fk`, `follow_created_at`, `follow_deleted_at`) VALUES
-('56e3da04217c03edc376cf1f7ef6663e2bba3a28fc610fbf81', 'c86811cecade512c79b89e6a63d668cac433c67e30adec94fc', 1764183856, NULL);
 
 -- --------------------------------------------------------
 
@@ -120,19 +91,6 @@ CREATE TABLE `posts` (
   `post_created_at` bigint(20) UNSIGNED NOT NULL,
   `post_deleted_at` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `posts`
---
-
-INSERT INTO `posts` (`post_pk`, `post_content`, `post_image`, `post_reference`, `post_user_fk`, `post_created_at`, `post_deleted_at`) VALUES
-('24943ad63be732874b401386a50b31bc6e17ba8b9fc92bda52', 'test5', NULL, NULL, 'c86811cecade512c79b89e6a63d668cac433c67e30adec94fc', 1764174967, NULL),
-('5ada32af7b0439f9aab1eafe9ce4f1c27c03ed5a1a2cabd64a', NULL, NULL, 'bf2fb358d4798cfd2aa3c614009bc6525d6db701a3cb5b84c7', '56e3da04217c03edc376cf1f7ef6663e2bba3a28fc610fbf81', 1764183803, NULL),
-('8b2942394da2f8fb7be1c3331d5e5260ae11bbaa06d9e1c75c', NULL, NULL, 'bf2fb358d4798cfd2aa3c614009bc6525d6db701a3cb5b84c7', '56e3da04217c03edc376cf1f7ef6663e2bba3a28fc610fbf81', 1764183812, NULL),
-('bf2fb358d4798cfd2aa3c614009bc6525d6db701a3cb5b84c7', 'test', NULL, NULL, 'c86811cecade512c79b89e6a63d668cac433c67e30adec94fc', 1764174955, NULL),
-('ed62afa66c3373b11696e3a1da624913c91dd21b3738b74616', 'test3', NULL, NULL, 'c86811cecade512c79b89e6a63d668cac433c67e30adec94fc', 1764174960, NULL),
-('edc738a92ed26326494af9d6c4766138298c8a1b279fc6859f', 'test4', NULL, NULL, 'c86811cecade512c79b89e6a63d668cac433c67e30adec94fc', 1764174963, NULL),
-('eea68b0b2191015228566512a1e495f9d238bf589b4a264d1e', 'test2', NULL, NULL, 'c86811cecade512c79b89e6a63d668cac433c67e30adec94fc', 1764174958, NULL);
 
 --
 -- Triggers `posts`
@@ -155,14 +113,6 @@ CREATE TABLE `post_likes` (
   `like_deleted_at` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `post_likes`
---
-
-INSERT INTO `post_likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted_at`) VALUES
-('24943ad63be732874b401386a50b31bc6e17ba8b9fc92bda52', 'c86811cecade512c79b89e6a63d668cac433c67e30adec94fc', 1764179391, 1764179392),
-('bf2fb358d4798cfd2aa3c614009bc6525d6db701a3cb5b84c7', '56e3da04217c03edc376cf1f7ef6663e2bba3a28fc610fbf81', 1764183801, 1764183802);
-
 -- --------------------------------------------------------
 
 --
@@ -179,20 +129,6 @@ CREATE TABLE `topics` (
   `topic_updated_at` bigint(20) UNSIGNED NOT NULL,
   `topic_deleted_at` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `topics`
---
-
-INSERT INTO `topics` (`topic_pk`, `topic_name`, `topic_field`, `topic_count`, `topic_rank`, `topic_created_at`, `topic_updated_at`, `topic_deleted_at`) VALUES
-('dk1a2b3c4d5e6f7g8h9i0jklmnopqrstuvwx123456', 'AI', 'software', 120, 1, 1758679687, 1758680026, NULL),
-('dk2a3b4c5d6e7f8g9h0ijklmnopqrstuvwx234567', 'SpaceX', 'technology', 95, 2, 1758679687, 1758679993, NULL),
-('dk3a4b5c6d7e8f9g0h1ijklmnopqrstuvwx345678', 'Climate', 'biology', 80, 3, 1758679687, 1758679997, NULL),
-('dk4a5b6c7d8e9f0g1h2ijklmnopqrstuvwx456789', 'Blockchain', 'finance', 60, 4, 1758679687, 1758680017, NULL),
-('dk5a6b7c8d9e0f1g2h3ijklmnopqrstuvwx567890', 'Quantum', 'software', 45, 5, 1758679687, 1758680013, NULL),
-('dk6a7b8c9d0e1f2g3h4ijklmnopqrstuvwx678901', 'MarsMission', 'space', 35, 6, 1758679687, 1758680000, NULL),
-('dk7a8b9c0d1e2f3g4h5ijklmnopqrstuvwx789012', 'OpenSource', 'software', 25, 7, 1758679687, 1758680009, NULL),
-('dk8a9b0c1d2e3f4g5h6ijklmnopqrstuvwx890123', 'ElectricCars', 'technology', 15, 8, 1758679687, 1758680022, NULL);
 
 --
 -- Triggers `topics`
@@ -224,14 +160,6 @@ CREATE TABLE `users` (
   `user_location` varchar(50) DEFAULT NULL,
   `user_website` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_pk`, `user_name`, `user_email`, `user_password`, `user_phone`, `user_birthday`, `user_personalized_ads`, `user_connect_with_email_phone`, `user_handle`, `user_banner`, `user_language`, `user_bio`, `user_location`, `user_website`) VALUES
-('56e3da04217c03edc376cf1f7ef6663e2bba3a28fc610fbf81', 'Sebastian Mandrup Petersen', 'sebastianmandrup@outlook.com', '$2y$10$HwEDeN4lpCMzJubtxy9aWuY66AWImIP.0jbOwfbZPUrqnm4A2zD.a', NULL, '1997-06-16', 0, 0, 'mandrup', NULL, 'en', NULL, NULL, NULL),
-('c86811cecade512c79b89e6a63d668cac433c67e30adec94fc', 'Sebastian Mandrup Petersen', NULL, '$2y$10$QFBkjaIRXurETQJd6PqC2ONinWGPCCRY6dNf88zM.Ri9xHMOmykfe', '60224403', '1935-10-16', 0, 0, 'mvndrup', NULL, 'en', 'test bio', '', '');
 
 --
 -- Indexes for dumped tables

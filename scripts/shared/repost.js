@@ -3,15 +3,15 @@ import { showToast } from './toasts.js';
 let repostButtonListeners = [];
 
 function setupRepostButtons() {
-	// Remove existing listeners
 	repostButtonListeners.forEach(({ button, listener }) => {
 		button.removeEventListener('click', listener);
 	});
+
 	repostButtonListeners = [];
 
-	// Add new listeners
 	document.querySelectorAll('.buttonPostActionRepost').forEach(button => {
 		const listener = async function (event) {
+			event.stopPropagation();
 			const article = this.closest('.articlePost');
 			const countElement = this.querySelector('.spanPostActionCount');
 
@@ -41,3 +41,4 @@ function setupRepostButtons() {
 
 setupRepostButtons();
 export { setupRepostButtons };
+
