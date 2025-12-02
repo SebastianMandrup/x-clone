@@ -23,18 +23,21 @@ require_once __DIR__ . "../../x.php";
         <main>
 
             <?php
-            $isForYou = true;
             require_once __DIR__ . '/../components/sections/headerMain.php';
             ?>
 
             <?php require_once __DIR__ . '/../components/sections/createPost.php'; ?>
 
+            <?php
+            $divName = '';
+            if ($isForYou) {
+                $divName = 'divPostsForYou';
+            } else {
+                $divName = 'divPostsFollowing';
+            }
+            ?>
 
-            <div id="<?php if ($isForYou) {
-                            echo 'divPostsForYou';
-                        } else {
-                            echo 'divPostsFollowing';
-                        } ?>" data-page="1">
+            <div id="<?php muoEcho($divName) ?>" data-page="1">
                 <?php
                 foreach ($posts as $post) {
                     require __DIR__ . '../../components/articles/post.php';

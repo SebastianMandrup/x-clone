@@ -52,7 +52,6 @@ window.onscroll = async function () {
 		isLoading = true;
 
 		const response = await fetchNextPageOfPosts(page);
-		console.log('loading new page...');
 
 		if (!response) {
 			return;
