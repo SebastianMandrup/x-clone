@@ -15,23 +15,12 @@ $followModel = new FollowModel();
 
 try {
 	$currentUserPk = $_SESSION['user']['user_pk'];
-	$posts = $postModel->getAllWithCounts($currentUserPk);
-
-	$last_page = false;
-
-	if (count($posts) < $postModel::$LIMIT + 1) {
-		$last_page = true;
-	}
-
-	if (!$last_page) {
-		array_pop($posts);
-	}
-
+	$posts = $postModel->getAllFromOthersWithCounts($currentUserPk);
 	$topics = $topicModel->getPage();
 	$firstThreeTopics = array_slice($topics, 0, 3);
 	$usersToFollow = $followModel->getWhoToFollow();
 
-	$isForYou = true;
+	$isForYou = false;
 } catch (Exception $e) {
 	$usersToFollow = [];
 	$firstThreeTopics = [];

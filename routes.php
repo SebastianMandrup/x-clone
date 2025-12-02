@@ -4,6 +4,7 @@ require_once __DIR__ . '/router.php';
 
 get('/', 'views/index.php');
 get('/home', 'controllers/home.php');
+get('/following', 'controllers/home-following.php');
 get('/$handle/following', 'controllers/following.php');
 get('/$handle/followers', 'controllers/followers.php');
 get('/$handle', 'controllers/profile.php');
@@ -18,6 +19,8 @@ post('/api/follow-user', 'api/follow-user.php');
 post('/api/unfollow-user', 'api/unfollow-user.php');
 get('/api/get-topics', 'api/get-topics.php');
 get('/api/get-who-to-follow', 'api/get-who-to-follow.php');
+get('/api/get-posts', 'api/get-posts.php');
+get('/api/get-posts-following', 'api/get-posts-following.php');
 
 post('/bridges/create-post', 'bridges/create-post.php');
 post('/bridges/login', 'bridges/login.php');

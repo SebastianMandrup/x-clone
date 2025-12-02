@@ -19,7 +19,7 @@ try {
 	$last_page = false;
 
 	// check if there are 4 results
-	if (count($topics) < $topicModel->getLimit()) {
+	if (count($topics) < $topicModel::$LIMIT + 1) {
 		$last_page = true;
 	}
 

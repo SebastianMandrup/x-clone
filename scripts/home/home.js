@@ -5,6 +5,7 @@ import '../shared/aside/showMoreWhoToFollow.js';
 import '../shared/commentOverlay.js';
 import '../shared/followUser.js';
 import '../shared/likePost.js';
+import '../shared/loadMorePosts.js';
 import '../shared/nav/logout.js';
 import '../shared/nav/sectionUserInfo.js';
 import '../shared/posts.js';

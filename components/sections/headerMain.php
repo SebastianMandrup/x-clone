@@ -1,6 +1,6 @@
 <header id='headerMain'>
 
-	<?php if ($isForYou) : ?>
+	<?php if ($isForYou === true) : ?>
 		<button class='selectedHeaderButton'>
 			<span>
 				For you

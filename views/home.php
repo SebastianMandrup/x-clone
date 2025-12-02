@@ -23,19 +23,27 @@ require_once __DIR__ . "../../x.php";
         <main>
 
             <?php
-            $isForYou = true;
             require_once __DIR__ . '/../components/sections/headerMain.php';
             ?>
 
             <?php require_once __DIR__ . '/../components/sections/createPost.php'; ?>
 
             <?php
-            foreach ($posts as $post) {
-                require __DIR__ . '../../components/articles/post.php';
+            $divName = '';
+            if ($isForYou) {
+                $divName = 'divPostsForYou';
+            } else {
+                $divName = 'divPostsFollowing';
             }
-
             ?>
 
+            <div id="<?php muoEcho($divName) ?>" data-page="1">
+                <?php
+                foreach ($posts as $post) {
+                    require __DIR__ . '../../components/articles/post.php';
+                }
+                ?>
+            </div>
             <div class="circle-loader"></div>
         </main>
 
@@ -46,5 +54,8 @@ require_once __DIR__ . "../../x.php";
     <?php require __DIR__ . '/../components/commentOverlay.php'; ?>
 
 </body>
+
+<?php require_once __DIR__ . '/../components/templates/post.php'; ?>
+
 
 </html>

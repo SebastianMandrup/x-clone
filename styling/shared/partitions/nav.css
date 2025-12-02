@@ -68,6 +68,7 @@
 #navMain #sectionUserActions,
 #navMain #sectionUserInfo {
     display: none;
+    background-color: var(--black);
 }
 
 @media screen and (min-width: 760px) {
