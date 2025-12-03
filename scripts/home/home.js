@@ -14,3 +14,4 @@ import '../shared/sharePost.js';
 import '../shared/toasts.js';
 import '../shared/unfollowUser.js';
 
+import '../shared/modals/analytics.js';

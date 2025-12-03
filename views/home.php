@@ -18,7 +18,7 @@ require_once __DIR__ . "../../x.php";
 
     <div id='divMainContainer'>
 
-        <?php require __DIR__ . '/../components/nav.php'; ?>
+        <?php require_once __DIR__ . '/../components/nav.php'; ?>
 
         <main>
 
@@ -54,11 +54,12 @@ require_once __DIR__ . "../../x.php";
             <?php endif; ?>
         </main>
 
-        <?php require __DIR__ . '/../components/aside.php'; ?>
+        <?php require_once __DIR__ . '/../components/aside.php'; ?>
 
     </div>
 
-    <?php require __DIR__ . '/../components/commentOverlay.php'; ?>
+    <?php require_once __DIR__ . '/../components/modals/commentOverlay.php'; ?>
+    <?php require_once __DIR__ . '/../components/modals/analyticsModal.php'; ?>
 
 </body>
 

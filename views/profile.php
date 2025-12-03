@@ -41,7 +41,7 @@ require_once __DIR__ . "/../x.php";
 
     </div>
 
-    <?php require_once __DIR__ . '/../components/commentOverlay.php'; ?>
+    <?php require_once __DIR__ . '/../components/modals/commentOverlay.php'; ?>
 
 
     <?php

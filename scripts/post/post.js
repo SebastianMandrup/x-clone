@@ -15,3 +15,4 @@ import '../shared/unfollowUser.js';
 import '../post/createReply.js';
 import '../post/likeComment.js';
 
+import '../shared/modals/analytics.js';
