@@ -133,6 +133,10 @@ window.onscroll = async function () {
 			// footer actions
 			article.querySelector('.spanPostActionCommentCount').innerText = post.comment_count;
 
+			if (post.commented_by_user) {
+				article.querySelector('.buttonPostActionComment').classList.add('triggered');
+			}
+
 			if (post.ref_post_pk) {
 				article.querySelector('.buttonPostActionRepost').remove();
 			} else {

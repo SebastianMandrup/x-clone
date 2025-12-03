@@ -56,10 +56,14 @@ require_once __DIR__ . '/../../x.php';
         include __DIR__ . '/repost.php';
     }
     ?>
-
     <footer class='footerPostActions'>
-
-        <button class='buttonPostAction buttonPostActionComment' title='Comment'>
+        <button class='buttonPostAction buttonPostActionComment 
+            <?php
+            if ($post["commented_by_user"] !== null) {
+                echo "triggered";
+            }
+            ?>
+        ' title='Comment'>
             <svg xmlns=" http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
                 aria-hidden="true" class="icon-comment">
                 <path
@@ -108,7 +112,7 @@ require_once __DIR__ . '/../../x.php';
             </span>
         </button>
 
-        <button class='buttonPostAction' title='Analytics'>
+        <button class='buttonPostAction buttonPostActionAnalytics' title='Analytics'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
                 aria-hidden="true" class="icon-bars">
                 <path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z">

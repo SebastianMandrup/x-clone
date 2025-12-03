@@ -1,6 +1,7 @@
 #headerMainPost {
 	display: flex;
 	padding: 8px;
+	border-bottom: 1px solid var(--grey);
 }
 
 #aPostBackButton {
@@ -23,7 +24,7 @@
 	#headerMainPost {
 		position: sticky;
 		top: 0;
-
+		left: 0;
 		background-color: rgba(0, 0, 0, 0.4);
 		backdrop-filter: blur(10px);
 		z-index: 1;

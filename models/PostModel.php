@@ -246,6 +246,13 @@ class PostModel {
                     AND comment_deleted_at IS NULL
                 ) AS comment_count,
 
+                (SELECT 1 FROM comments 
+                    WHERE comment_post_fk = p.post_pk 
+                    AND comment_user_fk = :current_user_pk 
+                    AND comment_deleted_at IS NULL 
+                    LIMIT 1
+                ) AS commented_by_user,
+
                 (SELECT COUNT(*) FROM posts 
                     WHERE post_reference = p.post_pk 
                     AND post_deleted_at IS NULL
