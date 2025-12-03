@@ -39,13 +39,13 @@
 			?>
 		</p>
 		<section id='sectionUserFollowingBanner'>
-			<a class='aFollowCountBanner' href="/<?php muoEcho($user["user_handle"]); ?>/following">
+			<a class='aFollowCountBanner' href="/user/<?php muoEcho($user["user_handle"]); ?>/following">
 				<span>
 					<?php muoEcho($user["following_count"]); ?>
 				</span>
 				Following
 			</a>
-			<a class='aFollowCountBanner' href="/<?php muoEcho($user["user_handle"]); ?>/followers">
+			<a class='aFollowCountBanner' href="/user/<?php muoEcho($user["user_handle"]); ?>/followers">
 				<span>
 					<?php muoEcho($user["followers_count"]); ?>
 				</span>

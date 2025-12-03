@@ -14,7 +14,7 @@ require_once __DIR__ . '/../../x.php';
         </button>
     </section>
     <header class='headerPostUser'>
-        <a class='aPostUserFullName' href='<?php muoEcho($post["user_handle"]) ?>'>
+        <a class='aPostUserFullName' href='/user/<?php muoEcho($post["user_handle"]) ?>'>
             <?php muoEcho($post["user_name"]) ?>
         </a>
         <p class='pPostUserHandle'>

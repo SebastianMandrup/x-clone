@@ -12,7 +12,7 @@
 	<section class='sectionCommentAuthorInfo'>
 		<img class='imgCommentAuthorAvatar' src='https://ui-avatars.com/api/?name=<?php muoEcho($comment['commenter_name']); ?>&background=random' alt='Comment Author Avatar'>
 		<div class='divCommentAuthorText'>
-			<a class='aCommentAuthorName' href='/<?php muoEcho($comment['commenter_handle']); ?>'>
+			<a class='aCommentAuthorName' href='/user<?php muoEcho($comment['commenter_handle']); ?>'>
 				<?php muoEcho($comment['commenter_name']); ?>
 			</a>
 			<p class='pCommentAuthorHandle'>

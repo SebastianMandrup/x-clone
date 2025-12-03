@@ -9,7 +9,7 @@ const setupPostNavigation = () => {
 			}
 			const authorHandle = article.getAttribute('data-author-handle');
 			const postPk = article.getAttribute('data-post-pk');
-			window.location.href = `/${authorHandle}/posts/${postPk}`;
+			window.location.href = `/user/${authorHandle}/posts/${postPk}`;
 		});
 	});
 }

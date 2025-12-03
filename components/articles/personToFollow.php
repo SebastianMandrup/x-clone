@@ -1,7 +1,7 @@
 <article class='articlePersonToFollow'>
     <img class='imgPersonToFollowAvatar' src="https://ui-avatars.com/api/?name=<?php muoEcho($user["user_name"]); ?>&background=random">
     <section class='sectionPersonToFollowNames'>
-        <a class='aPersonToFollowFullName' href="/<?php muoEcho($user["user_handle"]); ?>">
+        <a class='aPersonToFollowFullName' href="/user<?php muoEcho($user["user_handle"]); ?>">
             <?php muoEcho($user["user_name"]); ?>
         </a>
         <p class='pPersonToFollowHandle'>

@@ -2,13 +2,15 @@
 
 require_once __DIR__ . '/router.php';
 
+
 get('/', 'views/index.php');
+
 get('/home', 'controllers/home.php');
 get('/following', 'controllers/home-following.php');
-get('/$handle/following', 'controllers/following.php');
-get('/$handle/followers', 'controllers/followers.php');
-get('/$handle', 'controllers/profile.php');
-get('/$handle/posts/$postPk', 'controllers/post.php');
+get('/user/$handle/following', 'controllers/following.php');
+get('/user/$handle/followers', 'controllers/followers.php');
+get('/user/$handle', 'controllers/profile.php');
+get('/user/$handle/posts/$postPk', 'controllers/post.php');
 
 post('/api/repost', 'api/repost.php');
 post('/api/like-post', 'api/like-post.php');
@@ -29,4 +31,4 @@ post('/bridges/sign-up', 'bridges/sign-up.php');
 post('/bridges/edit-profile', 'bridges/edit-profile.php');
 post('/bridges/add-comment-reply', 'bridges/add-comment-reply.php');
 
-any('/404', 'views/404.php');
+get('/404', 'views/404.php');
