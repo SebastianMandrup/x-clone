@@ -161,19 +161,16 @@ window.onscroll = async function () {
 			}
 
 			import('./likePost.js').then(module => {
-				module.addLikeListener(article.querySelector('.buttonPostActionLike'));
+				module.setupLikeButtons();
 			});
 			import('./commentOverlay.js').then(module => {
-				module.addCommentListener(article.querySelector('.buttonPostActionComment'));
+				module.setupCommentOverlays();
 			});
 			import('./repost.js').then(module => {
-				module.addRepostListener(article.querySelector('.buttonPostActionRepost'));
-			});
-			import('./sharePost.js').then(module => {
-				module.addShareListener(article.querySelector('.btnSharePost'));
+				module.setupRepostButtons();
 			});
 			import('./posts.js').then(module => {
-				module.addPostNavigation(article);
+				module.setupPostNavigation();
 			});
 		});
 
