@@ -15,21 +15,19 @@ btnShowMoreTrends.addEventListener('click', async function () {
 		}
 
 		const data = await response.json();
+
+		const template = document.getElementById('templateTrendItem');
+		const fragment = document.createDocumentFragment();
+
 		data.data.forEach(trend => {
-			const articleTrendItem = document.createElement('article');
-			articleTrendItem.classList.add('articleTrendItem');
-			articleTrendItem.innerHTML = `
-					<div class="divTrendItemText">
-						<p>${trend.topic_field}</p>
-						<h2>${trend.topic_name}</h2>
-						<p>${trend.topic_count} Posts</p>
-					</div>
-					<button>
-						...
-					</button>
-				`;
-			sectionWhatsHappening.insertBefore(articleTrendItem, btnShowMoreTrends);
+			const articleTrendItem = template.content.cloneNode(true);
+			articleTrendItem.querySelector('.pTrendItemField').textContent = trend.topic_field;
+			articleTrendItem.querySelector('.h2TrendItemName').textContent = trend.topic_name;
+			articleTrendItem.querySelector('.pTrendItemCount').textContent = `${trend.topic_count} Posts`;
+			fragment.appendChild(articleTrendItem);
 		});
+
+		sectionWhatsHappening.insertBefore(fragment, btnShowMoreTrends);
 
 		if (data.last_page) {
 			btnShowMoreTrends.classList.add('hidden');

@@ -17,26 +17,24 @@ btnShowMoreWhoToFollow && btnShowMoreWhoToFollow.addEventListener('click', async
 
 		const data = await response.json();
 
+		const template = document.getElementById('templateUserToFollow');
+		const fragment = document.createDocumentFragment();
+
 		data.data.forEach(user => {
-			const articlePersonToFollow = document.createElement('article');
-			articlePersonToFollow.classList.add('articlePersonToFollow');
-			articlePersonToFollow.innerHTML = `
-				<img src="https://ui-avatars.com/api/?name=${encodeURIComponent(user.user_name)}&background=random" class='imgPersonToFollowAvatar' alt="Avatar of ${user.user_name}" />
-				<section class="sectionPersonToFollowNames">
-					<a class='aPersonToFollowFullName' href='/${user.user_handle}'>
-						${user.user_name}
-					</a>
-					<p class='pPersonToFollowHandle'>
-						@${user.user_handle}
-					</p>
-				</section>
-				<button class='btnFollow' data-user-pk='${user.user_pk}'>
-					Follow
-				</button>
-				<button class="btnUnfollow hidden" data-user-pk="${user.user_pk}">Unfollow</button>
-			`;
-			sectionWhoToFollow.insertBefore(articlePersonToFollow, btnShowMoreWhoToFollow);
+
+			const article = template.content.cloneNode(true);
+			article.querySelector('.imgPersonToFollowAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.user_name)}&background=random`;
+			article.querySelector('.imgPersonToFollowAvatar').alt = `Avatar of ${user.user_name}`;
+			article.querySelector('.aPersonToFollowFullName').href = `/${user.user_handle}`;
+			article.querySelector('.aPersonToFollowFullName').textContent = user.user_name;
+			article.querySelector('.pPersonToFollowHandle').textContent = `@${user.user_handle}`;
+			article.querySelector('.btnFollow').dataset.userPk = user.user_pk;
+			article.querySelector('.btnUnfollow').dataset.userPk = user.user_pk;
+
+			fragment.appendChild(article);
 		});
+
+		sectionWhoToFollow.insertBefore(fragment, btnShowMoreWhoToFollow);
 
 		import('../followUser.js').then(module => {
 			module.setupFollowButtons();
