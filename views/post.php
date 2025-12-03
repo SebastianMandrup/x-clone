@@ -11,7 +11,7 @@ $_db = require __DIR__ . '/../services/db_connector.php';
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../../../styling/post/post.css">
 	<link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
-	<script src='../../../scripts/post/post.js' type='module'></script>
+	<script src='../scripts/post/post.js' type='module'></script>
 	<title> Post - <?php muoEcho($handle); ?></title>
 </head>
 

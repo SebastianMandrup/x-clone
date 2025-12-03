@@ -171,18 +171,53 @@
 	color: var(--lightGrey);
 }
 
+.buttonPostAction svg {
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	padding: 4px;
+}
+
 .spanPostActionCount {
 	font-size: 0.7rem;
 }
 
-.buttonPostAction:hover {
+.buttonPostActionComment:hover,
+.buttonPostActionComment.triggered {
+	color: var(--green);
+}
+
+.buttonPostActionComment:hover svg {
+	background-color: var(--darkestGreen);
+}
+
+.buttonPostActionRepost:hover,
+.buttonPostActionRepost.triggered {
+	color: var(--yellow);
+}
+
+.buttonPostActionRepost:hover svg {
+	background-color: var(--darkestYellow);
+}
+
+.buttonPostActionLike:hover,
+.buttonPostActionLike.triggered {
+	color: var(--red);
+}
+
+.buttonPostActionLike:hover svg {
+	background-color: var(--darkestRed);
+}
+
+.buttonPostActionAnalytics:hover,
+.buttonPostActionAnalytics.triggered {
 	color: var(--blue);
 }
 
-
-.triggered {
-	color: var(--red);
+.buttonPostActionAnalytics:hover svg {
+	background-color: var(--darkestBlue);
 }
+
 
 @media screen and (min-width: 500px) {
 	.articlePost {
