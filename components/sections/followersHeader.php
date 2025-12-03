@@ -1,5 +1,5 @@
 <header id='headerMainFollowers'>
-	<a id='aFollowersBack' href='/<?php muoEcho($handle); ?>'>
+	<a id='aFollowersBack' href='/user/<?php muoEcho($handle); ?>'>
 		&lt;
 		<?php muoEcho($handle); ?>
 	</a>
@@ -12,11 +12,11 @@
 				Followers
 			</span>
 		</button>
-		<a href="/<?php muoEcho($handle); ?>/following">
+		<a href="/user/<?php muoEcho($handle); ?>/following">
 			Following
 		</a>
 	<?php else : ?>
-		<a href="/<?php muoEcho($handle); ?>/followers">
+		<a href="/user/<?php muoEcho($handle); ?>/followers">
 			Followers
 		</a>
 		<button class='selectedHeaderButton'>

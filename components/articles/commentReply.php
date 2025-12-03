@@ -2,7 +2,7 @@
 	<img class="imgCommentReplyAvatar" src="https://ui-avatars.com/api/?name=<?php muoEcho($reply['replier_name']); ?>&background=random" alt="User Avatar" />
 	<div class='divCommentReplyContent'>
 		<div class='divCommentReplyHeader'>
-			<a class='aCommentReplyName' href='/<?php muoEcho($reply['replier_handle']); ?>'>
+			<a class='aCommentReplyName' href='/user<?php muoEcho($reply['replier_handle']); ?>'>
 				<?php muoEcho($reply['replier_name']); ?>
 			</a>
 			<p class='pCommentReplyHandle'>
