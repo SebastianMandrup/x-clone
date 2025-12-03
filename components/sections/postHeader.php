@@ -1,5 +1,5 @@
 <header id='headerMainPost'>
-	<a id='aPostBackButton' href='/home'>
+	<a id='aPostBackButton' href='javascript:history.back()'>
 		&lt;
 	</a>
 	<h1 id='h1Post'>
