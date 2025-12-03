@@ -48,3 +48,6 @@
 		</div>
 	</footer>
 </aside>
+
+<?php require_once __DIR__ . '/../components/templates/trend.php'; ?>
+<?php require_once __DIR__ . '/../components/templates/userToFollow.php'; ?>

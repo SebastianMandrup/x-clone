@@ -64,5 +64,4 @@ require_once __DIR__ . "../../x.php";
 
 <?php require_once __DIR__ . '/../components/templates/post.php'; ?>
 
-
 </html>
