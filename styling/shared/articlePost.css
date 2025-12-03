@@ -218,50 +218,6 @@
 	background-color: var(--darkestBlue);
 }
 
-.divShareTooltip {
-	position: absolute;
-	background-color: var(--darkestGrey);
-	border: 1px solid var(--grey);
-	border-radius: 8px;
-	padding: 10px;
-	top: 0;
-	right: 0;
-	z-index: 10;
-	width: 200px;
-}
-
-
-
-.divShareTooltip ul {
-	list-style: none;
-	display: flex;
-	flex-direction: column;
-}
-
-.divShareTooltip ul li {
-	padding: 10px;
-	border-bottom: 1px solid var(--grey);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.divShareTooltip ul li:last-child {
-	border-bottom: none;
-}
-
-
-.divShareTooltip ul li .buttonShareOption {
-	width: max-content;
-	text-align: center;
-	font-size: 14px;
-}
-
-.divShareTooltip ul li .buttonShareOption:hover {
-	background-color: transparent;
-	color: var(--lightestGrey);
-}
-
 
 @media screen and (min-width: 500px) {
 	.articlePost {

@@ -1,6 +1,5 @@
 body.modalOpen {
 	overflow: hidden;
-	padding-right: 14px;
 }
 
 body {
@@ -21,7 +20,7 @@ main {
 		display: grid;
 		grid-template-areas: 'nav main aside';
 		grid-template-columns: 15fr 80fr 5fr;
-		scrollbar-width: 12px;
+		scrollbar-width: medium;
 		scrollbar-color: var(--lightGrey) var(--black);
 	}
 
