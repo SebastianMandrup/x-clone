@@ -42,7 +42,7 @@
 	</p>
 
 	<?php
-	if (isset($comment['replies']) && is_array($comment['replies'])) {
+	if (isset($comment['replies']) && is_array($comment['replies']) && count($comment['replies']) > 0) {
 	?>
 		<section class='sectionCommentReplies'>
 			<p class='pCommentRepliesHeader'>
@@ -59,7 +59,7 @@
 	?>
 
 	<footer class='footerCommentActions'>
-		<button class='btnCommentAction btnReplyComment' title="Reply">
+		<button class='btnCommentAction btnReplyComment <?php if ($comment['is_replied_by_current_user']) muoEcho('triggered') ?>' title="Reply">
 			<svg xmlns=" http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
 				aria-hidden="true" class="icon-comment">
 				<path
@@ -67,21 +67,10 @@
 				</path>
 			</svg>
 			<span class='spanCommentActionCount'>
-				<?php muoEcho(5) ?>
+				<?php muoEcho($comment['comment_replies_count']) ?>
 			</span>
 		</button>
-		<button class='btnCommentAction btnRepostComment' title="Repost">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
-				aria-hidden="true" class="icon-retweet">
-				<path
-					d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z">
-				</path>
-			</svg>
-			<span class='spanCommentActionCount'>
-				5
-			</span>
-		</button>
-		<button class='btnCommentAction btnLikeComment<?php if ($comment['is_liked_by_current_user']) echo " triggered"; ?>' title="Like">
+		<button class='btnCommentAction btnLikeComment<?php if ($comment['is_liked_by_current_user']) muoEcho(" triggered") ?>' title="Like">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
 				aria-hidden="true" class="icon-like">
 				<path

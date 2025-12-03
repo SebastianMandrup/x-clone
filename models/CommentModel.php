@@ -18,6 +18,9 @@ class CommentModel {
                 u.user_pk as commenter_pk,
                 (SELECT COUNT(*) FROM comment_likes cl WHERE cl.comment_fk = c.comment_pk AND cl.user_fk = :currentUserPk AND cl.like_deleted_at IS NULL) AS is_liked_by_current_user,
                 (SELECT COUNT(*) FROM comment_likes cl WHERE cl.comment_fk = c.comment_pk AND cl.like_deleted_at IS NULL) AS comment_likes_count,
+
+                (SELECT COUNT(*) FROM comment_replies cr WHERE cr.comment_fk = c.comment_pk AND cr.user_fk = :currentUserPk) AS is_replied_by_current_user,
+                (SELECT COUNT(*) FROM comment_replies cr WHERE cr.comment_fk = c.comment_pk) AS comment_replies_count,
                 
                 -- Reply fields (using correct column names)
                 cr.comment_reply_pk as reply_pk,
@@ -63,6 +66,8 @@ class CommentModel {
 					'commenter_pk' => $row['commenter_pk'],
 					'is_liked_by_current_user' => (bool)$row['is_liked_by_current_user'],
 					'comment_likes_count' => (int)$row['comment_likes_count'],
+					'is_replied_by_current_user' => (bool)$row['is_replied_by_current_user'],
+					'comment_replies_count' => (int)$row['comment_replies_count'],
 					'replies' => []
 				];
 			}
