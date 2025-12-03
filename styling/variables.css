@@ -57,3 +57,22 @@ body {
     background-color: var(--black);
     color: var(--white);
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    /* overwrite dropdown styling */
+    -webkit-box-shadow: 0 0 0 1000px var(--black) inset !important;
+    -webkit-text-fill-color: var(--white) !important;
+    box-shadow: none !important;
+    border-color: var(--darkGrey) !important;
+    transition: background-color 5000s ease-in-out 0s;
+    border-radius: 50%;
+}
+
+input:-internal-autofill-selected {
+    /* Safari/Chrome internal */
+    background-color: var(--black) !important;
+    color: var(--white) !important;
+}
