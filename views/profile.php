@@ -45,9 +45,8 @@ require_once __DIR__ . "/../x.php";
 
 
     <?php
-    if ($user["user_pk"] === $_SESSION["user"]["user_pk"]) {
-        require_once __DIR__ . '/../components/editProfileOverlay.php';
-    }
+    require_once __DIR__ . '/../components/modals/editProfileOverlay.php';
+    require_once __DIR__ . '/../components/modals/analyticsModal.php';
     ?>
 
 </body>

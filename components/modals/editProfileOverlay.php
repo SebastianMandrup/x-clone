@@ -16,7 +16,7 @@
 
 			<div id='divEditProfileContent'>
 				<section id='sectionEditProfileBanner'>
-					<?php if ($user['user_banner']) : ?>
+					<?php if (isset($user['user_banner'])) : ?>
 						<img id='imgEditProfileBanner' src="<?php muoEcho($user['user_banner']); ?>" alt="Profile Banner" />
 					<?php endif; ?>
 					<input type='file' name='profile_banner' id='inputEditProfileBanner' accept='image/*' />

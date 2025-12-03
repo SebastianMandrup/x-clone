@@ -2,6 +2,7 @@ import '../shared/aside/showLessTrends.js';
 import '../shared/aside/showLessWhoToFollow.js';
 import '../shared/aside/showMoreTrends.js';
 import '../shared/aside/showMoreWhoToFollow.js';
+import '../shared/bookmarkPost.js';
 import '../shared/likePost.js';
 import '../shared/nav/logout.js';
 import '../shared/nav/sectionUserInfo.js';
@@ -16,3 +17,4 @@ import '../post/createReply.js';
 import '../post/likeComment.js';
 
 import '../shared/modals/analytics.js';
+

@@ -105,7 +105,13 @@ class PostModel {
                     AND post_user_fk = :current_user_pk 
                     AND post_deleted_at IS NULL 
                     LIMIT 1
-                ) AS reposted_by_user
+                ) AS reposted_by_user,
+
+                (SELECT 1 FROM bookmarks 
+                    WHERE post_fk = p.post_pk 
+                    AND user_fk = :current_user_pk 
+                    LIMIT 1
+                ) AS bookmarked_by_user
 
                 FROM posts p
                 INNER JOIN users u 
@@ -181,7 +187,13 @@ class PostModel {
                     AND post_user_fk = :current_user_pk 
                     AND post_deleted_at IS NULL 
                     LIMIT 1
-                ) AS reposted_by_user
+                ) AS reposted_by_user,
+
+                (SELECT 1 FROM bookmarks 
+                    WHERE post_fk = p.post_pk 
+                    AND user_fk = :current_user_pk 
+                    LIMIT 1
+                ) AS bookmarked_by_user
 
             FROM posts p
             INNER JOIN users u 
@@ -263,7 +275,13 @@ class PostModel {
                     AND post_user_fk = :current_user_pk 
                     AND post_deleted_at IS NULL 
                     LIMIT 1
-                ) AS reposted_by_user
+                ) AS reposted_by_user,
+
+                (SELECT 1 FROM bookmarks 
+                    WHERE post_fk = p.post_pk 
+                    AND user_fk = :current_user_pk 
+                    LIMIT 1
+                ) AS bookmarked_by_user
 
                 FROM posts p
                 INNER JOIN users u 
