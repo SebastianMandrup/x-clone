@@ -7,6 +7,8 @@
 @import '../shared/partitions/nav.css';
 @import '../shared/partitions/aside.css';
 
+@import '../shared/modals/analyticsModal.css';
+
 @import '../shared/sectionAddComment.css';
 @import '../shared/toasts.css';
 @import '../shared/articlePost.css';

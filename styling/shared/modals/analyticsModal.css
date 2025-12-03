@@ -1,0 +1,78 @@
+#divAnalyticsOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(70, 105, 130, 0.3);
+	z-index: 1;
+}
+
+#sectionAnalyticsModal {
+	position: absolute;
+	top: 35%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: var(--black);
+	border: 1px solid var(--darkGrey);
+	border-radius: 8px;
+	width: 90%;
+	max-width: 600px;
+	padding: 100px;
+}
+
+#btnCloseAnalyticsOverlay {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	background-color: transparent;
+	border: none;
+	border-radius: 50%;
+	padding: 0 10px;
+	padding-bottom: 4px;
+	color: var(--white);
+	font-size: 24px;
+	cursor: pointer;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&:hover {
+		background-color: var(--grey);
+	}
+}
+
+#h1AnalyticsModalTitle {
+	color: var(--white);
+	font-size: 28px;
+	margin-bottom: 16px;
+}
+
+#pAnalyticsModalDescription,
+#pAnalyticsModalDescription a {
+	color: var(--lightGrey);
+	font-size: 16px;
+	line-height: 1.5;
+	margin-bottom: 16px;
+}
+
+#pAnalyticsModalDescription a,
+#pAnalyticsModalDescription a:visited {
+	color: var(--white);
+}
+
+#btnDismissAnalyticsOverlay {
+	width: 100%;
+	background-color: var(--darkGrey);
+	color: var(--white);
+	border: none;
+	border-radius: 4px;
+	padding: 12px 24px;
+	font-size: 16px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: var(--grey);
+	}
+}

@@ -166,14 +166,20 @@ window.onscroll = async function () {
 			import('./commentOverlay.js').then(module => {
 				module.addCommentListener(article.querySelector('.buttonPostActionComment'));
 			});
-			import('./repost.js').then(module => {
-				module.addRepostListener(article.querySelector('.buttonPostActionRepost'));
-			});
+			if (article.querySelector('.buttonPostActionRepost')) {
+				import('./repost.js').then(module => {
+					module.addRepostListener(article.querySelector('.buttonPostActionRepost'));
+				});
+			}
 			import('./sharePost.js').then(module => {
 				module.addShareListener(article.querySelector('.btnSharePost'));
 			});
 			import('./posts.js').then(module => {
 				module.addPostNavigation(article);
+			});
+
+			import('./modals/analytics.js').then(module => {
+				module.addAnalyticsListener(article.querySelector('.buttonPostActionAnalytics'));
 			});
 		});
 
