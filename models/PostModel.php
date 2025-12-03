@@ -133,6 +133,81 @@ class PostModel {
         return $posts;
     }
 
+    public function getAllFromUserWithCounts($current_user_pk, $userhandle, $page = 1) {
+
+        $OFFSET = ($page - 1) * $this::$LIMIT;
+
+        $sql = "SELECT 
+                p.post_pk,
+                p.post_content,
+                p.post_image,
+                p.post_created_at,
+                u.user_pk,
+                u.user_name,
+                u.user_handle,
+
+                rp.post_pk AS ref_post_pk,
+                rp.post_content AS ref_post_content,
+                rp.post_image AS ref_post_image,
+                rp.post_created_at AS ref_post_created_at,
+                ru.user_pk AS ref_user_pk,
+                ru.user_name AS ref_user_name,
+                ru.user_handle AS ref_user_handle,
+
+                (SELECT COUNT(*) FROM post_likes 
+                    WHERE post_fk = p.post_pk 
+                    AND like_deleted_at IS NULL
+                ) AS like_count,
+
+                (SELECT 1 FROM post_likes 
+                    WHERE post_fk = p.post_pk 
+                    AND user_fk = :current_user_pk 
+                    AND like_deleted_at IS NULL 
+                    LIMIT 1
+                ) AS liked_by_user,
+
+                (SELECT COUNT(*) FROM comments 
+                    WHERE comment_post_fk = p.post_pk 
+                    AND comment_deleted_at IS NULL
+                ) AS comment_count,
+
+                (SELECT COUNT(*) FROM posts 
+                    WHERE post_reference = p.post_pk 
+                    AND post_deleted_at IS NULL
+                ) AS repost_count,
+
+                (SELECT 1 FROM posts 
+                    WHERE post_reference = p.post_pk 
+                    AND post_user_fk = :current_user_pk 
+                    AND post_deleted_at IS NULL 
+                    LIMIT 1
+                ) AS reposted_by_user
+
+            FROM posts p
+            INNER JOIN users u 
+                ON p.post_user_fk = u.user_pk
+            LEFT JOIN posts rp 
+                ON p.post_reference = rp.post_pk
+            LEFT JOIN users ru 
+                ON rp.post_user_fk = ru.user_pk
+
+            WHERE u.user_handle = :user_handle
+              AND p.post_deleted_at IS NULL
+
+            ORDER BY p.post_created_at DESC
+            LIMIT :_limit OFFSET :offset";
+
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindValue(':current_user_pk', $current_user_pk);
+        $stmt->bindValue(':user_handle', $userhandle);
+        $stmt->bindValue(':_limit', $this::$LIMIT + 1, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $OFFSET, PDO::PARAM_INT);
+
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+
     public function getAllWithCounts($current_user_pk, $page = 1) {
 
         $OFFSET = ($page - 1) * $this::$LIMIT;
