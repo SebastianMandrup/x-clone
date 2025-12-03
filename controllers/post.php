@@ -19,7 +19,7 @@ try {
 	$comments = $commentModel->getCommentsByPostPk($postPk, $currentUserPk);
 
 	if (!$post) {
-		Header('Location: /home?errorMessage=Post not found');
+		Header('Location: /404?error=Post not found');
 		exit;
 	}
 
@@ -30,6 +30,5 @@ try {
 } catch (Exception $e) {
 	$post = null;
 	$error = $e->getMessage();
-	echo $error;
-	// require_once __DIR__ . '/../views/404.php';
+	header('Location: /404?error=' . urlencode($error));
 }
