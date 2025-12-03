@@ -22,7 +22,7 @@ try {
 		throw new Exception("User not found");
 	}
 
-	$posts = $postModel->getAllWithCounts($user['user_pk']);
+	$posts = $postModel->getAllFromUserWithCounts($currentUserPk, $user['user_handle']);
 	$firstThreeTopics = $topicModel->getPage();
 	$usersToFollow = $followModel->getWhoToFollow();
 
