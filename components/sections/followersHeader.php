@@ -7,22 +7,22 @@
 
 <header id='headerMain'>
 	<?php if ($endpoint === 'followers') : ?>
+		<a href="/user/<?php muoEcho($handle); ?>/following">
+			Following
+		</a>
 		<button class='selectedHeaderButton'>
 			<span>
 				Followers
 			</span>
 		</button>
-		<a href="/user/<?php muoEcho($handle); ?>/following">
-			Following
-		</a>
 	<?php else : ?>
-		<a href="/user/<?php muoEcho($handle); ?>/followers">
-			Followers
-		</a>
 		<button class='selectedHeaderButton'>
 			<span>
 				Following
 			</span>
 		</button>
+		<a href="/user/<?php muoEcho($handle); ?>/followers">
+			Followers
+		</a>
 	<?php endif; ?>
 </header>
