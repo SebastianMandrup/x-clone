@@ -11,6 +11,8 @@ import '../shared/toasts.js';
 import '../shared/followUser.js';
 import '../shared/posts.js';
 import '../shared/repost.js';
+import '../shared/sharePost.js';
 import '../shared/unfollowUser.js';
 
 import './editProfileOverlay.js';
+
