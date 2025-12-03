@@ -65,6 +65,10 @@
 	background-color: var(--darkestBlue);
 }
 
+.sectionMorePostOptions .btnBookmarkPost.triggered {
+	color: var(--green);
+}
+
 
 
 .headerPostUser,

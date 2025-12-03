@@ -154,11 +154,11 @@ window.onscroll = async function () {
 
 			article.querySelector('.spanPostActionLikeCount').innerText = post.like_count;
 
-			if (divPostsForYou) {
-				divPostsForYou.appendChild(articleFragment);
-			} else if (divPostsFollowing) {
-				divPostsFollowing.appendChild(articleFragment);
+			if (post.bookmarked_by_user) {
+				article.querySelector('.btnBookmarkPost').classList.add('triggered');
 			}
+
+			// adding event listeners
 
 			import('./likePost.js').then(module => {
 				module.addLikeListener(article.querySelector('.buttonPostActionLike'));
@@ -181,6 +181,19 @@ window.onscroll = async function () {
 			import('./modals/analytics.js').then(module => {
 				module.addAnalyticsListener(article.querySelector('.buttonPostActionAnalytics'));
 			});
+
+			import('./bookmarkPost.js').then(module => {
+				module.addBookmarkListener(article.querySelector('.btnBookmarkPost'));
+			});
+
+			// append to the correct section
+
+			if (divPostsForYou) {
+				divPostsForYou.appendChild(articleFragment);
+			} else if (divPostsFollowing) {
+				divPostsFollowing.appendChild(articleFragment);
+			}
+
 		});
 
 

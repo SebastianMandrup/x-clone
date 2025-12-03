@@ -19,6 +19,8 @@ post('/api/search', 'api/search.php');
 post('/api/add-comment', 'api/add-comment.php');
 post('/api/follow-user', 'api/follow-user.php');
 post('/api/unfollow-user', 'api/unfollow-user.php');
+post('/api/bookmark-post', 'api/bookmark-post.php');
+
 get('/api/get-topics', 'api/get-topics.php');
 get('/api/get-who-to-follow', 'api/get-who-to-follow.php');
 get('/api/get-posts', 'api/get-posts.php');

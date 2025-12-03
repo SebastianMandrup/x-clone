@@ -93,7 +93,7 @@
 
 		</footer>
 		<section class='sectionMorePostOptions'>
-			<button title='Bookmark'>
+			<button title='Bookmark' class='btnBookmarkPost'>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
 					aria-hidden="true" class="icon-bookmark">
 					<path

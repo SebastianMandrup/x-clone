@@ -122,7 +122,11 @@ require_once __DIR__ . '/../../x.php';
 
     </footer>
     <section class='sectionMorePostOptions'>
-        <button title='Bookmark'>
+        <button title='Bookmark' class='btnBookmarkPost <?php 
+        if ($post["bookmarked_by_user"] !== null) {
+            echo "triggered";
+        }
+        ?>'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
                 aria-hidden="true" class="icon-bookmark">
                 <path
