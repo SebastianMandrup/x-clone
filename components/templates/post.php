@@ -101,7 +101,7 @@
 					</path>
 				</svg>
 			</button>
-			<button title='Share'>
+			<button title='Share' class='btnSharePost'>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
 					aria-hidden="true" class="icon-upload">
 					<path
@@ -109,6 +109,25 @@
 					</path>
 				</svg>
 			</button>
+			<div class='divShareTooltip hidden'>
+				<ul>
+					<li>
+						<button class='buttonShareOption buttonShareOptionCopyLink'>
+							Copy link to post
+						</button>
+					</li>
+					<li>
+						<button class='buttonShareOption buttonShareOptionEmbed'>
+							Share post via ...
+						</button>
+					</li>
+					<li>
+						<button class='buttonShareOption buttonShareOptionMessage'>
+							Send via Direct Message
+						</button>
+					</li>
+				</ul>
+			</div>
 		</section>
 	</article>
 </template>
