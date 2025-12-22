@@ -18,7 +18,8 @@
 		</section>
 		<form id='formAddComment'>
 			<section id='sectionAddCommentContent'>
-				<img src="https://ui-avatars.com/api/?name=<?php muoEcho(($_SESSION['user']['user_name'])); ?>&background=random"
+				<?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
+				<img src="<?php muoEcho(getUserAvatar($_SESSION['user'])) ?>"
 					alt="Avatar" id='imgAddCommentAvatar'>
 				<textarea name="comment_content" id="textareaAddComment" placeholder="Post your reply" required></textarea>
 			</section>
