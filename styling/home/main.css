@@ -52,19 +52,29 @@
                 }
             }
 
-            #btnSubmitPost {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-                font-weight: 600;
-                background-color: rgb(170, 170, 170);
-                border-radius: 1.5rem;
-                border: none;
-                height: 2rem;
 
-                margin-left: auto;
-            }
         }
     }
+}
+
+#btnSubmitPost {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: rgb(170, 170, 170);
+    border-radius: 1.5rem;
+    border: none;
+    height: 2.4rem;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#btnSubmitPost:hover {
+    background-color: var(--darkGrey);
+    color: white;
 }
 
 
@@ -117,24 +127,13 @@
                     justify-content: center;
                     align-items: center;
                     cursor: pointer;
-                    padding: 0.05rem 0.25rem;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
 
                     &:hover {
                         background-color: rgb(12, 53, 81);
-                        border-radius: 50%;
                     }
-                }
-
-                #btnSubmitPost {
-                    padding: 0.5rem 1rem;
-                    font-size: 0.9rem;
-                    font-weight: 600;
-                    background-color: rgb(170, 170, 170);
-                    border-radius: 1.5rem;
-                    border: none;
-                    height: 2rem;
-
-                    margin-left: auto;
                 }
             }
 

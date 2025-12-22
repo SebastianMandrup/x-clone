@@ -1,7 +1,8 @@
 <section id='sectionCreatePost'>
 	<form action="./bridges/create-post" method='POST' id='formCreatePost'>
 		<section id='sectionCreatePostInputs'>
-			<img src="https://ui-avatars.com/api/?name=<?php muoEcho(urlencode($_SESSION['user']['user_name'])); ?>&background=random"
+			<?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
+			<img src="<?php muoEcho(getUserAvatar($_SESSION['user'])); ?>"
 				alt="Avatar" id='imgCreatePostAvatar'>
 			<input name="post_content" type="text" placeholder="What's happening?" id='inputCreatePost'>
 		</section>
