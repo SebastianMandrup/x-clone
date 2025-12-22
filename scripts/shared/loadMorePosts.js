@@ -76,7 +76,13 @@ window.onscroll = async function () {
 				article.querySelector('.sectionRepost').remove();
 			} else {
 				const repost = article.querySelector('.sectionRepost');
-				repost.querySelector('.imgRepostAvatar').src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(post.ref_user_name) + '&background=random';
+
+				if (!post.ref_user_avatar) {
+					repost.querySelector('.imgRepostAvatar').src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(post.ref_user_name) + '&background=random';
+				} else {
+					repost.querySelector('.imgRepostAvatar').src = '/uploads/avatars/' + post.ref_user_avatar;
+				}
+
 				repost.querySelector('.aPostUserFullName').href = '/' + post.ref_user_handle;
 				repost.querySelector('.aPostUserFullName').textContent = post.ref_user_name;
 				repost.querySelector('.pPostUserHandle').textContent = '@' + post.ref_user_handle;
@@ -109,7 +115,12 @@ window.onscroll = async function () {
 				article.querySelector('.sectionPostPicture img').src = post.post_image;
 			}
 
-			article.querySelector('.imgPostAvatar').src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(post.user_name) + '&background=random';
+			if (!post.user_avatar) {
+				article.querySelector('.imgPostAvatar').src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(post.user_name) + '&background=random';
+			} else {
+				article.querySelector('.imgPostAvatar').src = '/uploads/avatars/' + post.user_avatar;
+			}
+
 			article.querySelector('.aPostUserFullName').href = '/' + post.user_handle;
 			article.querySelector('.aPostUserFullName').textContent = post.user_name;
 			article.querySelector('.pPostUserHandle').textContent = '@' + post.user_handle;

@@ -43,7 +43,7 @@ $_db = require __DIR__ . '/../services/db_connector.php';
 
 	</div>
 
-	<?php require_once __DIR__ . '/../components/replyOverlay.php'; ?>
+	<?php require_once __DIR__ . '/../components/modals/replyOverlay.php'; ?>
 
 </body>
 

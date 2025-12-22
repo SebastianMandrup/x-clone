@@ -50,7 +50,7 @@ class FollowModel {
 
 		$offset = ($page - 1) * $this->LIMIT;
 
-		$sql = "SELECT user_pk, user_name, user_handle 
+		$sql = "SELECT user_pk, user_name, user_handle, user_avatar
 				FROM users 
 				LEFT JOIN follows 
 				ON users.user_pk = follows.followed_user_fk 
@@ -76,6 +76,7 @@ class FollowModel {
                 u.user_pk, 
                 u.user_name, 
                 u.user_handle,
+				u.user_avatar,
                 CASE 
                     WHEN EXISTS (
                         SELECT 1 FROM follows f2 
@@ -104,6 +105,7 @@ class FollowModel {
                 u.user_pk, 
                 u.user_name, 
                 u.user_handle,
+				u.user_avatar,
                 CASE 
                     WHEN EXISTS (
                         SELECT 1 FROM follows f2 

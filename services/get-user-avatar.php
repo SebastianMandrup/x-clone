@@ -1,7 +1,7 @@
 <?php
-function getUserAvatar($user) {
-	if (!isset($user['user_avatar']) || empty($user['user_avatar'])) {
-		return ("https://ui-avatars.com/api/?name=" . urlencode($user['user_name']) . "&background=random");
+function getUserAvatar($_user) {
+	if (!isset($_user['user_avatar']) || empty($_user['user_avatar'])) {
+		return ("https://ui-avatars.com/api/?name=" . urlencode($_user['user_name']) . "&background=random");
 	}
-	return ("/uploads/avatars/" . $user['user_avatar']);
+	return ("/uploads/avatars/" . $_user['user_avatar']);
 }

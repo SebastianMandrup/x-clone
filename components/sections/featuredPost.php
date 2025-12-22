@@ -2,9 +2,10 @@
 
 	<section id='sectionFeaturedPostAuthor'>
 		<div>
-			<img id='imgFeaturedPostAuthorAvatar' src='https://ui-avatars.com/api/?name=<?php echo urlencode($post['user_name']); ?>&background=random' alt='Author Avatar'>
+			<?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
+			<img id='imgFeaturedPostAuthorAvatar' src='<?php muoEcho(getUserAvatar($post)); ?>' alt='Author Avatar'>
 			<div id='divFeaturedPostAuthorInfo'>
-				<a id='aFeaturedPostAuthorName' href='/user<?php muoEcho($post['user_handle']); ?>'>
+				<a id='aFeaturedPostAuthorName' href='/user/<?php muoEcho($post['user_handle']); ?>'>
 					<?php muoEcho($post['user_name']); ?>
 				</a>
 				<p id='pFeaturedPostAuthorHandle'>

@@ -23,7 +23,13 @@ btnShowMoreWhoToFollow && btnShowMoreWhoToFollow.addEventListener('click', async
 		data.data.forEach(user => {
 
 			const article = template.content.cloneNode(true);
-			article.querySelector('.imgPersonToFollowAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.user_name)}&background=random`;
+
+			if (!user.user_avatar) {
+				article.querySelector('.imgPersonToFollowAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.user_name)}&background=random`;
+			} else {
+				article.querySelector('.imgPersonToFollowAvatar').src = `/uploads/avatars/${user.user_avatar}`;
+			}
+
 			article.querySelector('.imgPersonToFollowAvatar').alt = `Avatar of ${user.user_name}`;
 			article.querySelector('.aPersonToFollowFullName').href = `/${user.user_handle}`;
 			article.querySelector('.aPersonToFollowFullName').textContent = user.user_name;

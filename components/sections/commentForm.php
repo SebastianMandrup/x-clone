@@ -1,7 +1,7 @@
 <form action="/api/add-comment" method='POST' id='formCreateComment'>
 	<section id='sectionCreatePostInputs'>
-		<img src="https://ui-avatars.com/api/?name=<?php muoEcho($_SESSION['user']['user_name']); ?>&background=random"
-			alt="Avatar" id='imgCreateCommentAvatar'>
+		<?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
+		<img id='imgCreateCommentAvatar' src="<?php muoEcho(getUserAvatar($_SESSION['user'])); ?>" alt="Your Avatar" class='imgCreateCommentAvatar'>
 		<input type="hidden" name="postPk" value="<?php muoEcho($post["post_pk"]); ?>">
 		<input name="comment_content" type="text" placeholder="Post your reply..." id='inputCreateComment'>
 	</section>

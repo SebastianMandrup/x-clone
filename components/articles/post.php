@@ -2,7 +2,8 @@
 require_once __DIR__ . '/../../x.php';
 ?>
 <article class='articlePost' data-post-pk='<?php muoEcho($post["post_pk"]) ?>' data-author-handle='<?php muoEcho($post["user_handle"]) ?>'>
-    <img src="https://ui-avatars.com/api/?name=<?php muoEcho($post["user_name"]) ?>&background=random" alt="Avatar" class='imgPostAvatar'>
+    <?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
+    <img src="<?php muoEcho(getUserAvatar($post)); ?>" alt="Avatar" class='imgPostAvatar'>
     <section class='sectionPostOptions'>
         <button title="More options">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
@@ -122,11 +123,11 @@ require_once __DIR__ . '/../../x.php';
 
     </footer>
     <section class='sectionMorePostOptions'>
-        <button title='Bookmark' class='btnBookmarkPost <?php 
-        if ($post["bookmarked_by_user"] !== null) {
-            echo "triggered";
-        }
-        ?>'>
+        <button title='Bookmark' class='btnBookmarkPost <?php
+                                                        if ($post["bookmarked_by_user"] !== null) {
+                                                            echo "triggered";
+                                                        }
+                                                        ?>'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
                 aria-hidden="true" class="icon-bookmark">
                 <path

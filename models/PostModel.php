@@ -22,6 +22,7 @@ class PostModel {
 			author.user_pk,
 			author.user_handle,
 			author.user_name,
+            author.user_avatar,
 
 			-- referenced post
 			rp.post_pk AS ref_post_pk,
@@ -32,7 +33,8 @@ class PostModel {
 			-- referenced post author
 			ru.user_pk AS ref_user_pk,
 			ru.user_name AS ref_user_name,
-			ru.user_handle AS ref_user_handle
+			ru.user_handle AS ref_user_handle,
+            ru.user_avatar AS ref_user_avatar
 
             FROM posts post
             INNER JOIN users author
@@ -69,6 +71,7 @@ class PostModel {
                 u.user_pk,
                 u.user_name,
                 u.user_handle,
+                u.user_avatar,
 
                 rp.post_pk AS ref_post_pk,
                 rp.post_content AS ref_post_content,
@@ -77,6 +80,7 @@ class PostModel {
                 ru.user_pk AS ref_user_pk,
                 ru.user_name AS ref_user_name,
                 ru.user_handle AS ref_user_handle,
+                ru.user_avatar AS ref_user_avatar,
 
                 (SELECT COUNT(*) FROM post_likes 
                     WHERE post_fk = p.post_pk 
@@ -151,6 +155,7 @@ class PostModel {
                 u.user_pk,
                 u.user_name,
                 u.user_handle,
+                u.user_avatar,
 
                 rp.post_pk AS ref_post_pk,
                 rp.post_content AS ref_post_content,
@@ -159,6 +164,7 @@ class PostModel {
                 ru.user_pk AS ref_user_pk,
                 ru.user_name AS ref_user_name,
                 ru.user_handle AS ref_user_handle,
+                ru.user_avatar AS ref_user_avatar,
 
                 (SELECT COUNT(*) FROM post_likes 
                     WHERE post_fk = p.post_pk 
@@ -232,6 +238,7 @@ class PostModel {
                 u.user_pk,
                 u.user_name,
                 u.user_handle,
+                u.user_avatar,
 
                 rp.post_pk AS ref_post_pk,
                 rp.post_content AS ref_post_content,
@@ -240,6 +247,7 @@ class PostModel {
                 ru.user_pk AS ref_user_pk,
                 ru.user_name AS ref_user_name,
                 ru.user_handle AS ref_user_handle,
+                ru.user_avatar AS ref_user_avatar,
 
                 (SELECT COUNT(*) FROM post_likes 
                     WHERE post_fk = p.post_pk 

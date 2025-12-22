@@ -1,7 +1,8 @@
 <article class='articleUser'>
-	<img class='imgUser' src="https://ui-avatars.com/api/?name=<?php muoEcho($user["user_name"]); ?>&background=random">
+	<?php require_once __DIR__ . '/../services/get-user-avatar.php'; ?>
+	<img class='imgUser' src="<?php muoEcho(getUserAvatar($user)); ?>">
 	<section class='sectionUserNames'>
-		<a class='aUserFullName' href="/user<?php muoEcho($user["user_handle"]); ?>">
+		<a class='aUserFullName' href="/user/<?php muoEcho($user["user_handle"]); ?>">
 			<?php muoEcho($user["user_name"]); ?>
 		</a>
 		<p class='pUserHandle'>
