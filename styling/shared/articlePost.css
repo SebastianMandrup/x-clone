@@ -10,6 +10,7 @@
 	padding: 1rem;
 	border-bottom: 1px solid var(--grey);
 	cursor: pointer;
+	background-color: var(--black);
 }
 
 .articlePost:hover {
