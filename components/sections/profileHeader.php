@@ -4,10 +4,10 @@
 	</a>
 	<section id='sectionProfileHeaderInfo'>
 		<h1 id='h1ProfileUsername'>
-			<?php muoEcho($user["user_handle"]); ?>
+			<?php muoEcho($focusedUser["user_handle"]); ?>
 		</h1>
 		<p id='pProfilePostCount'>
-			<?php muoEcho($user["post_count"]); ?> Posts
+			<?php muoEcho($focusedUser["post_count"]); ?> Posts
 		</p>
 	</section>
 </header>

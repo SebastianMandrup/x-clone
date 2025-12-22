@@ -1,53 +1,56 @@
 <section id='sectionProfileBanner'>
 
-	<?php if (!$user["user_banner"]) : ?>
+	<?php if (!$focusedUser["user_banner"]) : ?>
 		<div id='divDefaultBanner'></div>
 	<?php else : ?>
-		<img id='imgProfileBanner' src="<?php muoEcho($user["user_banner"]); ?>" alt="Profile Banner Image">
+		<img id='imgProfileBanner' src="/uploads/banners/<?php muoEcho($focusedUser["user_banner"]); ?>" alt="Profile Banner Image">
 	<?php endif; ?>
 	<section id='sectionUserDetails'>
-		<img id='imgUserAvatarBanner' src="https://ui-avatars.com/api/?name=<?php muoEcho($user['user_name']); ?>&background=random"
+
+		<?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
+
+		<img id='imgUserAvatarBanner' src="<?php muoEcho(getUserAvatar($focusedUser)); ?>"
 			alt="Avatar">
 
-		<?php if ($user["user_pk"] === $_SESSION["user"]["user_pk"]) : ?>
+		<?php if ($focusedUser["user_pk"] === $_SESSION["user"]["user_pk"]) : ?>
 			<button id='buttonEditProfile'>
 				Edit profile
 			</button>
 		<?php else : ?>
-			<button class='btnFollow <?php muoEcho($user["is_following"] ? 'hidden' : ''); ?>' data-user-pk='<?php muoEcho($user["user_pk"]); ?>'>
+			<button class='btnFollow <?php muoEcho($focusedUser["is_following"] ? 'hidden' : ''); ?>' data-user-pk='<?php muoEcho($focusedUser["user_pk"]); ?>'>
 				Follow
 			</button>
-			<button class='btnUnfollow <?php muoEcho($user["is_following"] ? '' : 'hidden'); ?>' data-user-pk='<?php muoEcho($user["user_pk"]); ?>'>
+			<button class='btnUnfollow <?php muoEcho($focusedUser["is_following"] ? '' : 'hidden'); ?>' data-user-pk='<?php muoEcho($focusedUser["user_pk"]); ?>'>
 				Unfollow
 			</button>
 		<?php endif; ?>
 	</section>
 	<section id='sectionUserData'>
 		<h2 id='h2UserNameBanner'>
-			<?php muoEcho($user["user_name"]); ?>
+			<?php muoEcho($focusedUser["user_name"]); ?>
 		</h2>
 		<p id='pUserHandleBanner'>
-			@<?php muoEcho($user["user_handle"]); ?>
+			@<?php muoEcho($focusedUser["user_handle"]); ?>
 		</p>
 		<p id='pUserBioBanner'>
 			<?php
-			if (isset($user["user_bio"]) && !empty($user["user_bio"])) {
-				muoEcho($user["user_bio"]);
+			if (isset($focusedUser["user_bio"]) && !empty($focusedUser["user_bio"])) {
+				muoEcho($focusedUser["user_bio"]);
 			} else {
 				muoEcho("This user has not set a bio yet.");
 			}
 			?>
 		</p>
 		<section id='sectionUserFollowingBanner'>
-			<a class='aFollowCountBanner' href="/user/<?php muoEcho($user["user_handle"]); ?>/following">
+			<a class='aFollowCountBanner' href="/user/<?php muoEcho($focusedUser["user_handle"]); ?>/following">
 				<span>
-					<?php muoEcho($user["following_count"]); ?>
+					<?php muoEcho($focusedUser["following_count"]); ?>
 				</span>
 				Following
 			</a>
-			<a class='aFollowCountBanner' href="/user/<?php muoEcho($user["user_handle"]); ?>/followers">
+			<a class='aFollowCountBanner' href="/user/<?php muoEcho($focusedUser["user_handle"]); ?>/followers">
 				<span>
-					<?php muoEcho($user["followers_count"]); ?>
+					<?php muoEcho($focusedUser["followers_count"]); ?>
 				</span>
 				Followers
 			</a>

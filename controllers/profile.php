@@ -16,13 +16,13 @@ try {
 
 	// PROTECTED ROUTE STARTS SESSION
 	$currentUserPk = $_SESSION['user']['user_pk'];
-	$user = $userModel->getByHandle($handle, $currentUserPk);
+	$focusedUser = $userModel->getByHandle($handle, $currentUserPk);
 
-	if (!$user) {
+	if (!$focusedUser) {
 		throw new Exception("User not found");
 	}
 
-	$posts = $postModel->getAllFromUserWithCounts($currentUserPk, $user['user_handle']);
+	$posts = $postModel->getAllFromUserWithCounts($currentUserPk, $focusedUser['user_handle']);
 	$firstThreeTopics = $topicModel->getPage();
 	$usersToFollow = $followModel->getWhoToFollow();
 

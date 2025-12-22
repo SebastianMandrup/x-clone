@@ -1,6 +1,6 @@
 <div id='divEditProfileOverlay' class='hidden'>
 	<section id='sectionEditProfile'>
-		<form id='formEditProfile' method='post' action='/bridges/edit-profile'>
+		<form id='formEditProfile' method='post' action='/bridges/edit-profile' enctype='multipart/form-data'>
 
 			<header id='headerEditProfile'>
 				<div id='divEditProfileHeaderLeft'>
@@ -16,8 +16,8 @@
 
 			<div id='divEditProfileContent'>
 				<section id='sectionEditProfileBanner'>
-					<?php if (isset($user['user_banner'])) : ?>
-						<img id='imgEditProfileBanner' src="<?php muoEcho($user['user_banner']); ?>" alt="Profile Banner" />
+					<?php if (isset($focusedUser['user_banner'])) : ?>
+						<img id='imgEditProfileBanner' src="/uploads/banners/<?php muoEcho($focusedUser['user_banner']); ?>" alt="Profile Banner" />
 					<?php endif; ?>
 					<input type='file' name='profile_banner' id='inputEditProfileBanner' accept='image/*' />
 					<label for="inputEditProfileBanner" id='labelEditProfileBannerUpload' title='Add Photo'>
@@ -30,7 +30,8 @@
 				</section>
 
 				<section id='sectionEditProfileAvatar'>
-					<img id='imgEditProfileAvatar' src="https://ui-avatars.com/api/?name=<?php muoEcho(($user['user_name'])); ?>&background=random"
+					<?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
+					<img id='imgEditProfileAvatar' src="<?php muoEcho(getUserAvatar($focusedUser)); ?>"
 						alt="Avatar" />
 					<input id='inputEditProfileAvatar' type='file' name='profile_avatar' accept='image/*' />
 					<label id='labelEditProfileAvatarUpload' for='inputEditProfileAvatar' title='Add Photo'>
@@ -43,34 +44,34 @@
 
 				<section id='sectionEditProfileFields'>
 					<label for='inputEditProfileName'>Name
-						<input type='text' name='name' id='inputEditProfileName' maxlength='50' value="<?php muoEcho($user['user_name']); ?>" required>
+						<input type='text' name='name' id='inputEditProfileName' maxlength='50' value="<?php muoEcho($focusedUser['user_name']); ?>" required>
 					</label>
 
 					<label for='inputEditProfileBio'>
 						Bio
-						<textarea name='bio' id='inputEditProfileBio' maxlength='255'><?php if (isset($user['user_bio'])) {
-																							muoEcho($user['user_bio']);
+						<textarea name='bio' id='inputEditProfileBio' maxlength='255'><?php if (isset($focusedUser['user_bio'])) {
+																							muoEcho($focusedUser['user_bio']);
 																						} ?></textarea>
 					</label>
 
 					<label for='inputEditProfileLocation'>
 						Location
-						<input type='text' name='location' id='inputEditProfileLocation' maxlength='30' value="<?php if (isset($user['user_location'])) {
-																													muoEcho($user['user_location']);
+						<input type='text' name='location' id='inputEditProfileLocation' maxlength='30' value="<?php if (isset($focusedUser['user_location'])) {
+																													muoEcho($focusedUser['user_location']);
 																												} ?>" />
 					</label>
 
 					<label for='inputEditProfileWebsite'>
 						Website
-						<input type='url' name='website' id='inputEditProfileWebsite' maxlength='100' value="<?php if (isset($user['user_website'])) {
-																													muoEcho($user['user_website']);
+						<input type='url' name='website' id='inputEditProfileWebsite' maxlength='100' value="<?php if (isset($focusedUser['user_website'])) {
+																													muoEcho($focusedUser['user_website']);
 																												} ?>" />
 					</label>
 
 					<label for='inputEditProfileBirthdate'>
 						Birthdate
-						<input type='date' name='birthdate' onfocus="this.showPicker()" id='inputEditProfileBirthdate' value="<?php if (isset($user['user_birthday'])) {
-																																	muoEcho($user['user_birthday']);
+						<input type='date' name='birthdate' onfocus="this.showPicker()" id='inputEditProfileBirthdate' value="<?php if (isset($focusedUser['user_birthday'])) {
+																																	muoEcho($focusedUser['user_birthday']);
 																																} ?>" />
 					</label>
 				</section>

@@ -16,6 +16,7 @@ class UserModel {
             users.user_email, 
             users.user_birthday, 
             users.user_handle,
+            users.user_avatar,
             users.user_banner,
             users.user_bio,
             COUNT(posts.post_pk) AS post_count,
@@ -104,23 +105,38 @@ class UserModel {
         return $userPk;
     }
 
-    public function updateUser($userPk, $newName, $newBio, $newLocation, $newWebsite, $newBirthdate) {
-        $sql = "UPDATE users 
-                SET user_name = :name, 
-                    user_bio = :bio, 
-                    user_location = :location, 
-                    user_website = :website, 
-                    user_birthday = :birthdate 
-                WHERE user_pk = :pk";
+    public function updateUser($userPk, $newName, $newAvatar, $newBanner, $newBio, $newLocation, $newWebsite, $newBirthdate) {
+        $sql = "UPDATE users SET user_name = :name";
+        $params = [
+            ':name' => $newName,
+            ':pk' => $userPk
+        ];
+
+        if ($newAvatar !== null) {
+            $sql .= ", user_avatar = :avatar";
+            $params[':avatar'] = $newAvatar;
+        }
+
+        if ($newBanner !== null) {
+            $sql .= ", user_banner = :banner";
+            $params[':banner'] = $newBanner;
+        }
+
+        $sql .= ", user_bio = :bio, user_location = :location, user_website = :website, user_birthday = :birthdate";
+
+        $params[':bio'] = $newBio;
+        $params[':location'] = $newLocation;
+        $params[':website'] = $newWebsite;
+        $params[':birthdate'] = $newBirthdate;
+
+        $sql .= " WHERE user_pk = :pk";
 
         $stmt = $this->_db->prepare($sql);
-        $stmt->bindValue(":pk", $userPk);
-        $stmt->bindValue(":name", $newName);
-        $stmt->bindValue(":bio", $newBio);
-        $stmt->bindValue(":location", $newLocation);
-        $stmt->bindValue(":website", $newWebsite);
-        $stmt->bindValue(":birthdate", $newBirthdate);
 
-        $stmt->execute();
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value);
+        }
+
+        return $stmt->execute();
     }
 }

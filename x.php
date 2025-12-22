@@ -19,6 +19,137 @@ function muoNoCache() {
 }
 
 
+function validateAndSaveAvatar() {
+    // Check if file was uploaded
+    if (!isset($_FILES["profile_avatar"]) || $_FILES["profile_avatar"]["error"] === UPLOAD_ERR_NO_FILE) {
+        return null;
+    }
+
+    $file = $_FILES["profile_avatar"];
+
+    // Basic upload error check
+    if ($file["error"] !== UPLOAD_ERR_OK) {
+        throw new Exception("File upload failed", 400);
+    }
+
+    // Check file size (max 5MB)
+    if ($file["size"] > 5 * 1024 * 1024) {
+        throw new Exception("File too large (max 5MB)", 400);
+    }
+
+    // Get MIME type using mime_content_type (simpler)
+    $mimeType = mime_content_type($file["tmp_name"]);
+
+    // Allowed MIME types
+    $allowedTypes = [
+        'image/jpeg' => 'jpg',
+        'image/png' => 'png',
+        'image/gif' => 'gif',
+        'image/webp' => 'webp'
+    ];
+
+    if (!isset($allowedTypes[$mimeType])) {
+        throw new Exception("Invalid file type. Only JPEG, PNG, GIF, and WebP allowed", 400);
+    }
+
+    // Verify it's actually an image
+    $imageInfo = @getimagesize($file["tmp_name"]);
+    if (!$imageInfo) {
+        throw new Exception("Uploaded file is not a valid image", 400);
+    }
+
+    // Check for malicious content
+    $fileContent = file_get_contents($file["tmp_name"]);
+    if (preg_match('/<\?php|<script|javascript:/i', $fileContent)) {
+        throw new Exception("File contains potentially malicious content", 400);
+    }
+
+    // Generate UUID filename
+    $uuid = bin2hex(random_bytes(16));
+    $extension = $allowedTypes[$mimeType];
+    $filename = $uuid . '.' . $extension;
+
+    // Ensure uploads directory exists
+    $uploadDir = __DIR__ . '/uploads/avatars/';
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+
+    $destination = $uploadDir . $filename;
+
+    // Move uploaded file
+    if (!move_uploaded_file($file["tmp_name"], $destination)) {
+        throw new Exception("Failed to save file", 500);
+    }
+
+    return $filename;
+}
+
+function validateAndSaveBanner() {
+    if (!isset($_FILES["profile_banner"]) || $_FILES["profile_banner"]["error"] === UPLOAD_ERR_NO_FILE) {
+        return null;
+    }
+
+    $file = $_FILES["profile_banner"];
+
+    if ($file["error"] !== UPLOAD_ERR_OK) {
+        throw new Exception("Banner upload failed", 400);
+    }
+
+    // Banner can be larger - 10MB
+    if ($file["size"] > 10 * 1024 * 1024) {
+        throw new Exception("Banner too large (max 10MB)", 400);
+    }
+
+    $mimeType = mime_content_type($file["tmp_name"]);
+
+    $allowedTypes = [
+        'image/jpeg' => 'jpg',
+        'image/png' => 'png',
+        'image/gif' => 'gif',
+        'image/webp' => 'webp'
+    ];
+
+    if (!isset($allowedTypes[$mimeType])) {
+        throw new Exception("Invalid banner file type", 400);
+    }
+
+    // Verify it's actually an image
+    $imageInfo = @getimagesize($file["tmp_name"]);
+    if (!$imageInfo) {
+        throw new Exception("Uploaded banner is not a valid image", 400);
+    }
+
+    // Check dimensions for banner
+    list($width, $height) = $imageInfo;
+    if ($width < 800 || $height < 200) {
+        throw new Exception("Banner should be at least 800x200 pixels", 400);
+    }
+
+    // Check for malicious content
+    $fileContent = file_get_contents($file["tmp_name"]);
+    if (preg_match('/<\?php|<script|javascript:/i', $fileContent)) {
+        throw new Exception("Banner contains potentially malicious content", 400);
+    }
+
+    $uuid = bin2hex(random_bytes(16));
+    $extension = $allowedTypes[$mimeType];
+    $filename = 'banner_' . $uuid . '.' . $extension;
+
+    $uploadDir = __DIR__ . '/uploads/banners/';
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+
+    $destination = $uploadDir . $filename;
+
+    if (!move_uploaded_file($file["tmp_name"], $destination)) {
+        throw new Exception("Failed to save banner", 500);
+    }
+
+    return $filename;
+}
+
 function validateBirthdate() {
     $birthdate = trim($_POST["birthdate"] ?? "");
     return $birthdate;

@@ -10,7 +10,8 @@
 		</button>
 	</section>
 	<section class='sectionCommentAuthorInfo'>
-		<img class='imgCommentAuthorAvatar' src='https://ui-avatars.com/api/?name=<?php muoEcho($comment['commenter_name']); ?>&background=random' alt='Comment Author Avatar'>
+		<?php require_once __DIR__ . '/../services/get-user-avatar.php'; ?>
+		<img class='imgCommentAuthorAvatar' src='<?php muoEcho(getUserAvatar($comment)); ?>' alt='Comment Author Avatar'>
 		<div class='divCommentAuthorText'>
 			<a class='aCommentAuthorName' href='/user<?php muoEcho($comment['commenter_handle']); ?>'>
 				<?php muoEcho($comment['commenter_name']); ?>

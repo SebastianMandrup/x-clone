@@ -143,7 +143,8 @@
         		</button>
         	</section>
         	<section id='sectionUserInfo'>
-        		<img src="https://ui-avatars.com/api/?name=<?php echo urlencode($_SESSION['user']['user_name']); ?>&background=random"
+        		<?php require_once __DIR__ . '/../services/get-user-avatar.php'; ?>
+        		<img src="<?php muoEcho(getUserAvatar($_SESSION['user'])); ?>"
         			alt="Avatar" id='imgUserAvatar'>
         		<div id='divUserNames'>
         			<span id='spanUserFullName'>
@@ -163,7 +164,7 @@
 
         <nav id='navMobile'>
         	<section id='sectionUserInfoMobile'>
-        		<img src="https://ui-avatars.com/api/?name=<?php muoEcho(urlencode($_SESSION['user']['user_name'])); ?>&background=random"
+        		<img src="<?php muoEcho(getUserAvatar($_SESSION['user'])); ?>"
         			alt="Avatar" id='imgUserAvatarMobile'>
         	</section>
         	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
