@@ -6,7 +6,9 @@ if (!isset($firstThreeTopics)) {
 
 <section id='sectionWhatsHappening'>
 	<header>
-		What's happening
+		<h3>
+			<?php muoEcho($translations['whats_happening']) ?>
+		</h3>
 	</header>
 
 	<?php
@@ -16,9 +18,9 @@ if (!isset($firstThreeTopics)) {
 	?>
 
 	<button id='btnShowMoreTrends' class='btnShow' data-next-page='2'>
-		Show more
+		<?php muoEcho($translations['show_more']) ?>
 	</button>
 	<button id='btnShowLessTrends' class='btnShow hidden'>
-		Show less
+		<?php muoEcho($translations['show_less']) ?>
 	</button>
 </section>

@@ -1,12 +1,15 @@
 <?php
 
-// protect against injection
-function muoEcho($text) {
+function initTranslations() {
+    $dictionary = require_once __DIR__ . '/services/dictionary.php';
+    return $dictionary[$_SESSION['user']['user_language']];
+}
 
+// XSS safe echo
+function muoEcho($text) {
     if ($text === null) {
         return;
     }
-
     echo htmlspecialchars($text);
 }
 

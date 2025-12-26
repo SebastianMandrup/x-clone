@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . "../../x.php";
+$translations = initTranslations();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +11,7 @@ require_once __DIR__ . "../../x.php";
     <link rel="stylesheet" href="./styling/home/home.css">
     <link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
     <script src='./scripts/home/home.js' type='module'></script>
-    <title>Home / MUO</title>
+    <title><?php muoEcho($translations['home']) ?> | MUO</title>
 </head>
 
 <body>
@@ -29,11 +29,9 @@ require_once __DIR__ . "../../x.php";
             <?php require_once __DIR__ . '/../components/sections/createPost.php'; ?>
 
             <?php
-            $divName = '';
+            $divName = 'divPostsFollowing';
             if ($isForYou) {
                 $divName = 'divPostsForYou';
-            } else {
-                $divName = 'divPostsFollowing';
             }
             ?>
 
@@ -47,7 +45,9 @@ require_once __DIR__ . "../../x.php";
 
             <?php if (count($posts) === 0) : ?>
                 <div class="divNoPosts">
-                    <p>No posts to display. Start following users to see their posts!</p>
+                    <p>
+                        <?php muoEcho($translations['no_posts_to_display']) ?>
+                    </p>
                 </div>
             <?php else: ?>
                 <div class="circle-loader"></div>

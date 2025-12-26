@@ -17,8 +17,6 @@ document.getElementById('btnDismissAnalyticsOverlay').addEventListener('click', 
 	document.body.classList.remove('modalOpen');
 });
 
-const analyticsButtons = document.querySelectorAll('.buttonPostActionAnalytics');
-
 function addAnalyticsListener(button) {
 	button.addEventListener('click', async function (event) {
 		event.stopPropagation();
@@ -27,6 +25,10 @@ function addAnalyticsListener(button) {
 	});
 }
 
-analyticsButtons.forEach(addAnalyticsListener);
+const postAnalyticsButtons = document.querySelectorAll('.buttonPostActionAnalytics');
+const btnViewAnalytics = document.querySelectorAll('.btnViewAnalytics');
+
+postAnalyticsButtons.forEach(addAnalyticsListener);
+btnViewAnalytics.forEach(addAnalyticsListener);
 export { addAnalyticsListener };
 

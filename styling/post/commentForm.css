@@ -53,6 +53,11 @@
 	color: var(--blue);
 }
 
+#sectionCreateCommentTypes button svg {
+	width: 20px;
+	height: 20px;
+}
+
 #sectionCreateCommentTypes button:hover {
 	background-color: var(--darkestBlue);
 	border-radius: 50%;

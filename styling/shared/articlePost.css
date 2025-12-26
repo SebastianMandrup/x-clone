@@ -60,6 +60,11 @@
 	align-items: center;
 }
 
+.sectionMorePostOptions button svg {
+	width: 20px;
+	height: 20px;
+}
+
 .sectionPostOptions button:hover,
 .sectionMorePostOptions button:hover {
 	color: var(--blue);
@@ -67,7 +72,7 @@
 }
 
 .sectionMorePostOptions .btnBookmarkPost.triggered {
-	color: var(--green);
+	color: var(--blue);
 }
 
 

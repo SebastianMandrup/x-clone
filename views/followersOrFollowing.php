@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "../../x.php";
+$translations = initTranslations();
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@ require_once __DIR__ . "../../x.php";
 	<link rel="stylesheet" href="/styling/profile/followersPage.css">
 	<link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
 	<script src="/scripts/profile/followers.js" type="module"></script>
-	<title>Followers | <?php muoEcho($handle) ?></title>
+	<title><?php muoEcho($translations[$endpoint]) ?> | <?php muoEcho($handle) ?></title>
 </head>
 
 <body>

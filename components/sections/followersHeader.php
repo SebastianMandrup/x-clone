@@ -8,21 +8,21 @@
 <header id='headerMain'>
 	<?php if ($endpoint === 'followers') : ?>
 		<a href="/user/<?php muoEcho($handle); ?>/following">
-			Following
+			<?php muoEcho($translations['following']) ?>
 		</a>
 		<button class='selectedHeaderButton'>
 			<span>
-				Followers
+				<?php muoEcho($translations['followers']) ?>
 			</span>
 		</button>
 	<?php else : ?>
 		<button class='selectedHeaderButton'>
 			<span>
-				Following
+				<?php muoEcho($translations['following']) ?>
 			</span>
 		</button>
 		<a href="/user/<?php muoEcho($handle); ?>/followers">
-			Followers
+			<?php muoEcho($translations['followers']) ?>
 		</a>
 	<?php endif; ?>
 </header>

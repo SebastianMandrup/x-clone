@@ -34,8 +34,8 @@
 }
 
 .aCommentReplyName {
-	font-weight: bold;
-	font-size: 16px;
+	font-weight: normal;
+	font-size: 14px;
 	color: var(--white);
 	text-decoration: none;
 }
@@ -51,7 +51,6 @@
 }
 
 .divCommentReplyBody p {
-	margin: 5px 0;
 	font-size: 15px;
-	color: var(--lightestGrey);
+	color: var(--lighterGrey);
 }

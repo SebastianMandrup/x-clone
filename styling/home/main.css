@@ -46,6 +46,11 @@
                 cursor: pointer;
                 padding: 0.05rem 0.25rem;
 
+                svg {
+                    width: 1.3rem;
+                    height: 1.3rem;
+                }
+
                 &:hover {
                     background-color: rgb(12, 53, 81);
                     border-radius: 50%;

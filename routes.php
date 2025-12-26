@@ -28,12 +28,12 @@ get('/api/get-topics', 'api/get-topics.php');
 get('/api/get-who-to-follow', 'api/get-who-to-follow.php');
 get('/api/get-posts', 'api/get-posts.php');
 get('/api/get-posts-following', 'api/get-posts-following.php');
+post('/api/add-comment-reply', 'api/add-comment-reply.php');
 
 post('/bridges/create-post', 'bridges/create-post.php');
 post('/bridges/login', 'bridges/login.php');
 get('/bridges/logout', 'bridges/logout.php');
 post('/bridges/sign-up', 'bridges/sign-up.php');
 post('/bridges/edit-profile', 'bridges/edit-profile.php');
-post('/bridges/add-comment-reply', 'bridges/add-comment-reply.php');
 
 get('/404', 'views/404.php');

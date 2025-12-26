@@ -1,8 +1,7 @@
 <?php
 require_once __DIR__ . "/../x.php";
-$_db = require __DIR__ . '/../services/db_connector.php';
+$translations = initTranslations();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +10,8 @@ $_db = require __DIR__ . '/../services/db_connector.php';
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../../../styling/post/post.css">
 	<link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
-	<script src='../scripts/post/post.js' type='module'></script>
-	<title> Post - <?php muoEcho($handle); ?></title>
+	<script src='../../../scripts/post/post.js' type='module'></script>
+	<title> <?php muoEcho($translations['post']) ?> | <?php muoEcho($handle); ?></title>
 </head>
 
 <body>
@@ -44,6 +43,8 @@ $_db = require __DIR__ . '/../services/db_connector.php';
 	</div>
 
 	<?php require_once __DIR__ . '/../components/modals/replyOverlay.php'; ?>
+	<?php require_once __DIR__ . '/../components/modals/analyticsModal.php'; ?>
+	<?php require_once __DIR__ . '/../components/templates/reply.php'; ?>
 
 </body>
 

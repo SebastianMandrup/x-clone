@@ -5,7 +5,9 @@ if (!isset($usersToFollow)) {
 ?>
 <section id='sectionWhoToFollow'>
 	<header>
-		Who To Follow
+		<h4>
+			<?php muoEcho($translations['who_to_follow']) ?>
+		</h4>
 	</header>
 
 	<?php
@@ -18,7 +20,7 @@ if (!isset($usersToFollow)) {
 		<article class='articlePersonToFollow'>
 			<div class='divPersonToFollowNames'>
 				<span class='spanPersonToFollowFullName'>
-					No users to follow
+					<?php muoEcho($translations['no_users_to_follow']) ?>
 				</span>
 			</div>
 		</article>
@@ -29,7 +31,7 @@ if (!isset($usersToFollow)) {
 	if ($usersCount < 4) {
 		$moreUsersExist = false;
 	} else {
-		$moreUsersExist = true;
+			$moreUsersExist = true;
 		array_pop($usersToFollow);
 	}
 
@@ -40,10 +42,10 @@ if (!isset($usersToFollow)) {
 	if ($moreUsersExist) {
 	?>
 		<button id='btnShowMoreWhoToFollow' class='btnShow' data-next-page='2'>
-			Show more
+			<?php muoEcho($translations['show_more']) ?>
 		</button>
 		<button id='btnShowLessWhoToFollow' class='btnShow hidden'>
-			Show less
+			<?php muoEcho($translations['show_less']) ?>
 		</button>
 </section>
 <?php

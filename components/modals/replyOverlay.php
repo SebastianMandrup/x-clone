@@ -34,7 +34,7 @@
 			<p>Replying to <?php muoEcho($handle) ?></p>
 		</section>
 
-		<form action="/bridges/add-comment-reply" method="post" id='formReplyToPost'>
+		<form action="/api/add-comment-reply" method="post" id='formReplyToPost'>
 			<input type="hidden" name="comment_pk" id="inputReplyCommentPk" value="">
 			<textarea name="comment_reply_content" id="textareaReplyContent" maxlength="255" placeholder="Tweet your reply..." required></textarea>
 

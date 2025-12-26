@@ -41,9 +41,10 @@
 
 	<p id='pFeaturedPostCreatedAt'>
 		<?php
+		$commentCount = count($comments);
 		// Convert Unix timestamp to DateTime
 		$postDate = DateTime::createFromFormat('U', $post['post_created_at']);
-		muoEcho($postDate->format("g:i A") . " · " . $postDate->format("M j, Y") . " · " . count($comments) . " Comment" . (count($comments) !== 1 ? "s" : ""));
+		muoEcho($postDate->format("g:i A") . " · " . $postDate->format("M j, Y") . " · " . $commentCount . " " . ($commentCount !== 1 ? $translations['comments'] : $translations['comment']));
 		?>
 	</p>
 

@@ -1,6 +1,15 @@
 <article class='articleCommentReply'>
-	<?php require_once __DIR__ . '/../services/get-user-avatar.php'; ?>
-	<img class="imgCommentReplyAvatar" src="<?php muoEcho(getUserAvatar($reply['replier_name'])); ?>" alt="User Avatar" />
+	<?php
+	if (!isset($reply['replier_avatar']) || $reply['replier_avatar'] === null) {
+	?>
+		<img class="imgCommentReplyAvatar" src="<?php muoEcho("https://ui-avatars.com/api/?name=" . urlencode($reply['replier_name']) . "&background=random"); ?>" alt="User Avatar" />
+	<?php
+	} else {
+	?>
+		<img class="imgCommentReplyAvatar" src="<?php muoEcho('/uploads/avatars/' . $reply['replier_avatar']); ?>" alt="User Avatar" />
+	<?php
+	}
+	?>
 	<div class='divCommentReplyContent'>
 		<div class='divCommentReplyHeader'>
 			<a class='aCommentReplyName' href='/user/<?php muoEcho($reply['replier_handle']); ?>'>

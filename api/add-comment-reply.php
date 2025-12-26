@@ -14,8 +14,11 @@ try {
 	$commentModel = new CommentModel();
 	$commentModel->createCommentReply($userPk, $commentPk, $commentReplyContent);
 
-	header("Location: /?successToast=" . rawurlencode("Succesfully added reply."));
+	echo json_encode([
+		'status' => 'success',
+		'message' => 'Reply added successfully'
+	]);
 } catch (Exception $e) {
 	http_response_code($e->getCode() ? (int) $e->getCode() : 500);
-	header("Location: /?errorToast=" . rawurlencode($e->getMessage()));
+	header("Location: ?errorToast=" . rawurlencode($e->getMessage()));
 }

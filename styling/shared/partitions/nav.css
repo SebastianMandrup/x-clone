@@ -202,7 +202,7 @@
 
     #navMain #sectionUserInfo #divMoreOptions {
         display: none;
-        margin-left: auto;
+        margin: auto 0 auto 20px;
     }
 
     #navMain #sectionUserInfo #divMoreOptions #spanMoreOptions {

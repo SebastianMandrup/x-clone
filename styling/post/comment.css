@@ -164,3 +164,8 @@
 	right: 20px;
 	bottom: 20px;
 }
+
+.sectionMoreCommentOptions .btnCommentOptions svg {
+	width: 20px;
+	height: 20px;
+}

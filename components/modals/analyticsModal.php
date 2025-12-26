@@ -7,18 +7,18 @@
 		</button>
 
 		<h1 id='h1AnalyticsModalTitle'>
-			Views
+			<?php muoEcho($translations['views']) ?>
 		</h1>
 
 		<p id='pAnalyticsModalDescription'>
-			Times this post has been viewed. To learn more, visit the
+			<?php muoEcho($translations['times_post_viewed']) ?>
 			<a href="/home">
-				Help Center
+				<?php muoEcho($translations['help_center']) ?>
 			</a>
 		</p>
 
 		<button id='btnDismissAnalyticsOverlay'>
-			Dismiss
+			<?php muoEcho($translations['dismiss']) ?>
 		</button>
 
 	</section>

@@ -11,7 +11,7 @@ require_once __DIR__ . '/../services/protect-index.php';
     <link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src='./scripts/index/index.js' type='module'></script>
-    <title>MUO / It's what's happening / MUO</title>
+    <title>It's what's happening | MUO</title>
 </head>
 
 <body>

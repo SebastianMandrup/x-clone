@@ -13,3 +13,5 @@
 
 @import '../shared/toasts.css';
 @import '../shared/articlePost.css';
+
+@import '../shared/modals/analyticsModal.css';

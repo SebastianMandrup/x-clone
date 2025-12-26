@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . "/../services/protect-route.php";
 require_once __DIR__ . "/../x.php";
+$translations = initTranslations();
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@ require_once __DIR__ . "/../x.php";
     <link rel="stylesheet" href="../styling/profile/profile.css">
     <link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
     <script src='../scripts/profile/profile.js' type='module'></script>
-    <title> PROFILE / <?php muoEcho($handle); ?></title>
+    <title> <?php muoEcho($handle . " | " . $translations['profile']); ?></title>
 </head>
 
 <body>
@@ -41,10 +41,8 @@ require_once __DIR__ . "/../x.php";
 
     </div>
 
-    <?php require_once __DIR__ . '/../components/modals/commentOverlay.php'; ?>
-
-
     <?php
+    require_once __DIR__ . '/../components/modals/commentOverlay.php';
     require_once __DIR__ . '/../components/modals/editProfileOverlay.php';
     require_once __DIR__ . '/../components/modals/analyticsModal.php';
     ?>

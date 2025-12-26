@@ -9,6 +9,10 @@
             @<?php muoEcho($user["user_handle"]); ?>
         </p>
     </section>
-    <button class='btnFollow' data-user-pk="<?php muoEcho($user["user_pk"]); ?>">Follow</button>
-    <button class='btnUnfollow hidden' data-user-pk="<?php muoEcho($user["user_pk"]); ?>">Unfollow</button>
+    <button class='btnFollow' data-user-pk="<?php muoEcho($user["user_pk"]); ?>">
+        <?php muoEcho($translations['follow']) ?>
+    </button>
+    <button class='btnUnfollow hidden' data-user-pk="<?php muoEcho($user["user_pk"]); ?>">
+        <?php muoEcho($translations['unfollow']) ?>
+    </button>
 </article>

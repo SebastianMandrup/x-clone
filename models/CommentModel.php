@@ -28,6 +28,7 @@ class CommentModel {
                 cr.comment_reply_content as reply_content,
                 ru.user_handle as replier_handle,
                 ru.user_name as replier_name,
+				ru.user_avatar as replier_avatar,
                 ru.user_pk as replier_pk
                 
                 FROM comments c
@@ -36,7 +37,7 @@ class CommentModel {
                 LEFT JOIN users ru ON cr.user_fk = ru.user_pk
                 WHERE c.comment_post_fk = :postPk
                 AND c.comment_deleted_at IS NULL
-                ORDER BY c.comment_created_at ASC";
+                ORDER BY c.comment_created_at ASC, cr.comment_reply_pk ASC";
 
 			$stmt = $this->_db->prepare($sql);
 			$stmt->bindValue(':postPk', $postPk);
@@ -81,6 +82,7 @@ class CommentModel {
 					'reply_content' => $row['reply_content'],
 					'replier_handle' => $row['replier_handle'],
 					'replier_name' => $row['replier_name'],
+					'replier_avatar' => $row['replier_avatar'],
 					'replier_pk' => $row['replier_pk']
 				];
 			}
@@ -120,7 +122,8 @@ class CommentModel {
 			$stmt->bindParam(':comment_reply_content', $commentReplyContent);
 			$stmt->execute();
 
-			return true;
+			$newComment = $stmt->fetch();
+			return $newComment;
 		} catch (Exception $e) {
 			throw new Exception("Error creating comment reply: " . $e->getMessage());
 		}

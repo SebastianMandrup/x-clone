@@ -1,21 +1,20 @@
 <header id='headerMain'>
-
 	<?php if ($isForYou === true) : ?>
 		<button class='selectedHeaderButton'>
 			<span>
-				For you
+				<?php muoEcho($translations['for_you']) ?>
 			</span>
 		</button>
 		<a href="/following">
-			Following
+			<?php muoEcho($translations['following']) ?>
 		</a>
 	<?php else : ?>
 		<a href="/home">
-			For you
+			<?php muoEcho($translations['for_you']) ?>
 		</a>
 		<button class='selectedHeaderButton'>
 			<span>
-				Following
+				<?php muoEcho($translations['following']) ?>
 			</span>
 		</button>
 	<?php endif; ?>

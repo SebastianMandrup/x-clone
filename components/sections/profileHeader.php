@@ -7,7 +7,7 @@
 			<?php muoEcho($focusedUser["user_handle"]); ?>
 		</h1>
 		<p id='pProfilePostCount'>
-			<?php muoEcho($focusedUser["post_count"]); ?> Posts
+			<?php muoEcho($focusedUser["post_count"] . ' ' . $translations['posts']); ?>
 		</p>
 	</section>
 </header>

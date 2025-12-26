@@ -3,14 +3,12 @@
 		&lt;
 	</a>
 	<h1 id='h1Post'>
-		<?php if ($post['ref_post_pk']) {
-		?>
-			Repost
 		<?php
+		if ($post['ref_post_pk']) {
+			muoEcho($translations['repost']);
 		} else {
+			muoEcho($translations['post']);
+		}
 		?>
-			Post
-		<?php
-		} ?>
 	</h1>
 </header>
