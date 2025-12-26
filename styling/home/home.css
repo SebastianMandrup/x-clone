@@ -1,7 +1,6 @@
 @import '../variables.css';
 
 @import './main.css';
-@import '../shared/headerMain.css';
 
 @import '../shared/partitions/main.css';
 @import '../shared/partitions/nav.css';
@@ -9,6 +8,7 @@
 
 @import '../shared/modals/analyticsModal.css';
 
+@import '../shared/headerMain.css';
 @import '../shared/sectionAddComment.css';
 @import '../shared/toasts.css';
 @import '../shared/articlePost.css';

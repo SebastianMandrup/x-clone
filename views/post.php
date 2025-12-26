@@ -42,6 +42,7 @@ $translations = initTranslations();
 
 	</div>
 
+	<?php require_once __DIR__ . '/../components/modals/commentOverlay.php'; ?>
 	<?php require_once __DIR__ . '/../components/modals/replyOverlay.php'; ?>
 	<?php require_once __DIR__ . '/../components/modals/analyticsModal.php'; ?>
 	<?php require_once __DIR__ . '/../components/templates/reply.php'; ?>

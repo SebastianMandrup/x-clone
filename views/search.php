@@ -8,9 +8,9 @@ $translations = initTranslations();
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../../../styling/post/post.css">
+	<link rel="stylesheet" href="../../../styling/home/home.css">
 	<link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
-	<script src='../../../scripts/post/post.js' type='module'></script>
+	<script src='../../../scripts/home/home.js' type='module'></script>
 	<title> <?php muoEcho($translations['search']) ?> | <?php muoEcho($_SESSION['user']['user_handle']); ?></title>
 </head>
 
@@ -38,6 +38,7 @@ $translations = initTranslations();
 
 	</div>
 
+	<?php require_once __DIR__ . '/../components/modals/commentOverlay.php'; ?>
 	<?php require_once __DIR__ . '/../components/modals/replyOverlay.php'; ?>
 	<?php require_once __DIR__ . '/../components/modals/analyticsModal.php'; ?>
 	<?php require_once __DIR__ . '/../components/templates/reply.php'; ?>

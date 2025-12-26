@@ -1,6 +1,5 @@
 @import '../variables.css';
 
-@import './headerMainPost.css';
 @import './featuredPost.css';
 @import './comment.css';
 @import './commentReply.css';
