@@ -67,6 +67,7 @@ return [
 		'location' => 'Location',
 		'website' => 'Website',
 		'birthdate' => 'Birthdate',
+		'bookmarks' => 'Bookmarks',
 	],
 	'da' => [
 		'home' => 'Hjem',
@@ -135,5 +136,6 @@ return [
 		'location' => 'Lokation',
 		'website' => 'Hjemmeside',
 		'birthdate' => 'Fødselsdato',
+		'bookmarks' => 'Bogmærker',
 	]
 ];

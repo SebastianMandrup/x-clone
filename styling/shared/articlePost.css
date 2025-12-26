@@ -60,6 +60,7 @@
 	align-items: center;
 }
 
+.sectionPostOptions button svg,
 .sectionMorePostOptions button svg {
 	width: 20px;
 	height: 20px;

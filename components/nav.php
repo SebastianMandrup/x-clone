@@ -1,62 +1,42 @@
 <nav id='navMain'>
 	<a href="/home" id='aXLogo'>
-		<span id='spanXLogo'>
-			&#120132;
-		</span>
+		&#120132;
 	</a>
-	<a href="/home" id='aSelectedNav'>
-		<span>
-			<?php require __DIR__ . '/icons/home-icon.php'; ?>
-			<?php muoEcho($translations['home']) ?>
-		</span>
+	<a href="/home">
+		<?php require __DIR__ . '/icons/home-icon.php'; ?>
+		<?php muoEcho($translations['home']) ?>
 	</a>
 	<a href='/explore'>
-		<span>
-			<?php require __DIR__ . '/icons/search-icon.php'; ?>
-			<?php muoEcho($translations['explore']) ?>
-		</span>
+		<?php require __DIR__ . '/icons/search-icon.php'; ?>
+		<?php muoEcho($translations['explore']) ?>
 	</a>
 	<a href="/notification" id='aNotification'>
-		<span>
-			<?php require __DIR__ . '/icons/notification-icon.php'; ?>
-			<?php muoEcho($translations['notifications']) ?>
-		</span>
+		<?php require __DIR__ . '/icons/notification-icon.php'; ?>
+		<?php muoEcho($translations['notifications']) ?>
 	</a>
 	<a href="/messages" id='aMessages'>
-		<span>
-			<?php require __DIR__ . '/icons/message-icon.php'; ?>
-			<?php muoEcho($translations['messages']) ?>
-		</span>
+		<?php require __DIR__ . '/icons/message-icon.php'; ?>
+		<?php muoEcho($translations['messages']) ?>
 	</a>
 	<a href="/grok">
-		<span>
-			<?php require __DIR__ . '/icons/muook-icon.php'; ?>
-			<?php muoEcho($translations['muook']) ?>
-		</span>
+		<?php require __DIR__ . '/icons/muook-icon.php'; ?>
+		<?php muoEcho($translations['muook']) ?>
 	</a>
 	<a href="/communities" id='aCommunities'>
-		<span>
-			<?php require __DIR__ . '/icons/communities-icon.php'; ?>
-			<?php muoEcho($translations['communities']) ?>
-		</span>
+		<?php require __DIR__ . '/icons/communities-icon.php'; ?>
+		<?php muoEcho($translations['communities']) ?>
 	</a>
 	<a href="/verified-orgs">
-		<span>
-			<?php require __DIR__ . '/icons/lightening-icon.php'; ?>
-			<?php muoEcho($translations['premium']) ?>
-		</span>
+		<?php require __DIR__ . '/icons/lightening-icon.php'; ?>
+		<?php muoEcho($translations['premium']) ?>
 	</a>
 	<a href="/user/<?php muoEcho($_SESSION['user']['user_handle']); ?>">
-		<span>
-			<?php require __DIR__ . '/icons/profile-icon.php'; ?>
-			<?php muoEcho($translations['profile']) ?>
-		</span>
+		<?php require __DIR__ . '/icons/profile-icon.php'; ?>
+		<?php muoEcho($translations['profile']) ?>
 	</a>
-	<a href="/more">
-		<span>
-			<?php require __DIR__ . '/icons/more-icon.php'; ?>
-			<?php muoEcho($translations['more']) ?>
-		</span>
+	<a href="/bookmarks">
+		<?php require __DIR__ . '/icons/bookmark-icon.php'; ?>
+		<?php muoEcho($translations['bookmarks']) ?>
 	</a>
 	<button id='btnPost'>
 		<?php muoEcho($translations['post']) ?>
@@ -89,7 +69,7 @@
 			</span>
 		</div>
 		<div id='divMoreOptions'>
-			<?php require __DIR__ . '/icons/more-icon.php'; ?>
+			<?php require __DIR__ . '/icons/simple-more-icon.php'; ?>
 		</div>
 	</section>
 </nav>
