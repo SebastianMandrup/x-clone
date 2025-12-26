@@ -8,6 +8,7 @@ get('/', 'views/index.php');
 get('/home', 'controllers/home.php');
 get('/following', 'controllers/home-following.php');
 get('/bookmarks', 'controllers/bookmarks.php');
+get('/search', 'controllers/search.php');
 get('/user/$handle/following', 'controllers/following.php');
 get('/user/$handle/followers', 'controllers/followers.php');
 get('/user/$handle', 'controllers/profile.php');

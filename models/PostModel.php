@@ -312,6 +312,89 @@ class PostModel {
         return $posts;
     }
 
+    public function search($current_user_pk, $searchTerm) {
+
+        $sql = "SELECT 
+                p.post_pk,
+                p.post_content,
+                p.post_image,
+                p.post_created_at,
+                u.user_pk,
+                u.user_name,
+                u.user_handle,
+                u.user_avatar,
+
+                rp.post_pk AS ref_post_pk,
+                rp.post_content AS ref_post_content,
+                rp.post_image AS ref_post_image,
+                rp.post_created_at AS ref_post_created_at,
+                ru.user_pk AS ref_user_pk,
+                ru.user_name AS ref_user_name,
+                ru.user_handle AS ref_user_handle,
+                ru.user_avatar AS ref_user_avatar,
+
+                (SELECT COUNT(*) FROM post_likes 
+                    WHERE post_fk = p.post_pk 
+                    AND like_deleted_at IS NULL
+                ) AS like_count,
+
+                (SELECT 1 FROM post_likes 
+                    WHERE post_fk = p.post_pk 
+                    AND user_fk = :current_user_pk 
+                    AND like_deleted_at IS NULL 
+                    LIMIT 1
+                ) AS liked_by_user,
+
+                (SELECT COUNT(*) FROM comments 
+                    WHERE comment_post_fk = p.post_pk 
+                    AND comment_deleted_at IS NULL
+                ) AS comment_count,
+
+                (SELECT 1 FROM comments 
+                    WHERE comment_post_fk = p.post_pk 
+                    AND comment_user_fk = :current_user_pk 
+                    AND comment_deleted_at IS NULL 
+                    LIMIT 1
+                ) AS commented_by_user,
+
+                (SELECT COUNT(*) FROM posts 
+                    WHERE post_reference = p.post_pk 
+                    AND post_deleted_at IS NULL
+                ) AS repost_count,
+
+                (SELECT 1 FROM posts 
+                    WHERE post_reference = p.post_pk 
+                    AND post_user_fk = :current_user_pk 
+                    AND post_deleted_at IS NULL 
+                    LIMIT 1
+                ) AS reposted_by_user,
+
+                (SELECT 1 FROM bookmarks 
+                    WHERE post_fk = p.post_pk 
+                    AND user_fk = :current_user_pk 
+                    LIMIT 1
+                ) AS bookmarked_by_user
+
+                FROM posts p
+                INNER JOIN users u 
+                    ON p.post_user_fk = u.user_pk
+                LEFT JOIN posts rp 
+                    ON p.post_reference = rp.post_pk
+                LEFT JOIN users ru 
+                    ON rp.post_user_fk = ru.user_pk
+
+                WHERE p.post_deleted_at IS NULL
+                AND p.post_content LIKE :searchTerm
+                ORDER BY p.post_created_at DESC;";
+
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindValue(':current_user_pk', $current_user_pk);
+        $stmt->bindValue(':searchTerm', '%' . $searchTerm . '%');
+        $stmt->execute();
+        $posts = $stmt->fetchAll();
+        return $posts;
+    }
+
     public function likePost($postPk, $userPk) {
 
         $sql = "SELECT * FROM post_likes WHERE post_fk = :postPk AND user_fk = :userPk";

@@ -22,6 +22,7 @@ function muoNoCache() {
 }
 
 
+
 function validateAndSaveAvatar() {
     // Check if file was uploaded
     if (!isset($_FILES["profile_avatar"]) || $_FILES["profile_avatar"]["error"] === UPLOAD_ERR_NO_FILE) {
@@ -156,6 +157,15 @@ function validateAndSaveBanner() {
 function validateBirthdate() {
     $birthdate = trim($_POST["birthdate"] ?? "");
     return $birthdate;
+}
+
+define("searchTermMax", 20);
+function validateSearchTerm() {
+    $searchTerm = trim($_GET["term"] ?? "");
+    if (strlen($searchTerm) > searchTermMax) {
+        throw new Exception("Search term must be less than " . searchTermMax . " characters", 400);
+    }
+    return $searchTerm;
 }
 
 define("websiteMax", 50);
