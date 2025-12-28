@@ -77,7 +77,8 @@
 	width: 100%;
 }
 
-#pFeaturedPostCreatedAt {
+#pFeaturedPostCreatedAt,
+#pFeaturedPostCreatedAt span {
 	margin-top: 10px;
 	color: var(--lightGrey);
 	font-size: 16px;

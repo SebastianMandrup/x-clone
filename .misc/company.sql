@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mariadb
--- Generation Time: Dec 28, 2025 at 11:57 AM
+-- Generation Time: Dec 28, 2025 at 03:19 PM
 -- Server version: 10.6.20-MariaDB-ubu2004
 -- PHP Version: 8.3.26
 
@@ -119,6 +119,14 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`comment_pk`, `comment_user_fk`, `comment_post_fk`, `comment_content`, `comment_created_at`, `comment_updated_at`, `comment_deleted_at`) VALUES
+('10083cde6ec31b815d49f7efaaee2538a5dd856e682bf1db4c', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'a160b49e7ecd92472827ef85189155fd70e9dc5eb49b0ffea2', 'test', 1766926319, 1766926319, NULL),
+('308dac89fd3a0d1a3b0c3ece02ef9630e54619629a48d07b7a', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'a160b49e7ecd92472827ef85189155fd70e9dc5eb49b0ffea2', 'test', 1766926414, 1766926414, NULL),
+('42c069a4d75f4e801f3fa938e9837529aaea5881c7b4c5d838', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'a160b49e7ecd92472827ef85189155fd70e9dc5eb49b0ffea2', 'test', 1766926205, 1766926205, NULL),
+('48869d0dc17b4002798d923324aee380fb3516f2f2b0163a11', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'e6d27f318761f13793ba3684ca15bf14d05827d5ceeff32f8c', 'ok', 1766933957, 1766933957, NULL),
+('5d03e911c5ca56d8c1b3e0a4351fc67f99c3654048a1a48ddd', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'a160b49e7ecd92472827ef85189155fd70e9dc5eb49b0ffea2', 'test', 1766926232, 1766926232, NULL),
+('7e802fa20cabc9fd5ba28135e024d363cde57e247f26fad62e', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'a160b49e7ecd92472827ef85189155fd70e9dc5eb49b0ffea2', 'test', 1766926359, 1766926359, NULL),
+('8d08265c25d5a0dd16fe69dced7ef061241153957ef7edac7f', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'a160b49e7ecd92472827ef85189155fd70e9dc5eb49b0ffea2', 'test', 1766926410, 1766926410, NULL),
+('b196dceab32a9f62f6b687de7d8bac235c3e7f31b2694f818f', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'e6d27f318761f13793ba3684ca15bf14d05827d5ceeff32f8c', 'test', 1766924791, 1766924791, NULL),
 ('cb570ab634193f4f068c0ee7db58552031981baaf3e30e4336', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'b0a18ae324ae355e81df7d6f4284fcf92342374cb34ca82012', 'test', 1766916785, 1766916785, NULL),
 ('comment_001', 'b7a4e3c7b1d29c4f82c0b12a59e84d7bfa6c2b1c1d90891ec9', '2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f78', 'Great post! Really enjoyed reading this.', 1724000000, 1724000000, NULL),
 ('comment_002', '12345678901234567890abcdef123456789012345', '2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f78', 'I completely agree with this perspective!', 1724000100, 1724000100, NULL),
@@ -179,7 +187,8 @@ INSERT INTO `comments` (`comment_pk`, `comment_user_fk`, `comment_post_fk`, `com
 ('comment_057', '78901234567890abcdef123456789012345678901', '9abcdef0123456789abcdef012345678', 'Already implemented this!', 1724005100, 1724005100, NULL),
 ('comment_058', '2345678901234567890abcdef1234567890123456', 'a1b2c3d4e5f678901234567890123456', 'The community response has been amazing.', 1724005200, 1724005200, NULL),
 ('comment_059', 'b2c3d4e5f6789012345678901234567890abcdef1', 'b2c3d4e5f6789012345678901234567', 'What\'s the learning curve like?', 1724005300, 1724005300, NULL),
-('comment_060', 'e5f6789012345678901234567890abcdef1234567', 'c3d4e5f678901234567890123456789', 'This deserves more upvotes!', 1724005400, 1724005400, NULL);
+('comment_060', 'e5f6789012345678901234567890abcdef1234567', 'c3d4e5f678901234567890123456789', 'This deserves more upvotes!', 1724005400, 1724005400, NULL),
+('e790556fb61e2dbb670cb41cb9f65558dd7f499eef844e592b', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'e6d27f318761f13793ba3684ca15bf14d05827d5ceeff32f8c', 'test 2', 1766925086, 1766925086, NULL);
 
 -- --------------------------------------------------------
 
@@ -199,6 +208,7 @@ CREATE TABLE `comment_likes` (
 --
 
 INSERT INTO `comment_likes` (`comment_fk`, `user_fk`, `like_created_at`, `like_deleted_at`) VALUES
+('42c069a4d75f4e801f3fa938e9837529aaea5881c7b4c5d838', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 1766926436, 1766926437),
 ('comment_001', '12345678901234567890abcdef123456789012345', 1724000050, NULL),
 ('comment_001', 'c38bd97e24aa8bcace24d155bc3ae34b9cb0dcc1fa768a13f5', 1724000060, NULL),
 ('comment_002', '8901234567890abcdef1234567890123456789012', 1724000160, NULL),
@@ -347,58 +357,70 @@ CREATE TABLE `comment_replies` (
   `comment_reply_pk` char(50) NOT NULL,
   `comment_fk` char(50) NOT NULL,
   `user_fk` char(50) NOT NULL,
-  `comment_reply_content` varchar(255) NOT NULL
+  `comment_reply_content` varchar(255) NOT NULL,
+  `comment_reply_created_at` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `comment_replies`
 --
 
-INSERT INTO `comment_replies` (`comment_reply_pk`, `comment_fk`, `user_fk`, `comment_reply_content`) VALUES
-('reply_001', 'comment_003', 'b7a4e3c7b1d29c4f82c0b12a59e84d7bfa6c2b1c1d90891ec9', 'Sure! The second point is about scalability - specifically horizontal scaling vs vertical scaling.'),
-('reply_002', 'comment_003', '12345678901234567890abcdef123456789012345', 'Thanks for asking this - I was wondering the same thing!'),
-('reply_003', 'comment_003', '8901234567890abcdef1234567890123456789012', 'Great question! I think they meant the implementation details.'),
-('reply_004', 'comment_005', '345678901234567890abcdef12345678901234567', 'I\'d love to hear your perspective on this!'),
-('reply_005', 'comment_005', 'f33cad8e219bb4ccad12e4031dc3e983ad44c2ef9933dd091c', 'There are definitely multiple ways to look at this issue.'),
-('reply_006', 'comment_006', 'ab94df0ea2cd73ed8c19b2d74d12cb9e6c7adcc87912f33eb1', 'Here are three studies that support my point: [link1], [link2], [link3]'),
-('reply_007', 'comment_006', '89012345678901234567890abcdef123456789012', 'Appreciate you backing up your claims with sources!'),
-('reply_008', 'comment_011', '678901234567890abcdef12345678901234567890', 'Yes, we\'ve been using it for 6 months now in production.'),
-('reply_009', 'comment_011', 'f7c12edaa1c9b43dec0bd977d13c3be092ad1c8fe2dd332a11', 'I tried it on a small project - works great for prototypes.'),
-('reply_010', 'comment_012', 'c4411c11bb2dea29841ddd52cc9011a4f998e22c99b11dd876', 'That\'s encouraging! What team size are you working with?'),
-('reply_011', 'comment_012', 'd8fa12cb41ddae4912cf7b239e2dd4c0ffbc1da77e9a123ab9', 'We started with 5 developers, now up to 15. The transition was smooth.'),
-('reply_012', 'comment_015', '901234567890abcdef12345678901234567890123', 'I\'ve used React Query - it\'s amazing for server state!'),
-('reply_013', 'comment_015', 'de11bb33fe8822ddbcaa1231cefeb009a2234ddf77cdd991ac', 'How does it compare to SWR? Any thoughts?'),
-('reply_014', 'comment_018', '45678901234567890abcdef123456789012345678', 'Shared with my network!'),
-('reply_015', 'comment_018', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'This is going viral on other platforms too.'),
-('reply_016', 'comment_021', '012345678901234567890abcdef12345678901234', 'Same here! Are we all living the same life? 😂'),
-('reply_017', 'comment_021', '5678901234567890abcdef1234567890123456789', 'Tagged myself in this 😅'),
-('reply_018', 'comment_026', 'c3d4e5f6789012345678901234567890abcdef12', 'Think of it like a recipe. The original is complex, but here\'s the simple version...'),
-('reply_019', 'comment_026', '9012345678901234567890abcdef1234567890123', 'Great analogy! Building on that...'),
-('reply_020', 'comment_026', '78901234567890abcdef123456789012345678901', 'Basically, it makes computers talk to each other better.'),
-('reply_021', 'comment_027', '2345678901234567890abcdef1234567890123456', 'Appreciate the correction - shows intellectual honesty.'),
-('reply_022', 'comment_027', 'b2c3d4e5f6789012345678901234567890abcdef1', 'We all make mistakes! Thanks for updating.'),
-('reply_023', 'comment_033', '8901234567890abcdef1234567890123456789012', 'Classic! Never gets old.'),
-('reply_024', 'comment_033', 'ab94df0ea2cd73ed8c19b2d74d12cb9e6c7adcc87912f33eb1', 'The \"first\" comment is a tradition at this point.'),
-('reply_025', 'comment_039', 'e081ab44df1e9cd8320ad5b633bc3e8812ad7e991dfcc7cb33', 'Excellent analysis! You\'ve captured nuances most people miss.'),
-('reply_026', 'comment_039', 'c4411c11bb2dea29841ddd52cc9011a4f998e22c99b11dd876', 'This deserves its own blog post!'),
-('reply_027', 'comment_039', 'd8fa12cb41ddae4912cf7b239e2dd4c0ffbc1da77e9a123ab9', 'Could you expand on the third paragraph? I found that particularly insightful.'),
-('reply_028', 'comment_041', '678901234567890abcdef12345678901234567890', 'We use it in production with 10k+ daily users. No major issues so far.'),
-('reply_029', 'comment_041', 'f7c12edaa1c9b43dec0bd977d13c3be092ad1c8fe2dd332a11', 'Our team migrated last month - some initial bugs but stable now.'),
-('reply_030', 'comment_047', 'b7a4e3c7b1d29c4f82c0b12a59e84d7bfa6c2b1c1d90891ec9', 'Thanks for tagging me! This is fascinating.'),
-('reply_031', 'comment_047', 'de11bb33fe8822ddbcaa1231cefeb009a2234ddf77cdd991ac', 'Thought you\'d appreciate it!'),
-('reply_032', 'comment_053', 'd4e5f6789012345678901234567890abcdef12345', 'The official docs have a great getting started guide.'),
-('reply_033', 'comment_053', 'c3d4e5f6789012345678901234567890abcdef12', 'I learned from this YouTube series: [link]'),
-('reply_034', 'comment_053', '9012345678901234567890abcdef1234567890123', 'There\'s a free course on Coursera that covers this well.'),
-('reply_035', 'comment_059', 'e5f6789012345678901234567890abcdef1234567', 'Steep at first, but gets easier after the first week.'),
-('reply_036', 'comment_059', 'b2c3d4e5f6789012345678901234567890abcdef1', 'I\'d say 2-3 weeks to feel comfortable, 2 months to master.'),
-('reply_037', 'comment_044', 'ac9dd21ca4f8b0cce1bd22ef990ce3bbad77dde32111bbcd43', 'Right?! Can\'t believe more people aren\'t talking about this!'),
-('reply_038', 'comment_044', 'f7c12edaa1c9b43dec0bd977d13c3be092ad1c8fe2dd332a11', 'Just shared it with my team.'),
-('reply_039', 'comment_030', 'a1b2c3d4e5f6789012345678901234567890abcde', 'I saw the original before it was deleted - it was getting heated.'),
-('reply_040', 'comment_030', '012345678901234567890abcdef12345678901234', 'Sometimes deletion is for the best.'),
-('reply_041', 'comment_013', 'd8fa12cb41ddae4912cf7b239e2dd4c0ffbc1da77e9a123ab9', 'Main challenges were data migration and team training. Took about 2 weeks.'),
-('reply_042', 'comment_013', '678901234567890abcdef12345678901234567890', 'Documentation was our biggest hurdle initially.'),
-('reply_043', 'comment_016', 'ac9dd21ca4f8b0cce1bd22ef990ce3bbad77dde32111bbcd43', 'Next.js is great but has different use cases. Depends on your project needs.'),
-('reply_044', 'comment_016', '901234567890abcdef12345678901234567890123', 'We use both - Next for SSR, React Query for client state.');
+INSERT INTO `comment_replies` (`comment_reply_pk`, `comment_fk`, `user_fk`, `comment_reply_content`, `comment_reply_created_at`) VALUES
+('10c49573399cdcb57726c0d8749fa9eeff1f12abad1795a4cd', 'e790556fb61e2dbb670cb41cb9f65558dd7f499eef844e592b', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'asdasd', 1766935077),
+('30041aa8ccb229ede80a42939cbe5051ffab524c8ffe9ca147', 'b196dceab32a9f62f6b687de7d8bac235c3e7f31b2694f818f', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 't', 1766935082),
+('92aea23f3b714d8d7a641b21d1b800dbd8cc302682ab064af4', 'e790556fb61e2dbb670cb41cb9f65558dd7f499eef844e592b', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'teszd', 1766935032),
+('reply_001', 'comment_003', 'b7a4e3c7b1d29c4f82c0b12a59e84d7bfa6c2b1c1d90891ec9', 'Sure! The second point is about scalability - specifically horizontal scaling vs vertical scaling.', 0),
+('reply_002', 'comment_003', '12345678901234567890abcdef123456789012345', 'Thanks for asking this - I was wondering the same thing!', 0),
+('reply_003', 'comment_003', '8901234567890abcdef1234567890123456789012', 'Great question! I think they meant the implementation details.', 0),
+('reply_004', 'comment_005', '345678901234567890abcdef12345678901234567', 'I\'d love to hear your perspective on this!', 0),
+('reply_005', 'comment_005', 'f33cad8e219bb4ccad12e4031dc3e983ad44c2ef9933dd091c', 'There are definitely multiple ways to look at this issue.', 0),
+('reply_006', 'comment_006', 'ab94df0ea2cd73ed8c19b2d74d12cb9e6c7adcc87912f33eb1', 'Here are three studies that support my point: [link1], [link2], [link3]', 0),
+('reply_007', 'comment_006', '89012345678901234567890abcdef123456789012', 'Appreciate you backing up your claims with sources!', 0),
+('reply_008', 'comment_011', '678901234567890abcdef12345678901234567890', 'Yes, we\'ve been using it for 6 months now in production.', 0),
+('reply_009', 'comment_011', 'f7c12edaa1c9b43dec0bd977d13c3be092ad1c8fe2dd332a11', 'I tried it on a small project - works great for prototypes.', 0),
+('reply_010', 'comment_012', 'c4411c11bb2dea29841ddd52cc9011a4f998e22c99b11dd876', 'That\'s encouraging! What team size are you working with?', 0),
+('reply_011', 'comment_012', 'd8fa12cb41ddae4912cf7b239e2dd4c0ffbc1da77e9a123ab9', 'We started with 5 developers, now up to 15. The transition was smooth.', 0),
+('reply_012', 'comment_015', '901234567890abcdef12345678901234567890123', 'I\'ve used React Query - it\'s amazing for server state!', 0),
+('reply_013', 'comment_015', 'de11bb33fe8822ddbcaa1231cefeb009a2234ddf77cdd991ac', 'How does it compare to SWR? Any thoughts?', 0),
+('reply_014', 'comment_018', '45678901234567890abcdef123456789012345678', 'Shared with my network!', 0),
+('reply_015', 'comment_018', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'This is going viral on other platforms too.', 0),
+('reply_016', 'comment_021', '012345678901234567890abcdef12345678901234', 'Same here! Are we all living the same life? 😂', 0),
+('reply_017', 'comment_021', '5678901234567890abcdef1234567890123456789', 'Tagged myself in this 😅', 0),
+('reply_018', 'comment_026', 'c3d4e5f6789012345678901234567890abcdef12', 'Think of it like a recipe. The original is complex, but here\'s the simple version...', 0),
+('reply_019', 'comment_026', '9012345678901234567890abcdef1234567890123', 'Great analogy! Building on that...', 0),
+('reply_020', 'comment_026', '78901234567890abcdef123456789012345678901', 'Basically, it makes computers talk to each other better.', 0),
+('reply_021', 'comment_027', '2345678901234567890abcdef1234567890123456', 'Appreciate the correction - shows intellectual honesty.', 0),
+('reply_022', 'comment_027', 'b2c3d4e5f6789012345678901234567890abcdef1', 'We all make mistakes! Thanks for updating.', 0),
+('reply_023', 'comment_033', '8901234567890abcdef1234567890123456789012', 'Classic! Never gets old.', 0),
+('reply_024', 'comment_033', 'ab94df0ea2cd73ed8c19b2d74d12cb9e6c7adcc87912f33eb1', 'The \"first\" comment is a tradition at this point.', 0),
+('reply_025', 'comment_039', 'e081ab44df1e9cd8320ad5b633bc3e8812ad7e991dfcc7cb33', 'Excellent analysis! You\'ve captured nuances most people miss.', 0),
+('reply_026', 'comment_039', 'c4411c11bb2dea29841ddd52cc9011a4f998e22c99b11dd876', 'This deserves its own blog post!', 0),
+('reply_027', 'comment_039', 'd8fa12cb41ddae4912cf7b239e2dd4c0ffbc1da77e9a123ab9', 'Could you expand on the third paragraph? I found that particularly insightful.', 0),
+('reply_028', 'comment_041', '678901234567890abcdef12345678901234567890', 'We use it in production with 10k+ daily users. No major issues so far.', 0),
+('reply_029', 'comment_041', 'f7c12edaa1c9b43dec0bd977d13c3be092ad1c8fe2dd332a11', 'Our team migrated last month - some initial bugs but stable now.', 0),
+('reply_030', 'comment_047', 'b7a4e3c7b1d29c4f82c0b12a59e84d7bfa6c2b1c1d90891ec9', 'Thanks for tagging me! This is fascinating.', 0),
+('reply_031', 'comment_047', 'de11bb33fe8822ddbcaa1231cefeb009a2234ddf77cdd991ac', 'Thought you\'d appreciate it!', 0),
+('reply_032', 'comment_053', 'd4e5f6789012345678901234567890abcdef12345', 'The official docs have a great getting started guide.', 0),
+('reply_033', 'comment_053', 'c3d4e5f6789012345678901234567890abcdef12', 'I learned from this YouTube series: [link]', 0),
+('reply_034', 'comment_053', '9012345678901234567890abcdef1234567890123', 'There\'s a free course on Coursera that covers this well.', 0),
+('reply_035', 'comment_059', 'e5f6789012345678901234567890abcdef1234567', 'Steep at first, but gets easier after the first week.', 0),
+('reply_036', 'comment_059', 'b2c3d4e5f6789012345678901234567890abcdef1', 'I\'d say 2-3 weeks to feel comfortable, 2 months to master.', 0),
+('reply_037', 'comment_044', 'ac9dd21ca4f8b0cce1bd22ef990ce3bbad77dde32111bbcd43', 'Right?! Can\'t believe more people aren\'t talking about this!', 0),
+('reply_038', 'comment_044', 'f7c12edaa1c9b43dec0bd977d13c3be092ad1c8fe2dd332a11', 'Just shared it with my team.', 0),
+('reply_039', 'comment_030', 'a1b2c3d4e5f6789012345678901234567890abcde', 'I saw the original before it was deleted - it was getting heated.', 0),
+('reply_040', 'comment_030', '012345678901234567890abcdef12345678901234', 'Sometimes deletion is for the best.', 0),
+('reply_041', 'comment_013', 'd8fa12cb41ddae4912cf7b239e2dd4c0ffbc1da77e9a123ab9', 'Main challenges were data migration and team training. Took about 2 weeks.', 0),
+('reply_042', 'comment_013', '678901234567890abcdef12345678901234567890', 'Documentation was our biggest hurdle initially.', 0),
+('reply_043', 'comment_016', 'ac9dd21ca4f8b0cce1bd22ef990ce3bbad77dde32111bbcd43', 'Next.js is great but has different use cases. Depends on your project needs.', 0),
+('reply_044', 'comment_016', '901234567890abcdef12345678901234567890123', 'We use both - Next for SSR, React Query for client state.', 0);
+
+--
+-- Triggers `comment_replies`
+--
+DELIMITER $$
+CREATE TRIGGER `insert_on_comment_replies` BEFORE INSERT ON `comment_replies` FOR EACH ROW SET NEW.comment_reply_created_at = UNIX_TIMESTAMP()
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 

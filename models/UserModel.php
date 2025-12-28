@@ -18,37 +18,35 @@ class UserModel {
     }
 
     public function getByHandle($handle, $currentUserPk) {
-        $sql = "
-        SELECT 
-            users.user_pk, 
-            users.user_name, 
-            users.user_email, 
-            users.user_birthday, 
-            users.user_handle,
-            users.user_avatar,
-            users.user_banner,
-            users.user_bio,
-            COUNT(posts.post_pk) AS post_count,
-            (SELECT COUNT(*) FROM follows WHERE followed_user_fk = users.user_pk AND follow_deleted_at IS NULL) AS followers_count,
-            (SELECT COUNT(*) FROM follows WHERE following_user_fk = users.user_pk AND follow_deleted_at IS NULL) AS following_count,
-            -- Check if session user is following this user
-            CASE 
-                WHEN :currentUserPk IS NOT NULL THEN 
-                    EXISTS (SELECT 1 FROM follows 
-                            WHERE following_user_fk = :currentUserPk 
-                            AND followed_user_fk = users.user_pk 
-                            AND follow_deleted_at IS NULL)
-                ELSE FALSE
-            END AS is_following
-        FROM users 
-        LEFT JOIN posts ON users.user_pk = posts.post_user_fk
-        WHERE users.user_handle = :handle
-        GROUP BY users.user_pk, users.user_name, users.user_email, users.user_birthday, users.user_handle, users.user_banner
-        ";
+        $sql = "SELECT 
+                users.user_pk, 
+                users.user_name, 
+                users.user_email, 
+                users.user_birthday, 
+                users.user_handle,
+                users.user_avatar,
+                users.user_banner,
+                users.user_bio,
+                COUNT(posts.post_pk) AS post_count,
+                (SELECT COUNT(*) FROM follows WHERE followed_user_fk = users.user_pk AND follow_deleted_at IS NULL) AS followers_count,
+                (SELECT COUNT(*) FROM follows WHERE following_user_fk = users.user_pk AND follow_deleted_at IS NULL) AS following_count,
+                -- Check if session user is following this user
+                CASE 
+                    WHEN ? IS NOT NULL THEN 
+                        EXISTS (SELECT 1 FROM follows 
+                                WHERE following_user_fk = ? 
+                                AND followed_user_fk = users.user_pk 
+                                AND follow_deleted_at IS NULL)
+                    ELSE FALSE
+                END AS is_following
+                FROM users 
+                LEFT JOIN posts ON users.user_pk = posts.post_user_fk
+                WHERE users.user_handle = ?
+                GROUP BY users.user_pk, users.user_name, users.user_email, users.user_birthday, 
+                        users.user_handle, users.user_banner, users.user_avatar, users.user_bio";
+
         $stmt = $this->_db->prepare($sql);
-        $stmt->bindValue(':handle', $handle);
-        $stmt->bindValue(':currentUserPk', $currentUserPk ?? null, PDO::PARAM_INT);
-        $stmt->execute();
+        $stmt->execute([$currentUserPk ?? null, $currentUserPk ?? null, $handle]);
         $user = $stmt->fetch();
         return $user;
     }

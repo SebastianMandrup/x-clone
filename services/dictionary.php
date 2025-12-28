@@ -73,6 +73,7 @@ return [
 		'danish' => 'Danish',
 		'no_bookmarks' => 'You have no bookmarks yet.',
 		'no_replies_yet' => 'No replies yet',
+		'replies' => 'replies',
 	],
 	'da' => [
 		'home' => 'Hjem',
@@ -147,5 +148,6 @@ return [
 		'danish' => 'Dansk',
 		'no_bookmarks' => 'Du har endnu ingen bogmærker.',
 		'no_replies_yet' => 'Ingen svar endnu',
+		'replies' => 'svar',
 	]
 ];

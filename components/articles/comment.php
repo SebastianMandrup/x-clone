@@ -53,9 +53,9 @@
 			<p class='pCommentRepliesHeader'>
 				<?php
 				if (count($comment['replies']) === 1) {
-					muoEcho('1 reply');
+					muoEcho('1 ' . $translations['reply']);
 				} else {
-					muoEcho(count($comment['replies']) . ' replies');
+					muoEcho(count($comment['replies']) . ' ' . $translations['replies']);
 				}
 				?>
 			</p>
