@@ -30,11 +30,16 @@ $translations = initTranslations();
 
 			require_once __DIR__ . '/../components/sections/commentForm.php';
 
-			foreach ($comments as $comment) {
-				require __DIR__ . '/../components/articles/comment.php';
-			}
-
 			?>
+			<section id='sectionComments'>
+
+				<?php
+				foreach ($comments as $comment) {
+					require __DIR__ . '/../components/articles/comment.php';
+				}
+				?>
+
+			</section>
 
 		</main>
 
@@ -46,6 +51,7 @@ $translations = initTranslations();
 	<?php require_once __DIR__ . '/../components/modals/replyOverlay.php'; ?>
 	<?php require_once __DIR__ . '/../components/modals/analyticsModal.php'; ?>
 	<?php require_once __DIR__ . '/../components/templates/reply.php'; ?>
+	<?php require_once __DIR__ . '/../components/templates/comment.php'; ?>
 
 </body>
 

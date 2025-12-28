@@ -27,7 +27,7 @@
 	<?php
 	if (isset($post['post_image']) && !empty($post['post_image'])) {
 	?>
-		<img id='imgFeaturedPostImage' src='<?php muoEcho($post['post_image']); ?>' alt='Post Image'>
+		<img id='imgFeaturedPostImage' src='<?php muoEcho('/uploads/posts/' . $post['post_image']); ?>' alt='Post Image'>
 	<?php
 	}
 	?>
@@ -44,8 +44,16 @@
 		$commentCount = count($comments);
 		// Convert Unix timestamp to DateTime
 		$postDate = DateTime::createFromFormat('U', $post['post_created_at']);
-		muoEcho($postDate->format("g:i A") . " · " . $postDate->format("M j, Y") . " · " . $commentCount . " " . ($commentCount !== 1 ? $translations['comments'] : $translations['comment']));
+		muoEcho($postDate->format("g:i A") . " · " . $postDate->format("M j, Y") . " · ");
+
 		?>
+		<span id='spanFeaturedPostCommentCount'>
+			<?php muoEcho($commentCount); ?>
+		</span>
+		<span id='spanFeaturedPostCommentLabel'>
+			<?php muoEcho($commentCount === 1 ? $translations['comment'] : $translations['comments']);
+			?>
+		</span>
 	</p>
 
 </section>

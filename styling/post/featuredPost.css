@@ -72,9 +72,9 @@
 
 #imgFeaturedPostImage {
 	height: auto;
-	min-width: 100%;
 	border-radius: var(--lightBorderRadius);
 	margin-top: 15px;
+	width: 100%;
 }
 
 #pFeaturedPostCreatedAt {

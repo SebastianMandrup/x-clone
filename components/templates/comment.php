@@ -1,0 +1,52 @@
+<template id="templateComment">
+	<article class='articleComment' data-comment-pk=''>
+		<section class='sectionCommentOptions'>
+			<button class='btnCommentOptions btnMoreOptions' title='<?php muoEcho($translations['more_options']); ?>'>
+				<?php include __DIR__ . '/../icons/simple-more-icon.php' ?>
+			</button>
+		</section>
+		<section class='sectionCommentAuthorInfo'>
+			<img class='imgCommentAuthorAvatar' src='' alt=''>
+
+			<div class='divCommentAuthorText'>
+				<a class='aCommentAuthorName' href=''>
+				</a>
+				<p class='pCommentAuthorHandle'>
+				</p>
+				<p class='pDotSeparator'>
+					·
+				</p>
+				<p class='pCommentCreatedAt'>
+				</p>
+			</div>
+		</section>
+		<p class='pCommentContent'>
+		</p>
+
+		<footer class='footerCommentActions'>
+			<button class='btnCommentAction btnReplyComment' title="Reply">
+				<?php include __DIR__ . '/../icons/comment-icon.php' ?>
+				<span class='spanCommentActionCount'>
+					0
+				</span>
+			</button>
+			<button class='btnCommentAction btnLikeComment' title="Like">
+				<?php include __DIR__ . '/../icons/like-icon.php' ?>
+				<span class='spanCommentActionCount'>
+					0
+				</span>
+			</button>
+			<button class='btnCommentAction btnViewAnalytics' title="View Analytics">
+				<?php include __DIR__ . '/../icons/analytics-icon.php' ?>
+			</button>
+			<section class='sectionMoreCommentOptions'>
+				<button class='btnCommentOptions' title='Bookmark'>
+					<?php include __DIR__ . '/../icons/bookmark-icon.php' ?>
+				</button>
+				<button class='btnCommentOptions' title='Share'>
+					<?php include __DIR__ . '/../icons/share-icon.php' ?>
+				</button>
+			</section>
+		</footer>
+	</article>
+</template>

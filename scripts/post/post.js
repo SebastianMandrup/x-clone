@@ -15,6 +15,7 @@ import '../shared/sharePost.js';
 import '../shared/toasts.js';
 import '../shared/unfollowUser.js';
 
+import './createComment.js';
 import './createReply.js';
 import './likeComment.js';
 
