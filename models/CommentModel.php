@@ -8,8 +8,7 @@ class CommentModel {
 	}
 
 	public function getCommentsByPostPk($postPk, $currentUserPk) {
-		try {
-			$sql = "SELECT
+		$sql = "SELECT
                 c.comment_pk,
                 c.comment_content,
                 c.comment_created_at,
@@ -24,6 +23,7 @@ class CommentModel {
                 (SELECT COUNT(*) FROM comment_replies cr WHERE cr.comment_fk = c.comment_pk) AS comment_replies_count,
                 
                 -- Reply fields (using correct column names)
+                cr.comment_reply_created_at as reply_created_at,
                 cr.comment_reply_pk as reply_pk,
                 cr.comment_reply_content as reply_content,
                 ru.user_handle as replier_handle,
@@ -37,18 +37,15 @@ class CommentModel {
                 LEFT JOIN users ru ON cr.user_fk = ru.user_pk
                 WHERE c.comment_post_fk = :postPk
                 AND c.comment_deleted_at IS NULL
-                ORDER BY c.comment_created_at ASC, cr.comment_reply_pk ASC";
+                ORDER BY c.comment_created_at DESC, cr.comment_reply_created_at ASC";
 
-			$stmt = $this->_db->prepare($sql);
-			$stmt->bindValue(':postPk', $postPk);
-			$stmt->bindValue(':currentUserPk', $currentUserPk);
-			$stmt->execute();
+		$stmt = $this->_db->prepare($sql);
+		$stmt->bindValue(':postPk', $postPk);
+		$stmt->bindValue(':currentUserPk', $currentUserPk);
+		$stmt->execute();
 
-			$results = $stmt->fetchAll();
-			return $this->structureCommentsWithReplies($results);
-		} catch (Exception $e) {
-			throw new Exception("Error fetching comments: " . $e->getMessage());
-		}
+		$results = $stmt->fetchAll();
+		return $this->structureCommentsWithReplies($results);
 	}
 
 	private function structureCommentsWithReplies($results) {

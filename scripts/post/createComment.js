@@ -1,4 +1,6 @@
 import { showToast } from '../shared/toasts.js';
+import { addReplyListener } from './createReply.js';
+import { addLikeListener } from './likeComment.js';
 
 const form = document.getElementById('formCreateComment');
 const sectionComments = document.getElementById('sectionComments');
@@ -26,17 +28,19 @@ form.addEventListener('submit', async function submitComment(event) {
 		}
 
 		const clone = commentTemplate.content.cloneNode(true);
+
 		clone.querySelector('.imgCommentAuthorAvatar').src = document.getElementById('imgCreateCommentAvatar').src;
 		clone.querySelector('.imgCommentAuthorAvatar').alt = document.getElementById('imgCreateCommentAvatar').alt;
-
 		clone.querySelector('.aCommentAuthorName').textContent = document.getElementById('spanUserFullName').textContent;
 		const userHandle = document.getElementById('spanUserHandle').textContent.replace('@', '');
 		clone.querySelector('.aCommentAuthorName').href = `/profile/${userHandle}`;
 		clone.querySelector('.pCommentAuthorHandle').textContent = document.getElementById('spanUserHandle').textContent;
-
 		clone.querySelector('.pCommentCreatedAt').textContent = 'Just now';
-
 		clone.querySelector('.pCommentContent').textContent = formdata.get('comment_content');
+
+		addReplyListener(clone.querySelector('.btnReplyComment'));
+		addLikeListener(clone.querySelector('.btnLikeComment'));
+
 		sectionComments.prepend(clone);
 
 

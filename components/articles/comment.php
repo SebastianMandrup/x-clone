@@ -46,22 +46,34 @@
 		<?php muoEcho($comment['comment_content']); ?>
 	</p>
 
-	<?php
-	if (isset($comment['replies']) && is_array($comment['replies']) && count($comment['replies']) > 0) {
-	?>
-		<section class='sectionCommentReplies'>
+	<section class='sectionCommentReplies'>
+		<?php
+		if (isset($comment['replies']) && is_array($comment['replies']) && count($comment['replies']) > 0) {
+		?>
 			<p class='pCommentRepliesHeader'>
-				<?php muoEcho(count($comment['replies']) . ' ' . $translations['replies']); ?>
+				<?php
+				if (count($comment['replies']) === 1) {
+					muoEcho('1 reply');
+				} else {
+					muoEcho(count($comment['replies']) . ' replies');
+				}
+				?>
 			</p>
 			<?php
 			foreach ($comment['replies'] as $reply) {
 				require __DIR__ . '/commentReply.php';
 			}
 			?>
-		</section>
-	<?php
-	}
-	?>
+		<?php
+		} else {
+		?>
+			<p class='pCommentRepliesHeader'>
+				<?php muoEcho($translations['no_replies_yet']); ?>
+			</p>
+		<?php
+		}
+		?>
+	</section>
 
 	<footer class='footerCommentActions'>
 		<button class='btnCommentAction btnReplyComment <?php if ($comment['is_replied_by_current_user']) muoEcho('triggered') ?>' title="Reply">

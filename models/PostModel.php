@@ -39,8 +39,6 @@ class PostModel {
             FROM posts post
             INNER JOIN users author
                 ON post.post_user_fk = author.user_pk
-            LEFT JOIN comments c
-                ON c.comment_post_fk = post.post_pk
             LEFT JOIN posts rp
                 ON post.post_reference = rp.post_pk
             LEFT JOIN users ru

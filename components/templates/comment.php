@@ -23,6 +23,11 @@
 		<p class='pCommentContent'>
 		</p>
 
+		<section class='sectionCommentReplies'>
+			<p class='pCommentRepliesHeader'>
+			</p>
+		</section>
+
 		<footer class='footerCommentActions'>
 			<button class='btnCommentAction btnReplyComment' title="Reply">
 				<?php include __DIR__ . '/../icons/comment-icon.php' ?>

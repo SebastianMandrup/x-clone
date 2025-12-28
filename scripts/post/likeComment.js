@@ -1,4 +1,6 @@
-document.querySelectorAll('.btnLikeComment').forEach(button => {
+const likeButtons = document.querySelectorAll('.btnLikeComment');
+
+function addLikeListener(button) {
 	button.addEventListener('click', async function (event) {
 
 		event.stopPropagation();
@@ -33,4 +35,9 @@ document.querySelectorAll('.btnLikeComment').forEach(button => {
 			console.error('Error liking comment:', error);
 		}
 	});
+}
+
+likeButtons.forEach(button => {
+	addLikeListener(button);
 });
+export { addLikeListener };
