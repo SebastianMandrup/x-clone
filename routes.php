@@ -16,6 +16,7 @@ get('/user/$handle/posts/$postPk', 'controllers/post.php');
 
 get('/uploads/avatars/$filename', 'api/get-avatar.php');
 get('/uploads/banners/$filename', 'api/get-banner.php');
+get('/uploads/posts/$filename', 'api/get-post-image.php');
 
 post('/api/repost', 'api/repost.php');
 post('/api/like-post', 'api/like-post.php');

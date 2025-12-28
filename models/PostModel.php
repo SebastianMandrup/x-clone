@@ -530,8 +530,8 @@ class PostModel {
 
         $repostPk = bin2hex(random_bytes(25));
 
-        $sql = "INSERT INTO posts (post_pk, post_reference, post_user_fk, post_created_at) 
-                VALUES (:postPk, :postReference, :postUserFk, UNIX_TIMESTAMP())";
+        $sql = "INSERT INTO posts (post_pk, post_reference, post_user_fk) 
+                VALUES (:postPk, :postReference, :postUserFk)";
         $stmt = $this->_db->prepare($sql);
         $stmt->bindValue(":postPk", $repostPk);
         $stmt->bindValue(":postReference", $referencePk);
@@ -539,14 +539,15 @@ class PostModel {
         $stmt->execute();
     }
 
-    public function createPost($postContent, $postUserFk) {
+    public function createPost($postContent, $postUserFk, $postImage) {
         $postPk = bin2hex(random_bytes(25));
 
-        $sql = "INSERT INTO posts (post_pk, post_content, post_user_fk) 
-                VALUES (:postPk, :postContent, :postUserFk)";
+        $sql = "INSERT INTO posts (post_pk, post_content, post_image, post_user_fk) 
+                VALUES (:postPk, :postContent, :postImage, :postUserFk)";
         $stmt = $this->_db->prepare($sql);
         $stmt->bindValue(":postPk", $postPk);
         $stmt->bindValue(":postContent", $postContent);
+        $stmt->bindValue(":postImage", $postImage);
         $stmt->bindValue(":postUserFk", $postUserFk);
         $stmt->execute();
     }

@@ -350,6 +350,69 @@ function validateYear() {
     return $userYear;
 }
 
+function validateAndSavePostImage() {
+    // Check if file was uploaded
+    if (!isset($_FILES["post_image"]) || $_FILES["post_image"]["error"] === UPLOAD_ERR_NO_FILE) {
+        return null;
+    }
+
+    $file = $_FILES["post_image"];
+
+    // Basic upload error check
+    if ($file["error"] !== UPLOAD_ERR_OK) {
+        throw new Exception("Post image upload failed", 400);
+    }
+
+    // Check file size (max 10MB)
+    if ($file["size"] > 10 * 1024 * 1024) {
+        throw new Exception("Post image too large (max 10MB)", 400);
+    }
+
+    // Get MIME type using mime_content_type
+    $mimeType = mime_content_type($file["tmp_name"]);
+
+    // Allowed MIME types
+    $allowedTypes = [
+        'image/jpeg' => 'jpg',
+        'image/png' => 'png',
+        'image/gif' => 'gif',
+        'image/webp' => 'webp'
+    ];
+
+    if (!isset($allowedTypes[$mimeType])) {
+        throw new Exception("Invalid post image file type. Only JPEG, PNG, GIF, and WebP allowed", 400);
+    }
+
+    // Verify it's actually an image
+    $imageInfo = @getimagesize($file["tmp_name"]);
+    if (!$imageInfo) {
+        throw new Exception("Uploaded post image is not a valid image", 400);
+    }
+
+    // Check for malicious content
+    $fileContent = file_get_contents($file["tmp_name"]);
+    if (preg_match('/<\?php|<script|javascript:/i', $fileContent)) {
+        throw new Exception("Post image contains potentially malicious content", 400);
+    }
+
+    // Generate UUID filename
+    $uuid = bin2hex(random_bytes(16));
+    $extension = $allowedTypes[$mimeType];
+    $filename = $uuid . '.' . $extension;
+    // Ensure uploads directory exists
+    $uploadDir = __DIR__ . '/uploads/posts/';
+
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+    $destination = $uploadDir . $filename;
+    // Move uploaded file
+    if (!move_uploaded_file($file["tmp_name"], $destination)) {
+        throw new Exception("Failed to save post image", 500);
+    }
+    return $filename;
+}
+
 define("postContentMin", 1);
 define("postContentMax", 200);
 function validatePostContent() {

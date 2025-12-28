@@ -24,6 +24,6 @@ try {
 
     header("Location: /home?successToast=" . rawurlencode("Login successful"));
 } catch (Exception $ex) {
-    http_response_code($ex->getCode());
+    http_response_code($ex->getCode() ?: 500);
     header("Location: /login?errorToast=" . rawurlencode($ex->getMessage()));
 }

@@ -1,11 +1,9 @@
 <?php
+require_once __DIR__ . '/../services/protect-endpoint.php';
+require_once __DIR__ . '/../x.php';
+require_once __DIR__ . '/../services/backend-dictionary.php';
 
 try {
-
-	require_once __DIR__ . '/../services/protect-endpoint.php';
-
-	require_once __DIR__ . '/../x.php';
-
 	$userPk = $_SESSION["user"]["user_pk"];
 	$commentPk = validatePk('comment_pk');
 	$commentReplyContent = validateCommentReplyContent();
@@ -14,11 +12,23 @@ try {
 	$commentModel = new CommentModel();
 	$commentModel->createCommentReply($userPk, $commentPk, $commentReplyContent);
 
+	$message = $backendDictionary[$_SESSION['user']['user_language']]['reply_added_successfully'];
 	echo json_encode([
 		'status' => 'success',
-		'message' => 'Reply added successfully'
+		'message' => $message
 	]);
 } catch (Exception $e) {
 	http_response_code($e->getCode() ? (int) $e->getCode() : 500);
-	header("Location: ?errorToast=" . rawurlencode($e->getMessage()));
+
+	switch($e->getMessage()) {
+		case 'Comment reply content cannot be empty':
+			http_response_code(400);
+			$exceptionKey = 'post_content_cannot_be_empty';
+			break;
+		default:
+			$exceptionKey = 'an_unexpected_error_occurred';
+			break;
+	}
+	$errorMessage = $backendDictionary[$_SESSION['user']['user_language']][$exceptionKey];
+	header("Location: ?errorToast=" . rawurlencode($errorMessage));
 }

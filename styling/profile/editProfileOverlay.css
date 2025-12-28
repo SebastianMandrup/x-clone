@@ -109,14 +109,22 @@
 #labelEditProfileBannerUpload,
 #labelEditProfileAvatarUpload {
 	border-radius: 50%;
-	width: 36px;
-	height: 36px;
+	width: 44px;
+	height: 44px;
 	cursor: pointer;
 	background-color: var(--lightestGreyOpacity);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
+#labelEditProfileBannerUpload svg,
+#labelEditProfileAvatarUpload svg {
+	width: 24px;
+	height: 24px;
+	fill: var(--white);
+}
+
 
 #labelEditProfileBannerUpload:hover,
 #labelEditProfileAvatarUpload:hover {

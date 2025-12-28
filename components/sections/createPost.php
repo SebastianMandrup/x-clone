@@ -1,5 +1,5 @@
 <section id='sectionCreatePost'>
-	<form action="./bridges/create-post" method='POST' id='formCreatePost'>
+	<form action="/bridges/create-post" method='POST' id='formCreatePost' enctype="multipart/form-data">
 		<section id='sectionCreatePostInputs'>
 			<?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
 			<img src="<?php muoEcho(getUserAvatar($_SESSION['user'])); ?>"
@@ -8,9 +8,10 @@
 		</section>
 
 		<section id='sectionCreatePostTypes'>
-			<div>
+			<input type="file" id='inputCreatePostImage' name='post_image' accept="image/*" />
+			<label for="inputCreatePostImage">
 				<?php require __DIR__ . '/../icons/picture-icon.php'; ?>
-			</div>
+			</label>
 			<div>
 				<?php require __DIR__ . '/../icons/gif-icon.php'; ?>
 			</div>

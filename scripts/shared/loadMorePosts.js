@@ -2,7 +2,6 @@ const divPostsForYou = document.getElementById('divPostsForYou');
 const divPostsFollowing = document.getElementById('divPostsFollowing');
 
 const fetchNextPageOfPosts = async (page) => {
-
 	try {
 		let url;
 
@@ -23,49 +22,101 @@ const fetchNextPageOfPosts = async (page) => {
 		});
 
 		const json = await response.json();
-
 		return json;
 
 	} catch (error) {
 		console.error('Error fetching posts:', error);
 	}
-
 };
 
 let isLoading = false;
 
+function getDocumentHeight() {
+	return Math.max(
+		document.body.scrollHeight,
+		document.body.offsetHeight,
+		document.documentElement.clientHeight,
+		document.documentElement.scrollHeight,
+		document.documentElement.offsetHeight
+	);
+}
+
 window.onscroll = async function () {
-	if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
 
-		let page;
+	const docHeight = getDocumentHeight();
+	if (docHeight <= window.innerHeight) {
+		return;
+	}
 
-		if (divPostsForYou) {
-			page = divPostsForYou.getAttribute('data-page');
-		} else if (divPostsFollowing) {
-			page = divPostsFollowing.getAttribute('data-page');
-		}
+	const threshold = 100;
+	const currentPosition = window.innerHeight + window.scrollY;
+	const triggerPosition = docHeight - threshold;
 
-		if (isLoading || !page) {
-			return;
-		}
+	if (currentPosition < triggerPosition) {
+		return;
+	}
 
-		isLoading = true;
+	let page;
 
+	if (divPostsForYou) {
+		page = divPostsForYou.getAttribute('data-page');
+	} else if (divPostsFollowing) {
+		page = divPostsFollowing.getAttribute('data-page');
+	}
+
+	if (isLoading || !page) {
+		return;
+	}
+
+	isLoading = true;
+
+	
+	const loader = document.querySelector('.circle-loader');
+	if (loader) loader.classList.remove('hidden');
+
+	try {
 		const response = await fetchNextPageOfPosts(page);
 
 		if (!response) {
+			isLoading = false;
+			if (loader) loader.classList.add('hidden');
 			return;
 		}
 
 		if (response.last_page === true) {
-			window.onscroll = null; // remove scroll event listener
-			this.document.querySelector('.circle-loader').classList.add('hidden');
+			// Remove scroll event listener when no more pages
+			window.onscroll = null;
+			if (loader) loader.classList.add('hidden');
+			return;
 		}
 
 		const posts = response.data;
 
-		posts.forEach(post => {
+		// Import modules once instead of for each post
+		const modules = await Promise.all([
+			import('./likePost.js'),
+			import('./commentOverlay.js'),
+			import('./sharePost.js'),
+			import('./posts.js'),
+			import('./modals/analytics.js'),
+			import('./bookmarkPost.js')
+		]);
 
+		const [
+			likeModule,
+			commentModule,
+			shareModule,
+			postsModule,
+			analyticsModule,
+			bookmarkModule
+		] = modules;
+
+		let repostModule = null;
+		if (posts.some(post => !post.ref_post_pk)) {
+			repostModule = await import('./repost.js');
+		}
+
+		posts.forEach(post => {
 			const articleFragment = document.getElementById('templatePost').content.cloneNode(true);
 			const article = articleFragment.querySelector('.articlePost');
 
@@ -87,7 +138,7 @@ window.onscroll = async function () {
 				repost.querySelector('.aPostUserFullName').textContent = post.ref_user_name;
 				repost.querySelector('.pPostUserHandle').textContent = '@' + post.ref_user_handle;
 
-				//change unix timestamp to readable date
+				// Change unix timestamp to readable date
 				const now = Math.floor(Date.now() / 1000);
 				const diff = now - post.ref_post_created_at;
 				if (diff < 60) {
@@ -103,7 +154,7 @@ window.onscroll = async function () {
 
 				repost.querySelector('.pRepostContent').textContent = post.ref_post_content;
 				if (post.ref_post_image) {
-					repost.querySelector('.sectionRepostPicture img').src = post.ref_post_image;
+					repost.querySelector('.sectionRepostPicture img').src = '/uploads/posts/' + post.ref_post_image;
 				} else {
 					repost.querySelector('.sectionRepostPicture').remove();
 				}
@@ -112,7 +163,7 @@ window.onscroll = async function () {
 			if (!post.post_image) {
 				article.querySelector('.sectionPostPicture').remove();
 			} else {
-				article.querySelector('.sectionPostPicture img').src = post.post_image;
+				article.querySelector('.sectionPostPicture img').src = '/uploads/posts/' + post.post_image;
 			}
 
 			if (!post.user_avatar) {
@@ -125,7 +176,7 @@ window.onscroll = async function () {
 			article.querySelector('.aPostUserFullName').textContent = post.user_name;
 			article.querySelector('.pPostUserHandle').textContent = '@' + post.user_handle;
 
-			// change unix timestamp to readable date
+			// Change unix timestamp to readable date
 			const now = Math.floor(Date.now() / 1000);
 			const diff = now - post.post_created_at;
 			if (diff < 60) {
@@ -141,7 +192,7 @@ window.onscroll = async function () {
 
 			article.querySelector('.pPostContent').textContent = post.post_content;
 
-			// footer actions
+			// Footer actions
 			article.querySelector('.spanPostActionCommentCount').innerText = post.comment_count;
 
 			if (post.commented_by_user) {
@@ -169,52 +220,39 @@ window.onscroll = async function () {
 				article.querySelector('.btnBookmarkPost').classList.add('triggered');
 			}
 
-			// adding event listeners
+			// Add event listeners using imported modules
+			likeModule.addLikeListener(article.querySelector('.buttonPostActionLike'));
+			commentModule.addCommentListener(article.querySelector('.buttonPostActionComment'));
 
-			import('./likePost.js').then(module => {
-				module.addLikeListener(article.querySelector('.buttonPostActionLike'));
-			});
-			import('./commentOverlay.js').then(module => {
-				module.addCommentListener(article.querySelector('.buttonPostActionComment'));
-			});
-			if (article.querySelector('.buttonPostActionRepost')) {
-				import('./repost.js').then(module => {
-					module.addRepostListener(article.querySelector('.buttonPostActionRepost'));
-				});
+			if (article.querySelector('.buttonPostActionRepost') && repostModule) {
+				repostModule.addRepostListener(article.querySelector('.buttonPostActionRepost'));
 			}
-			import('./sharePost.js').then(module => {
-				module.addShareListener(article.querySelector('.btnSharePost'));
-			});
-			import('./posts.js').then(module => {
-				module.addPostNavigation(article);
-			});
 
-			import('./modals/analytics.js').then(module => {
-				module.addAnalyticsListener(article.querySelector('.buttonPostActionAnalytics'));
-			});
+			shareModule.addShareListener(article.querySelector('.btnSharePost'));
+			postsModule.addPostNavigation(article);
+			analyticsModule.addAnalyticsListener(article.querySelector('.buttonPostActionAnalytics'));
+			bookmarkModule.addBookmarkListener(article.querySelector('.btnBookmarkPost'));
 
-			import('./bookmarkPost.js').then(module => {
-				module.addBookmarkListener(article.querySelector('.btnBookmarkPost'));
-			});
-
-			// append to the correct section
-
+			// Append to the correct section
 			if (divPostsForYou) {
 				divPostsForYou.appendChild(articleFragment);
 			} else if (divPostsFollowing) {
 				divPostsFollowing.appendChild(articleFragment);
 			}
-
 		});
 
-
+		// Update page number
 		if (divPostsForYou) {
 			divPostsForYou.setAttribute('data-page', parseInt(page) + 1);
 		} else if (divPostsFollowing) {
 			divPostsFollowing.setAttribute('data-page', parseInt(page) + 1);
 		}
 
+	} catch (error) {
+		console.error('Error loading more posts:', error);
+	} finally {
 		isLoading = false;
-
+		const loader = document.querySelector('.circle-loader');
+		if (loader) loader.classList.add('hidden');
 	}
-}
+};

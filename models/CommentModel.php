@@ -92,21 +92,16 @@ class CommentModel {
 	}
 
 	public function createComment($userPk, $postPk, $commentContent) {
-		try {
-			$commentPk = bin2hex(random_bytes(25));
+		$commentPk = bin2hex(random_bytes(25));
 
-			$sql = "INSERT INTO comments (comment_pk, comment_user_fk, comment_post_fk, comment_content, comment_created_at, comment_updated_at) VALUES (:comment_pk, :user_pk, :post_pk, :comment_content, UNIX_TIMESTAMP(), UNIX_TIMESTAMP())";
-			$stmt = $this->_db->prepare($sql);
-			$stmt->bindParam(':comment_pk', $commentPk);
-			$stmt->bindParam(':user_pk', $userPk);
-			$stmt->bindParam(':post_pk', $postPk);
-			$stmt->bindParam(':comment_content', $commentContent);
-			$stmt->execute();
+		$sql = "INSERT INTO comments (comment_pk, comment_user_fk, comment_post_fk, comment_content, comment_created_at, comment_updated_at) VALUES (:comment_pk, :user_pk, :post_pk, :comment_content, UNIX_TIMESTAMP(), UNIX_TIMESTAMP())";
+		$stmt = $this->_db->prepare($sql);
+		$stmt->bindParam(':comment_pk', $commentPk);
+		$stmt->bindParam(':user_pk', $userPk);
+		$stmt->bindParam(':post_pk', $postPk);
+		$stmt->bindParam(':comment_content', $commentContent);
 
-			return true;
-		} catch (Exception $e) {
-			throw new Exception("Error creating comment: " . $e->getMessage());
-		}
+		$stmt->execute();
 	}
 
 	public function createCommentReply($userPk, $commentPk, $commentReplyContent) {

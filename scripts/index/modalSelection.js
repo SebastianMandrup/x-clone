@@ -1,18 +1,18 @@
 
 function setIndexTitle(){
-    document.title = "X / It's what's happening / X";
+    document.title = "It's what's happening | MUO";
 }
 
 document.getElementById('btnSignUp').addEventListener('click', () => {
     document.getElementById('sectionModalBackgroundSignUp').classList.remove('hidden');
     document.body.classList.add('modalOpen');
-    document.title = "Sign up for X / X";
+    document.title = "Sign up for MUO | MUO";
 });
 
 document.getElementById('btnSignIn').addEventListener('click', () => {
     document.getElementById('sectionModalBackgroundLogin').classList.remove('hidden');
     document.body.classList.add('modalOpen');
-    document.title = "Log in to X / X";
+    document.title = "Log in to MUO | MUO";
 });
 
 document.getElementById('btnCloseSignUpModal').addEventListener('click', () => {
@@ -44,5 +44,5 @@ document.getElementById('btnUsePhone').addEventListener('click', () => {
 document.getElementById('linkOpenSignup').addEventListener('click', () => {
     document.getElementById('sectionModalBackgroundLogin').classList.add('hidden');
     document.getElementById('sectionModalBackgroundSignUp').classList.remove('hidden');
-    document.title = "Sign up for X / X";
+    document.title = "Sign up for MUO | MUO";
 });

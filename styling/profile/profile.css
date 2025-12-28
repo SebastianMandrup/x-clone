@@ -12,5 +12,6 @@
 @import '../shared/toasts.css';
 @import '../shared/articlePost.css';
 @import '../shared/spinner.css';
+@import '../shared/sectionCreatePost.css';
 
 @import '../shared/modals/analyticsModal.css';

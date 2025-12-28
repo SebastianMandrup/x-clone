@@ -1,3 +1,6 @@
+import '../shared/toasts.js';
+import { showToast } from '../shared/toasts.js';
+
 document.getElementById('formSignUp').addEventListener('submit', function (event) {
 	event.preventDefault();
 
@@ -5,7 +8,7 @@ document.getElementById('formSignUp').addEventListener('submit', function (event
 	const confirmPassword = document.getElementById('inputConfirmPasswordSignUp').value;
 
 	if (password !== confirmPassword) {
-		alert('Passwords do not match!');
+		showToast('Passwords do not match.', 'error');
 		return;
 	}
 	this.submit();

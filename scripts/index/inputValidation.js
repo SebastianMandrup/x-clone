@@ -1,5 +1,6 @@
 function validateSignUpPageOne() {
     const inputName = document.getElementById('inputName');
+    const inputHandle = document.getElementById('inputHandle');
     const inputPhone = document.getElementById('inputPhoneSignUp');
     const inputEmail = document.getElementById('inputEmailSignUp');
     const selectBirthMonth = document.getElementById('selectBirthMonth');
@@ -9,6 +10,10 @@ function validateSignUpPageOne() {
     let isValid = true;
 
     if (inputName && inputName.value.trim() === '') {
+        isValid = false;
+    }
+
+    if (inputHandle && inputHandle.value.trim() === '') {
         isValid = false;
     }
 

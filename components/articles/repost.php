@@ -46,7 +46,7 @@
     if ($post["ref_post_image"]) {
     ?>
         <section class='sectionRepostPicture'>
-            <img src="<?php muoEcho($post['ref_post_image']); ?>">
+            <img src="<?php muoEcho('/uploads/posts/' . $post['ref_post_image']); ?>">
         </section>
     <?php
     }
