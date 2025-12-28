@@ -8,6 +8,15 @@ class UserModel {
         $this->_db = require __DIR__ . '/../services/db_connector.php';
     }
 
+    public function getByPk($userPk) {
+        $sql = "SELECT * FROM users WHERE user_pk = :pk";
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindValue(":pk", $userPk);
+        $stmt->execute();
+        $user = $stmt->fetch();
+        return $user;
+    }
+
     public function getByHandle($handle, $currentUserPk) {
         $sql = "
         SELECT 
@@ -105,7 +114,7 @@ class UserModel {
         return $userPk;
     }
 
-    public function updateUser($userPk, $newName, $newAvatar, $newBanner, $newBio, $newLocation, $newWebsite, $newBirthdate) {
+    public function updateUser($userPk, $newName, $newLanguage, $newAvatar, $newBanner, $newBio, $newLocation, $newWebsite, $newBirthdate) {
         $sql = "UPDATE users SET user_name = :name";
         $params = [
             ':name' => $newName,
@@ -122,8 +131,9 @@ class UserModel {
             $params[':banner'] = $newBanner;
         }
 
-        $sql .= ", user_bio = :bio, user_location = :location, user_website = :website, user_birthday = :birthdate";
+        $sql .= ", user_language = :language, user_bio = :bio, user_location = :location, user_website = :website, user_birthday = :birthdate";
 
+        $params[':language'] = $newLanguage;
         $params[':bio'] = $newBio;
         $params[':location'] = $newLocation;
         $params[':website'] = $newWebsite;

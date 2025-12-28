@@ -30,6 +30,10 @@ $translations = initTranslations();
 				require __DIR__ . '/../components/articles/post.php';
 			}
 
+			if (count($posts) === 0) {
+				require_once __DIR__ . '/../components/sections/noBookmarks.php';
+			}
+
 			?>
 
 		</main>

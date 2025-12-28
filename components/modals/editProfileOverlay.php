@@ -43,6 +43,18 @@
 						<input type='text' name='name' id='inputEditProfileName' maxlength='50' value="<?php muoEcho($focusedUser['user_name']); ?>" required>
 					</label>
 
+					<label for='inputEditProfileLanguage'>
+						<?php muoEcho($translations['language']); ?>
+						<select name="language" id="inputEditProfileLanguage">
+							<option value="en">
+								<?php muoEcho($translations['english']); ?>
+							</option>
+							<option value="da">
+								<?php muoEcho($translations['danish']); ?>
+							</option>
+						</select>
+					</label>
+
 					<label for='inputEditProfileBio'>
 						<?php muoEcho($translations['bio']); ?>
 						<textarea name='bio' id='inputEditProfileBio' maxlength='255'><?php if (isset($focusedUser['user_bio'])) {

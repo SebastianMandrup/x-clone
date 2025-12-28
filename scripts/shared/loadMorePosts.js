@@ -121,7 +121,7 @@ window.onscroll = async function () {
 				article.querySelector('.imgPostAvatar').src = '/uploads/avatars/' + post.user_avatar;
 			}
 
-			article.querySelector('.aPostUserFullName').href = '/' + post.user_handle;
+			article.querySelector('.aPostUserFullName').href = '/user/' + post.user_handle;
 			article.querySelector('.aPostUserFullName').textContent = post.user_name;
 			article.querySelector('.pPostUserHandle').textContent = '@' + post.user_handle;
 

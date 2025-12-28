@@ -9,6 +9,7 @@ try {
 	$avatarFileName = validateAndSaveAvatar();
 	$bannerFileName = validateAndSaveBanner();
 	$newName = validateName();
+	$newLanguage = validateLanguage();
 	$newBio = validateBio();
 	$newLocation = validateLocation();
 	$newWebsite = validateWebsite();
@@ -19,6 +20,7 @@ try {
 	$userModel->updateUser(
 		$userPk,
 		$newName,
+		$newLanguage,
 		$avatarFileName,
 		$bannerFileName,
 		$newBio,
@@ -27,8 +29,13 @@ try {
 		$newBirthdate
 	);
 
-	header("Location: /?successToast=" . rawurlencode("Succesfully edited profile"));
+	$newSessionUser = $userModel->getByPk($userPk);
+	unset($newSessionUser["user_password"]);
+
+	$_SESSION['user'] = $newSessionUser;
+
+	header("Location: /user/" . rawurlencode($_SESSION['user']['user_handle']) . "?successToast=" . rawurlencode("Succesfully edited profile"));
 } catch (Exception $ex) {
 	http_response_code($ex->getCode() ? (int) $ex->getCode() : 500);
-	header("Location: /?errorToast=" . rawurlencode($ex->getMessage()));
+	header("Location: /user/" . rawurlencode($_SESSION['user']['user_handle']) . "?errorToast=" . rawurlencode($ex->getMessage()));
 }

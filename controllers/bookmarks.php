@@ -15,11 +15,6 @@ try {
 	$currentUserPk = $_SESSION['user']['user_pk'];
 	$posts = $postModel->getBookmarks($currentUserPk);
 
-	if (!$posts) {
-		Header('Location: /404?error=bookmarks not found');
-		exit;
-	}
-
 	$firstThreeTopics = $topicModel->getPage();
 	$usersToFollow = $followModel->getWhoToFollow();
 

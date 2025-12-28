@@ -31,7 +31,7 @@ btnShowMoreWhoToFollow && btnShowMoreWhoToFollow.addEventListener('click', async
 			}
 
 			article.querySelector('.imgPersonToFollowAvatar').alt = `Avatar of ${user.user_name}`;
-			article.querySelector('.aPersonToFollowFullName').href = `/${user.user_handle}`;
+			article.querySelector('.aPersonToFollowFullName').href = `/user/${user.user_handle}`;
 			article.querySelector('.aPersonToFollowFullName').textContent = user.user_name;
 			article.querySelector('.pPersonToFollowHandle').textContent = `@${user.user_handle}`;
 			article.querySelector('.btnFollow').dataset.userPk = user.user_pk;

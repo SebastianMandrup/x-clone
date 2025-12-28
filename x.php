@@ -21,8 +21,6 @@ function muoNoCache() {
     // header('Clear-Site-Data: "cache", "cookies", "storage", "executionContexts"');
 }
 
-
-
 function validateAndSaveAvatar() {
     // Check if file was uploaded
     if (!isset($_FILES["profile_avatar"]) || $_FILES["profile_avatar"]["error"] === UPLOAD_ERR_NO_FILE) {
@@ -138,7 +136,7 @@ function validateAndSaveBanner() {
 
     $uuid = bin2hex(random_bytes(16));
     $extension = $allowedTypes[$mimeType];
-    $filename = 'banner_' . $uuid . '.' . $extension;
+    $filename = $uuid . '.' . $extension;
 
     $uploadDir = __DIR__ . '/uploads/banners/';
     if (!is_dir($uploadDir)) {
@@ -157,6 +155,15 @@ function validateAndSaveBanner() {
 function validateBirthdate() {
     $birthdate = trim($_POST["birthdate"] ?? "");
     return $birthdate;
+}
+
+function validateLanguage() {
+    $language = trim($_POST["language"] ?? "en");
+    $allowedLanguages = ['en', 'da'];
+    if (!in_array($language, $allowedLanguages)) {
+        throw new Exception("Invalid language selected", 400);
+    }
+    return $language;
 }
 
 define("searchTermMax", 20);

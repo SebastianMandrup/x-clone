@@ -68,6 +68,10 @@ return [
 		'website' => 'Website',
 		'birthdate' => 'Birthdate',
 		'bookmarks' => 'Bookmarks',
+		'language' => 'Language',
+		'english' => 'English',
+		'danish' => 'Danish',
+		'no_bookmarks' => 'You have no bookmarks yet.',
 	],
 	'da' => [
 		'home' => 'Hjem',
@@ -137,5 +141,9 @@ return [
 		'website' => 'Hjemmeside',
 		'birthdate' => 'Fødselsdato',
 		'bookmarks' => 'Bogmærker',
+		'language' => 'Sprog',
+		'english' => 'Engelsk',
+		'danish' => 'Dansk',
+		'no_bookmarks' => 'Du har endnu ingen bogmærker.',
 	]
 ];

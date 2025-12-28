@@ -66,7 +66,8 @@
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
     font-weight: 600;
-    background-color: rgb(170, 170, 170);
+    background-color: var(--lightGrey);
+    color: var(--black);
     border-radius: 1.5rem;
     border: none;
     height: 2.4rem;
@@ -80,6 +81,16 @@
 #btnSubmitPost:hover {
     background-color: var(--darkGrey);
     color: white;
+}
+
+#sectionNoBookmarks {
+    padding: 2rem 1rem;
+
+    p {
+        font-size: 1rem;
+        color: var(--lightGrey);
+        text-align: center;
+    }
 }
 
 
