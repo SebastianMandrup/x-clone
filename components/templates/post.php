@@ -2,9 +2,17 @@
 	<article class='articlePost'>
 		<img class='imgPostAvatar'>
 		<section class='sectionPostOptions'>
-			<button title="More options">
+			<button title="More options" class='buttonPostOptions'>
 				<?php include __DIR__ . '/../icons/simple-more-icon.php' ?>
 			</button>
+			<div class='divMoreOptionsToolTip hidden'>
+				<button class='buttonMoreOption buttonMoreOptionDeletePost'>
+					<?php muoEcho($translations['delete_post']) ?>
+				</button>
+				<button class='buttonMoreOption buttonMoreOptionReportPost'>
+					<?php muoEcho($translations['report_post']) ?>
+				</button>
+			</div>
 		</section>
 		<header class='headerPostUser'>
 			<a class='aPostUserFullName' href=''>
@@ -74,7 +82,7 @@
 			</button>
 			<button title='Share' class='btnSharePost'>
 				<?php include __DIR__ . '/../icons/share-icon.php' ?>
-					</path>
+				</path>
 				</svg>
 			</button>
 			<div class='divShareTooltip hidden'>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mariadb
--- Generation Time: Dec 28, 2025 at 03:19 PM
+-- Generation Time: Jan 05, 2026 at 04:41 PM
 -- Server version: 10.6.20-MariaDB-ubu2004
 -- PHP Version: 8.3.26
 
@@ -478,6 +478,8 @@ INSERT INTO `follows` (`following_user_fk`, `followed_user_fk`, `follow_created_
 ('de11bb33fe8822ddbcaa1231cefeb009a2234ddf77cdd991ac', 'd4e5f6789012345678901234567890abcdef12345', 1724002500, NULL),
 ('e081ab44df1e9cd8320ad5b633bc3e8812ad7e991dfcc7cb33', '789012345678901234567890abcdef12345678901', 1724970000, NULL),
 ('e5f6789012345678901234567890abcdef1234567', 'b7a4e3c7b1d29c4f82c0b12a59e84d7bfa6c2b1c1d90891ec9', 1724999500, NULL),
+('ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', '012345678901234567890abcdef12345678901234', 1766935586, 1766935622),
+('ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', '01234567890abcdef123456789012345678901234', 1767619053, 1767619054),
 ('ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', '345678901234567890abcdef12345678901234567', 1766915741, 1766915744),
 ('ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 'b7a4e3c7b1d29c4f82c0b12a59e84d7bfa6c2b1c1d90891ec9', 1724002800, NULL),
 ('f33cad8e219bb4ccad12e4031dc3e983ad44c2ef9933dd091c', '901234567890abcdef12345678901234567890123', 1724950000, NULL),
@@ -605,13 +607,13 @@ INSERT INTO `posts` (`post_pk`, `post_content`, `post_image`, `post_reference`, 
 ('9e4f5a6b7c8d9012e3f4a5b6c7d8e9f0', 'Healthcare advocacy is about more than treatment; it\'s about prevention, education, and accessibility for all. Everyone deserves quality care. #healthcareadvocacy #publichealth', NULL, NULL, '012345678901234567890abcdef12345678901234', 1766875042, NULL),
 ('9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4', 'Silicon Valley energy is unmatched! Meeting brilliant founders every day who are solving real problems. The future is being built here. #siliconvalley #tech #innovation', '2b9d6c5a4f8e7d3c1b0a9f8e7d6c5b4.png', NULL, '345678901234567890abcdef12345678901234567', 1766875042, NULL),
 ('a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d', 'Copenhagen\'s food scene keeps getting better! New Nordic cuisine meets traditional flavors in exciting ways. #copenhagenfood #newnordic #restaurantowner', NULL, NULL, '12345678901234567890abcdef123456789012345', 1766875042, NULL),
-('a160b49e7ecd92472827ef85189155fd70e9dc5eb49b0ffea2', 'testing', '9525dae5ca4b64457d6788bc093437ad.jpg', NULL, 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 1766920213, NULL),
+('a160b49e7ecd92472827ef85189155fd70e9dc5eb49b0ffea2', 'testing', '9525dae5ca4b64457d6788bc093437ad.jpg', NULL, 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 1766920213, 1767631068),
 ('a1b2c3d4e5f678901234567890123456', 'Just launched my new portfolio! Spent 6 months building it from scratch with Next.js and Tailwind. So excited to share my work with the world! 🚀 #webdev #portfolio #design', NULL, NULL, 'ab94df0ea2cd73ed8c19b2d74d12cb9e6c7adcc87912f33eb1', 1766875720, NULL),
 ('a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d', 'Just finished \"The Ministry of Time\" - brilliant speculative fiction! Reading keeps my mind sharp and my teaching fresh. Any book recommendations? 📚 #reading #booklover', NULL, NULL, '2345678901234567890abcdef1234567890123456', 1766875042, NULL),
 ('a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4', 'LA film scene is both intimidating and inspiring. Met an incredible cinematographer today who gave me priceless advice. #lafilm #cinematography #aspiringfilmmaker', NULL, NULL, '01234567890abcdef123456789012345678901234', 1766875042, NULL),
 ('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'Art direction for a children\'s book series. Creating visuals that spark imagination in young minds is incredibly rewarding. #artdirection #childrensbooks #illustration', NULL, NULL, '8901234567890abcdef1234567890123456789012', 1766875348, NULL),
 ('abcdef0123456789012345678901234', 'Just organized a climate protest with 5,000 participants in Portland! The youth are leading the charge for climate justice. ✊🌍 #climateaction #activism #portland', '9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e.png', NULL, 'd4e5f6789012345678901234567890abcdef12345', 1766875852, NULL),
-('b0a18ae324ae355e81df7d6f4284fcf92342374cb34ca82012', NULL, NULL, '2345678901234567890abcdef012', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 1766914277, NULL),
+('b0a18ae324ae355e81df7d6f4284fcf92342374cb34ca82012', NULL, NULL, '2345678901234567890abcdef012', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 1766914277, 1767631075),
 ('b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5', 'Our platform just helped a small business 10x their efficiency. This is why we build technology - to empower others. #SaaS #businessgrowth #technology', NULL, NULL, '345678901234567890abcdef12345678901234567', 1766875042, NULL),
 ('b2c3d4e5f6789012345678901234567', 'Coffee and code - the perfect combination for a productive Saturday morning. Working on a new React component library. Any suggestions for naming? ☕️💻', '1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6.png', NULL, 'ab94df0ea2cd73ed8c19b2d74d12cb9e6c7adcc87912f33eb1', 1766875720, NULL),
 ('b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6', 'Teaching a masterclass on Danish pastries tomorrow. The secret to perfect wienerbrød? Cold butter and patience! 🥐 #danishpastries #bakingmasterclass', '3e8f7c6a5b4d3c2b1a9f8e7d6c5b4a3.png', NULL, '12345678901234567890abcdef123456789012345', 1766875042, NULL),
@@ -627,11 +629,12 @@ INSERT INTO `posts` (`post_pk`, `post_content`, `post_image`, `post_reference`, 
 ('dddddddddddddddddddddddddddddddd', 'Software engineering is about solving human problems with code. The best solutions are simple, elegant, and maintainable. #softwareengineering #coding #problemsolving', NULL, NULL, '9012345678901234567890abcdef1234567890123', 1766875348, NULL),
 ('def0123456789012345678901234567', 'Teaching a workshop on sustainable living practices. Small changes multiplied by millions create massive impact! #sustainableliving #workshop #education', '4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a.png', NULL, 'd4e5f6789012345678901234567890abcdef12345', 1766875852, NULL),
 ('e5f6789012345678901234567890ab', 'Just open-sourced my UI component library! 50+ accessible, customizable components for React. Check it out on GitHub and star if you find it useful! #opensource #react #ui', NULL, NULL, 'ab94df0ea2cd73ed8c19b2d74d12cb9e6c7adcc87912f33eb1', 1766875720, NULL),
-('e6d27f318761f13793ba3684ca15bf14d05827d5ceeff32f8c', NULL, NULL, 'a160b49e7ecd92472827ef85189155fd70e9dc5eb49b0ffea2', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 1766920501, NULL),
+('e6d27f318761f13793ba3684ca15bf14d05827d5ceeff32f8c', NULL, NULL, 'a160b49e7ecd92472827ef85189155fd70e9dc5eb49b0ffea2', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 1766920501, 1767631056),
 ('e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b', 'Speaking at Stanford tomorrow about startup scaling challenges. The hardest part isn\'t starting; it\'s scaling without losing your culture. #stanford #startupadvice', NULL, NULL, '345678901234567890abcdef12345678901234567', 1766875042, NULL),
 ('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'Contributing to open source taught me more than any degree. Reading other people\'s code, receiving feedback, collaborating globally. #opensourcecommunity #learning', NULL, NULL, '9012345678901234567890abcdef1234567890123', 1766875348, NULL),
 ('ef01234567890123456789012345678', 'The climate crisis is the greatest challenge of our time, but also our greatest opportunity to build a better world. Hope is an action verb. #hopeinaction #climatehope', NULL, NULL, 'd4e5f6789012345678901234567890abcdef12345', 1766875852, NULL),
 ('f012345678901234567890123456789', 'Just secured Series A funding for our climate tech startup! 18 months of hard work paying off. Time to scale and make real impact! 🌍 #startup #funding #climatetech', NULL, NULL, 'd8fa12cb41ddae4912cf7b239e2dd4c0ffbc1da77e9a123ab9', 1766875852, NULL),
+('f5009c4e5e31e41ef205ac22de3cfbe71ee3e6f47410722053', NULL, NULL, '78901234567890123456789abcdef01', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 1766935319, 1767631234),
 ('f6789012345678901234567890abc', 'Debugging for 3 hours only to find a missing semicolon. Why does this still happen in 2024? 🤦‍♂️ #programming #debugging #developerlife', NULL, NULL, 'ac9dd21ca4f8b0cce1bd22ef990ce3bbad77dde32111bbcd43', 1766875720, NULL),
 ('f8c3a9b7e2d14567890abc123def4567', 'Just finished a 24-hour shift at the hospital. Exhausted but fulfilled knowing we saved lives today. Medicine is more than a job; it\'s a calling. ❤️‍⚕️ #medicine #healthcare #doctor', '6c84fb9052a5e3d7c8b6f8a9c2d1e4f5.png', NULL, '012345678901234567890abcdef12345678901234', 1766875042, NULL),
 ('ffffffffffffffffffffffffffffffff', 'Working on a new authentication library that makes security simple for developers. Security shouldn\'t be an afterthought. #security #webdevelopment #library', NULL, NULL, '9012345678901234567890abcdef1234567890123', 1766875348, NULL);
@@ -677,7 +680,7 @@ INSERT INTO `post_likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted
 ('01234567890123456789abcdef01234', '2345678901234567890abcdef1234567890123456', 1766851955, NULL),
 ('01234567890123456789abcdef01234', '789012345678901234567890abcdef12345678901', 1766848685, NULL),
 ('01234567890123456789abcdef01234', '901234567890abcdef12345678901234567890123', 1766845264, NULL),
-('01234567890123456789abcdef01234', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 1766874898, NULL),
+('01234567890123456789abcdef01234', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 1766874898, 1767629580),
 ('01234567890abcdef01234567890', '01234567890abcdef123456789012345678901234', 1766844755, NULL),
 ('01234567890abcdef01234567890', '5678901234567890abcdef1234567890123456789', 1766837885, NULL),
 ('01234567890abcdef01234567890', '8901234567890abcdef1234567890123456789012', 1766834464, NULL),
@@ -816,6 +819,7 @@ INSERT INTO `post_likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted
 ('345678901234567890123456789abcd', '12345678901234567890abcdef123456789012345', 1766805155, NULL),
 ('345678901234567890123456789abcd', '789012345678901234567890abcdef12345678901', 1766873885, NULL),
 ('345678901234567890123456789abcd', '901234567890abcdef12345678901234567890123', 1766870464, NULL),
+('345678901234567890123456789abcd', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 1767621765, 1767621766),
 ('345678901234567890abcdef0123', '01234567890abcdef123456789012345678901234', 1766869955, NULL),
 ('345678901234567890abcdef0123', '5678901234567890abcdef1234567890123456789', 1766863085, NULL),
 ('345678901234567890abcdef0123', '8901234567890abcdef1234567890123456789012', 1766859664, NULL),
@@ -915,6 +919,7 @@ INSERT INTO `post_likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted
 ('567890123456789abcdef0123456789', '2345678901234567890abcdef1234567890123456', 1766833955, NULL),
 ('567890123456789abcdef0123456789', '789012345678901234567890abcdef12345678901', 1766830685, NULL),
 ('567890123456789abcdef0123456789', '901234567890abcdef12345678901234567890123', 1766827264, NULL),
+('567890123456789abcdef0123456789', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 1767629559, 1767629582),
 ('567890abcdef0123456789012345', '01234567890abcdef123456789012345678901234', 1766826755, NULL),
 ('567890abcdef0123456789012345', '5678901234567890abcdef1234567890123456789', 1766819885, NULL),
 ('567890abcdef0123456789012345', '8901234567890abcdef1234567890123456789012', 1766816464, NULL),
@@ -997,6 +1002,7 @@ INSERT INTO `post_likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted
 ('78901234567890123456789abcdef01', '2345678901234567890abcdef1234567890123456', 1766862755, NULL),
 ('78901234567890123456789abcdef01', '789012345678901234567890abcdef12345678901', 1766859485, NULL),
 ('78901234567890123456789abcdef01', '901234567890abcdef12345678901234567890123', 1766856064, NULL),
+('78901234567890123456789abcdef01', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 1767618998, NULL),
 ('78901234567890abcdef01234567', '01234567890abcdef123456789012345678901234', 1766855555, NULL),
 ('78901234567890abcdef01234567', '5678901234567890abcdef1234567890123456789', 1766848685, NULL),
 ('78901234567890abcdef01234567', '8901234567890abcdef1234567890123456789012', 1766845264, NULL),
@@ -1136,6 +1142,7 @@ INSERT INTO `post_likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted
 ('abcdef0123456789012345678901234', 'e081ab44df1e9cd8320ad5b633bc3e8812ad7e991dfcc7cb33', 1766849698, NULL),
 ('abcdef0123456789012345678901234', 'f33cad8e219bb4ccad12e4031dc3e983ad44c2ef9933dd091c', 1766871298, NULL),
 ('abcdef0123456789012345678901234', 'f6789012345678901234567890abcdef123456789', 1766871298, NULL),
+('b0a18ae324ae355e81df7d6f4284fcf92342374cb34ca82012', 'ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', 1766935237, 1766935237),
 ('b2c3d4e5f6789012345678901234567', '012345678901234567890abcdef12345678901234', 1766833955, NULL),
 ('b2c3d4e5f6789012345678901234567', '45678901234567890abcdef123456789012345678', 1766830685, NULL),
 ('b2c3d4e5f6789012345678901234567', '89012345678901234567890abcdef123456789012', 1766827264, NULL),
@@ -1151,13 +1158,13 @@ INSERT INTO `post_likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted
 ('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', 'd4e5f6789012345678901234567890abcdef12345', 1766845723, NULL),
 ('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', 'd8fa12cb41ddae4912cf7b239e2dd4c0ffbc1da77e9a123ab9', 1766827723, NULL),
 ('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', 'de11bb33fe8822ddbcaa1231cefeb009a2234ddf77cdd991ac', 1766809723, NULL),
-('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', 'e5f6789012345678901234567890abcdef1234567', 1766846098, NULL),
+('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', 'e5f6789012345678901234567890abcdef1234567', 1766846098, NULL);
+INSERT INTO `post_likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted_at`) VALUES
 ('bcdef01234567890123456789012345', '12345678901234567890abcdef123456789012345', 1766869955, NULL),
 ('bcdef01234567890123456789012345', '678901234567890abcdef12345678901234567890', 1766866685, NULL),
 ('bcdef01234567890123456789012345', '9012345678901234567890abcdef1234567890123', 1766863264, NULL),
 ('c3d4e5f678901234567890123456789', '012345678901234567890abcdef12345678901234', 1766830355, NULL),
-('c3d4e5f678901234567890123456789', '45678901234567890abcdef123456789012345678', 1766827085, NULL);
-INSERT INTO `post_likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted_at`) VALUES
+('c3d4e5f678901234567890123456789', '45678901234567890abcdef123456789012345678', 1766827085, NULL),
 ('c3d4e5f678901234567890123456789', '89012345678901234567890abcdef123456789012', 1766823664, NULL),
 ('c3d4e5f678901234567890123456789', 'e5f6789012345678901234567890abcdef1234567', 1766856898, NULL),
 ('cccccccccccccccccccccccccccccccc', '345678901234567890abcdef12345678901234567', 1766812355, NULL),
@@ -1223,6 +1230,32 @@ INSERT INTO `post_likes` (`post_fk`, `user_fk`, `like_created_at`, `like_deleted
 ('ffffffffffffffffffffffffffffffff', 'c4411c11bb2dea29841ddd52cc9011a4f998e22c99b11dd876', 1766849323, NULL),
 ('ffffffffffffffffffffffffffffffff', 'd4e5f6789012345678901234567890abcdef12345', 1766831323, NULL),
 ('ffffffffffffffffffffffffffffffff', 'd8fa12cb41ddae4912cf7b239e2dd4c0ffbc1da77e9a123ab9', 1766813323, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reports`
+--
+
+CREATE TABLE `reports` (
+  `user_fk` char(50) NOT NULL,
+  `post_fk` char(50) NOT NULL,
+  `report_created_at` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reports`
+--
+
+INSERT INTO `reports` (`user_fk`, `post_fk`, `report_created_at`) VALUES
+('ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', '12345678901234567890123456789ab', 1767630911),
+('ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', '2345678901234567890123456789012', 1767631005),
+('ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', '2345678901234567890abcdef012', 1767631171),
+('ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', '345678901234567890123456789abcd', 1767631021),
+('ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', '567890123456789abcdef0123456789', 1767630934),
+('ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', '7890123456789012345678901234567', 1767631001),
+('ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', '789abcdef0123456789abcdef012345', 1767630994),
+('ed8b5ca170da2f1a35d12a80651298b94901c0c30bb1bc2a29', '90123456789abcdef0123456789abcd', 1767631044);
 
 -- --------------------------------------------------------
 
@@ -1412,6 +1445,13 @@ ALTER TABLE `post_likes`
   ADD KEY `user_fk` (`user_fk`);
 
 --
+-- Indexes for table `reports`
+--
+ALTER TABLE `reports`
+  ADD PRIMARY KEY (`user_fk`,`post_fk`),
+  ADD KEY `post_fk` (`post_fk`);
+
+--
 -- Indexes for table `reposts`
 --
 ALTER TABLE `reposts`
@@ -1487,6 +1527,13 @@ ALTER TABLE `posts`
 ALTER TABLE `post_likes`
   ADD CONSTRAINT `post_likes_ibfk_1` FOREIGN KEY (`post_fk`) REFERENCES `posts` (`post_pk`) ON DELETE CASCADE,
   ADD CONSTRAINT `post_likes_ibfk_2` FOREIGN KEY (`user_fk`) REFERENCES `users` (`user_pk`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `reports`
+--
+ALTER TABLE `reports`
+  ADD CONSTRAINT `reports_ibfk_1` FOREIGN KEY (`post_fk`) REFERENCES `posts` (`post_pk`) ON DELETE CASCADE,
+  ADD CONSTRAINT `reports_ibfk_2` FOREIGN KEY (`user_fk`) REFERENCES `users` (`user_pk`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -5,9 +5,26 @@ require_once __DIR__ . '/../../x.php';
     <?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
     <img src="<?php muoEcho(getUserAvatar($post)); ?>" alt="Avatar" class='imgPostAvatar'>
     <section class='sectionPostOptions'>
-        <button title="More options">
+        <button title="More options" class='buttonPostOptions'>
             <?php include __DIR__ . '/../icons/simple-more-icon.php' ?>
         </button>
+        <div class='divMoreOptionsToolTip hidden'>
+            <?php
+            if ($post["user_handle"] === $_SESSION['user']["user_handle"]) {
+            ?>
+                <button class='buttonMoreOption buttonMoreOptionDeletePost'>
+                    <?php muoEcho($translations['delete_post']) ?>
+                </button>
+            <?php
+            } else {
+            ?>
+                <button class='buttonMoreOption buttonMoreOptionReportPost'>
+                    <?php muoEcho($translations['report_post']) ?>
+                </button>
+            <?php
+            }
+            ?>
+        </div>
     </section>
     <header class='headerPostUser'>
         <a class='aPostUserFullName' href='/user/<?php muoEcho($post["user_handle"]) ?>'>

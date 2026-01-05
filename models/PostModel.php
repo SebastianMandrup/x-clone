@@ -549,4 +549,24 @@ class PostModel {
         $stmt->bindValue(":postUserFk", $postUserFk);
         $stmt->execute();
     }
+
+    public function reportPost($postPk, $userPk) {
+        $sql = "INSERT INTO reports (post_fk, user_fk, report_created_at) 
+                VALUES (:postPk, :userPk, UNIX_TIMESTAMP())";
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindValue(":postPk", $postPk);
+        $stmt->bindValue(":userPk", $userPk);
+        $stmt->execute();
+    }
+
+    public function deletePost($postPk, $userPk) {
+        $sql = "UPDATE posts 
+                SET post_deleted_at = UNIX_TIMESTAMP() 
+                WHERE post_pk = :postPk 
+                  AND post_user_fk = :userPk";
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindValue(":postPk", $postPk);
+        $stmt->bindValue(":userPk", $userPk);
+        $stmt->execute();
+    }
 }

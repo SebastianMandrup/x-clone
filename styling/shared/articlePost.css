@@ -33,6 +33,29 @@
 	right: 12px;
 }
 
+.divMoreOptionsToolTip {
+	position: absolute;
+	background-color: var(--darkestGrey);
+	border: 1px solid var(--grey);
+	border-radius: 8px;
+	top: 0;
+	right: 0;
+	z-index: 10;
+	width: 140px;
+}
+
+.divMoreOptionsToolTip .buttonMoreOption {
+	width: 100%;
+	background: none;
+	border: none;
+	color: var(--lightGrey);
+	text-align: left;
+	padding: 16px;
+	cursor: pointer;
+	border-radius: 8px;
+	font-size: 1.1rem;
+}
+
 .sectionMorePostOptions {
 	bottom: 12px;
 	right: 20px;
@@ -241,8 +264,6 @@
 	z-index: 10;
 	width: 200px;
 }
-
-
 
 .divShareTooltip ul {
 	list-style: none;

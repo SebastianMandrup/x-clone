@@ -70,7 +70,7 @@ window.onscroll = async function () {
 
 	isLoading = true;
 
-	
+
 	const loader = document.querySelector('.circle-loader');
 	if (loader) loader.classList.remove('hidden');
 
@@ -99,7 +99,10 @@ window.onscroll = async function () {
 			import('./sharePost.js'),
 			import('./posts.js'),
 			import('./modals/analytics.js'),
-			import('./bookmarkPost.js')
+			import('./bookmarkPost.js'),
+			import('./postOptions.js'),
+			import('./deletePost.js'),
+			import('./reportPost.js'),
 		]);
 
 		const [
@@ -108,7 +111,10 @@ window.onscroll = async function () {
 			shareModule,
 			postsModule,
 			analyticsModule,
-			bookmarkModule
+			bookmarkModule,
+			postOptionsModule,
+			deleteModule,
+			reportModule
 		] = modules;
 
 		let repostModule = null;
@@ -221,6 +227,7 @@ window.onscroll = async function () {
 			}
 
 			// Add event listeners using imported modules
+
 			likeModule.addLikeListener(article.querySelector('.buttonPostActionLike'));
 			commentModule.addCommentListener(article.querySelector('.buttonPostActionComment'));
 
@@ -232,6 +239,18 @@ window.onscroll = async function () {
 			postsModule.addPostNavigation(article);
 			analyticsModule.addAnalyticsListener(article.querySelector('.buttonPostActionAnalytics'));
 			bookmarkModule.addBookmarkListener(article.querySelector('.btnBookmarkPost'));
+
+			postOptionsModule.addOptionsListener(article.querySelector('.buttonPostOptions'));
+			
+			const currentUserHandle = document.getElementById('spanUserHandle').textContent.replace('@', '');
+			
+			if (post.user_handle === currentUserHandle) {
+				article.querySelector('.buttonMoreOptionReportPost').remove();
+				deleteModule.addDeleteListener(article.querySelector('.buttonMoreOptionDeletePost'));
+			} else {
+				article.querySelector('.buttonMoreOptionDeletePost').remove();
+				reportModule.addReportListener(article.querySelector('.buttonMoreOptionReportPost'));
+			}
 
 			// Append to the correct section
 			if (divPostsForYou) {

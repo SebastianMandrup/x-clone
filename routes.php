@@ -18,6 +18,11 @@ get('/uploads/avatars/$filename', 'api/get-avatar.php');
 get('/uploads/banners/$filename', 'api/get-banner.php');
 get('/uploads/posts/$filename', 'api/get-post-image.php');
 
+get('/api/get-topics', 'api/get-topics.php');
+get('/api/get-who-to-follow', 'api/get-who-to-follow.php');
+get('/api/get-posts', 'api/get-posts.php');
+get('/api/get-posts-following', 'api/get-posts-following.php');
+
 post('/api/repost', 'api/repost.php');
 post('/api/like-post', 'api/like-post.php');
 post('/api/like-comment', 'api/like-comment.php');
@@ -26,16 +31,14 @@ post('/api/add-comment', 'api/add-comment.php');
 post('/api/follow-user', 'api/follow-user.php');
 post('/api/unfollow-user', 'api/unfollow-user.php');
 post('/api/bookmark-post', 'api/bookmark-post.php');
-
-get('/api/get-topics', 'api/get-topics.php');
-get('/api/get-who-to-follow', 'api/get-who-to-follow.php');
-get('/api/get-posts', 'api/get-posts.php');
-get('/api/get-posts-following', 'api/get-posts-following.php');
 post('/api/add-comment-reply', 'api/add-comment-reply.php');
+post('/api/delete-post', 'api/delete-post.php');
+post('/api/report-post', 'api/report-post.php');
 
+
+get('/bridges/logout', 'bridges/logout.php');
 post('/bridges/create-post', 'bridges/create-post.php');
 post('/bridges/login', 'bridges/login.php');
-get('/bridges/logout', 'bridges/logout.php');
 post('/bridges/sign-up', 'bridges/sign-up.php');
 post('/bridges/edit-profile', 'bridges/edit-profile.php');
 

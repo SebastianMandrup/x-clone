@@ -74,6 +74,8 @@ return [
 		'no_bookmarks' => 'You have no bookmarks yet.',
 		'no_replies_yet' => 'No replies yet',
 		'replies' => 'replies',
+		'delete_post' => 'Delete Post',
+		'report_post' => 'Report Post',
 	],
 	'da' => [
 		'home' => 'Hjem',
@@ -149,5 +151,7 @@ return [
 		'no_bookmarks' => 'Du har endnu ingen bogmærker.',
 		'no_replies_yet' => 'Ingen svar endnu',
 		'replies' => 'svar',
+		'delete_post' => 'Slet opslag',
+		'report_post' => 'Rapportér opslag',
 	]
 ];

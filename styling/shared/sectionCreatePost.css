@@ -2,36 +2,32 @@
 	display: none;
 	padding: 1rem;
 	border-bottom: 1px solid rgb(48, 51, 54);
+}
 
-	#formCreatePost {
+#sectionCreatePostInputs {
+	display: flex;
+	flex-direction: row;
+	gap: 0.8rem;
+}
 
-		#sectionCreatePostInputs {
-			display: flex;
-			flex-direction: row;
-			gap: 0.8rem;
+#imgCreatePostAvatar {
+	height: 2.5rem;
+	width: 2.5rem;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: center;
+}
 
-			#imgCreatePostAvatar {
-				height: 2.5rem;
-				width: 2.5rem;
-				border-radius: 50%;
-				object-fit: cover;
-				object-position: center;
-			}
+#sectionCreatePostInputs input {
+	width: 100%;
+	background-color: var(--black);
+	border: none;
+	color: white;
+	font-size: 1.2rem;
+}
 
-			input {
-				width: 100%;
-				background-color: var(--black);
-				border: none;
-				color: white;
-				font-size: 1.2rem;
-
-				&:focus {
-					outline: none;
-				}
-			}
-		}
-
-	}
+#sectionCreatePostInputs input:focus {
+	outline: none;
 }
 
 #sectionCreatePostTypes {
@@ -47,7 +43,8 @@
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
-		padding: 0.05rem 0.25rem;
+		height: 2rem;
+		width: 2rem;
 
 		svg {
 			width: 1.3rem;
@@ -70,19 +67,19 @@
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
-	padding: 0.05rem 0.25rem;
-
-	svg {
-		width: 1.3rem;
-		height: 1.3rem;
-	}
-
-	&:hover {
-		background-color: var(--darkestBlue);
-		border-radius: 50%;
-	}
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
 }
 
+#sectionCreatePostTypes label:hover {
+	background-color: var(--darkestBlue);
+}
+
+#sectionCreatePostTypes label svg {
+	width: 1.3rem;
+	height: 1.3rem;
+}
 
 #btnSubmitPost {
 	padding: 0.5rem 1rem;
