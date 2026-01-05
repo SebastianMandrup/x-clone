@@ -23,6 +23,7 @@ function addDeleteListener(button) {
 
 			if (data.status === 'success') {
 				showToast(data.message, 'success');
+				button.closest('.articlePost').remove();
 			}
 		} catch (error) {
 			console.error('Error deleting post:', error);
