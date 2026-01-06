@@ -1,5 +1,6 @@
 <?php
 try {
+
 	require_once __DIR__ . "/../x.php";
 	$name = validateName();
 	$handle = validateHandle();
@@ -47,5 +48,6 @@ try {
 
 	header("Location: ../?successToast=" . rawurlencode("Sign up successful! Please log in."));
 } catch (Exception $ex) {
-	header("Location: ../?errorToast=" . rawurlencode($ex->getMessage()));
+	http_response_code(500);
+	header("Location: ../?errorToast=" . rawurlencode('An unexpected error occurred'));
 }

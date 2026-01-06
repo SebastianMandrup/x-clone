@@ -3,17 +3,14 @@
 try {
 
 	require_once __DIR__ . '/../x.php';
-
 	$page = validatePage();
 
 	require_once __DIR__ . '/../models/TopicModel.php';
-
 	$topicModel = new TopicModel();
-
 	$topics = $topicModel->getPage($page);
 
 	if (!$topics) {
-		throw new Exception("No trends found.");
+		throw new Exception("No topics found.");
 	}
 
 	$last_page = false;
@@ -34,8 +31,10 @@ try {
 		'last_page' => $last_page
 	]);
 } catch (Exception $e) {
+	require_once __DIR__ . '/../services/backend-dictionary.php';
+	http_response_code(500);
 	echo json_encode([
 		'status' => 'error',
-		'message' => $e->getMessage()
+		'message' => $backendDictionary[$_SESSION['user']['user_language']]['an_unexpected_error_occurred']
 	]);
 }

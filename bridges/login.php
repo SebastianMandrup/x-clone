@@ -1,5 +1,6 @@
 <?php
 try {
+
     require_once __DIR__ . "/../x.php";
     $userEmailOrPhone = validateEmailOrPhone();
     $userPassword = validatePassword();
@@ -22,8 +23,10 @@ try {
     unset($user["user_password"]);
     $_SESSION["user"] = $user;
 
-    header("Location: /home?successToast=" . rawurlencode("Login successful"));
+    require_once __DIR__ . '/../services/backend-dictionary.php';
+    $message = $backendDictionary[$user['user_language']]['login_successful'];
+    header("Location: /home?successToast=" . rawurlencode($message));
 } catch (Exception $ex) {
     http_response_code($ex->getCode() ?: 500);
-    header("Location: /login?errorToast=" . rawurlencode($ex->getMessage()));
+    header("Location: /login?errorToast=" . rawurlencode('An unexpected error occurred'));
 }

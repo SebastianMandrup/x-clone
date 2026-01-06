@@ -19,5 +19,9 @@ try {
 	header('Content-Type: ' . $mimeType);
 	readfile($filepath);
 } catch (Exception $e) {
-	echo "Error: " . $e->getMessage();
+	http_response_code($e->getCode() ?: 500);
+	echo json_encode([
+		'status' => 'error',
+		'message' => $e->getMessage()
+	]);
 }
