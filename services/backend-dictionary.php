@@ -18,6 +18,8 @@ $backendDictionary = [
 		'post_reported_successfully' => 'Post reported successfully',
 		'post_reposted_successfully' => 'Post reposted successfully',
 		'user_unfollowed_successfully' => 'User unfollowed successfully',
+		'post_not_found' => 'Post not found',
+		'profile_not_found' => 'Profile not found',
 	],
 	'da' => [
 		'an_unexpected_error_occurred' => 'Der opstod en uventet fejl',
@@ -36,5 +38,7 @@ $backendDictionary = [
 		'post_reported_successfully' => 'Opslag rapporteret succesfuldt',
 		'post_reposted_successfully' => 'Opslag delt succesfuldt',
 		'user_unfollowed_successfully' => 'Bruger affulgt succesfuldt',
+		'post_not_found' => 'Opslag ikke fundet',
+		'profile_not_found' => 'Profil ikke fundet',
 	],
 ];

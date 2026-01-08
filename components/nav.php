@@ -18,7 +18,7 @@
 		<?php require __DIR__ . '/icons/message-icon.php'; ?>
 		<?php muoEcho($translations['messages']) ?>
 	</a>
-	<a href="/grok">
+	<a href="/muook">
 		<?php require __DIR__ . '/icons/muook-icon.php'; ?>
 		<?php muoEcho($translations['muook']) ?>
 	</a>
