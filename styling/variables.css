@@ -68,7 +68,6 @@ input:-webkit-autofill:active {
     box-shadow: none !important;
     border-color: var(--darkGrey) !important;
     transition: background-color 5000s ease-in-out 0s;
-    border-radius: 50%;
 }
 
 input:-internal-autofill-selected {

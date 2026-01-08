@@ -36,6 +36,11 @@ main {
 	margin-left: 1rem;
 }
 
+#divMainContainer {
+	display: flex;
+	flex-direction: column;
+}
+
 @media screen and (min-width: 760px) {
 	#headerMainPost {
 		position: sticky;
@@ -45,11 +50,6 @@ main {
 		backdrop-filter: blur(10px);
 		z-index: 1;
 	}
-}
-
-#divMainContainer {
-	display: flex;
-	flex-direction: column;
 }
 
 @media screen and (min-width: 760px) {

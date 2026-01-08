@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="icon-more-horizontal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon-more-horizontal">
 	<circle cx="5" cy="12" r="2"></circle>
 	<circle cx="12" cy="12" r="2"></circle>
 	<circle cx="19" cy="12" r="2"></circle>
