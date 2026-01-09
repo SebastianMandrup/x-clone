@@ -1,0 +1,50 @@
+<?php
+
+require_once __DIR__ . '/router.php';
+
+// Home route
+get('/', '../views/index.php');
+
+// Page routes
+get('/home', '../controllers/home.php');
+get('/following', '../controllers/home-following.php');
+get('/bookmarks', '../controllers/bookmarks.php');
+get('/search', '../controllers/search.php');
+get('/user/$handle/following', '../controllers/following.php');
+get('/user/$handle/followers', '../controllers/followers.php');
+get('/user/$handle', '../controllers/profile.php');
+get('/user/$handle/posts/$postPk', '../controllers/post.php');
+
+// Static file routes
+get('/uploads/avatars/$filename', '../api/get-avatar.php');
+get('/uploads/banners/$filename', '../api/get-banner.php');
+get('/uploads/posts/$filename', '../api/get-post-image.php');
+
+// API GET routes
+get('/api/get-topics', '../api/get-topics.php');
+get('/api/get-who-to-follow', '../api/get-who-to-follow.php');
+get('/api/get-posts', '../api/get-posts.php');
+get('/api/get-posts-following', '../api/get-posts-following.php');
+
+// API POST routes
+post('/api/repost', '../api/repost.php');
+post('/api/like-post', '../api/like-post.php');
+post('/api/like-comment', '../api/like-comment.php');
+post('/api/search', '../api/search.php');
+post('/api/add-comment', '../api/add-comment.php');
+post('/api/follow-user', '../api/follow-user.php');
+post('/api/unfollow-user', '../api/unfollow-user.php');
+post('/api/bookmark-post', '../api/bookmark-post.php');
+post('/api/add-comment-reply', '../api/add-comment-reply.php');
+post('/api/delete-post', '../api/delete-post.php');
+post('/api/report-post', '../api/report-post.php');
+
+// Bridge routes
+get('/bridges/logout', '../bridges/logout.php');
+post('/bridges/create-post', '../bridges/create-post.php');
+post('/bridges/login', '../bridges/login.php');
+post('/bridges/sign-up', '../bridges/sign-up.php');
+post('/bridges/edit-profile', '../bridges/edit-profile.php');
+
+// Error route
+get('/404', '../views/404.php');

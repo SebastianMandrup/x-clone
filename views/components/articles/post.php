@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__ . '/../../x.php';
+require_once __DIR__ . '/../../../x.php';
 ?>
 <article class='articlePost' data-post-pk='<?php muoEcho($post["post_pk"]) ?>' data-author-handle='<?php muoEcho($post["user_handle"]) ?>'>
-    <?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
+    <?php require_once __DIR__ . '/../../../services/get-user-avatar.php'; ?>
     <img src="<?php muoEcho(getUserAvatar($post)); ?>" alt="Avatar" class='imgPostAvatar'>
     <section class='sectionPostOptions'>
         <button title="More options" class='buttonPostOptions'>

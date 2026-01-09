@@ -2,7 +2,7 @@
 
 	<section id='sectionFeaturedPostAuthor'>
 		<div>
-			<?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
+			<?php require_once __DIR__ . '/../../../services/get-user-avatar.php'; ?>
 			<img id='imgFeaturedPostAuthorAvatar' src='<?php muoEcho(getUserAvatar($post)); ?>' alt='Author Avatar'>
 			<div id='divFeaturedPostAuthorInfo'>
 				<a id='aFeaturedPostAuthorName' href='/user/<?php muoEcho($post['user_handle']); ?>'>

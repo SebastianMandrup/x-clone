@@ -7,7 +7,7 @@
 	<?php endif; ?>
 	<section id='sectionUserDetails'>
 
-		<?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
+		<?php require_once __DIR__ . '/../../../services/get-user-avatar.php'; ?>
 
 		<img id='imgUserAvatarBanner' src="<?php muoEcho(getUserAvatar($focusedUser)); ?>"
 			alt="Avatar">

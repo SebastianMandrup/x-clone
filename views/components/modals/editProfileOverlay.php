@@ -28,7 +28,7 @@
 				</section>
 
 				<section id='sectionEditProfileAvatar'>
-					<?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
+					<?php require_once __DIR__ . '/../../../services/get-user-avatar.php'; ?>
 					<img id='imgEditProfileAvatar' src="<?php muoEcho(getUserAvatar($focusedUser)); ?>"
 						alt="Avatar" />
 					<input id='inputEditProfileAvatar' type='file' name='profile_avatar' accept='image/*' />

@@ -1,7 +1,7 @@
 <?php
 
 function logError(string $message): void {
-	$logFile = __DIR__ . '/../logs/error.log';
+	$logFile = __DIR__ . '/../.misc/logs/error.log';
 
 	$timestamp = date('Y-m-d H:i:s');
 	$entry = "[$timestamp] $message" . PHP_EOL;

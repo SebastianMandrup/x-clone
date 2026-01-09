@@ -1,7 +1,7 @@
 <section id='sectionCreatePost'>
 	<form action="/bridges/create-post" method='POST' id='formCreatePost' enctype="multipart/form-data">
 		<section id='sectionCreatePostInputs'>
-			<?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
+			<?php require_once __DIR__ . '/../../../services/get-user-avatar.php'; ?>
 			<img src="<?php muoEcho(getUserAvatar($_SESSION['user'])); ?>"
 				alt="Avatar" id='imgCreatePostAvatar'>
 			<input name="post_content" type="text" placeholder="<?php muoEcho($translations['whats_happening']) ?>" id='inputCreatePost'>

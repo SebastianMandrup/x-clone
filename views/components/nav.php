@@ -48,7 +48,7 @@
 		</button>
 	</section>
 	<section id='sectionUserInfo'>
-		<?php require_once __DIR__ . '/../services/get-user-avatar.php'; ?>
+		<?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
 		<img src="<?php muoEcho(getUserAvatar($_SESSION['user'])); ?>"
 			alt="Avatar" id='imgUserAvatar'>
 		<div id='divUserNames'>

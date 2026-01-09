@@ -1,5 +1,5 @@
 <article class='articlePersonToFollow'>
-    <?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
+    <?php require_once __DIR__ . '/../../../services/get-user-avatar.php'; ?>
     <img class='imgPersonToFollowAvatar' src="<?php muoEcho(getUserAvatar($user)); ?>" alt="User Avatar">
     <section class='sectionPersonToFollowNames'>
         <a class='aPersonToFollowFullName' href="/user/<?php muoEcho($user["user_handle"]); ?>">

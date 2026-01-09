@@ -18,7 +18,7 @@
 		</section>
 		<form id='formAddComment'>
 			<section id='sectionAddCommentContent'>
-				<?php require_once __DIR__ . '/../../services/get-user-avatar.php'; ?>
+				<?php require_once __DIR__ . '/../../../services/get-user-avatar.php'; ?>
 				<img src="<?php muoEcho(getUserAvatar($_SESSION['user'])) ?>"
 					alt="Avatar" id='imgAddCommentAvatar'>
 				<textarea name="comment_content" id="textareaAddComment" placeholder="<?php muoEcho($translations['post_your_reply']) ?>" required></textarea>

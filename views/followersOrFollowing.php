@@ -9,9 +9,9 @@ $translations = initTranslations();
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="/styling/profile/followersPage.css">
+	<link rel="stylesheet" href="../../views/styling/profile/followersPage.css">
 	<link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
-	<script src="/scripts/profile/followers.js" type="module"></script>
+	<script src="../../views/scripts/profile/followers.js" type="module"></script>
 	<title><?php muoEcho($translations[$endpoint]) ?> | <?php muoEcho($handle) ?></title>
 </head>
 
@@ -19,17 +19,15 @@ $translations = initTranslations();
 
 	<div id='divMainContainer'>
 
-		<?php require __DIR__ . '/../components/nav.php'; ?>
+		<?php require __DIR__ . '/components/nav.php'; ?>
 
 		<main>
 
-			<?php require __DIR__ . '/../components/sections/followersHeader.php'; ?>
-
-
 			<?php
+			require __DIR__ . '/components/sections/followersHeader.php';
 
 			foreach ($users as $user) {
-				require __DIR__ . '/../components/articles/user.php';
+				require __DIR__ . '/components/articles/user.php';
 			}
 
 			?>
@@ -38,7 +36,7 @@ $translations = initTranslations();
 
 		</main>
 
-		<?php require __DIR__ . '/../components/aside.php'; ?>
+		<?php require __DIR__ . '/components/aside.php'; ?>
 
 	</div>
 
