@@ -27,7 +27,7 @@
 	<?php
 	if (isset($post['post_image']) && !empty($post['post_image'])) {
 	?>
-		<img id='imgFeaturedPostImage' src='<?php muoEcho('/uploads/posts/' . $post['post_image']); ?>' alt='Post Image'>
+		<img id='imgFeaturedPostImage' src='<?php muoEcho('/views/uploads/posts/' . $post['post_image']); ?>' alt='Post Image'>
 	<?php
 	}
 	?>

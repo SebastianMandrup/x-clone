@@ -6,7 +6,7 @@
 	<?php
 	} else {
 	?>
-		<img class="imgCommentReplyAvatar" src="<?php muoEcho('/uploads/avatars/' . $reply['replier_avatar']); ?>" alt="User Avatar" />
+		<img class="imgCommentReplyAvatar" src="<?php muoEcho('/views/uploads/avatars/' . $reply['replier_avatar']); ?>" alt="User Avatar" />
 	<?php
 	}
 	?>

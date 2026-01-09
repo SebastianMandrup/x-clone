@@ -27,7 +27,7 @@ btnShowMoreWhoToFollow && btnShowMoreWhoToFollow.addEventListener('click', async
 			if (!user.user_avatar) {
 				article.querySelector('.imgPersonToFollowAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.user_name)}&background=random`;
 			} else {
-				article.querySelector('.imgPersonToFollowAvatar').src = `/uploads/avatars/${user.user_avatar}`;
+				article.querySelector('.imgPersonToFollowAvatar').src = `/views/uploads/avatars/${user.user_avatar}`;
 			}
 
 			article.querySelector('.imgPersonToFollowAvatar').alt = `Avatar of ${user.user_name}`;

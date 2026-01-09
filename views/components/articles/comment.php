@@ -7,7 +7,7 @@
 		<?php
 		} else {
 		?>
-			<img class='imgCommentAuthorAvatar' src='/uploads/avatars/<?php muoEcho($comment['commenter_avatar']); ?>' alt='<?php muoEcho($translations['comment_author_avatar']) ?>'>
+			<img class='imgCommentAuthorAvatar' src='/views/uploads/avatars/<?php muoEcho($comment['commenter_avatar']); ?>' alt='<?php muoEcho($translations['comment_author_avatar']) ?>'>
 		<?php
 		}
 		?>

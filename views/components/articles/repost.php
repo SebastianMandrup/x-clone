@@ -7,7 +7,7 @@
         <?php
         } else {
         ?>
-            <img src="/uploads/avatars/<?php muoEcho($post["ref_user_avatar"]) ?>" alt="Avatar" class='imgRepostAvatar'>
+            <img src="/views/uploads/avatars/<?php muoEcho($post["ref_user_avatar"]) ?>" alt="Avatar" class='imgRepostAvatar'>
         <?php
         }
         ?>
@@ -46,7 +46,7 @@
     if ($post["ref_post_image"]) {
     ?>
         <section class='sectionRepostPicture'>
-            <img src="<?php muoEcho('/uploads/posts/' . $post['ref_post_image']); ?>">
+            <img src="<?php muoEcho('/views/uploads/posts/' . $post['ref_post_image']); ?>">
         </section>
     <?php
     }

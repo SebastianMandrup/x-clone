@@ -61,7 +61,7 @@ require_once __DIR__ . '/../../../x.php';
     if ($post["post_image"] != "") {
     ?>
         <section class='sectionPostPicture'>
-            <img src="<?php muoEcho('/uploads/posts/' . $post['post_image']); ?>">
+            <img src="<?php muoEcho('/views/uploads/posts/' . $post['post_image']); ?>">
         </section>
     <?php
     }

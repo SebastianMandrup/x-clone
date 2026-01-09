@@ -16,9 +16,9 @@ get('/user/$handle', '../controllers/profile.php');
 get('/user/$handle/posts/$postPk', '../controllers/post.php');
 
 // Static file routes
-get('/uploads/avatars/$filename', '../api/get-avatar.php');
-get('/uploads/banners/$filename', '../api/get-banner.php');
-get('/uploads/posts/$filename', '../api/get-post-image.php');
+get('/views/uploads/avatars/$filename', '../api/get-avatar.php');
+get('/views/uploads/banners/$filename', '../api/get-banner.php');
+get('/views/uploads/posts/$filename', '../api/get-post-image.php');
 
 // API GET routes
 get('/api/get-topics', '../api/get-topics.php');
@@ -39,7 +39,7 @@ post('/api/add-comment-reply', '../api/add-comment-reply.php');
 post('/api/delete-post', '../api/delete-post.php');
 post('/api/report-post', '../api/report-post.php');
 
-// Bridge routes
+// BRIDGE routes
 get('/bridges/logout', '../bridges/logout.php');
 post('/bridges/create-post', '../bridges/create-post.php');
 post('/bridges/login', '../bridges/login.php');

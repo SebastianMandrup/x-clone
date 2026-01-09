@@ -137,7 +137,7 @@ window.onscroll = async function () {
 				if (!post.ref_user_avatar) {
 					repost.querySelector('.imgRepostAvatar').src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(post.ref_user_name) + '&background=random';
 				} else {
-					repost.querySelector('.imgRepostAvatar').src = '/uploads/avatars/' + post.ref_user_avatar;
+					repost.querySelector('.imgRepostAvatar').src = '/views/uploads/avatars/' + post.ref_user_avatar;
 				}
 
 				repost.querySelector('.aPostUserFullName').href = '/' + post.ref_user_handle;
@@ -160,7 +160,7 @@ window.onscroll = async function () {
 
 				repost.querySelector('.pRepostContent').textContent = post.ref_post_content;
 				if (post.ref_post_image) {
-					repost.querySelector('.sectionRepostPicture img').src = '/uploads/posts/' + post.ref_post_image;
+					repost.querySelector('.sectionRepostPicture img').src = '/views/uploads/posts/' + post.ref_post_image;
 				} else {
 					repost.querySelector('.sectionRepostPicture').remove();
 				}
@@ -169,13 +169,13 @@ window.onscroll = async function () {
 			if (!post.post_image) {
 				article.querySelector('.sectionPostPicture').remove();
 			} else {
-				article.querySelector('.sectionPostPicture img').src = '/uploads/posts/' + post.post_image;
+				article.querySelector('.sectionPostPicture img').src = '/views/uploads/posts/' + post.post_image;
 			}
 
 			if (!post.user_avatar) {
 				article.querySelector('.imgPostAvatar').src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(post.user_name) + '&background=random';
 			} else {
-				article.querySelector('.imgPostAvatar').src = '/uploads/avatars/' + post.user_avatar;
+				article.querySelector('.imgPostAvatar').src = '/views/uploads/avatars/' + post.user_avatar;
 			}
 
 			article.querySelector('.aPostUserFullName').href = '/user/' + post.user_handle;
@@ -241,9 +241,9 @@ window.onscroll = async function () {
 			bookmarkModule.addBookmarkListener(article.querySelector('.btnBookmarkPost'));
 
 			postOptionsModule.addOptionsListener(article.querySelector('.buttonPostOptions'));
-			
+
 			const currentUserHandle = document.getElementById('spanUserHandle').textContent.replace('@', '');
-			
+
 			if (post.user_handle === currentUserHandle) {
 				article.querySelector('.buttonMoreOptionReportPost').remove();
 				deleteModule.addDeleteListener(article.querySelector('.buttonMoreOptionDeletePost'));

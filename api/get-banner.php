@@ -7,7 +7,7 @@ try {
 	}
 
 	$filename = basename($_GET['filename']);
-	$filepath = __DIR__ . '/../uploads/banners/' . $filename;
+	$filepath = __DIR__ . '/../views/uploads/banners/' . $filename;
 
 	if (!file_exists($filepath)) {
 		throw new Exception("File not found", 404);

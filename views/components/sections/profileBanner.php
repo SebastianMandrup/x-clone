@@ -3,7 +3,7 @@
 	<?php if (!$focusedUser["user_banner"]) : ?>
 		<div id='divDefaultBanner'></div>
 	<?php else : ?>
-		<img id='imgProfileBanner' src="/uploads/banners/<?php muoEcho($focusedUser["user_banner"]); ?>" alt="Profile Banner Image">
+		<img id='imgProfileBanner' src="/views/uploads/banners/<?php muoEcho($focusedUser["user_banner"]); ?>" alt="Profile Banner Image">
 	<?php endif; ?>
 	<section id='sectionUserDetails'>
 

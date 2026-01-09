@@ -19,7 +19,7 @@
 			<div id='divEditProfileContent'>
 				<section id='sectionEditProfileBanner'>
 					<?php if (isset($focusedUser['user_banner'])) : ?>
-						<img id='imgEditProfileBanner' src="/uploads/banners/<?php muoEcho($focusedUser['user_banner']); ?>" alt="Profile Banner" />
+						<img id='imgEditProfileBanner' src="/views/uploads/banners/<?php muoEcho($focusedUser['user_banner']); ?>" alt="Profile Banner" />
 					<?php endif; ?>
 					<input type='file' name='profile_banner' id='inputEditProfileBanner' accept='image/*' />
 					<label for="inputEditProfileBanner" id='labelEditProfileBannerUpload' title='<?php muoEcho($translations['add_photo']); ?>'>
