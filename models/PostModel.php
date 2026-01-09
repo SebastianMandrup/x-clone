@@ -412,12 +412,7 @@ class PostModel {
             $stmt->bindValue(":postPk", $postPk);
             $stmt->bindValue(":userPk", $userPk);
             $stmt->execute();
-
-            echo json_encode([
-                'status' => 'success',
-                'message' => "user liked the post"
-            ]);
-            exit;
+            return 'user_liked_the_post';
         }
 
         // user has liked the post before
@@ -427,11 +422,7 @@ class PostModel {
             $stmt->bindValue(":postPk", $postPk);
             $stmt->bindValue(":userPk", $userPk);
             $stmt->execute();
-            echo json_encode([
-                'status' => 'success',
-                'message' => "user unliked the post"
-            ]);
-            exit;
+            return 'user_disliked_the_post';
         }
 
         // user is disliked the post and wants to like it again
@@ -440,10 +431,7 @@ class PostModel {
         $stmt->bindValue(":postPk", $postPk);
         $stmt->bindValue(":userPk", $userPk);
         $stmt->execute();
-        echo json_encode([
-            'status' => 'success',
-            'message' => "user liked the post"
-        ]);
+        return 'user_liked_the_post_again';
     }
 
     public function getBookmarks($userPk) {

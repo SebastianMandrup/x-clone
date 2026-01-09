@@ -1,10 +1,5 @@
 <template id="templateComment">
 	<article class='articleComment' data-comment-pk=''>
-		<section class='sectionCommentOptions'>
-			<button class='btnCommentOptions btnMoreOptions' title='<?php muoEcho($translations['more_options']); ?>'>
-				<?php include __DIR__ . '/../icons/simple-more-icon.php' ?>
-			</button>
-		</section>
 		<section class='sectionCommentAuthorInfo'>
 			<img class='imgCommentAuthorAvatar' src='' alt=''>
 
@@ -22,9 +17,9 @@
 		</section>
 		<p class='pCommentContent'>
 		</p>
-
 		<section class='sectionCommentReplies'>
 			<p class='pCommentRepliesHeader'>
+				<?php muoEcho($translations['no_replies_yet']); ?>
 			</p>
 		</section>
 
@@ -44,14 +39,6 @@
 			<button class='btnCommentAction btnViewAnalytics' title="View Analytics">
 				<?php include __DIR__ . '/../icons/analytics-icon.php' ?>
 			</button>
-			<section class='sectionMoreCommentOptions'>
-				<button class='btnCommentOptions' title='Bookmark'>
-					<?php include __DIR__ . '/../icons/bookmark-icon.php' ?>
-				</button>
-				<button class='btnCommentOptions' title='Share'>
-					<?php include __DIR__ . '/../icons/share-icon.php' ?>
-				</button>
-			</section>
 		</footer>
 	</article>
 </template>

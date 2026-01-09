@@ -18,7 +18,7 @@ $translations = initTranslations();
 
 	<div id='divMainContainer'>
 
-		<?php require __DIR__ . '/../components/nav.php'; ?>
+		<?php require_once __DIR__ . '/../components/nav.php'; ?>
 
 		<main>
 

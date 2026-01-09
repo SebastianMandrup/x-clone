@@ -1,0 +1,7 @@
+#sectionNoBookmarks p {
+	text-align: center;
+	color: var(--lightGrey);
+	font-style: italic;
+	padding: 20px;
+	font-size: 18px;
+}

@@ -50,8 +50,10 @@ function addCommentListener(button) {
 				body: formdata
 			});
 
+			const data = await response.json();
+
 			if (response.ok) {
-				showToast('Comment added successfully!', 'success');
+				showToast(data.message, 'success');
 				overlay.classList.add('hidden');
 				document.body.classList.remove('modalOpen');
 				form.reset();

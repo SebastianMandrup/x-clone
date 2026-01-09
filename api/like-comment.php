@@ -9,12 +9,12 @@ try {
 
 	require_once __DIR__ . '/../models/CommentModel.php';
 	$commentModel = new CommentModel();
-	$commentModel->likeComment($commentPk, $userPk);
+	$dbResponse = $commentModel->likeComment($commentPk, $userPk);
 
 	require_once __DIR__ . '/../services/backend-dictionary.php';
 	echo json_encode([
 		'status' => 'success',
-		'message' => $backendDictionary[$_SESSION['user']['user_language']]['comment_liked_successfully']
+		'message' => $backendDictionary[$_SESSION['user']['user_language']][$dbResponse]
 	]);
 } catch (Exception $e) {
 	require_once __DIR__ . '/../services/backend-dictionary.php';

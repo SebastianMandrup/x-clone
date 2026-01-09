@@ -138,12 +138,7 @@ class CommentModel {
 			$stmt->bindValue(":commentPk", $commentPk);
 			$stmt->bindValue(":userPk", $userPk);
 			$stmt->execute();
-
-			echo json_encode([
-				'status' => 'success',
-				'message' => "user liked the comment"
-			]);
-			return;
+			return 'user_liked_the_comment';
 		}
 
 		// user has liked the post before
@@ -153,11 +148,7 @@ class CommentModel {
 			$stmt->bindValue(":commentPk", $commentPk);
 			$stmt->bindValue(":userPk", $userPk);
 			$stmt->execute();
-			echo json_encode([
-				'status' => 'success',
-				'message' => "user unliked the comment"
-			]);
-			return;
+			return 'user_disliked_the_comment';
 		}
 
 		// user is disliked the post and wants to like it again
@@ -166,9 +157,6 @@ class CommentModel {
 		$stmt->bindValue(":commentPk", $commentPk);
 		$stmt->bindValue(":userPk", $userPk);
 		$stmt->execute();
-		echo json_encode([
-			'status' => 'success',
-			'message' => "user liked the comment"
-		]);
+		return 'user_liked_the_comment_again';
 	}
 }

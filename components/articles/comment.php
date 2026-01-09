@@ -1,9 +1,4 @@
 <article class='articleComment' data-comment-pk='<?php muoEcho($comment['comment_pk']); ?>'>
-	<section class='sectionCommentOptions'>
-		<button class='btnCommentOptions btnMoreOptions' title='<?php muoEcho($translations['more_options']); ?>'>
-			<?php include __DIR__ . '/../icons/simple-more-icon.php' ?>
-		</button>
-	</section>
 	<section class='sectionCommentAuthorInfo'>
 		<?php
 		if (!isset($comment['commenter_avatar']) || empty($comment['commenter_avatar'])) {
@@ -91,13 +86,5 @@
 		<button class='btnCommentAction btnViewAnalytics' title="View Analytics">
 			<?php include __DIR__ . '/../icons/analytics-icon.php' ?>
 		</button>
-		<section class='sectionMoreCommentOptions'>
-			<button class='btnCommentOptions' title='Bookmark'>
-				<?php include __DIR__ . '/../icons/bookmark-icon.php' ?>
-			</button>
-			<button class='btnCommentOptions' title='Share'>
-				<?php include __DIR__ . '/../icons/share-icon.php' ?>
-			</button>
-		</section>
 	</footer>
 </article>

@@ -4,34 +4,6 @@
 	position: relative;
 }
 
-.sectionCommentOptions {
-	position: absolute;
-	top: 20px;
-	right: 20px;
-}
-
-.btnCommentOptions {
-	height: 34px;
-	width: 34px;
-	background-color: transparent;
-	border: none;
-	color: var(--grey);
-	border-radius: 50%;
-}
-
-.btnMoreOptions {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 6px;
-}
-
-.btnCommentOptions:hover {
-	color: var(--blue);
-	background-color: var(--darkestBlue);
-	cursor: pointer;
-}
-
 .sectionCommentAuthorInfo {
 	display: flex;
 	gap: 12px;
@@ -40,8 +12,8 @@
 
 .imgCommentAuthorAvatar {
 	object-fit: cover;
-	height: 40px;
-	width: 40px;
+	height: 30px;
+	width: 30px;
 	border-radius: 50%;
 }
 
@@ -55,6 +27,7 @@
 .aCommentAuthorName {
 	color: var(--perfectWhite);
 	font-weight: 600;
+	font-size: 0.8rem;
 	margin-right: 12px;
 	text-decoration: none;
 }
@@ -67,8 +40,8 @@
 .pDotSeparator,
 .pCommentCreatedAt {
 	color: var(--grey);
-	font-size: 1rem;
-	margin-right: 12px;
+	font-size: 0.8rem;
+	margin-right: 8px;
 }
 
 .pCommentContent {
@@ -82,7 +55,6 @@
 	align-items: center;
 	justify-content: space-around;
 	margin-top: 10px;
-	margin-right: 80px;
 }
 
 .btnCommentAction {
@@ -157,16 +129,4 @@
 
 .btnLikeComment.triggered {
 	color: var(--red);
-}
-
-.sectionMoreCommentOptions {
-	position: absolute;
-	padding: 6px 0;
-	right: 20px;
-	bottom: 20px;
-}
-
-.sectionMoreCommentOptions .btnCommentOptions svg {
-	width: 20px;
-	height: 20px;
 }

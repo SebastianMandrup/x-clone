@@ -8,7 +8,7 @@ $translations = initTranslations();
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../../../styling/home/home.css">
+	<link rel="stylesheet" href="../../../styling/bookmarks/bookmarks.css">
 	<link rel="icon" href="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png">
 	<script src='../../../scripts/home/home.js' type='module'></script>
 	<title> <?php muoEcho($translations['bookmarks']) ?> | <?php muoEcho($_SESSION['user']['user_handle']); ?></title>
