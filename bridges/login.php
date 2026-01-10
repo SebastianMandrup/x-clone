@@ -26,7 +26,10 @@ try {
     require_once __DIR__ . '/../services/backend-dictionary.php';
     $message = $backendDictionary[$user['user_language']]['login_successful'];
     header("Location: /home?successToast=" . rawurlencode($message));
-} catch (Exception $ex) {
-    http_response_code($ex->getCode() ?: 500);
+} catch (Exception $exception) {
+    require_once __DIR__ . '/../services/logger.php';
+    logError('Login Bridge: ' . $exception->getMessage());
+
+    http_response_code($exception->getCode() ?: 500);
     header("Location: /login?errorToast=" . rawurlencode('An unexpected error occurred'));
 }

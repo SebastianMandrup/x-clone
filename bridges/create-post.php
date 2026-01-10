@@ -15,19 +15,21 @@ try {
     require_once __DIR__ . "/../services/backend-dictionary.php";
     $message = $backendDictionary[$_SESSION['user']['user_language']]['post_added_successfully'];
     header("Location: ../?successToast=" . rawurlencode($message));
-} catch (Exception $ex) {
-    http_response_code($ex->getCode() ? (int) $ex->getCode() : 500);
+} catch (Exception $exception) {
+    require_once __DIR__ . '/../services/logger.php';
+    logError('Create Post Bridge: ' . $exception->getMessage());
 
-    switch ($ex->getMessage()) {
-        case 'Post content cannot be empty':
-            $exceptionKey = 'post_content_cannot_be_empty';
-            break;
-        default:
-            $exceptionKey = 'an_unexpected_error_occurred';
-            break;
+
+    $exceptionMessage = $exception->getMessage();
+    if (str_contains($exceptionMessage, "muoex_")) {
+        $exceptionKey = explode("muoex_", $exceptionMessage)[1];
+    } else {
+        $exceptionKey = "an_unexpected_error_occurred";
     }
 
     require_once __DIR__ . "/../services/backend-dictionary.php";
-    $errorMessage = $backendDictionary[$_SESSION['user']['user_language']][$exceptionKey];
-    header("Location: ../?errorToast=" . rawurlencode($exceptionKey));
+    $userLanguage = $_SESSION['user']['user_language'] ?? 'en';
+    $errorMessage = $backendDictionary[$userLanguage][$exceptionKey];
+    http_response_code($exception->getCode() ? (int) $exception->getCode() : 500);
+    header("Location: ../?errorToast=" . rawurlencode($errorMessage));
 }

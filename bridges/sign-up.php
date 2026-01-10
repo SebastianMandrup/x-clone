@@ -25,13 +25,13 @@ try {
 	$userByEmail = $userModel->getByEmail($email);
 
 	if ($userByEmail) {
-		throw new Exception("Email already registered.", 400);
+		throw new Exception("Email already registered.", 409);
 	}
 
 	$userByPhone = $userModel->getByPhone($phone);
 
 	if ($userByPhone) {
-		throw new Exception("Phone number already registered.", 400);
+		throw new Exception("Phone number already registered.", 409);
 	}
 
 	$birthday = sprintf("%04d-%02d-%02d", $year, $month, $day);
@@ -47,7 +47,20 @@ try {
 	);
 
 	header("Location: ../?successToast=" . rawurlencode("Sign up successful! Please log in."));
-} catch (Exception $ex) {
-	http_response_code(500);
+} catch (Exception $exception) {
+	require_once __DIR__ . '/../services/logger.php';
+	$errorMessage =  $exception->getMessage();
+	logError('Sign-up Bridge: ' . $errorMessage);
+
+	if (str_contains($errorMessage, 'muoex_')) {
+		$exceptionKey = str_replace('muoex_', '', $errorMessage);
+
+		require_once __DIR__ . "/../services/backend-dictionary.php";
+		$errorMessage = $backendDictionary['en'][$exceptionKey];
+		http_response_code($exception->getCode() ? (int) $exception->getCode() : 400);
+		header("Location: ../?errorToast=" . rawurlencode($errorMessage));
+		exit();
+	}
+	http_response_code($exception->getCode() ? (int) $exception->getCode() : 500);
 	header("Location: ../?errorToast=" . rawurlencode('An unexpected error occurred'));
 }

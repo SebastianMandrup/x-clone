@@ -31,12 +31,12 @@ function validateAndSaveAvatar() {
 
     // Basic upload error check
     if ($file["error"] !== UPLOAD_ERR_OK) {
-        throw new Exception("File upload failed", 400);
+        throw new Exception("muoex_image_upload_failed", 400);
     }
 
     // Check file size (max 5MB)
     if ($file["size"] > 5 * 1024 * 1024) {
-        throw new Exception("File too large (max 5MB)", 400);
+        throw new Exception("muoex_image_too_large", 400);
     }
 
     // Get MIME type using mime_content_type (simpler)
@@ -51,19 +51,19 @@ function validateAndSaveAvatar() {
     ];
 
     if (!isset($allowedTypes[$mimeType])) {
-        throw new Exception("Invalid file type. Only JPEG, PNG, GIF, and WebP allowed", 400);
+        throw new Exception("muoex_image_invalid_file_type", 400);
     }
 
     // Verify it's actually an image
     $imageInfo = @getimagesize($file["tmp_name"]);
     if (!$imageInfo) {
-        throw new Exception("Uploaded file is not a valid image", 400);
+        throw new Exception("muoex_image_not_a_valid_image", 400);
     }
 
     // Check for malicious content
     $fileContent = file_get_contents($file["tmp_name"]);
     if (preg_match('/<\?php|<script|javascript:/i', $fileContent)) {
-        throw new Exception("File contains potentially malicious content", 400);
+        throw new Exception("muoex_image_contains_potentially_malicious_content", 400);
     }
 
     // Generate UUID filename
@@ -81,7 +81,7 @@ function validateAndSaveAvatar() {
 
     // Move uploaded file
     if (!move_uploaded_file($file["tmp_name"], $destination)) {
-        throw new Exception("Failed to save file", 500);
+        throw new Exception("muoex_image_save_failed", 500);
     }
 
     return $filename;
@@ -95,12 +95,12 @@ function validateAndSaveBanner() {
     $file = $_FILES["profile_banner"];
 
     if ($file["error"] !== UPLOAD_ERR_OK) {
-        throw new Exception("Banner upload failed", 400);
+        throw new Exception("muoex_image_upload_failed", 400);
     }
 
     // Banner can be larger - 10MB
     if ($file["size"] > 10 * 1024 * 1024) {
-        throw new Exception("Banner too large (max 10MB)", 400);
+        throw new Exception("muoex_image_too_large", 400);
     }
 
     $mimeType = mime_content_type($file["tmp_name"]);
@@ -113,25 +113,25 @@ function validateAndSaveBanner() {
     ];
 
     if (!isset($allowedTypes[$mimeType])) {
-        throw new Exception("Invalid banner file type", 400);
+        throw new Exception("muoex_image_invalid_file_type", 400);
     }
 
     // Verify it's actually an image
     $imageInfo = @getimagesize($file["tmp_name"]);
     if (!$imageInfo) {
-        throw new Exception("Uploaded banner is not a valid image", 400);
+        throw new Exception("muoex_image_not_a_valid_image", 400);
     }
 
     // Check dimensions for banner
     list($width, $height) = $imageInfo;
     if ($width < 800 || $height < 200) {
-        throw new Exception("Banner should be at least 800x200 pixels", 400);
+        throw new Exception("muoex_banner_too_small", 400);
     }
 
     // Check for malicious content
     $fileContent = file_get_contents($file["tmp_name"]);
     if (preg_match('/<\?php|<script|javascript:/i', $fileContent)) {
-        throw new Exception("Banner contains potentially malicious content", 400);
+        throw new Exception("muoex_image_contains_potentially_malicious_content", 400);
     }
 
     $uuid = bin2hex(random_bytes(16));
@@ -146,7 +146,7 @@ function validateAndSaveBanner() {
     $destination = $uploadDir . $filename;
 
     if (!move_uploaded_file($file["tmp_name"], $destination)) {
-        throw new Exception("Failed to save banner", 500);
+        throw new Exception("muoex_image_save_failed", 500);
     }
 
     return $filename;
@@ -161,7 +161,7 @@ function validateLanguage() {
     $language = trim($_POST["language"] ?? "en");
     $allowedLanguages = ['en', 'da'];
     if (!in_array($language, $allowedLanguages)) {
-        throw new Exception("Invalid language selected", 400);
+        throw new Exception("muoex_invalid_language", 400);
     }
     return $language;
 }
@@ -179,7 +179,7 @@ define("WEBSITE_MAX", 50);
 function validateWebsite() {
     $website = trim($_POST["website"] ?? "");
     if (strlen($website) > WEBSITE_MAX) {
-        throw new Exception("Website must be less than " . WEBSITE_MAX . " characters", 400);
+        throw new Exception("muoex_website_must_be_less_than_website_max", 400);
     }
     return $website;
 }
@@ -188,7 +188,7 @@ define("LOCATION_MAX", 50);
 function validateLocation() {
     $location = trim($_POST["location"] ?? "");
     if (strlen($location) > LOCATION_MAX) {
-        throw new Exception("Location must be less than " . LOCATION_MAX . " characters", 400);
+        throw new Exception("muoex_location_must_be_less_than_location_max", 400);
     }
     return $location;
 }
@@ -197,7 +197,7 @@ define("BIO_MAX", 255);
 function validateBio() {
     $bio = trim($_POST["bio"] ?? "");
     if (strlen($bio) > BIO_MAX) {
-        throw new Exception("Bio must be less than " . BIO_MAX . " characters", 400);
+        throw new Exception("muoex_bio_must_be_less_than_bio_max", 400);
     }
     return $bio;
 }
@@ -214,10 +214,13 @@ function validatePage() {
     return $page;
 }
 
-define("PK_MAX", 50);
+define("PK_MAX", 1000000);
 function validatePk($pkName) {
     $pk = trim($_POST[$pkName] ?? "");
-    if (strlen($pk) > PK_MAX) {
+    if (!ctype_digit($pk) || $pk < 1) {
+        throw new Exception("muoex_pk_invalid", 400);
+    }
+    if ($pk > PK_MAX) {
         throw new Exception("muoex_pk_must_be_less_than_pk_max", 400);
     }
     return $pk;
@@ -227,10 +230,10 @@ define("COMMENT_REPLY_CONTENT_MAX", 255);
 function validateCommentReplyContent() {
     $commentReplyContent = trim($_POST["comment_reply_content"] ?? "");
     if (strlen($commentReplyContent) == 0) {
-        throw new Exception("Comment reply content cannot be empty", 400);
+        throw new Exception("muoex_comment_reply_content_cannot_be_empty", 400);
     }
     if (strlen($commentReplyContent) > COMMENT_REPLY_CONTENT_MAX) {
-        throw new Exception("Comment reply content must be less than " . COMMENT_REPLY_CONTENT_MAX . " characters", 400);
+        throw new Exception("muoex_comment_reply_content_must_be_less_than_comment_reply_content_max", 400);
     }
     return $commentReplyContent;
 }
@@ -256,7 +259,7 @@ function validateEmail() {
     }
 
     if (strlen($userEmail) > EMAIL_MAX) {
-        throw new Exception("User email must be less than " . EMAIL_MAX . " characters", 400);
+        throw new Exception("muoex_email_must_be_less_than_email_max", 400);
     }
     return $userEmail;
 }
@@ -264,7 +267,7 @@ function validateEmail() {
 function validateEmailOrPhone() {
     $userEmailOrPhone = trim($_POST["emailOrPhone"] ?? "");
     if (empty($userEmailOrPhone)) {
-        throw new Exception("Email or phone is required", 400);
+        throw new Exception("muoex_email_or_phone_required", 400);
     }
     return $userEmailOrPhone;
 }
@@ -274,10 +277,10 @@ define("PASSWORD_MAX", 50);
 function validatePassword() {
     $userPassword = trim($_POST["password"] ?? "");
     if (strlen($userPassword) < PASSWORD_MIN) {
-        throw new Exception("User password must be greater than " . PASSWORD_MIN . " characters", 400);
+        throw new Exception("muoex_password_must_be_greater_than_password_min", 400);
     }
     if (strlen($userPassword) > PASSWORD_MAX) {
-        throw new Exception("User password must be less than " . PASSWORD_MAX . " characters", 400);
+        throw new Exception("muoex_password_must_be_less_than_password_max", 400);
     }
     return $userPassword;
 }
@@ -287,10 +290,10 @@ define("NAME_MAX", 50);
 function validateName() {
     $name = trim($_POST["name"] ?? "");
     if (strlen($name) < NAME_MIN) {
-        throw new Exception("Name must be greater than " . NAME_MIN . " characters", 400);
+        throw new Exception("muoex_name_must_be_greater_than_name_min", 400);
     }
     if (strlen($name) > NAME_MAX) {
-        throw new Exception("Name must be less than " . NAME_MAX . " characters", 400);
+        throw new Exception("muoex_name_must_be_less_than_name_max", 400);
     }
     return $name;
 }
@@ -300,10 +303,10 @@ define("HANDLE_MAX", 30);
 function validateHandle() {
     $handle = trim($_POST["handle"] ?? "");
     if (strlen($handle) < HANDLE_MIN) {
-        throw new Exception("Handle must be greater than " . HANDLE_MIN . " characters", 400);
+        throw new Exception("muoex_handle_must_be_greater_than_handle_min", 400);
     }
     if (strlen($handle) > HANDLE_MAX) {
-        throw new Exception("Handle must be less than " . HANDLE_MAX . " characters", 400);
+        throw new Exception("muoex_handle_must_be_less_than_handle_max", 400);
     }
     return $handle;
 }
@@ -315,7 +318,7 @@ function validatePhone() {
         return null;
     }
     if (strlen($userPhone) > PHONE_MAX) {
-        throw new Exception("Phone number must be less than " . PHONE_MAX . " characters", 400);
+        throw new Exception("muoex_phone_must_be_less_than_phone_max", 400);
     }
     return $userPhone;
 }
@@ -325,7 +328,7 @@ define("MONTH_MAX", 12);
 function validateMonth() {
     $userMonth = (int) ($_POST["month"] ?? 0);
     if ($userMonth < MONTH_MIN || $userMonth > MONTH_MAX) {
-        throw new Exception("Month must be between " . MONTH_MIN . " and " . MONTH_MAX . " inclusive", 400);
+        throw new Exception("muoex_month_must_be_between_month_min_and_month_max", 400);
     }
     return $userMonth;
 }
@@ -335,7 +338,7 @@ define("DAY_MAX", 31);
 function validateDay() {
     $userDay = (int) ($_POST["day"] ?? 0);
     if ($userDay < DAY_MIN || $userDay > DAY_MAX) {
-        throw new Exception("Day must be between " . DAY_MIN . " and " . DAY_MAX . " inclusive", 400);
+        throw new Exception("muoex_day_must_be_between_day_min_and_day_max", 400);
     }
     return $userDay;
 }
@@ -345,7 +348,7 @@ define("YEAR_MAX", 2024);
 function validateYear() {
     $userYear = (int) ($_POST["year"] ?? 0);
     if ($userYear < YEAR_MIN || $userYear > YEAR_MAX) {
-        throw new Exception("Year must be between " . YEAR_MIN . " and " . YEAR_MAX . " inclusive", 400);
+        throw new Exception("muoex_year_must_be_between_year_min_and_year_max", 400);
     }
     return $userYear;
 }
@@ -360,12 +363,12 @@ function validateAndSavePostImage() {
 
     // Basic upload error check
     if ($file["error"] !== UPLOAD_ERR_OK) {
-        throw new Exception("Post image upload failed", 400);
+        throw new Exception("muoex_image_upload_failed", 400);
     }
 
     // Check file size (max 10MB)
     if ($file["size"] > 10 * 1024 * 1024) {
-        throw new Exception("Post image too large (max 10MB)", 400);
+        throw new Exception("muoex_image_too_large", 400);
     }
 
     // Get MIME type using mime_content_type
@@ -380,19 +383,19 @@ function validateAndSavePostImage() {
     ];
 
     if (!isset($allowedTypes[$mimeType])) {
-        throw new Exception("Invalid post image file type. Only JPEG, PNG, GIF, and WebP allowed", 400);
+        throw new Exception("muoex_image_invalid_file_type", 400);
     }
 
     // Verify it's actually an image
     $imageInfo = @getimagesize($file["tmp_name"]);
     if (!$imageInfo) {
-        throw new Exception("Uploaded post image is not a valid image", 400);
+        throw new Exception("muoex_image_not_a_valid_image", 400);
     }
 
     // Check for malicious content
     $fileContent = file_get_contents($file["tmp_name"]);
     if (preg_match('/<\?php|<script|javascript:/i', $fileContent)) {
-        throw new Exception("Post image contains potentially malicious content", 400);
+        throw new Exception("muoex_image_contains_potentially_malicious_content", 400);
     }
 
     // Generate UUID filename
@@ -408,20 +411,20 @@ function validateAndSavePostImage() {
     $destination = $uploadDir . $filename;
     // Move uploaded file
     if (!move_uploaded_file($file["tmp_name"], $destination)) {
-        throw new Exception("Failed to save post image", 500);
+        throw new Exception("muoex_image_save_failed", 500);
     }
     return $filename;
 }
 
 define("POST_CONTENT_MIN", 1);
-define("POST_CONTENT_MAX", 200);
+define("POST_CONTENT_MAX", 255);
 function validatePostContent() {
     $postContent = trim($_POST["post_content"] ?? "");
     if (strlen($postContent) < POST_CONTENT_MIN) {
-        throw new Exception("Post content must be greater than " . POST_CONTENT_MIN . " characters", 400);
+        throw new Exception("muoex_post_content_cannot_be_empty", 400);
     }
     if (strlen($postContent) > POST_CONTENT_MAX) {
-        throw new Exception("Post content must be less than " . POST_CONTENT_MAX . " characters", 400);
+        throw new Exception("muoex_post_content_must_be_less_than_post_content_max", 400);
     }
     return $postContent;
 }
