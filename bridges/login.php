@@ -1,7 +1,7 @@
 <?php
 try {
 
-    require_once __DIR__ . "/../x.php";
+    require_once __DIR__ . "/../services/x.php";
     $userEmailOrPhone = validateEmailOrPhone();
     $userPassword = validatePassword();
 

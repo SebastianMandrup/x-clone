@@ -1,9 +1,8 @@
 <?php
 try {
-
 	require_once __DIR__ . '/../services/protect-endpoint.php';
 
-	require_once __DIR__ . '/../x.php';
+	require_once __DIR__ . '/../services/x.php';
 	$userPk = $_SESSION["user"]["user_pk"];
 	$commentPk = validatePk('comment_pk');
 	$commentReplyContent = validateCommentReplyContent();
@@ -18,21 +17,7 @@ try {
 		'status' => 'success',
 		'message' => $message
 	]);
-} catch (Exception $e) {
-	http_response_code(500);
-
-	switch ($e->getMessage()) {
-		case 'Comment reply content cannot be empty':
-			http_response_code(400);
-			$exceptionKey = 'post_content_cannot_be_empty';
-			break;
-		default:
-			$exceptionKey = 'an_unexpected_error_occurred';
-			break;
-	}
-	$errorMessage = $backendDictionary[$_SESSION['user']['user_language']][$exceptionKey];
-	echo json_encode([
-		'status' => 'error',
-		'message' => $errorMessage
-	]);
+} catch (Exception $exception) {
+	require_once __DIR__ . '/../services/handle-exception.php';
+	handleException($exception);
 }

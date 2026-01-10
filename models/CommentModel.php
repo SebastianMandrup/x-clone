@@ -102,23 +102,19 @@ class CommentModel {
 	}
 
 	public function createCommentReply($userPk, $commentPk, $commentReplyContent) {
-		try {
-			$commentReplyPk = bin2hex(random_bytes(25));
+		$commentReplyPk = bin2hex(random_bytes(25));
 
-			$sql = "INSERT INTO comment_replies (comment_reply_pk, comment_fk, user_fk, comment_reply_content) 
+		$sql = "INSERT INTO comment_replies (comment_reply_pk, comment_fk, user_fk, comment_reply_content) 
 			VALUES (:comment_reply_pk, :comment_pk, :user_pk, :comment_reply_content)";
-			$stmt = $this->_db->prepare($sql);
-			$stmt->bindParam(':comment_reply_pk', $commentReplyPk);
-			$stmt->bindParam(':user_pk', $userPk);
-			$stmt->bindParam(':comment_pk', $commentPk);
-			$stmt->bindParam(':comment_reply_content', $commentReplyContent);
-			$stmt->execute();
+		$stmt = $this->_db->prepare($sql);
+		$stmt->bindParam(':comment_reply_pk', $commentReplyPk);
+		$stmt->bindParam(':user_pk', $userPk);
+		$stmt->bindParam(':comment_pk', $commentPk);
+		$stmt->bindParam(':comment_reply_content', $commentReplyContent);
+		$stmt->execute();
 
-			$newComment = $stmt->fetch();
-			return $newComment;
-		} catch (Exception $e) {
-			throw new Exception("Error creating comment reply: " . $e->getMessage());
-		}
+		$newComment = $stmt->fetch();
+		return $newComment;
 	}
 
 	public function likeComment($commentPk, $userPk) {

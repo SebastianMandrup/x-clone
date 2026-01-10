@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../../x.php';
+require_once __DIR__ . '/../../../services/x.php';
 ?>
 <article class='articlePost' data-post-pk='<?php muoEcho($post["post_pk"]) ?>' data-author-handle='<?php muoEcho($post["user_handle"]) ?>'>
     <?php require_once __DIR__ . '/../../../services/get-user-avatar.php'; ?>

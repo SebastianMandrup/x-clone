@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/x.php';
+
 $backendDictionary = [
 	'en' => [
 		'an_unexpected_error_occurred' => 'An unexpected error occurred',
@@ -26,6 +28,8 @@ $backendDictionary = [
 		'user_liked_the_comment' => 'User liked the comment',
 		'user_disliked_the_comment' => 'User disliked the comment',
 		'user_liked_the_comment_again' => 'User liked the comment again',
+		'user_not_authenticated' => 'User not authenticated',
+		'pk_must_be_less_than_pk_max' => 'Primary key must be less than ' . PK_MAX . ' characters',
 	],
 	'da' => [
 		'an_unexpected_error_occurred' => 'Der opstod en uventet fejl',
@@ -52,5 +56,7 @@ $backendDictionary = [
 		'user_liked_the_comment' => 'Bruger likede kommentaren',
 		'user_disliked_the_comment' => 'Bruger fjernede like fra kommentaren',
 		'user_liked_the_comment_again' => 'Bruger likede kommentaren igen',
+		'user_not_authenticated' => 'Bruger ikke autentificeret',
+		'pk_must_be_less_than_pk_max' => 'Primær nøgle skal være mindre end ' . PK_MAX . ' tegn',
 	],
 ];

@@ -1,7 +1,7 @@
 <?php
 
 function initTranslations() {
-    $dictionary = require_once __DIR__ . '/services/dictionary.php';
+    $dictionary = require_once __DIR__ . '/dictionary.php';
     return $dictionary[$_SESSION['user']['user_language']];
 }
 
@@ -166,88 +166,88 @@ function validateLanguage() {
     return $language;
 }
 
-define("searchTermMax", 20);
+define("SEARCH_TERM_MAX", 50);
 function validateSearchTerm() {
     $searchTerm = trim($_GET["term"] ?? "");
-    if (strlen($searchTerm) > searchTermMax) {
-        throw new Exception("Search term must be less than " . searchTermMax . " characters", 400);
+    if (strlen($searchTerm) > SEARCH_TERM_MAX) {
+        throw new Exception("Search term must be less than " . SEARCH_TERM_MAX . " characters", 400);
     }
     return $searchTerm;
 }
 
-define("websiteMax", 50);
+define("WEBSITE_MAX", 50);
 function validateWebsite() {
     $website = trim($_POST["website"] ?? "");
-    if (strlen($website) > websiteMax) {
-        throw new Exception("Website must be less than " . websiteMax . " characters", 400);
+    if (strlen($website) > WEBSITE_MAX) {
+        throw new Exception("Website must be less than " . WEBSITE_MAX . " characters", 400);
     }
     return $website;
 }
 
-define("locationMax", 50);
+define("LOCATION_MAX", 50);
 function validateLocation() {
     $location = trim($_POST["location"] ?? "");
-    if (strlen($location) > locationMax) {
-        throw new Exception("Location must be less than " . locationMax . " characters", 400);
+    if (strlen($location) > LOCATION_MAX) {
+        throw new Exception("Location must be less than " . LOCATION_MAX . " characters", 400);
     }
     return $location;
 }
 
-define("bioMax", 255);
+define("BIO_MAX", 255);
 function validateBio() {
     $bio = trim($_POST["bio"] ?? "");
-    if (strlen($bio) > bioMax) {
-        throw new Exception("Bio must be less than " . bioMax . " characters", 400);
+    if (strlen($bio) > BIO_MAX) {
+        throw new Exception("Bio must be less than " . BIO_MAX . " characters", 400);
     }
     return $bio;
 }
 
-define("pageMax", 100);
+define("PAGE_MAX", 100);
 function validatePage() {
     $page = (int) ($_GET["page"] ?? 1);
     if ($page < 1) {
         $page = 1;
     }
-    if ($page > pageMax) {
-        throw new Exception("Page must be less than " . pageMax, 400);
+    if ($page > PAGE_MAX) {
+        throw new Exception("Page must be less than " . PAGE_MAX, 400);
     }
     return $page;
 }
 
-define("pkMax", 50);
+define("PK_MAX", 50);
 function validatePk($pkName) {
     $pk = trim($_POST[$pkName] ?? "");
-    if (strlen($pk) > pkMax) {
-        throw new Exception("PK must be less than " . pkMax . " characters", 400);
+    if (strlen($pk) > PK_MAX) {
+        throw new Exception("muoex_pk_must_be_less_than_pk_max", 400);
     }
     return $pk;
 }
 
-define("commentReplyContentMax", 255);
+define("COMMENT_REPLY_CONTENT_MAX", 255);
 function validateCommentReplyContent() {
     $commentReplyContent = trim($_POST["comment_reply_content"] ?? "");
     if (strlen($commentReplyContent) == 0) {
         throw new Exception("Comment reply content cannot be empty", 400);
     }
-    if (strlen($commentReplyContent) > commentReplyContentMax) {
-        throw new Exception("Comment reply content must be less than " . commentReplyContentMax . " characters", 400);
+    if (strlen($commentReplyContent) > COMMENT_REPLY_CONTENT_MAX) {
+        throw new Exception("Comment reply content must be less than " . COMMENT_REPLY_CONTENT_MAX . " characters", 400);
     }
     return $commentReplyContent;
 }
 
-define("commentContentMax", 255);
+define("COMMENT_CONTENT_MAX", 255);
 function validateCommentContent() {
     $commentContent = trim($_POST["comment_content"] ?? "");
     if (strlen($commentContent) == 0) {
         throw new Exception("Comment content cannot be empty", 400);
     }
-    if (strlen($commentContent) > commentContentMax) {
-        throw new Exception("Comment content must be less than " . commentContentMax . " characters", 400);
+    if (strlen($commentContent) > COMMENT_CONTENT_MAX) {
+        throw new Exception("Comment content must be less than " . COMMENT_CONTENT_MAX . " characters", 400);
     }
     return $commentContent;
 }
 
-define("emailMax", 50);
+define("EMAIL_MAX", 50);
 function validateEmail() {
     $userEmail = trim($_POST["email"]);
 
@@ -255,8 +255,8 @@ function validateEmail() {
         return null;
     }
 
-    if (strlen($userEmail) > emailMax) {
-        throw new Exception("User email must be less than " . emailMax . " characters", 400);
+    if (strlen($userEmail) > EMAIL_MAX) {
+        throw new Exception("User email must be less than " . EMAIL_MAX . " characters", 400);
     }
     return $userEmail;
 }
@@ -269,83 +269,83 @@ function validateEmailOrPhone() {
     return $userEmailOrPhone;
 }
 
-define("passwordMin", 6);
-define("passwordMax", 50);
+define("PASSWORD_MIN", 6);
+define("PASSWORD_MAX", 50);
 function validatePassword() {
     $userPassword = trim($_POST["password"] ?? "");
-    if (strlen($userPassword) < passwordMin) {
-        throw new Exception("User password must be greater than " . passwordMin . " characters", 400);
+    if (strlen($userPassword) < PASSWORD_MIN) {
+        throw new Exception("User password must be greater than " . PASSWORD_MIN . " characters", 400);
     }
-    if (strlen($userPassword) > passwordMax) {
-        throw new Exception("" . passwordMax . "", 400);
+    if (strlen($userPassword) > PASSWORD_MAX) {
+        throw new Exception("User password must be less than " . PASSWORD_MAX . " characters", 400);
     }
     return $userPassword;
 }
 
-define("nameMin", 2);
-define("nameMax", 50);
+define("NAME_MIN", 2);
+define("NAME_MAX", 50);
 function validateName() {
     $name = trim($_POST["name"] ?? "");
-    if (strlen($name) < nameMin) {
-        throw new Exception("Name must be greater than " . nameMin . " characters", 400);
+    if (strlen($name) < NAME_MIN) {
+        throw new Exception("Name must be greater than " . NAME_MIN . " characters", 400);
     }
-    if (strlen($name) > nameMax) {
-        throw new Exception("Name must be less than " . nameMax . " characters", 400);
+    if (strlen($name) > NAME_MAX) {
+        throw new Exception("Name must be less than " . NAME_MAX . " characters", 400);
     }
     return $name;
 }
 
-define("handleMin", 2);
-define("handleMax", 30);
+define("HANDLE_MIN", 2);
+define("HANDLE_MAX", 30);
 function validateHandle() {
     $handle = trim($_POST["handle"] ?? "");
-    if (strlen($handle) < handleMin) {
-        throw new Exception("Handle must be greater than " . handleMin . " characters", 400);
+    if (strlen($handle) < HANDLE_MIN) {
+        throw new Exception("Handle must be greater than " . HANDLE_MIN . " characters", 400);
     }
-    if (strlen($handle) > handleMax) {
-        throw new Exception("Handle must be less than " . handleMax . " characters", 400);
+    if (strlen($handle) > HANDLE_MAX) {
+        throw new Exception("Handle must be less than " . HANDLE_MAX . " characters", 400);
     }
     return $handle;
 }
 
-define("phoneMax", 15);
+define("PHONE_MAX", 15);
 function validatePhone() {
     $userPhone = trim($_POST["phone"]);
     if ($userPhone == "" || $userPhone == null) {
         return null;
     }
-    if (strlen($userPhone) > phoneMax) {
-        throw new Exception("Phone number must be less than " . phoneMax . " characters", 400);
+    if (strlen($userPhone) > PHONE_MAX) {
+        throw new Exception("Phone number must be less than " . PHONE_MAX . " characters", 400);
     }
     return $userPhone;
 }
 
-define("monthMin", 1);
-define("monthMax", 12);
+define("MONTH_MIN", 1);
+define("MONTH_MAX", 12);
 function validateMonth() {
     $userMonth = (int) ($_POST["month"] ?? 0);
-    if ($userMonth < monthMin || $userMonth > monthMax) {
-        throw new Exception("Month must be between " . monthMin . " and " . monthMax . " inclusive", 400);
+    if ($userMonth < MONTH_MIN || $userMonth > MONTH_MAX) {
+        throw new Exception("Month must be between " . MONTH_MIN . " and " . MONTH_MAX . " inclusive", 400);
     }
     return $userMonth;
 }
 
-define("dayMin", 1);
-define("dayMax", 31);
+define("DAY_MIN", 1);
+define("DAY_MAX", 31);
 function validateDay() {
     $userDay = (int) ($_POST["day"] ?? 0);
-    if ($userDay < dayMin || $userDay > dayMax) {
-        throw new Exception("Day must be between " . dayMin . " and " . dayMax . " inclusive", 400);
+    if ($userDay < DAY_MIN || $userDay > DAY_MAX) {
+        throw new Exception("Day must be between " . DAY_MIN . " and " . DAY_MAX . " inclusive", 400);
     }
     return $userDay;
 }
 
-define("yearMin", 1900);
-define("yearMax", 2024);
+define("YEAR_MIN", 1900);
+define("YEAR_MAX", 2024);
 function validateYear() {
     $userYear = (int) ($_POST["year"] ?? 0);
-    if ($userYear < yearMin || $userYear > yearMax) {
-        throw new Exception("Year must be between " . yearMin . " and " . yearMax . " inclusive", 400);
+    if ($userYear < YEAR_MIN || $userYear > YEAR_MAX) {
+        throw new Exception("Year must be between " . YEAR_MIN . " and " . YEAR_MAX . " inclusive", 400);
     }
     return $userYear;
 }
@@ -413,15 +413,15 @@ function validateAndSavePostImage() {
     return $filename;
 }
 
-define("postContentMin", 1);
-define("postContentMax", 200);
+define("POST_CONTENT_MIN", 1);
+define("POST_CONTENT_MAX", 200);
 function validatePostContent() {
     $postContent = trim($_POST["post_content"] ?? "");
-    if (strlen($postContent) < postContentMin) {
-        throw new Exception("Post content must be greater than " . postContentMin . " characters", 400);
+    if (strlen($postContent) < POST_CONTENT_MIN) {
+        throw new Exception("Post content must be greater than " . POST_CONTENT_MIN . " characters", 400);
     }
-    if (strlen($postContent) > postContentMax) {
-        throw new Exception("Post content must be less than " . postContentMax . " characters", 400);
+    if (strlen($postContent) > POST_CONTENT_MAX) {
+        throw new Exception("Post content must be less than " . POST_CONTENT_MAX . " characters", 400);
     }
     return $postContent;
 }

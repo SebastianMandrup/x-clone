@@ -3,7 +3,7 @@
 try {
 	require_once __DIR__ . '/../services/protect-route.php';
 
-	require_once __DIR__ . '/../x.php';
+	require_once __DIR__ . '/../services/x.php';
 	$searchTerm = validateSearchTerm();
 
 	require_once __DIR__ . '/../models/PostModel.php';

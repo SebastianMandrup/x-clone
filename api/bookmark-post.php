@@ -4,7 +4,7 @@ try {
 
 	require_once __DIR__ . '/../services/protect-endpoint.php';
 
-	require_once __DIR__ . '/../x.php';
+	require_once __DIR__ . '/../services/x.php';
 	$userFk = $_SESSION["user"]["user_pk"];
 	$postFk = validatePk('postPk');
 
