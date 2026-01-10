@@ -58,6 +58,11 @@ $backendDictionary = [
 		'day_must_be_between_day_min_and_day_max' => 'Day must be between ' . DAY_MIN . ' and ' . DAY_MAX . ' inclusive',
 		'month_must_be_between_month_min_and_month_max' => 'Month must be between ' . MONTH_MIN . ' and ' . MONTH_MAX . ' inclusive',
 		'year_must_be_between_year_min_and_year_max' => 'Year must be between ' . YEAR_MIN . ' and ' . YEAR_MAX . ' inclusive',
+		'page_must_be_less_than_page_max' => 'Page must be less than ' . PAGE_MAX,
+		'filename_required' => 'Filename is required',
+		'file_not_found' => 'File not found',
+		'comment_content_cannot_be_empty' => 'Comment content cannot be empty',
+		'comment_content_must_be_less_than_comment_content_max' => 'Comment content must be less than ' . COMMENT_CONTENT_MAX . ' characters',
 	],
 	'da' => [
 		'an_unexpected_error_occurred' => 'Der opstod en uventet fejl',
@@ -114,5 +119,10 @@ $backendDictionary = [
 		'day_must_be_between_day_min_and_day_max' => 'Dag skal være mellem ' . DAY_MIN . ' og ' . DAY_MAX . ' inklusive',
 		'month_must_be_between_month_min_and_month_max' => 'Måned skal være mellem ' . MONTH_MIN . ' og ' . MONTH_MAX . ' inklusive',
 		'year_must_be_between_year_min_and_year_max' => 'År skal være mellem ' . YEAR_MIN . ' og ' . YEAR_MAX . ' inklusive',
+		'page_must_be_less_than_page_max' => 'Side skal være mindre end ' . PAGE_MAX,
+		'filename_required' => 'Filnavn er påkrævet',
+		'file_not_found' => 'Fil ikke fundet',
+		'comment_content_cannot_be_empty' => 'Indholdet i kommentaren kan ikke være tomt',
+		'comment_content_must_be_less_than_comment_content_max' => 'Indholdet i kommentaren skal være mindre end ' . COMMENT_CONTENT_MAX . ' tegn',
 	],
 ];

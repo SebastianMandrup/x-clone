@@ -36,10 +36,10 @@ class FollowModel {
 
 	public function unfollowUser($following_user_fk, $followed_user_fk) {
 		$sql = "UPDATE follows 
-			SET follow_deleted_at = UNIX_TIMESTAMP() 
-			WHERE following_user_fk = :following_user_fk 
-			AND followed_user_fk = :followed_user_fk 
-			AND follow_deleted_at IS NULL";
+				SET follow_deleted_at = UNIX_TIMESTAMP() 
+				WHERE following_user_fk = :following_user_fk 
+				AND followed_user_fk = :followed_user_fk 
+				AND follow_deleted_at IS NULL";
 		$stmt = $this->_db->prepare($sql);
 		$stmt->bindParam(':following_user_fk', $following_user_fk);
 		$stmt->bindParam(':followed_user_fk', $followed_user_fk);

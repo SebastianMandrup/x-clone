@@ -1,6 +1,6 @@
 <?php
-try {
 
+try {
 	require_once __DIR__ . '/../services/protect-endpoint.php';
 
 	require_once __DIR__ . '/../services/x.php';
@@ -16,21 +16,10 @@ try {
 		'status' => 'success',
 		'message' => $backendDictionary[$_SESSION['user']['user_language']]['user_followed_successfully']
 	]);
-} catch (Exception $e) {
-	http_response_code(500);
-	
-	require_once __DIR__ . '/../services/backend-dictionary.php';
-	if (str_contains($e->getMessage(), "Duplicate entry")) {
-		$errorMessage = $backendDictionary[$_SESSION['user']['user_language']]['user_already_followed'];
-		echo json_encode([
-			'status' => 'error',
-			'message' => $errorMessage
-		]);
-		return;
-	}
+} catch (Exception $exception) {
+	require_once __DIR__ . '/../services/logger.php';
+	logError('Follow User API: ' . $exception->getMessage());
 
-	echo json_encode([
-		'status' => 'error',
-		'message' => $backendDictionary[$_SESSION['user']['user_language']]['an_unexpected_error_occurred']
-	]);
+	require_once __DIR__ . '/../services/handle-exception.php';
+	handleException($exception);
 }

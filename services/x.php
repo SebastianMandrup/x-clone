@@ -209,18 +209,15 @@ function validatePage() {
         $page = 1;
     }
     if ($page > PAGE_MAX) {
-        throw new Exception("Page must be less than " . PAGE_MAX, 400);
+        throw new Exception("muoex_page_must_be_less_than_page_max", 400);
     }
     return $page;
 }
 
-define("PK_MAX", 1000000);
-function validatePk($pkName) {
+define("PK_MAX", 50);
+function  validatePk($pkName) {
     $pk = trim($_POST[$pkName] ?? "");
-    if (!ctype_digit($pk) || $pk < 1) {
-        throw new Exception("muoex_pk_invalid", 400);
-    }
-    if ($pk > PK_MAX) {
+    if (strlen($pk) > PK_MAX) {
         throw new Exception("muoex_pk_must_be_less_than_pk_max", 400);
     }
     return $pk;
@@ -242,10 +239,10 @@ define("COMMENT_CONTENT_MAX", 255);
 function validateCommentContent() {
     $commentContent = trim($_POST["comment_content"] ?? "");
     if (strlen($commentContent) == 0) {
-        throw new Exception("Comment content cannot be empty", 400);
+        throw new Exception("muoex_comment_content_cannot_be_empty", 400);
     }
     if (strlen($commentContent) > COMMENT_CONTENT_MAX) {
-        throw new Exception("Comment content must be less than " . COMMENT_CONTENT_MAX . " characters", 400);
+        throw new Exception("muoex_comment_content_must_be_less_than_comment_content_max", 400);
     }
     return $commentContent;
 }

@@ -16,12 +16,10 @@ try {
 		'status' => 'success',
 		'message' => $backendDictionary[$_SESSION['user']['user_language']]['post_deleted_successfully']
 	]);
-} catch (Exception $e) {
-	http_response_code(500);
-	require_once __DIR__ . '/../services/backend-dictionary.php';
-	$errorMessage = $backendDictionary[$_SESSION['user']['user_language']]['an_unexpected_error_occurred'];
-	echo json_encode([
-		'status' => 'error',
-		'message' => $errorMessage
-	]);
+} catch (Exception $exception) {
+	require_once __DIR__ . '/../services/logger.php';
+	logError('Delete Post API: ' . $exception->getMessage());
+
+	require_once __DIR__ . '/../services/handle-exception.php';
+	handleException($exception);
 }

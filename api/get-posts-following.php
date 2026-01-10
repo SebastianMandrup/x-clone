@@ -1,7 +1,6 @@
 <?php
 
 try {
-
 	require_once __DIR__ . '/../services/protect-endpoint.php';
 
 	require_once __DIR__ . '/../services/x.php';
@@ -27,11 +26,10 @@ try {
 		'data' => $posts,
 		'last_page' => $last_page
 	]);
-} catch (Exception $e) {
-	require_once __DIR__ . '/../services/backend-dictionary.php';
-	http_response_code(500);
-	echo json_encode([
-		'status' => 'error',
-		'message' => $backendDictionary[$_SESSION['user']['user_language']]['an_unexpected_error_occurred']
-	]);
+} catch (Exception $exception) {
+	require_once __DIR__ . '/../services/logger.php';
+	logError('Get Posts Following API: ' . $exception->getMessage());
+
+	require_once __DIR__ . '/../services/handle-exception.php';
+	handleException($exception);
 }

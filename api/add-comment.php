@@ -18,5 +18,9 @@ try {
 		'message' => $message
 	]);
 } catch (Exception $exception) {
+	require_once __DIR__ . '/../services/logger.php';
+	logError('Add Comment API: ' . $exception->getMessage());
+
+	require_once __DIR__ . '/../services/handle-exception.php';
 	handleException($exception);
 }

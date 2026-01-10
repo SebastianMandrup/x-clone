@@ -513,7 +513,6 @@ class PostModel {
     }
 
     public function repost($referencePk, $postUserFk) {
-
         $repostPk = bin2hex(random_bytes(25));
 
         $sql = "INSERT INTO posts (post_pk, post_reference, post_user_fk) 

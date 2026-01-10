@@ -20,7 +20,7 @@ try {
 	]);
 } catch (Exception $exception) {
 	require_once __DIR__ . '/../services/logger.php';
-	logError('/api/add-comment-reply.php: ' . $exception->getMessage());
+	logError('Add Comment Reply API: ' . $exception->getMessage());
 
 	require_once __DIR__ . '/../services/handle-exception.php';
 	handleException($exception);

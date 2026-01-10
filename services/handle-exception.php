@@ -14,6 +14,7 @@ function handleException(Exception $exception) {
 	require_once __DIR__ . '/../services/backend-dictionary.php';
 	$language = $_SESSION['user']['user_language'] ?? 'en';
 	$errorMessage = $backendDictionary[$language][$exceptionMessage];
+	http_response_code($exception->getCode() ?: 500);
 	echo json_encode([
 		'status' => 'error',
 		'message' => $errorMessage

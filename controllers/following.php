@@ -19,7 +19,7 @@ try {
 	require __DIR__ . '/../views/followersOrFollowing.php';
 } catch (Exception $exception) {
 	require_once __DIR__ . '/../services/logger.php';
-	logError('Error in following controller: ' . $exception->getMessage());
+	logError('Following Controller Error: ' . $exception->getMessage());
 
 	require_once __DIR__ . '/../services/backend-dictionary.php';
 	$error = $backendDictionary[$_SESSION['user']['user_language']]['an_unexpected_error_occurred'];

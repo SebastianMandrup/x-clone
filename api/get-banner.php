@@ -1,16 +1,15 @@
 <?php
 
 try {
-
 	if (!isset($_GET['filename']) || empty($_GET['filename'])) {
-		throw new Exception("Filename is required", 400);
+		throw new Exception("muoex_filename_required", 400);
 	}
 
 	$filename = basename($_GET['filename']);
 	$filepath = __DIR__ . '/../views/uploads/banners/' . $filename;
 
 	if (!file_exists($filepath)) {
-		throw new Exception("File not found", 404);
+		throw new Exception("muoex_file_not_found", 404);
 	}
 
 	$finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -18,10 +17,10 @@ try {
 
 	header('Content-Type: ' . $mimeType);
 	readfile($filepath);
-} catch (Exception $e) {
-	http_response_code($e->getCode() ?: 500);
-	echo json_encode([
-		'status' => 'error',
-		'message' => $e->getMessage()
-	]);
+} catch (Exception $exception) {
+	require_once __DIR__ . '/../services/logger.php';
+	logError('Get Banner API: ' . $exception->getMessage());
+
+	require_once __DIR__ . '/../services/handle-exception.php';
+	handleException($exception);
 }

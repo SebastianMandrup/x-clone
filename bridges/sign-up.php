@@ -1,4 +1,5 @@
 <?php
+
 try {
 
 	require_once __DIR__ . "/../services/x.php";

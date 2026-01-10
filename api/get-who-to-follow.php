@@ -1,7 +1,6 @@
 <?php
 
 try {
-
 	require_once __DIR__ . '/../services/protect-endpoint.php';
 
 	require_once __DIR__ . '/../services/x.php';
@@ -10,10 +9,6 @@ try {
 	require_once __DIR__ . '/../models/FollowModel.php';
 	$followModel = new FollowModel();
 	$whoToFollow = $followModel->getWhoToFollow($page);
-
-	if (!$whoToFollow) {
-		throw new Exception("No users found.");
-	}
 
 	$last_page = false;
 
@@ -32,12 +27,10 @@ try {
 		'data' => $whoToFollow,
 		'last_page' => $last_page
 	]);
-} catch (Exception $e) {
+} catch (Exception $exception) {
+	require_once __DIR__ . '/../services/logger.php';
+	logError('Get Who To Follow API: ' . $exception->getMessage());
 
-	require_once __DIR__ . '/../services/backend-dictionary.php';
-	http_response_code(500);
-	echo json_encode([
-		'status' => 'error',
-		'message' => $backendDictionary[$_SESSION['user']['user_language']]['an_unexpected_error_occurred']
-	]);
+	require_once __DIR__ . '/../services/handle-exception.php';
+	handleException($exception);
 }
