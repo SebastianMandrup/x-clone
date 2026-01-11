@@ -24,7 +24,7 @@ jobs:
           protocol: ftp          # plain FTP avoids TLS issues
           security: loose        # important — disable TLS
           timeout: 60000         # wait longer for slow servers
-          concurrency: 1         # only one file at a time to prevent ECONNRESET
+          # concurrency: 1         # only one file at a time to prevent ECONNRESET
           exclude: |
             misc/**
             db.php

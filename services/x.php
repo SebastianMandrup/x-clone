@@ -72,7 +72,7 @@ function validateAndSaveAvatar() {
     $filename = $uuid . '.' . $extension;
 
     // Ensure uploads directory exists
-    $uploadDir = __DIR__ . '/views/uploads/avatars/';
+    $uploadDir = __DIR__ . '/../views/uploads/avatars/';
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0755, true);
     }
@@ -138,7 +138,7 @@ function validateAndSaveBanner() {
     $extension = $allowedTypes[$mimeType];
     $filename = $uuid . '.' . $extension;
 
-    $uploadDir = __DIR__ . '/views/uploads/banners/';
+    $uploadDir = __DIR__ . '/../views/uploads/banners/';
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0755, true);
     }
@@ -400,7 +400,7 @@ function validateAndSavePostImage() {
     $extension = $allowedTypes[$mimeType];
     $filename = $uuid . '.' . $extension;
     // Ensure uploads directory exists
-    $uploadDir = __DIR__ . '/views/uploads/posts/';
+    $uploadDir = __DIR__ . '/../views/uploads/posts/';
 
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0755, true);

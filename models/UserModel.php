@@ -26,6 +26,7 @@ class UserModel {
                 users.user_handle,
                 users.user_avatar,
                 users.user_banner,
+                users.user_language,
                 users.user_bio,
                 COUNT(posts.post_pk) AS post_count,
                 (SELECT COUNT(*) FROM follows WHERE followed_user_fk = users.user_pk AND follow_deleted_at IS NULL) AS followers_count,

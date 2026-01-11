@@ -46,10 +46,14 @@
 					<label for='inputEditProfileLanguage'>
 						<?php muoEcho($translations['language']); ?>
 						<select name="language" id="inputEditProfileLanguage">
-							<option value="en">
+							<option value="en" <?php if (isset($focusedUser['user_language']) && $focusedUser['user_language'] === 'en') {
+													muoEcho('selected');
+												} ?>>
 								<?php muoEcho($translations['english']); ?>
 							</option>
-							<option value="da">
+							<option value="da" <?php if (isset($focusedUser['user_language']) && $focusedUser['user_language'] === 'da') {
+													muoEcho('selected');
+												} ?>>
 								<?php muoEcho($translations['danish']); ?>
 							</option>
 						</select>

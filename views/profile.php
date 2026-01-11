@@ -32,7 +32,6 @@ $translations = initTranslations();
                 require __DIR__ . '/components/articles/post.php';
             }
             ?>
-            <div class="circle-loader"></div>
         </main>
 
         <?php require_once __DIR__ . '/components/aside.php'; ?>

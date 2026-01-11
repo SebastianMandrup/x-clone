@@ -39,9 +39,6 @@
 		<?php muoEcho($translations['bookmarks']) ?>
 	</a>
 	<section id='sectionUserActions' class='hidden'>
-		<button>
-			<?php muoEcho($translations['add_an_existing_account']) ?>
-		</button>
 		<button id='btnLogout'>
 			<?php muoEcho($translations['log_out_of']) ?>
 			<?php muoEcho($_SESSION["user"]["user_name"]); ?>
